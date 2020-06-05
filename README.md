@@ -7,6 +7,9 @@
 - podstrona do wprowadzania pytań,
 - listy pomysłów e.g. projekty ...
 - branche z projektami - np branch programowanie, branch zdrowe_odzywanie/dieta
+- listy zadan do wykonania
 
 ## Visualization:
 - następny task do wykonania w projekcie - np. link do przeczytania artykulu
+- taski wykonane dzisiaj, overview taskow wykonanych w ostatnich dniach
+- tabela wszystkich obecnych projektow, krotko i dlugodystansowych
