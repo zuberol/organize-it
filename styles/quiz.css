@@ -1,0 +1,65 @@
+body {
+    background-color: #202020;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    display: block;
+    color: #eee;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+.flashcard-wrapper{
+    box-sizing: border-box;
+    padding-top: 0;
+    display: block;
+    width: 50%;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    height: 500px;
+    background-color: darkorchid;
+}
+
+.flashcard-wrapper__question {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.flashcard-wrapper__question > span {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    box-sizing: border-box;
+    background-color: seagreen;
+
+}
+
+.flashcard-wrapper__answer {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.flashcard-wrapper__answer input {
+    width: 100%;
+    margin: auto;
+}
+
+.flashcard-wrapper__button {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.flashcard-wrapper__button button {
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
