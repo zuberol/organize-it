@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="question.css">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+
+
+        <div class = "question-wrapper__image"><span class="noselect">Drag and drop you image here</span></div>
+
+
+        <div class = "question-wrapper">
+            <form>
+                <div class="drop-zone">
+                    <span class="drop-zone__prompt noselect">Drop image here</span>
+                    <input type='file' name='myfile.txt' class="drop-zone__input">
+                </div>
+                <div class = "question-wrapper__question">
+                    <input placeholder="Type question ..." id="question">
+                </div>
+                <div class = "question-wrapper__answer">
+                    <input placeholder="Answer ..." id="answer">
+                </div>
+                <div class = "question-wrapper__button">
+                    <button type="submit">Add flashcard</button>
+                </div>
+            </form>
+        </div>
+        <script src="question.js"></script>
+    </body>
+</html>

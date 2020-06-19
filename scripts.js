@@ -10,6 +10,4 @@ document.getElementById('submit-btn').addEventListener('click', (event) => {
 const l = document.getElementById('leki');
 l.addEventListener('click', function(){
     console.log('clicked');
-    // rm
-    
 });
