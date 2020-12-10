@@ -1,0 +1,27 @@
+{
+  "name": "organize-it",
+  "version": "1.0.0",
+  "description": "##Features: - dodawanie zadań powtarzających się do google callendara (jedno zadanie które wykonujemy codziennie o jednej porze i mamy obliczone ile nam zajmie czasu), - obliczanie czasu potrzebnego na zrobienie zadania, - quick quiz - hyperlink do strony z powtorzeniami, fiszkami, - podstrona do wprowadzania pytań, - listy pomysłów e.g. projekty ... - branche z projektami - np branch programowanie, branch zdrowe_odzywanie/dieta - listy zadan do wykonania",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuberol/organize-it.git"
+  },
+  "author": "Jakub Żuber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuberol/organize-it/issues"
+  },
+  "homepage": "https://github.com/zuberol/organize-it#readme",
+  "devDependencies": {
+    "express.js": "^1.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "googleapis": "^39.2.0",
+    "js-beautify": "^1.13.0"
+  }
+}
