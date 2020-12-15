@@ -1,16 +1,12 @@
-// export class Flashcard {
-//     constructor(q, ans, pic_url, user_ans){
-//         this.question = q;
-//         this.answer = ans;
-//         this.picture = pic_url;
-//         this.user_ans = user_ans;
+class CodingFlashcard {
+    constructor(question, page, short_answer, long_answer, ref_url, code_sample_url) {
+      this.question = question;
+      this.page = page,
+      this.short_answer = short_answer;
+      this.long_answer = long_answer;
+      this.ref_url = ref_url;
+      this.code_sample_url = code_sample_url;
+    }
+}
 
-//     }
-// }
-
-
-// class Game {
-//     constructor(user ){
-
-//     }  // ...
-// }
+module.exports.CodingFlashcard = CodingFlashcard;

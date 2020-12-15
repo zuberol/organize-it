@@ -10,8 +10,15 @@
 //     }
 // }
 
-let f = new Flashcard("A srasz?", "a ty?", "aco.png", "e sralem xd");
 
-console.log(f);
+// const Branch = require('./Branch')
+// let b = new Branch('Health');
 
-const data = {};
+
+
+
+const data = ["wyrzucic smieci", "spalic lola", "zagrac w football", "przesadzic kwiaty"];
+//data.push(b);
+
+
+module.exports = data;
