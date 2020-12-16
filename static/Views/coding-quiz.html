@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <link href="../styles/quiz.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.13.0/js/lib/beautify.js"></script>
+    <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.13.0/js/lib/beautify-css.js"></script>
+    <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.13.0/js/lib/beautify-html.js"></script>
+</head>
+
+<body>
+    <h1 class="mainheader">This is programming interview quiz. Welcome :)</h1>
+    <div class="flashcard">
+        <div class = "flashcard__buttons">
+            <button class="revealAnswer" onclick="revealAnswer()">reveal Answer</button>
+            <button class="nextQuestion" onclick="next()">next</button>
+        </div>
+        <p class="flashcard__question"></p>
+        <div class="flashcard__answer-wrapper">
+            <p class="flashcard__answer flashcard__short_answer"></p>
+            <p class="flashcard__answer flashcard__long_answer"></p>
+        </div>
+        <p class="flashcard__answer_ref-url"></p>
+        <div class="flashcard__code">
+            <pre></pre>
+        </div>
+    </div>
+    <script src="../scripts/codingQuizStatic.js"></script>
+    <script>
+        var codeParagraph = document.querySelector('.flashcard__code pre')
+        var questionFlsh = document.querySelector('.flashcard-wrapper .flashcard__question')
+        //console.log(codeParagraph.innerHTML)
+        codeParagraph.innerHTML = js_beautify(codeParagraph.innerHTML, {
+            "indent_size": 4
+        })
+        //console.log(codeParagraph.innerHTML)
+        //beautify_js(code, opts);
+    </script>
+</body>
+
+</html>
