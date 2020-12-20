@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../styles/drop-zone.css">
+    </head>
+    <body>
+        <div class = "question-wrapper">
+            <form
+                action="/add-flashcard"
+                method="post"
+                encType="multipart/form-data">
+                <div class="drop-zone">
+                    <span class="drop-zone__prompt noselect">Drop image here</span>
+                    <input type='file' name='fileUploaded' class="drop-zone__input">
+                </div>
+                <div class = "question-wrapper__question">
+                    <input name='question' placeholder="Type question ..." id="question">
+                </div>
+                <div class = "question-wrapper__answer">
+                    <input name='answer' placeholder="Answer ..." id="answer">
+                </div>
+                <div>
+                    <label for="flashcardSet">Choose a browser from this list:</label>
+                    <input list="flashcardSets" id="flashcardSet" name="flashcardSet" placeholder="Choose fc set"/>
+                    <datalist id="flashcardSets">
+                    </datalist>
+                </div>
+                <div class = "question-wrapper__button">
+                    <button type="submit">Add flashcard</button>
+                </div>
+            </form>
+        </div>
+        <script src="./../scripts/dragNdrop.js"></script>
+        <script src="./../scripts/add-fc.js"></script>
+    </body>
+</html>
