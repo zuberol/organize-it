@@ -4,7 +4,10 @@ const {google} = require('googleapis');
 const CodingFlashcard = require('./../../Model/Flashcard').CodingFlashcard;
 const { auth } = require('googleapis/build/src/apis/abusiveexperiencereport');
 
-const ROOT_DIRS = ["/Users/zuber/java/scripts/", "/Users/zuber/js/ref/react-scripts/"]
+const ROOT_DIRS = [
+  "/Users/zuber/js/organize-it/receivedFiles/zeauberg/java/",
+  "/Users/zuber/js/ref/react-scripts/"
+]
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const TOKEN_PATH = 'token.json';
 
@@ -89,8 +92,6 @@ function parseDataAndSend(auth, res) {
   }, (err, response) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = response.data.values;
-    console.log(rows)
-    console.log(Object.keys(rows).length)
     const flashCards = []
     rows.forEach(function(row){
       flashCards.push(
@@ -100,7 +101,8 @@ function parseDataAndSend(auth, res) {
             row[2],
             row[3],
             row[4],
-            map.get(row[5])
+            map.get(row[5]),
+            row[6]
           )
       );
     });
@@ -111,9 +113,8 @@ function parseDataAndSend(auth, res) {
 
 // insert code to map
 let map = new Map();
-
 /**
- * Prints the names and majors of students in a sample spreadsheet:
+ * 
  * @param {String []} root_dirs Array of directories paths
  * @param  {Map} map Map to store code files contents.
  */
@@ -141,9 +142,9 @@ readCodeDirs(ROOT_DIRS, map);
  * @param  {Express.Response} res The express.js response object.
  * @param  {String} googleSheetId Sheet id to save flashcard.
  */
-async function saveSheet(fc, res, googleSheetId) {
+async function saveSheet(fc, res, googleSheetId, range) {
   SPREEDSHEETID = googleSheetId;    //TODO 
-  RANGE = "'react.js'!A:F";   //TODO
+  RANGE = range;   //TODO
   fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);    //todo throw error
     else authorization(fc, JSON.parse(content), res);
@@ -174,16 +175,9 @@ async function parseDataAndWrite(fc, authClient, res) {
       majorDimension: "ROWS",
       values: [
         [        
-          'SOME question',
-          'SOME page',
-          'SOME short answer',
-          'SOME long answer',
-          'SOME ref_url',
-          'SOME code_sample_url',
-          'SOME code_sample_url',
-          'SOME code_sample_url'
+          ...Object.values(fc)
         ]
-    ]
+      ]
     },
     auth: authClient
   }

@@ -12,16 +12,13 @@ h1.mainheader {
 }
 
 .flashcard {
-    box-sizing: border-box;
-    padding-top: 0;
-    display: block;
     width: 70vw;
-    margin: auto;
-    margin-top: 30px;
+    max-width: 600px;
     min-height: 100vh;
-    background-color:rgb(73, 72, 72);
-    border: 15px;
-    border-color: rgba(255, 239, 17, 0.87);
+    background-color: rgba(40,40,40);
+    margin: auto;
+    padding: 30px;
+    border-radius: 3px;
 }
 
 .flashcard__buttons {
@@ -55,7 +52,7 @@ p.flashcard__question {
 div.flashcard__answer-wrapper {
     width: 100%;
     box-sizing: border-box;
-    background-color: rgb(36, 36, 36);
+    background-color: grey;
     padding: 20px;
     margin: 0;
 }
@@ -68,17 +65,22 @@ p.flashcard__answer {
     box-sizing: border-box;
     display: block;
     background-color: lightsalmon;
-    background-image: url("https://user-images.githubusercontent.com/194400/49571717-f392d480-f931-11e8-96f2-a8d10cfe375e.png");
+    background-image: url("./../icons/photo.svg");
+    background-size: 20%;
     background-repeat: no-repeat;
     background-position: 50% 40%;
     width: 100%;
-    height: 300px;
+    height: auto;
     position: relative;
+    padding: 20px;
 }
 
 .flashcard-wrapper__image img {
+    /* width: 100%;
+    height: 100%; */
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .flashcard__answer_ref-url {

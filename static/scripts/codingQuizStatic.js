@@ -1,14 +1,14 @@
 class CodingFlashcard {
-    constructor(question, page, short_answer, long_answer, ref_url, code_sample_url) {
+    constructor(question, page, short_answer, long_answer, ref_url, code_sample_url, picture_url) {
       this.question = question;
       this.page = page,
       this.short_answer = short_answer;
       this.long_answer = long_answer;
       this.ref_url = ref_url;
       this.code_sample_url = code_sample_url;
+      this.picture_url = picture_url;
     }
 }
-
 
 
 const queryString = window.location.search;
@@ -21,12 +21,23 @@ var database = [];
 fetch(getFlashcardSetUrl)
 .then(response => response.json())
 .then(data => {
-    data.forEach(function(que) {
-        database.push(que);
+    data.forEach(function(flashcard) {
+        database.push(flashcard);
+        if(flashcard.picture_url) {
+            // console.log(flashcard.picture_url)
+
+            // fetch('http://localhost:3000/get-questions/' + flashcard.picture_url)
+            // .then(file => {
+            //     console.log(file)
+            // })
+            // .catch(err => console.log(err));
+        }
     })
 })
 .then(() => next())
 .catch(err => console.log(err));
+
+
 
 function revealAnswer(){
     const ans = document.querySelector('.flashcard__answer-wrapper');
@@ -44,7 +55,8 @@ function next(){
         document.querySelector('.flashcard__short_answer'),
         document.querySelector('.flashcard__long_answer'),
         document.querySelector('.flashcard__answer_ref-url'),
-        document.querySelector('.flashcard__code pre')
+        document.querySelector('.flashcard__code pre'),
+        document.querySelector('img')
     ];
     const fc = database.pop();
 
@@ -54,7 +66,17 @@ function next(){
     hideIfNull(fc_props[2], fc.long_answer);
     hideIfNull(fc_props[3], fc.ref_url);
     hideIfNull(fc_props[4], fc.code_sample_url);
-    hideAnswer();
+
+    // set picture, TODO rewrite it
+    const imageWrapper = document.querySelector('.flashcard-wrapper__image');
+    if(fc.picture_url != null && fc.picture_url != "") {
+        fc_props[5].src = 'http://localhost:3000/get-questions/' + fc.picture_url;
+        imageWrapper.style.display = 'block';
+    }
+    else {
+        imageWrapper.style.display = 'none';
+    }
+    // hideAnswer(fc_props[]);
 }
 
 function hideIfNull(fc_prop, data) {
@@ -87,8 +109,6 @@ document.addEventListener('keypress', function(event) {
             break;
     }
 });
-// function openInNewTab(ev) {
-//     console.log(this)
-//     var win = window.open(url, '_blank');
-//     win.focus();
-// }
+
+
+

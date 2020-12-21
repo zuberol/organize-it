@@ -1,0 +1,50 @@
+body {
+    background-color: #102020;
+}
+
+.flashcard-form > div {
+    margin: 20px 0px 20px 0px;
+    transition: .3s ease-in-out;
+}
+
+input { 
+  border:0;
+  border-bottom:1px solid #555;  
+  background: transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+input:focus { 
+    border:none;
+    outline:none;
+    border-bottom:1px solid gold;	
+}
+
+.fcSet-dropdown {
+    letter-spacing: 2px;
+    height: 4rem;
+    font-size: 1.1rem;
+    padding: 1rem;
+    transition: .3s ease-in-out;
+    border-width: 0px 0px 1px 0px;
+    border-color: #555;
+    outline: 0;
+    color: whitesmoke;
+    background-color: transparent;
+    width: 100%
+}
+
+.fcSet-dropdown:hover {
+  cursor: pointer;
+  background-color: gold;
+}
+
+
+/* select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+} */
