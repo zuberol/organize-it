@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
-const CodingFlashcard = require('./../../Model/Flashcard').CodingFlashcard;
+const CodingFlashcard = require('./../Model/Flashcard');
 const { auth } = require('googleapis/build/src/apis/abusiveexperiencereport');
 
 const ROOT_DIRS = [

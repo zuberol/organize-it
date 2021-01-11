@@ -1,3 +1,5 @@
+const FlashcardSet = require('../Model/FlashcardSet');
+
 const FLASHCARDSETS = [
   {
     name: 'java fundamentals',
@@ -30,10 +32,11 @@ const FLASHCARDSETS = [
     scopes: "'react.js'!A:G"
   }
 ];
-const FLASHCARDSETSmp = new Map();
+
+const flashcardsets = new Map();
 FLASHCARDSETS.forEach(fc_set => {
-  FLASHCARDSETSmp.set(fc_set.name, fc_set);
+  flashcardsets.set(fc_set.name, fc_set);
 });
 
 exports.FLASHCARDSETS = FLASHCARDSETS;
-exports.FLASHCARDSETSmp = FLASHCARDSETSmp;
+exports.flashcardsets = flashcardsets;
