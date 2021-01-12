@@ -8,6 +8,17 @@ class CodingFlashcard {
       this.code_sample_url = code_sample_url;
       this.picture_url = picture_url;
     }
+    static reqbodyToFlashcard(req) {
+      return new CodingFlashcard(
+        req.body.question,
+        req.body.page,
+        req.body['short-answer'],
+        req.body['long-answer'],
+        req.body['ref-url'],
+        req.body['code-sample-url'],
+        req.files.fileUploaded.name
+      )
+    }
 }
 
-module.exports.CodingFlashcard = CodingFlashcard;
+module.exports = CodingFlashcard;
