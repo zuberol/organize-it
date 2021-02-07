@@ -118,3 +118,4 @@ dist
 #keys
 credentials.json
 token.json
+config.js
