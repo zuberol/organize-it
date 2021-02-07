@@ -11,7 +11,7 @@ app.use(fileUpload());
 app.use(cookieParser());
 app.use(Router);
 
-const listeningPort = 4000;
+const listeningPort = 3000;
 app.listen(listeningPort, () => {
     console.log(`Server listening on port ${listeningPort}`)
 });

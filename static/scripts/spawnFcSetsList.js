@@ -1,6 +1,6 @@
 fetch('http://localhost:3000/get-flashcard-sets')
 .then(response => response.json())
-.then(data => data.forEach(f => spawnListItem(f)));
+.then(data => data.forEach(spawnListItem));
 
 
 function spawnListItem(flashcardSetInfo) {

@@ -27,11 +27,6 @@ const FLASHCARDSETS = [
     scopes: "'react.js'!A:G"
   },
   {
-    name: 'testing one two 1 2',
-    googleSheetId: '1cyH_Ar8mibI3jifRh1mbLe5BBCnHEIkbexrdbRUA74w',
-    scopes: "'react.js'!A:G"
-  },
-  {
     name: 'java-pytania',
     googleSheetId: '13VsYi1cnJ-3n4H9dt1Gc96VgMLt5PAgLpMFlxmGvzc4',
     scopes: "'java-pytania'!A:G"
@@ -40,6 +35,16 @@ const FLASHCARDSETS = [
     name: 'CS',
     googleSheetId: '1xtsqyloR7YWikuFVi95juoRkvOpQS6w9W5whzRPiJlk',
     scopes: "'CS'!A:G"
+  },
+  {
+    name: 'CSS',
+    googleSheetId: '1xtsqyloR7YWikuFVi95juoRkvOpQS6w9W5whzRPiJlk',
+    scopes: "'CSS'!A:G"
+  },
+  {
+    name: 'Java Script',
+    googleSheetId: '1xtsqyloR7YWikuFVi95juoRkvOpQS6w9W5whzRPiJlk',
+    scopes: "'js'!A:G"
   }
 ];
 

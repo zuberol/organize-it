@@ -3,13 +3,9 @@ const readline = require('readline');
 const {google} = require('googleapis');
 const CodingFlashcard = require('./../Model/Flashcard');
 const { auth } = require('googleapis/build/src/apis/abusiveexperiencereport');
+const path = require('path');
 
-const ROOT_DIRS = [
-  "/Users/zuber/js/organize-it/receivedFiles/zeauberg/java/",
-  "/Users/zuber/js/ref/react-scripts/"
-]
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
-const TOKEN_PATH = 'token.json';
+const {CODE_DIRS, SCOPES, TOKEN_PATH} = require('../utils/config');
 
 let SPREEDSHEETID = null;
 let RANGE = null;
@@ -115,17 +111,17 @@ function parseDataAndSend(auth, res) {
 let map = new Map();
 /**
  * 
- * @param {String []} root_dirs Array of directories paths
+ * @param {String []} code_dirs Array of directories paths
  * @param  {Map} map Map to store code files contents.
  */
-function readCodeDirs(root_dirs, map) {
-  root_dirs.forEach(dirName => {
+function readCodeDirs(code_dirs, map) {
+  code_dirs.forEach(dirName => {
     fs.readdir(dirName, function(err, files){
       if (err) {
           return console.log('Unable to scan directory: ' + err);
       } 
       files.forEach(function (file) {
-          fs.readFile(dirName + file, 'utf8', function (err, data) {
+          fs.readFile(path.join(dirName, file), 'utf8', function (err, data) {
             if (err) console.log(err);
             map.set(file, data);
           });
@@ -133,7 +129,7 @@ function readCodeDirs(root_dirs, map) {
     });
   })
 }
-readCodeDirs(ROOT_DIRS, map);
+readCodeDirs(CODE_DIRS, map);
 
 
 /**
