@@ -7,7 +7,8 @@
 - podstrona do wprowadzania pytań,
 - listy pomysłów e.g. projekty ...
 - branche z projektami - np branch programowanie, branch zdrowe_odzywanie/dieta
-- listy zadan do wykonania
+- listy zadan do wykonania,
+- planowanie zadan - trzeba co niedziele planowac i wrzucac recznie zadania do wykonania. Wrzucamy z puli zadan.
 
 ## Visualization:
 - następny task do wykonania w projekcie - np. link do przeczytania artykulu
