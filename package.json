@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "create-react-app": "^4.0.2",
     "googleapis": "^66.0.0",
     "js-beautify": "^1.13.0"
   }

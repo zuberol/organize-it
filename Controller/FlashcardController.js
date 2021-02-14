@@ -36,6 +36,7 @@ function addFlashcard(req, res) {
 }
 
 function getFlashcardSets(req, res) {
+    console.log("sending flashcard sets ...")
     res.json(FLASHCARDSETS);
 }
 
