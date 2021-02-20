@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/get-flashcard-sets')
+fetch('http://localhost:8080/get-flashcard-sets')
 .then(response => response.json())
 .then(data => data.forEach(spawnListItem));
 
@@ -11,7 +11,7 @@ function spawnListItem(flashcardSetInfo) {
     flashcardList.appendChild(li);
     li.addEventListener('click', function(event) {
         window.location = 
-            'http://localhost:3000/coding-quiz/'+
+            'http://localhost:8080/coding-quiz/'+
             '?googleSheetId='+flashcardSetInfo.googleSheetId+'&'+
             'scopes='+flashcardSetInfo.scopes;
     });

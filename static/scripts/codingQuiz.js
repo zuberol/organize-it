@@ -13,7 +13,7 @@ class CodingFlashcard {
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const getFlashcardSetUrl = 'http://localhost:3000/get-questions/'
+const getFlashcardSetUrl = 'http://localhost:8080/get-questions/'
                                 +urlParams.get('googleSheetId')
                                 +'/scopes/'+urlParams.get('scopes');
 
@@ -70,7 +70,7 @@ function next(){
     // set picture, TODO rewrite it
     const imageWrapper = document.querySelector('.flashcard-wrapper__image');
     if(fc.picture_url != null && fc.picture_url != "") {
-        fc_props[5].src = 'http://localhost:3000/get-questions/' + fc.picture_url;
+        fc_props[5].src = 'http://localhost:8080/get-questions/' + fc.picture_url;
         imageWrapper.style.display = 'block';
     }
     else {
