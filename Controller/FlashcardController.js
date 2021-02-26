@@ -5,7 +5,7 @@ const SAVED_IMAGES_PATH = path.join(rootDir, '/receivedFiles/zeauberg/images/');
 const CodingFlashcard = require('../Model/Flashcard');
 const saveSheet = require(path.join(rootDir, 'src', 'googleAPI')).saveSheet;
 
-function addFlashcard(req, res) {
+function createFlashcard(req, res) {
     const flashcardSetInfo = flashcardsets.get(req.body.flashcardSet);
     const fc = new CodingFlashcard(
       req.body.question,
@@ -35,7 +35,7 @@ function addFlashcard(req, res) {
     });
 }
 
-function getFlashcardSets(req, res) {
+function sendAvailableFcDecks(req, res) {
     console.log("sending flashcard sets ...")
     res.json(FLASHCARDSETS);
 }
@@ -51,6 +51,6 @@ function getSavedImagesPath() {
   const path = require('path').join('receivedFiles' )
 }
 
-module.exports.getFlashcardSets = getFlashcardSets;
-module.exports.addFlashcard = addFlashcard;
+module.exports.sendAvailableFcDecks = sendAvailableFcDecks;
+module.exports.createFlashcard = createFlashcard;
 module.exports.sendAddFcPage = sendAddFcPage;

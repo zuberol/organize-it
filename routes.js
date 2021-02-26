@@ -4,12 +4,12 @@ const FlashcardController = require('./Controller/FlashcardController');
 const QuestionController = require('./Controller/QuestionController');
 const MainController = require('./Controller/MainController');
 
-Router.use('/coding-quiz', MainController.sendIndexPage);
-Router.get('/get-questions/:googleSheetId/scopes/:scopes', QuestionController.sendQuestion);
-Router.get('/get-questions/:imageName', QuestionController.sendQuestionImage);
-Router.get('/get-flashcard-sets', FlashcardController.getFlashcardSets);
-Router.get("/add-flashcard", FlashcardController.sendAddFcPage)
-Router.post("/add-flashcard", FlashcardController.addFlashcard);
+Router.use('/', MainController.redirectToIndex);
+Router.get('/flashcard/deck/:googleSheetId', QuestionController.sendFcDeck);
+Router.get('/flashcard/decks', FlashcardController.sendAvailableFcDecks);
+Router.post('/flashcard/image', QuestionController.sendFcDeckImage);
+Router.get('/flashcard/creator', FlashcardController.sendAddFcPage)
+Router.put('/flashcard', FlashcardController.createFlashcard);
 Router.use(MainController.sendErrorPage);
 
 module.exports = Router;
