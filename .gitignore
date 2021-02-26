@@ -122,3 +122,8 @@ config.js
 
 # others
 receivedFiles/*
+example/*
+package-lock.json
+tests/*
+src/ex/*
+src/calendarAPI.js
