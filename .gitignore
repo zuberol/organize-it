@@ -126,3 +126,5 @@ example/*
 src/calendarAPI.js
 src/ex/*
 tests/*
+frontend/organize-it/package-lock.json
+package-lock.json
