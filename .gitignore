@@ -122,3 +122,7 @@ config.js
 
 # others
 receivedFiles/*
+example/*
+src/calendarAPI.js
+src/ex/*
+tests/*
