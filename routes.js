@@ -4,6 +4,12 @@ const FlashcardController = require('./Controller/FlashcardController');
 const QuestionController = require('./Controller/QuestionController');
 const MainController = require('./Controller/MainController');
 
+Router.use('/meal', (req, res) => {
+    console.log(req.body);
+    res.status(200).json({
+        body: 'ok'
+    });
+})
 Router.get('/flashcard/decks', FlashcardController.sendAvailableFcDecks);
 Router.get('/flashcard/deck/:googleSheetId', QuestionController.sendFcDeck);
 Router.post('/flashcard/image', QuestionController.sendFcDeckImage);

@@ -2,13 +2,19 @@ import { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './store/reducer';
+import flashcardReducer from './store/flashcardReducer';
+import mealReducer from './store/mealReducer';
+import { combineReducers } from 'redux'
 import Routes from './Routes';
 
 
 export default class App extends Component {
     render() {
-        const store = createStore(reducer, applyMiddleware(thunk));
+        const rootReducer = combineReducers({
+            mealReducer: mealReducer,
+            flashcardReducer: flashcardReducer
+        });
+        const store = createStore(rootReducer, applyMiddleware(thunk));
         return (
             <Provider store={store}><Routes /></Provider>
         )

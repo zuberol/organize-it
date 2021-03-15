@@ -11,6 +11,9 @@ export default class Header extends Component {
                 <a className="" href="/modifySets">
                     <h5 className="logo-title">modify Sets</h5>
                 </a>
+                <a className="" href="/meal/add">
+                    <h5 className="logo-title">add meal</h5>
+                </a>
             </header>
         )
     }

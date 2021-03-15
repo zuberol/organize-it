@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ListItem from './ListItem';
 import * as actionTypes from '../../store/actions';
 
-
 class AvailableFlashcardSetsPage extends Component {
 
     componentDidMount() {
@@ -15,17 +14,17 @@ class AvailableFlashcardSetsPage extends Component {
         if(fcSets != null){
             fcSets = fcSets.map((fcSet, index) =>
             <ListItem
-            key={index}
-            name={fcSet.name}
-            googleSheetId={fcSet.googleSheetId}
-            deleteItem={() => this.props.onClickDelete(index)}
+                key={index}
+                name={fcSet.name}
+                googleSheetId={fcSet.googleSheetId}
+                deleteItem={() => this.props.onClickDelete(index)}
             />
             );
         }
         
         return (
             <div className="app-content">    
-                <h3>Available Flashcard Sets ooooooooo</h3>
+                <h3>Available Flashcard Sets</h3>
                 <div className="page-content">
                     {fcSets || "no sets available"}
                 </div>
@@ -34,10 +33,10 @@ class AvailableFlashcardSetsPage extends Component {
     }
 }
 
-
 const mapStateToProps = state => {
+    const { flashcardReducer: flashcardGlobalState } = state;
     return {
-        fcsets: state.fcsets
+        fcsets: flashcardGlobalState.fcsets
     }
 };
 
@@ -47,8 +46,5 @@ const mapDispatchToProps = dispatch => {
         fetchFCSETS: () => dispatch(actionTypes.fetchFCSETS())
     }
 };
-
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(AvailableFlashcardSetsPage);
