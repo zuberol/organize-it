@@ -1,11 +1,11 @@
 const fs = require('fs');
 const readline = require('readline');
-const {google} = require('googleapis');
+const { google } = require('googleapis');
 const CodingFlashcard = require('./../Model/Flashcard');
 const { auth } = require('googleapis/build/src/apis/abusiveexperiencereport');
 const path = require('path');
 
-const {CODE_DIRS, SCOPES, TOKEN_PATH} = require('../utils/config');
+const { CODE_DIRS, SCOPES, TOKEN_PATH } = require('../utils/config');
 
 let SPREEDSHEETID = null;
 let RANGE = null;
@@ -18,7 +18,7 @@ let RANGE = null;
  */
 function getSheet(spreadsheetId, range, res) {
   SPREEDSHEETID = spreadsheetId;
-  RANGE = range;
+  RANGE = "'js'!A:G";  // TODO innaczej to 
   fs.readFile('credentials.json', (err, content) => {
     if (err) return console.log('Error loading client secret file:', err);    //todo throw error
     authorize(JSON.parse(content), res);
@@ -32,9 +32,9 @@ function getSheet(spreadsheetId, range, res) {
  * @param  {Express.Response} res The express.js response object.
  */
 function authorize(credentials, res) {
-  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  const { client_secret, client_id, redirect_uris } = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
-      client_id, client_secret, redirect_uris[0]);
+    client_id, client_secret, redirect_uris[0]);
 
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return getNewToken(oAuth2Client, res);
@@ -81,7 +81,7 @@ function getNewToken(oAuth2Client, res) {
  * @param  {Express.Response} res The express.js response object.
  */
 function parseDataAndSend(auth, res) {
-  const sheets = google.sheets({version: 'v4', auth});
+  const sheets = google.sheets({ version: 'v4', auth });
   sheets.spreadsheets.values.get({
     spreadsheetId: SPREEDSHEETID,
     range: RANGE,
@@ -89,17 +89,20 @@ function parseDataAndSend(auth, res) {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = response.data.values;
     const flashCards = []
-    rows.forEach(function(row){
+    rows.forEach(function (row) {
       flashCards.push(
-          new CodingFlashcard(
-            row[0],
-            row[1],
-            row[2],
-            row[3],
-            row[4],
-            map.get(row[5]),
-            row[6]
-          )
+        new CodingFlashcard(
+          { 
+            question: row[0],
+            page: row[1],
+            short_answer: row[2],
+            long_answer: row[3],
+            ref_url: row[4],
+            code_sample_url: map.get(row[5]),
+            picture_url: row[6],
+            id: flashCards.length 
+          }
+        )
       );
     });
     res.status(201).json(flashCards);
@@ -116,15 +119,15 @@ let map = new Map();
  */
 function readCodeDirs(code_dirs, map) {
   code_dirs.forEach(dirName => {
-    fs.readdir(dirName, function(err, files){
+    fs.readdir(dirName, function (err, files) {
       if (err) {
-          return console.log('Unable to scan directory: ' + err);
-      } 
+        return console.log('Unable to scan directory: ' + err);
+      }
       files.forEach(function (file) {
-          fs.readFile(path.join(dirName, file), 'utf8', function (err, data) {
-            if (err) console.log(err);
-            map.set(file, data);
-          });
+        fs.readFile(path.join(dirName, file), 'utf8', function (err, data) {
+          if (err) console.log(err);
+          map.set(file, data);
+        });
       });
     });
   })
@@ -148,9 +151,9 @@ async function saveSheet(fc, res, googleSheetId, range) {
 }
 
 async function authorization(fc, credentials, res) {
-  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  const { client_secret, client_id, redirect_uris } = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
-      client_id, client_secret, redirect_uris[0]);
+    client_id, client_secret, redirect_uris[0]);
 
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) res.status(500).send("Error with reading token. Check if token was previously succesfully stored");
@@ -164,22 +167,22 @@ async function authorization(fc, credentials, res) {
 async function parseDataAndWrite(fc, authClient, res) {
   const request = {
     spreadsheetId: SPREEDSHEETID,
-    range : RANGE,
+    range: RANGE,
     valueInputOption: 'RAW',
     requestBody: {
       range: RANGE,
       majorDimension: "ROWS",
       values: [
-        [        
+        [
           ...Object.values(fc)
         ]
       ]
     },
     auth: authClient
   }
-  
+
   try {
-    const sheets = google.sheets({version: 'v4', auth});
+    const sheets = google.sheets({ version: 'v4', auth });
     sheets.spreadsheets.values.append(request);
     res.send("Flashcard was succesfully saved in googleSheet");
   } catch (err) {
