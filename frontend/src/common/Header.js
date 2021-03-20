@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import './../static/css/commons.css';
+import { NavLink, Link } from 'react-router-dom';
+import '../static/css/commons.css';
 
 export default class Header extends Component {
     render() {
@@ -14,6 +15,20 @@ export default class Header extends Component {
                 <a className="" href="/meal/add">
                     <h5 className="logo-title">add meal</h5>
                 </a>
+                <NavLink
+                    to="/projects"
+                    activeStyle={{
+                        fontWeight: "bold",
+                        color: "gold"
+                    }}
+                    style={{
+                        color: 'inherit',
+                        fontFamily: 'inherit',
+                        fontSize: 'inherit'
+                    }}
+                >
+                    Projects
+                </NavLink>
             </header>
         )
     }
