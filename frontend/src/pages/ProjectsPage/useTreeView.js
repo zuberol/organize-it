@@ -36,6 +36,7 @@ export default function useTreeView(model) {
    * @return {Array.<TreeItem>} tree
    */
   function renderTree(nodes) {
+    if(Object.keys(nodes).length === 0) return null;  //if nodes is {}
     return (
       <TreeItem
         key={nodes.id}

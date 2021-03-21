@@ -22,15 +22,13 @@ const reducer = ( state = initialGlobalState, action ) => {
         return state;
     }
     else if(action.type == actionTypes.INITIALIZE_FCSETS) {
-        console.log('INITIALIZE_FCSETS')
-        console.log(action.fcsets)
         return {
             ...state,
             fcsets: action.fcsets
         }
     }
     else {
-        console.log("unknown action: ", action);
+        // console.log("unknown action: ", action);
     }
     return state;
 };

@@ -26,3 +26,9 @@ yarn-error.log*
 
 backend/credentials.json
 token.json
+
+
+
+
+backend/gradle**
+backend/build/**

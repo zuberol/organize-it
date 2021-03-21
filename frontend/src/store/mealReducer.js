@@ -51,7 +51,7 @@ const mealReducer = ( state = initialMealState, action ) => {
                 // createdMeal: updatedMeal
             }
         default:
-            console.log('unknown action in mealReducer:', action);
+            // console.log('unknown action in mealReducer:', action);
             return state;
     }
 };
