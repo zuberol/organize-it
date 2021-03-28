@@ -5,7 +5,7 @@ import MockTree from '../mock/MockTree';
 export function useTaskAdapter(objectToAdapt) {
   const [tree, setTree] = useState({});
   useEffect(() => {
-    fetch('http://localhost:8080/root', {
+    fetch('http://localhost:8080/root?id=1', {
       method: 'GET',
       mode: 'cors'
     })
@@ -33,8 +33,8 @@ function taskAdapter(toAdapt) {
  */
 function adapt(node) {
   if (node == null) return;
-  node.id = node.task_id+'';
-  delete node.task_id;
+  node.id = node.taskId+'';
+  delete node.taskId;
   node.children = node.subTasks;
   delete node.subTasks;
   // console.log(node) TODO performance issue

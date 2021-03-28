@@ -1,12 +1,22 @@
-import { React, useState } from 'react';
+import { React } from 'react';
+import { useDispatch } from 'react-redux';
 import useTreeView from './useTreeView';
 import MockTree from '../../mock/MockTree2';
-import {useTaskAdapter} from '../../Model/TaskAdapter';
+import { useTaskAdapter } from '../../Model/TaskAdapter';
 import './ProjectsDashboard.css'
+
 
 export default function ProjectsDashboardPage() {
     const projects = useTaskAdapter(MockTree);
-    const ProjectsTreeView = useTreeView(projects);
-    // console.log(projects)
-    return ProjectsTreeView;
+    const [ProjectsTreeView, expandIndexes, rollIndexes] = useTreeView(projects);
+    return (
+        <div className="dashboard-wrapper">
+            {ProjectsTreeView}
+            <div className="dashboard-buttons">
+                <button className="" onClick={expandIndexes}>colapse all</button>
+                <button className="btn" onClick={rollIndexes}>expand all</button>
+            </div>
+        </div>
+    )
 }
+

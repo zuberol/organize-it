@@ -21,12 +21,6 @@ article {
     padding: 1rem;
 }
 
-.app-wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
 .app-content {
     min-height: 120vh;
     min-width: 70vw;

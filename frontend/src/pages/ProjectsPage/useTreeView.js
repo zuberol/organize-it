@@ -1,8 +1,31 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+
+const theme = createMuiTheme({
+    overrides: {
+      // Style sheet name ⚛️
+      MuiTreeView: {
+        // Name of the rule
+        root: {
+          // Some CSS
+          background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+          borderRadius: 3,
+          border: 0,
+          color: "red",
+          height: 48,
+          boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)"
+        }
+      }
+    }
+});
+
+
+
 
 /**
  *
@@ -10,12 +33,10 @@ import TreeItem from '@material-ui/lab/TreeItem';
  * @return {JSX} something
  */
 export default function useTreeView(model) {
-  const [expandIndexes, setExpandIndexes] = useState(getNestetObjectsIndexes(model));
+  const [expandIndexes, setExpandIndexes] = useState(getNestedObjectsIndexes(model));
 
-  return (
-    <>
-      <button onClick={() => setExpandIndexes([])}>colapse all</button>
-      <button onClick={() => setExpandIndexes(getNestetObjectsIndexes(model))}>expand all</button>
+  return [(
+    <ThemeProvider theme={theme}>
       <TreeView
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpandIcon={<ChevronRightIcon />}
@@ -26,8 +47,11 @@ export default function useTreeView(model) {
         }}>
         {renderTree(model)}
       </TreeView>
-    </>
-  );
+    </ThemeProvider>
+  ),
+  () => setExpandIndexes([]),
+  () => setExpandIndexes(getNestedObjectsIndexes(model))
+  ];
 
 
   /**
@@ -41,7 +65,7 @@ export default function useTreeView(model) {
       <TreeItem
         key={nodes.id}
         nodeId={nodes.id}
-        label={nodes.id}
+        label={<p>{`${nodes.id} __ ${nodes.note}`}</p>}
       >
         {Array.isArray(nodes.children) ? nodes.children.map((node) => renderTree(node)) : null}
       </TreeItem>
@@ -53,11 +77,11 @@ export default function useTreeView(model) {
    * @param {TreeNode} item
    * @return {String[]} indexes
    */
-  function getNestetObjectsIndexes(item) {
+  function getNestedObjectsIndexes(item) {
     if (item == null) return [];
     else if (item.children == null) return [item.id + ''];
     const childrenIdentifiers = item.children.map((child) => {
-      const grandchildrenIndentifiers = getNestetObjectsIndexes(child);
+      const grandchildrenIndentifiers = getNestedObjectsIndexes(child);
       return [...grandchildrenIndentifiers, child.id + ''];
     }).flat();
     return [...childrenIdentifiers, item.id + ''];

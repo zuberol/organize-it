@@ -15,6 +15,9 @@ export default class Header extends Component {
                 <a className="" href="/meal/add">
                     <h5 className="logo-title">add meal</h5>
                 </a>
+                <a className="" href="/dev">
+                    <h5 className="logo-title">dev</h5>
+                </a>
                 <NavLink
                     to="/projects"
                     activeStyle={{

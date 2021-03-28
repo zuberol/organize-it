@@ -1,32 +1,32 @@
 export default {
-    "task_id": 1,
+    "taskId": 1,
     "subTasks": [
         {
-            "task_id": 2,
+            "taskId": 2,
             "subTasks": [
                 {
-                    "task_id": 8,
+                    "taskId": 8,
                     "subTasks": [],
                     "note": "2"
                 }
             ],
-            "note": "1"
+            "note": "1 root"
         },
         {
-            "task_id": 3,
+            "taskId": 3,
             "subTasks": [
                 {
-                    "task_id": 5,
+                    "taskId": 5,
                     "subTasks": [],
                     "note": "3"
                 },
                 {
-                    "task_id": 6,
+                    "taskId": 6,
                     "subTasks": [],
                     "note": "3"
                 },
                 {
-                    "task_id": 7,
+                    "taskId": 7,
                     "subTasks": [],
                     "note": "3"
                 }
@@ -34,7 +34,7 @@ export default {
             "note": "1"
         },
         {
-            "task_id": 4,
+            "taskId": 4,
             "subTasks": [],
             "note": "1"
         }

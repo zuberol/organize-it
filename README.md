@@ -9,6 +9,9 @@
 - branche z projektami - np branch programowanie, branch zdrowe_odzywanie/dieta
 - listy zadan do wykonania,
 - planowanie zadan - trzeba co niedziele planowac i wrzucac recznie zadania do wykonania. Wrzucamy z puli zadan.
+- dyskryminator taskow - przycisk ktory jak klikniemy to spycha na koniec listy - do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny
+
+
 
 ## Visualization:
 - następny task do wykonania w projekcie - np. link do przeczytania artykulu
