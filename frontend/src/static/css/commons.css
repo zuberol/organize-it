@@ -26,7 +26,6 @@ p {
 }
 
 a {
-    font-style: none;
     text-decoration: none;
     color: initial;
 }
@@ -66,7 +65,7 @@ h6 {
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(145, 199, 177, 0.6);
     padding: 0.3rem;
     width: 100%;
     padding-left: 1rem;

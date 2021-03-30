@@ -8,10 +8,4 @@ import org.springframework.stereotype.Repository;
 import java.util.stream.Stream;
 
 @Repository
-public interface TaskRepository extends JpaRepository<Task, Long> {
-
-//    @Query("select from task")
-//    Iterable<Task> get
-
-
-}
+public interface TaskRepository extends JpaRepository<Task, Long> {}

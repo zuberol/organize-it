@@ -1,11 +1,10 @@
 main {
     justify-self: right;
-    background-color: salmon;
+    background-color: #F1F7ED;
 }
 
 .dashboard-wrapper {
     background-color: seagreen;
-    align-items: right;
     width: 100vw;
     height: 100vh;
 }

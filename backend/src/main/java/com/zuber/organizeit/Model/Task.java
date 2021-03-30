@@ -1,8 +1,7 @@
 package com.zuber.organizeit.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,7 +13,12 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Getter @Setter @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernate_lazy_initializer", "handler"})
+//@JsonIgnoreProperties({"subTasks", "hibernate_lazy_initializer", "handler"})
+//@JsonIgnoreProperties({"subTasks"})
+//@JsonIdentityInfo(
+//  generator = ObjectIdGenerators.PropertyGenerator.class,
+//  property = "taskId")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="taskId")
 public class Task {
 
     @Id
@@ -27,16 +31,40 @@ public class Task {
             strategy=SEQUENCE,
             generator="task_seq"
     )
-    Long task_id;
-
-    @ManyToOne(fetch= FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE})
-    @JsonBackReference
-    Task parentTask;
-
-    @OneToMany(fetch= FetchType.LAZY, mappedBy = "parentTask")
-    @JsonManagedReference
-    List<Task> subTasks;
-
+    Long taskId;
     String note;
 
+    @ManyToOne(
+//            fetch= FetchType.LAZY,
+            cascade={CascadeType.PERSIST,
+                    CascadeType.MERGE}
+    )
+//    @JsonBackReference    //todo popsuje wysylanie w /root?id=1
+//    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="taskId")  //todo trzeba to? nie trzeba bo jest u gory
+    @JsonIdentityReference(alwaysAsId=true)
+//    @JsonProperty("parentId")
+//    @JsonDeserialize(as = Task.class)
+//    @JsonManagedReference
+    Task parentTask;
+
+    @JsonProperty("parentTask")
+    public void setFoo(Long id) {
+        parentTask = Task.builder().taskId(id).build();     //https://stackoverflow.com/questions/18306040/jackson-deserialize-jsonidentityreference-alwaysasid-true/29742035#29742035
+    }
+
+    @OneToMany(
+//            fetch= FetchType.LAZY,
+            mappedBy = "parentTask"
+    )
+    List<Task> subTasks;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "taskId=" + taskId +
+                ", note='" + note + '\'' +
+                ", parentTask=" + parentTask +
+                ", subTasks=" + subTasks +
+                '}';
+    }
 }

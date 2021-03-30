@@ -15,11 +15,9 @@ const useStyles = makeStyles((theme) => ({
     color: 'blue'
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    backgroundColor: '#54494B',
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    color: 'blue'
+    padding: "2rem"
   },
 }));
 
@@ -55,8 +53,6 @@ export default function EditTaskModal() {
       >
         <Fade in={isModalOpen}>
           <div className={classes.paper}>
-            <h2 className={classes.paper} id="transition-modal-title">Transition modal</h2>
-            <p className={classes.paper} id="transition-modal-description">react-transition-group animates me.</p>
             <EditTaskForm setIsModalOpen={setIsModalOpen}/>
           </div>
         </Fade>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { CREATE_TASK } from '../../store/projectsActions';
+import { CREATE_TASK, saveTask } from '../../store/projectsActions';
 
 
 export default function EditTaskForm(props) {
@@ -23,10 +23,13 @@ export default function EditTaskForm(props) {
     function submit(event) {
         event.preventDefault();
         console.log('submitting new task ...');
-        dispatch({type: CREATE_TASK, payload: {
-            parentId: parentId,
-            note: note
-        }});
+        dispatch(
+            saveTask({
+                taskId: null,
+                parentId: parentId,
+                note: note
+            })
+        );
         setNote("");
         setParentId("");
         props.setIsModalOpen(false);
