@@ -12,6 +12,7 @@ class AvailableFlashcardSetsPage extends Component {
     render() {
         let fcSets = this.props.fcsets || null;
         if(fcSets != null){
+            console.log(fcSets)
             fcSets = fcSets.map((fcSet, index) =>
             <ListItem
                 key={index}

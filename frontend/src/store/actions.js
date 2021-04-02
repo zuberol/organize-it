@@ -7,7 +7,7 @@ export const DELETING_FLASHCARD_FAILED = 'DELETING_FLASHCARD_FAILED';
 
 export const fetchFCSETS = () => {
     return (dispath) => {
-        fetch(new URL('/flashcard/decks', BACKEND_BASE_URL), {
+        fetch(new URL('/api/flashcarddecks', BACKEND_BASE_URL), {
             method: 'GET',
             mode: 'cors'
         })
@@ -28,7 +28,7 @@ export const fetchFCSETS = () => {
 
 export const deleteFlashCard = (flashcard) => {
     return (dispath) => {
-        fetch(new URL(`/flashcard/${flashcard.id}`, BACKEND_BASE_URL),{
+        fetch(new URL(`/flashcards/${flashcard.id}`, BACKEND_BASE_URL),{
             method: 'DELETE'
         })
         .then(res => {

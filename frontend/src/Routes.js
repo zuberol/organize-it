@@ -18,7 +18,7 @@ export default function Routes() {
                   <Route exact path="/meal/add" component={AddMealPage}/>
                   <Route exact path="/projects" component={ProjectsDashboardPage}/>
                   <Route exact path="/dev" component={EditTaskModal}/>
-                  <Route exact path="/flashcards" component={FlashcardsPage}/>
+                  <Route exact path="/flashcards" component={AvailableFlashcardSetsPage}/>
                 </main>
       </BrowserRouter>
     </div>

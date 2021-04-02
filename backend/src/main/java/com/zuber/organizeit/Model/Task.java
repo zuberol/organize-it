@@ -13,12 +13,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Getter @Setter @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-//@JsonIgnoreProperties({"subTasks", "hibernate_lazy_initializer", "handler"})
-//@JsonIgnoreProperties({"subTasks"})
-//@JsonIdentityInfo(
-//  generator = ObjectIdGenerators.PropertyGenerator.class,
-//  property = "taskId")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="taskId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "taskId")
 public class Task {
 
     @Id
@@ -39,12 +34,7 @@ public class Task {
             cascade={CascadeType.PERSIST,
                     CascadeType.MERGE}
     )
-//    @JsonBackReference    //todo popsuje wysylanie w /root?id=1
-//    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="taskId")  //todo trzeba to? nie trzeba bo jest u gory
-    @JsonIdentityReference(alwaysAsId=true)
-//    @JsonProperty("parentId")
-//    @JsonDeserialize(as = Task.class)
-//    @JsonManagedReference
+    @JsonIdentityReference(alwaysAsId = true)
     Task parentTask;
 
     @JsonProperty("parentTask")

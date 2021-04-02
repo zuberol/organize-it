@@ -1,0 +1,27 @@
+question,page,short answer,long answer,ref_url,code_sample_url,picture_url
+"Czy można stworzyć instancję klasy bez ""new""?",,Nie,"Ale case klase już tak, bo to taka faktorka.",,https://scalafiddle.io/sf/ZoWXrF0/0,
+Jak porównywane są klasy a jak case klasy?,,"Case po value, a zwykłe po referencji.",,https://docs.scala-lang.org/tour/basics.html,,
+Czy case klasy sa immutable?,,tak,,https://docs.scala-lang.org/tour/basics.html,,
+Czym są obiekty?,,singletonami,,https://docs.scala-lang.org/tour/basics.html,,
+Jak działa dziedziczenie w Scali?,,tak jak w javie,Rozszerzamy jedną klasę i wiele traitów,https://docs.scala-lang.org/tour/basics.html,,
+Co ma lepszego trait niz interface w Javie?,,Moze miec pola,,https://docs.scala-lang.org/tour/basics.html,,
+Czy traity moga miec default implementacje metod?,,tak,,,,
+Czy traity moga miec parametry?,,nie,,,https://scalafiddle.io/sf/IvXhRQo/0,
+Czy obiekty moga miec parametry?,,nie,,,,
+"Gdzie znajduja sie metody equals, hashCode, toString?",,w typie scala.Any,,https://docs.scala-lang.org/tour/unified-types.html,,
+Co to Unit?,,rozszerza AnyVal,"to pusty nawias ""()""",https://docs.scala-lang.org/tour/unified-types.html,,
+Co musi zrobic kazda funkcja i co ma do tego Unit?,,"Musi cos zwrocic, dlatego czasami Unit sie przydaje",,https://docs.scala-lang.org/tour/unified-types.html,,
+Czym jest AnyRef jak odpalamy Scale w Javie?,,AnyRef -> java.lang.Object,,https://docs.scala-lang.org/tour/unified-types.html,,
+Czy mozna castowac Floata do Longa?,,nie,casting is unidirectional,https://docs.scala-lang.org/tour/unified-types.html,,
+Czy jest Nothing?,,podtyp wszystkich typów,,https://docs.scala-lang.org/tour/unified-types.html,,
+Czym jest Null?,,podtyp typow AnyRef,,https://docs.scala-lang.org/tour/unified-types.html,,
+Czy Nothing jest podtypem Null?,,tak,,https://docs.scala-lang.org/tour/unified-types.html,,
+Po co jest Null jak mamy Nothing?,,,"Żeby zapewnić kompatybilność z innymi językami jvm'a,",https://docs.scala-lang.org/tour/unified-types.html,,
+Gdzie w klasie jest zamieszczony default konstruktor?,,w sygnaturze klasy,"np class Point(var x: Int, var y: Int)",https://docs.scala-lang.org/tour/classes.html,,
+Czy konstruktor moze miec defaultowe wartosci?,,tak,"tak samo jak w javascripcie to dziala, np. class Point(var x: Int = 0, var y: Int = 0)
+",https://docs.scala-lang.org/tour/classes.html,,
+Jak uzyc defaultowego x i swojego y?,,named parameter uzyc,,,https://scalafiddle.io/sf/RiujS2W/0,
+"Czym jest def y_= (newValue: Int): Unit = {
+    if (newValue < bound) _y = newValue else printWarning
+  } ?",,setter,,,https://docs.scala-lang.org/tour/classes.html,
+Jak uzyc settera? Syntaxowe pytanie,,,Normalnie point.x = 1 i zostanie automatycznie uzyty,https://docs.scala-lang.org/tour/classes.html,,

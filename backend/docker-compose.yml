@@ -9,3 +9,5 @@ services:
       POSTGRES_PASSWORD: organizeit
       POSTGRES_USER: organizeit
       POSTGRES_DB: organizeit
+    volumes:
+    - /home/jakub/IdeaProjects/personal/organize-it/backend/spreadsheets:/var/data

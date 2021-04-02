@@ -40,29 +40,12 @@ public class TaskController {
         return taskRepository.findById(id);
     }
 
-    @PutMapping(value = "/task", consumes = "application/json")  //TODO set it to PUT
+    @PutMapping(value = "/task", consumes = "application/json")
     public ResponseEntity<String> saveTask(@RequestBody Task task) {
 //        List<Task> subtasks = taskRepository.findAllById(task.getSubTasks());
-//        Optional<Task> parentTask = taskRepository.findById(task.getParentTaskId());
-//
-//        taskRepository.save(
-//                Task.builder()
-//                        .note(task.getNote()) //TODO dorobic to
-//                        .subTasks(subtasks)
-//                        .parentTask(parentTask.orElseThrow())
-//                        .build()
-//        );
-//
+
         System.out.println(task);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-
-//
-//    private Function<Person, Set<PersonDTO>> findSiblings = person -> person.getParent().getChildren().stream()
-//            .map(p -> PersonDTO.builder().id(p.getId()).fullName(p.getFullName()).build()).collect(Collectors.toSet());
-//
-//    private Function<Person, PersonDTO> mapToPersonDTO = p -> PersonDTO.builder().id(p.getId()).fullName(p.getFullName()).parent(p.getParent()).children(p.getChildren()).build();
 
 }
