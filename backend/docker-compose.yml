@@ -10,4 +10,8 @@ services:
       POSTGRES_USER: organizeit
       POSTGRES_DB: organizeit
     volumes:
-    - /home/jakub/IdeaProjects/personal/organize-it/backend/spreadsheets:/var/data
+    - /home/jakub/IdeaProjects/personal/organize-it/backend/spreadsheets:/var/lib/postgresql/sheets
+    ulimits:
+      core:
+        hard: 0
+        soft: 0

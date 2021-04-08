@@ -12,7 +12,15 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-@Table(name = "flashcarddecks")
+@Table(
+        name = "flashcarddecks",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"title"},
+                        name = "uniqueTitleConstraint"
+                )
+        }
+)
 public class FlashcardDeck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
