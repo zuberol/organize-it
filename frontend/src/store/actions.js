@@ -1,28 +1,24 @@
 import { BACKEND_BASE_URL } from './../utils/config.js'
 
 export const DELETE_ITEM = 'DELETE_ITEM';
-export const INITIALIZE_FCSETS = 'INITIALIZE_FCSETS';
+export const INITIALIZE_DECKS = 'INITIALIZE_DECKS';
 export const FLASHCARD_DELETED_FROM_DB = 'FLASHCARD_DELETED_FROM_DB';
 export const DELETING_FLASHCARD_FAILED = 'DELETING_FLASHCARD_FAILED';
 
-export const fetchFCSETS = () => {
+export const fetchdecks = () => {
     return (dispath) => {
-        fetch(new URL('/api/flashcarddecks', BACKEND_BASE_URL), {
+        fetch(new URL('/api/decks', BACKEND_BASE_URL), {
             method: 'GET',
             mode: 'cors'
         })
-        // .then(res => {
-        //     if(res.status != 200) throw `error: respone code is ${res.status}`
-        //     return res;
-        // })
         .then(res => res.json())
-        .catch(err => {
-            console.log(err);
-            dispath({type: INITIALIZE_FCSETS, fcsets: []});
+        .then((decks) => {
+            dispath({type: INITIALIZE_DECKS, decks: decks});
         })
-        .then((fcsets) => {
-            dispath({type: INITIALIZE_FCSETS, fcsets: fcsets});
-        });
+        .catch(err => {
+            console.error(err, "Backend doesn't respond");
+            dispath({type: INITIALIZE_DECKS, decks: []});
+        })
     }
 }
 

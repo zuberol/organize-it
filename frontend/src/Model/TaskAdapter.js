@@ -5,14 +5,19 @@ import MockTree from '../mock/MockTree';
 export function useTaskAdapter(objectToAdapt) {
   const [tree, setTree] = useState({});
   useEffect(() => {
-    fetch('http://localhost:8080/root?id=1', {
+    fetch('http://localhost:8080/api/root?id=1', {
       method: 'GET',
       mode: 'cors'
     })
     .then(res => res.json())
+    .then(o => {
+      if(o == null) throw "null task returned from backend, mock is loaded";
+      return o;
+    })
     .then(taskAdapter)
     .then(setTree)
     .catch(err => {
+      console.error(err);
       setTree(MockTree);
     })
   }, [tree == null])

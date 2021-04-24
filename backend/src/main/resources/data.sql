@@ -1,13 +1,32 @@
 
--- insert into task (note, task_id, parent_task_task_id) values ('nauczyc sie AWS', nextval('task_seq'), null);
--- insert into task (note, task_id, parent_task_task_id) values ('zdeplojowac przykladowa apke w AWSie', nextval('task_seq'), 1);
--- insert into task (note, task_id, parent_task_task_id) values ('ogarnac EC2', nextval('task_seq'), 2);
--- insert into task (note, task_id, parent_task_task_id) values ('ogarnac role', nextval('task_seq'), 2);
--- insert into task (note, task_id, parent_task_task_id) values ('ogarnac code pipeline', nextval('task_seq'), 2);
---
--- insert into task (note, task_id, parent_task_task_id) values ('jedzenie', nextval('task_seq'), 1);
--- insert into task (note, task_id, parent_task_task_id) values ('zjesc obiad', nextval('task_seq'), 6);
--- insert into task (note, task_id, parent_task_task_id) values ('zjesc sniadanie', nextval('task_seq'), 6);
+
+
+
+-- init entity sequences TODO refactor that, make validation on entity definitions
+
+drop sequence if exists flashcard_seq cascade;
+drop sequence if exists deck_seq cascade;
+drop sequence if exists task_seq cascade;
+
+create sequence if not exists flashcard_seq start 1;
+create sequence if not exists deck_seq start 1;
+create sequence if not exists task_seq start 1;
+create sequence if not exists reference_resource_seq start 1;
+
+
+
+
+
+insert into tasks (note, task_id, parent_task_task_id) values ('nauczyc sie AWS', nextval('task_seq'), null);
+insert into tasks (note, task_id, parent_task_task_id) values ('zdeplojowac przykladowa apke w AWSie', nextval('task_seq'), 1);
+insert into tasks (note, task_id, parent_task_task_id) values ('zrobic bigos', nextval('task_seq'), 1);
+insert into tasks (note, task_id, parent_task_task_id) values ('ogarnac EC2', nextval('task_seq'), 2);
+insert into tasks (note, task_id, parent_task_task_id) values ('ogarnac role', nextval('task_seq'), 2);
+insert into tasks (note, task_id, parent_task_task_id) values ('ogarnac code pipeline', nextval('task_seq'), 2);
+
+insert into tasks (note, task_id, parent_task_task_id) values ('jedzenie', nextval('task_seq'), 1);
+insert into tasks (note, task_id, parent_task_task_id) values ('zjesc obiad', nextval('task_seq'), 6);
+insert into tasks (note, task_id, parent_task_task_id) values ('zjesc sniadanie', nextval('task_seq'), 6);
 
 
 --https://stackoverflow.com/questions/18533625/copy-multiple-csv-files-into-postgres
@@ -66,16 +85,15 @@ as '
 
         for row_to_migrate in select * from tmigration
             LOOP
-                select deck_id into last_deck_id from flashcarddecks where title like row_to_migrate.deck_title;
+                select deck_id into last_deck_id from decks where title like row_to_migrate.deck_title;
                 if not found then
-                    execute ''insert into flashcarddecks(deck_id, title) values ($1, $2)'' using nextval(''flashcarddecks_deck_id_seq''), row_to_migrate.deck_title;
-                    select deck_id into last_deck_id from flashcarddecks where title like row_to_migrate.deck_title;
+                    execute ''insert into decks(deck_id, title) values ($1, $2)'' using nextval(''deck_seq''), row_to_migrate.deck_title;
+                    select deck_id into last_deck_id from decks where title like row_to_migrate.deck_title;
                 end if;
 
 
-                execute ''insert into flashcards (fc_id, question) values ($1, $2)'' using nextval(''flashcard_seq''), row_to_migrate.question;
-                execute ''insert into flashcarddecks_flashcards (flashcard_deck_deck_id, flashcards_fc_id) values ($1, $2)'' using last_deck_id, currval(''flashcard_seq'') ;
---             execute ''select deck_id from flashcarddecks where title '';
+                execute ''insert into flashcards (fc_id, question, long_answer) values ($1, $2, $3)'' using nextval(''flashcard_seq''), row_to_migrate.question, row_to_migrate.long_answer;
+                execute ''insert into decks_flashcards (deck_deck_id, flashcards_fc_id) values ($1, $2)'' using last_deck_id, currval(''flashcard_seq'') ;
             END LOOP;
 
 

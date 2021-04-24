@@ -2,7 +2,7 @@ package com.zuber.organizeit.controllers;
 
 
 import com.zuber.organizeit.Model.Task;
-import com.zuber.organizeit.Model.TaskRepository;
+import com.zuber.organizeit.Model.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,11 +40,15 @@ public class TaskController {
         return taskRepository.findById(id);
     }
 
+    @GetMapping("/roott")   // todo optionale jakos innaczej dzialaja
+    public Task getRootTaskk(@RequestParam Long id) {
+        return taskRepository.findById(id).orElseThrow();
+    }
+
+
     @PutMapping(value = "/task", consumes = "application/json")
     public ResponseEntity<String> saveTask(@RequestBody Task task) {
 //        List<Task> subtasks = taskRepository.findAllById(task.getSubTasks());
-
-        System.out.println(task);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

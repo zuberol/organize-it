@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { CREATE_TASK, saveTask } from '../../store/projectsActions';
+import { saveTask } from '../../store/projectsActions';
 
 
 export default function EditTaskForm(props) {

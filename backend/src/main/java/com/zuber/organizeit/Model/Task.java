@@ -13,19 +13,14 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Getter @Setter @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "taskId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "task_id") //todo chyba musi to byc, ale do sprawdzenia czy dziala deserializacja
+@Table(name = "tasks")
 public class Task {
 
+    public final static String ID_SEQ_NAME = "task_seq";
+
+
     @Id
-    @SequenceGenerator(
-            name = "task_seq",
-            sequenceName = "task_seq",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy=SEQUENCE,
-            generator="task_seq"
-    )
     Long taskId;
     String note;
 

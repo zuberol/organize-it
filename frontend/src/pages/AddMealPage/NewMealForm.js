@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import './AddMeal.css';
+// import './AddMeal.css';
 import { BACKEND_BASE_URL } from "../../utils/config";
 import IngredientForm from './IngredientForm';
 import * as actionTypes from '../../store/mealActions';

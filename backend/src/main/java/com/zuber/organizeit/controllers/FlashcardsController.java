@@ -1,13 +1,11 @@
 package com.zuber.organizeit.controllers;
 
 
-import com.zuber.organizeit.Model.Flashcard;
-import com.zuber.organizeit.Model.FlashcardDeck;
-import com.zuber.organizeit.Model.FlashcardDecksRepository;
-import com.zuber.organizeit.Model.FlashcardsRepository;
+import com.zuber.organizeit.Model.*;
+import com.zuber.organizeit.Model.Repository.DecksRepository;
+import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,50 +15,109 @@ import java.util.List;
 @RequestMapping("/api")
 public class FlashcardsController {
     FlashcardsRepository flashcardsRepository;
-    FlashcardDecksRepository flashcardDecksRepository;
+    DecksRepository decksRepository;
 
     @Autowired
-    public FlashcardsController(FlashcardsRepository flashcardsRepository, FlashcardDecksRepository flashcardDecksRepository) {
+    public FlashcardsController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository) {
         this.flashcardsRepository = flashcardsRepository;
-        this.flashcardDecksRepository = flashcardDecksRepository;
+        this.decksRepository = decksRepository;
     }
 
-    @GetMapping("/flashcarddeck")
-    public FlashcardDeck getFlashcardDeck(@RequestParam Long deckId) {
-        return flashcardDecksRepository.getOne(deckId);
+
+
+
+
+    @GetMapping("/deck")
+    public Deck getDeck(@RequestParam Long deckId) {
+        return decksRepository.getOne(deckId);
     };
 
-    @GetMapping("/flashcarddecks")
-    public List<FlashcardDeck> getFlashcardDecks() {
-        return flashcardDecksRepository.findAll();
+    @GetMapping("/decks")
+    public List<Deck> getDecks() {
+        return decksRepository.findAll();
     }
 
-    public ResponseEntity<?> saveFlashcard(@RequestBody Flashcard flashcard) {
-        flashcardsRepository.save(flashcard);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
-    @PostMapping("/flashcarddeck/add")
-    public ResponseEntity<?> addFlashcardToSet(@RequestBody Flashcard flashcardToAdd, @RequestParam Long fcsetId) {
-        ResponseEntity<?> responseEntity = new ResponseEntity<>(HttpStatus.OK);
-        if (fcsetId == null || flashcardToAdd == null) responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        else if(Flashcard.isValid(flashcardToAdd)) {
-            responseEntity = new ResponseEntity<>(HttpStatus.OK);
-            FlashcardDeck modifiedFlashcardDeck = flashcardDecksRepository.findById(fcsetId).orElseThrow();
-            modifiedFlashcardDeck.getFlashcards().add(flashcardToAdd);
-            flashcardDecksRepository.save(modifiedFlashcardDeck);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //todo
+    //    @PostMapping(value = "/flashcard")
+    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
+    public Flashcard saveTest(Flashcard flashcard) {
+        if(flashcard.getFcId() == null) {
+            Long id = flashcardsRepository.getIdFromSeq();
+            flashcard.setFcId(id);
         }
-        return responseEntity;
+        return flashcardsRepository.save(flashcard);
     }
+
+
+
+
+    @GetMapping(value = "/flashcard")
+    public Flashcard getFlashcard(@RequestParam Long id) {
+        return flashcardsRepository.findById(id).orElseThrow();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//    @PostMapping("/flashcarddeck/add")
+//    public ResponseEntity<?> addFlashcardToSet(@RequestBody Flashcard flashcardToAdd, @RequestParam Long fcsetId) {
+//        ResponseEntity<?> responseEntity = new ResponseEntity<>(HttpStatus.OK);
+//        if (fcsetId == null || flashcardToAdd == null) responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        else if(Flashcard.isValid(flashcardToAdd)) {
+//            responseEntity = new ResponseEntity<>(HttpStatus.OK);
+//            Deck modifiedFlashcardDeck = DecksRepository.findById(fcsetId).orElseThrow();
+//            modifiedFlashcardDeck.getFlashcards().add(flashcardToAdd);
+//            DecksRepository.save(modifiedFlashcardDeck);
+//        }
+//        return responseEntity;
+//    }
 
 
 
 //    @PostMapping//todo test it
-//    public ResponseEntity<?> modifyFlashcardSet(@RequestBody FlashcardDeck requestedModificationSet) {
-//        if(!FlashcardDeck.isValid(requestedModificationSet)) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//    public ResponseEntity<?> modifyFlashcardSet(@RequestBody Deck requestedModificationSet) {
+//        if(!Deck.isValid(requestedModificationSet)) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        List<Flashcard> flashcards = flashcardSetsRepository
 //                .findById(requestedModificationSet.getFcset_id())
-//                .orElseGet(FlashcardDeck::new).getFlashcards();
+//                .orElseGet(Deck::new).getFlashcards();
 //        requestedModificationSet.getFlashcards().addAll(flashcards);
 //        flashcardSetsRepository.save(requestedModificationSet);
 //        return new ResponseEntity<>(HttpStatus.OK);

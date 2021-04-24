@@ -1,29 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 * {
     box-sizing: border-box;
-    font-family: Helvetica, Arial, 'Courier New';
-    color: whitesmoke;
+    font-family: 'Roboto', Helvetica, Arial, 'Courier New';
+    color: black;
 }
 
-html {
-    background-color: black;
-}
+/* html {
+    background-color: ;
+} */
 
 body {
-    background-color: rgb(40, 41, 44);
+    background-color: #28292c;
     margin: 0;
     padding: 0;
-    color: whitesmoke;
-    font-size: 17px;
 }
 
-p {
+/* p {
     color: inherit;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-size: inherit;
     text-align: justify;
-    padding: 1rem;
-    margin: 0;
-}
+    margin: 1rem;
+} */
 
 a {
     text-decoration: none;
@@ -38,6 +38,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     padding: 1rem;
     margin: 0;
+    color: black;
 }
 
 h1 {
@@ -57,15 +58,15 @@ h4 {
 }
 
 h5 {
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 h6 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 header {
-    background-color: rgba(145, 199, 177, 0.6);
+    background-color: #71816d;
     padding: 0.3rem;
     width: 100%;
     padding-left: 1rem;

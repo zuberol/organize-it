@@ -1,30 +1,30 @@
 import * as actionTypes from './actions';
 
 const initialGlobalState = {
-    fcsets: []
+    decks: []
 };
 
 const reducer = ( state = initialGlobalState, action ) => {
     if(action.type == actionTypes.DELETE_ITEM) {
         //todo zmienic nazwe filteredFlashcardSet bo  jest mylaca
-        const filteredFlashcardSet = state.fcsets.filter((fcset, index) => {
+        const filteredFlashcardSet = state.decks.filter((fcset, index) => {
             return action.itemToDeleteID !== index;
         });
         return {
             ...state,
-            fcsets: filteredFlashcardSet
+            decks: filteredFlashcardSet
         }
     }
     else if(action.type == actionTypes.FLASHCARD_DELETED_FROM_DB) {
-        //const filteredFlashcardSet = state.fcsets
+        //const filteredFlashcardSet = state.decks
     }
     else if(action.type == actionTypes.DELETING_FLASHCARD_FAILED) {
         return state;
     }
-    else if(action.type == actionTypes.INITIALIZE_FCSETS) {
+    else if(action.type == actionTypes.INITIALIZE_DECKS) {
         return {
             ...state,
-            fcsets: action.fcsets
+            decks: action.decks
         }
     }
     else {

@@ -1,0 +1,27 @@
+h1, h2, h3, h4, h5, h6 {
+    align-self: flex-start;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+article {
+    background-color: tan;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.app-content {
+    min-height: 120vh;
+    min-width: 70vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.delete-button {
+    width: 1rem;
+    height: 1rem;
+}

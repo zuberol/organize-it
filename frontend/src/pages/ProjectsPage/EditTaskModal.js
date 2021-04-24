@@ -35,7 +35,7 @@ export default function EditTaskModal() {
   };
 
   return (
-    <div>
+    <main>
       <button type="button" onClick={handleOpen}>
         react-transition-group
       </button>
@@ -48,7 +48,7 @@ export default function EditTaskModal() {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 300,
+          timeout: 300
         }}
       >
         <Fade in={isModalOpen}>
@@ -57,6 +57,6 @@ export default function EditTaskModal() {
           </div>
         </Fade>
       </Modal>
-    </div>
+    </main>
   );
 }

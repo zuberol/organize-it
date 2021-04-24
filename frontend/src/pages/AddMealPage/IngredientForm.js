@@ -1,4 +1,4 @@
-import './AddMeal.css';
+// import './AddMeal.css';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import deleteImg from '../../assets/delete.png';

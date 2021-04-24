@@ -10,7 +10,7 @@
 - listy zadan do wykonania,
 - planowanie zadan - trzeba co niedziele planowac i wrzucac recznie zadania do wykonania. Wrzucamy z puli zadan.
 - dyskryminator taskow - przycisk ktory jak klikniemy to spycha na koniec listy - do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny
-
+- przycisk w roocie expand all, tylko itemki z pod roota
 
 
 ## Visualization:
@@ -21,3 +21,7 @@
 
 
 https://material-ui.com/components/tree-view/
+
+
+## <3 stackoverflow <3
+https://stackoverflow.com/questions/49845355/spring-boot-controller-upload-multipart-and-json-to-dto

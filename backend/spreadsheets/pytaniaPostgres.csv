@@ -1,0 +1,6 @@
+question,page,short_answer,long_answer,ref_url,code_sample,picture_url
+$tag$<string_constant>$tag$,,,,,,
+czy case statement moze wywolac blok kodu?,,tak,,https://www.postgresqltutorial.com/plpgsql-case-statement/,,
+Jak wylistowac user defined functions w postgresie?,,\df,,,,
+"Co to ""::""?",,cast operator,,,,
+czego sie nie da zrobic wlasną zdefiniowaną funkcją?,,Nie da sie odpalic tranzakcji,,https://www.postgresqltutorial.com/postgresql-create-procedure/,,
