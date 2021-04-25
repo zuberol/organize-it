@@ -3,13 +3,42 @@ import { useSelector } from 'react-redux';
 import { BACKEND_BASE_URL } from '../../utils/config';
 import React from 'react';
 import './../../common/Form/form.css';
+import './../../common/Form/treeStructure.scss';
 
 //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
 export default function AddTaskModal() {
     return (
-        <main style={{ display: "flex", "justify-content": "center", backgroundColor: '#F1E0C5', 'minHeight': '85vh'}}>
-            <div style={{ display: "flex", "justify-content": "center", backgroundColor: "#c9b79c", width:"800px" }}>
+        <main style={{ display: "flex", "justify-content": "center", backgroundColor: '#F1E0C5', 'minHeight': '85vh' }}>
+            <div style={{ display: "flex", "justify-content": "center", backgroundColor: "#c9b79c", width: "800px" }}>
                 <FlashcardCreator />
+                <div class="tree">
+                <ul>
+                    <li><i class="fa fa-folder-open"></i> Project
+                        <ul>
+                        <li><i class="fa fa-folder-open"></i> Opened Folder <span>- 15kb</span>
+                            <ul>
+                            <li><i class="fa fa-folder-open"></i> css
+                                <ul>
+                                <li><i class="fa fa-code"></i> CSS Files <span>- 3kb</span>
+                                </li>
+
+                                </ul>
+                            </li>
+                            <li><i class="fa fa-folder"></i> Folder close <span>- 10kb</span>
+                            </li>
+                            <li><i class="fab fa-html5"></i> index.html</li>
+                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
+                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
+                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
+                            </ul>
+                        </li>
+                        <li><i class="fa fa-folder"></i> Folder close <span>- 420kb</span>
+
+                        </li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
             </div>
         </main>
     );
@@ -115,7 +144,7 @@ export default function AddTaskModal() {
 
             let res_def;
             switch (res_type) {
-                case 'com.zuber.organizeit.Model.ImageRefResource':{
+                case 'com.zuber.organizeit.Model.ImageRefResource': {
                     res_def = {
                         "@class": "com.zuber.organizeit.Model.ImageRefResource",
                         "id": '',
@@ -124,7 +153,7 @@ export default function AddTaskModal() {
                         "reference_url": ""
                     }
                 }
-                break;
+                    break;
                 case 'com.zuber.organizeit.Model.VideoReference':
                     res_def = {
                         "@class": "com.zuber.organizeit.Model.VideoReference",
@@ -134,7 +163,7 @@ export default function AddTaskModal() {
                         "reference_url": ""
                     }
 
-                break;
+                    break;
                 default:
                     res_def = {
                         "@class": "com.zuber.organizeit.Model.BookReference",
@@ -145,7 +174,7 @@ export default function AddTaskModal() {
                         "author": "",
                         "page": null
                     }
-                }
+            }
             setFlashcard({
                 ...flashcard,
                 reference_resources: [...flashcard.reference_resources, res_def]
