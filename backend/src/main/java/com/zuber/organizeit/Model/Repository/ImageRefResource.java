@@ -1,6 +1,6 @@
 package com.zuber.organizeit.Model.Repository;
 
-import com.zuber.organizeit.Model.ReferenceResource;
+import com.zuber.organizeit.Model.Reference.ReferenceResource;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

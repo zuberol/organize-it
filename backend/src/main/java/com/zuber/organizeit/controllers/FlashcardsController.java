@@ -23,10 +23,6 @@ public class FlashcardsController {
         this.decksRepository = decksRepository;
     }
 
-
-
-
-
     @GetMapping("/deck")
     public Deck getDeck(@RequestParam Long deckId) {
         return decksRepository.getOne(deckId);

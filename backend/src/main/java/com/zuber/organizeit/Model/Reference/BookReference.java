@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Reference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

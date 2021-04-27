@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Reference;
 
 
 import lombok.Getter;
@@ -11,6 +11,6 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-public class VideoReference extends ReferenceResource {
-    private String referenceUrl; //todo use URL ?
+public class ImageReference extends ReferenceResource {
+    private String referenceUrl;
 }

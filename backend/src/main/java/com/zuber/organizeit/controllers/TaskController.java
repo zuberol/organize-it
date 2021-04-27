@@ -36,8 +36,8 @@ public class TaskController {
 //    }
 
     @GetMapping("/root")
-    public Optional<Task> getRootTask(@RequestParam Long id) {
-        return taskRepository.findById(id);
+    public Task getRootTask(@RequestParam Long id) {
+        return taskRepository.findById(id).get();
     }
 
     @GetMapping("/roott")   // todo optionale jakos innaczej dzialaja

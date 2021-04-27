@@ -1,6 +1,9 @@
 package com.zuber.organizeit.controllers;
 
 import com.zuber.organizeit.Model.*;
+import com.zuber.organizeit.Model.Reference.BookReference;
+import com.zuber.organizeit.Model.Reference.ReferenceResource;
+import com.zuber.organizeit.Model.Reference.VideoReference;
 import com.zuber.organizeit.Model.Repository.DecksRepository;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import com.zuber.organizeit.Model.Repository.ImageRefResource;
@@ -45,7 +48,7 @@ public class DevController {
     }
 
     @GetMapping("/refsourceSave")
-    public void saveRefResource() throws MalformedURLException {
+    public void saveRefResource() {
         BookReference bookReference = new BookReference();
         bookReference.setAuthor("Hemingway");
         bookReference.setId(30L);
@@ -101,75 +104,75 @@ public class DevController {
     //@JsonTypeResolver()
 
 
-    // todo dzialalo 1
-    @PostMapping(value = "/resources", consumes = "application/json")
-    public void saveRefResourceFromFrontend(@RequestBody List<ReferenceResource> ref) {
-//        System.out.println(ref.getClass().getName());
-        System.out.println("klasa pod referencja: " + ref);
-        ref.forEach(item -> {
-            if (item instanceof BookReference)
-                System.out.println("to jest ksiazka: " + (((BookReference) item).getAuthor()));
-            if (item instanceof VideoReference)
-                System.out.println("to jest video: " + (((VideoReference) item).getReferenceUrl()));
-            item.setId(
-                    referenceResourcesRepository.getIdFromSeq()
-            );
-            referenceResourcesRepository.save(item);
-        });
-    }
+//    // todo dzialalo 1
+//    @PostMapping(value = "/resources", consumes = "application/json")
+//    public void saveRefResourceFromFrontend(@RequestBody List<ReferenceResource> ref) {
+////        System.out.println(ref.getClass().getName());
+//        System.out.println("klasa pod referencja: " + ref);
+//        ref.forEach(item -> {
+//            if (item instanceof BookReference)
+//                System.out.println("to jest ksiazka: " + (((BookReference) item).getAuthor()));
+//            if (item instanceof VideoReference)
+//                System.out.println("to jest video: " + (((VideoReference) item).getReferenceUrl()));
+//            item.setId(
+//                    referenceResourcesRepository.getIdFromSeq()
+//            );
+//            referenceResourcesRepository.save(item);
+//        });
+//    }
 
 
-    @GetMapping(value = "/ref/resources")
-    public List<ReferenceResource> getReferenceSourcessss() throws MalformedURLException {
-
-        BookReference bookReference = new BookReference();
-        bookReference.setAuthor("Harry Potter i komnata wpierdolu");
-
-        VideoReference videoReference = new VideoReference();
-        videoReference.setReferenceUrl("https://www.youtube.com/watch?v=av0y5TAItyk&ab_channel=JWPCREW");
-
-        return new ArrayList<>(List.of(videoReference, bookReference));
-    }
-
-
-    @GetMapping(value = "/resources/all")
-    public List<ReferenceResource> getReferenceResourcesAll() {
-
-        ImageRefResource imageRefResource = new ImageRefResource();
-        imageRefResource.setRefImage("https://img-9gag-fun.9cache.com/photo/a5WnX5o_700b.jpg");
-        imageRefResource.setId(referenceResourcesRepository.getIdFromSeq());
-
-        VideoReference videoReference = new VideoReference();
-        videoReference.setReferenceUrl("https://www.youtube.com/watch?v=rbIfdWnTMNE&ab_channel=AsfaltRecords");
-        videoReference.setId(referenceResourcesRepository.getIdFromSeq());
-
-        BookReference bookReference = new BookReference();
-        bookReference.setAuthor("Thomas H. Cormen");
-        bookReference.setId(referenceResourcesRepository.getIdFromSeq());
-
-        referenceResourcesRepository.saveAll(
-                List.of(
-                        imageRefResource,
-                        videoReference,
-                        bookReference
-                )
-        );
+//    @GetMapping(value = "/ref/resources")
+//    public List<ReferenceResource> getReferenceSourcessss() {
+//
+//        BookReference bookReference = new BookReference();
+//        bookReference.setAuthor("Harry Potter i komnata wpierdolu");
+//
+//        VideoReference videoReference = new VideoReference();
+//        videoReference.setReferenceUrl("https://www.youtube.com/watch?v=av0y5TAItyk&ab_channel=JWPCREW");
+//
+//        return new ArrayList<>(List.of(videoReference, bookReference));
+//    }
 
 
-        return referenceResourcesRepository.findAll();
-    }
+//    @GetMapping(value = "/resources/all")
+//    public List<ReferenceResource> getReferenceResourcesAll() {
+//
+//        ImageRefResource imageRefResource = new ImageRefResource();
+//        imageRefResource.setRefImage("https://img-9gag-fun.9cache.com/photo/a5WnX5o_700b.jpg");
+//        imageRefResource.setId(referenceResourcesRepository.getIdFromSeq());
+//
+//        VideoReference videoReference = new VideoReference();
+//        videoReference.setReferenceUrl("https://www.youtube.com/watch?v=rbIfdWnTMNE&ab_channel=AsfaltRecords");
+//        videoReference.setId(referenceResourcesRepository.getIdFromSeq());
+//
+//        BookReference bookReference = new BookReference();
+//        bookReference.setAuthor("Thomas H. Cormen");
+//        bookReference.setId(referenceResourcesRepository.getIdFromSeq());
+//
+//        referenceResourcesRepository.saveAll(
+//                List.of(
+//                        imageRefResource,
+//                        videoReference,
+//                        bookReference
+//                )
+//        );
+//
+//
+//        return referenceResourcesRepository.findAll();
+//    }
 
-    // todo testing
-    @PostMapping(value = "/multipart", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public void ifmultipartWorks(OuterTest test) {
+//    // todo testing
+//    @PostMapping(value = "/multipart", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    public void ifmultipartWorks(OuterTest test) {
+//
+//    }
 
-    }
 
-
-    @PostMapping(value = "/file", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public void postFileInJson(@RequestPart("flash") Flashcard flash, @RequestPart("file") MultipartFile file) {
-
-    }
+//    @PostMapping(value = "/file", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    public void postFileInJson(@RequestPart("flash") Flashcard flash, @RequestPart("file") MultipartFile file) {
+//
+//    }
 
 
 

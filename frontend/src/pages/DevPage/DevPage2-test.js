@@ -1,4 +1,4 @@
-import './../../common/Form/treeStructure.scss';
+// import './../../common/Form/treeStructure.scss';
 
 export default () => (
     <div class="container">
