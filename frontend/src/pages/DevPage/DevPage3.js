@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BACKEND_BASE_URL } from '../../utils/config';
 import React from 'react';
 import './../../common/Form/form.css';
-import './../../common/Form/treeStructure.scss';
+// import './../../common/Form/treeStructure.scss';
 
 //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
 export default function AddTaskModal() {

@@ -1,28 +1,28 @@
-import './../../common/Form/treeStructure.scss';
+// import './../../common/Form/treeStructure.scss';
 
 export default () => (
         
     <div className="">
         <div className="container">
-            <div className="row">
+            <div className="branch">
                 <div className="vertical-linker"><div></div></div>
-                <div className="column">
+                <div className="trunk">
 
                     <div className="file" >treeStructure.scss</div>
                     
                     <div className="file dir">treeStruyyycture.scss</div>
-                    <div className="row">
+                    <div className="branch">
                         <div className="vertical-linker"><div></div></div>
-                        <div className="column">
+                        <div className="trunk">
 
                             <div className="file dir">treeStructure.scss<span>1337 Project</span><span>1337 Project</span></div>
                             <div className="file" >4</div>
                             <div className="file">5</div>
                             
-                            <div className="file dir"><div className="before-file"><div></div></div>612 dir</div>
-                            <div className="row">
+                            <div className="file dir"><div className="horizontal-linker "><div></div></div>612 dir</div>
+                            <div className="branch">
                                 <div className="vertical-linker"><div></div></div>
-                                <div className="column">
+                                <div className="trunk">
 
                                     <div className="file">treeStructure.scss612 1</div>
                                     <div className="file" >6treeStructure.scss12 2</div>
@@ -38,18 +38,18 @@ export default () => (
 
 
                     <div className="file dir">Developmenttt directory</div>
-                    <div className="row">
+                    <div className="branch">
                         <div className="vertical-linker"><div></div></div>
-                        <div className="column">
+                        <div className="trunk">
 
-                            <div className="file"><div className="before-file"><div></div></div><span>treeStructuretreeStructuretreeStructuretreeStructuretreeStructuretreeStructure</span><span> Project</span></div>
+                            <div className="file"><div className="horizontal-linker "><div></div></div><span>treeStructuretreeStructuretreeStructuretreeStructuretreeStructuretreeStructure</span><span> Project</span></div>
                             <div className="file" >4</div>
                             <div className="file">5</div>
                             
                             <div className="file dir">61yyyy2 dir</div>
-                            <div className="row">
+                            <div className="branch">
                                 <div className="vertical-linker"><div></div></div>
-                                <div className="column">
+                                <div className="trunk">
 
                                     <div className="file" style={{height: '400px', width: '200px', backgroundColor: 'cornflowerblue'}}>treeStructure.scss612 1</div>
                                     <div className="file" >6treeStructure.scss12 2</div>
@@ -64,18 +64,18 @@ export default () => (
                     </div>
 
                     <div className="file dir">treeStruyyycture.scss</div>
-                    <div className="row">
+                    <div className="branch">
                         <div className="vertical-linker"><div></div></div>
-                        <div className="column">
+                        <div className="trunk">
 
                             <div className="file dir">treeStructure.scss<span>1337 Project</span><span>1337 Project</span></div>
                             <div className="file" >4</div>
                             <div className="file">5</div>
                             
                             <div className="file dir">612 dir</div>
-                            <div className="row">
+                            <div className="branch">
                                 <div className="vertical-linker"><div></div></div>
-                                <div className="column">
+                                <div className="trunk">
 
                                     <div className="file"><span>treeStructure.scss612 1</span></div>
                                     <div className="file" ><span>treeStructure.scss612 2</span></div>
