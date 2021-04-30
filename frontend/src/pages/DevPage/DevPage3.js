@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { BACKEND_BASE_URL } from '../../utils/config';
 import React from 'react';
@@ -6,110 +6,116 @@ import './../../common/Form/form.css';
 // import './../../common/Form/treeStructure.scss';
 
 //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
-export default function AddTaskModal() {
-    return (
-        <main
-         style={{
-            //   display: "flex", 
-            //   "justify-content": "center", 
-              backgroundColor: '#F1E0C5', 
-              'minHeight': '85vh' ,
-                height: '200vh'
-            }}
-         >
-            <div
-
-             style={{ 
-                 display: "flex", 
-                 "justify-content": "center", 
-                 backgroundColor: "#c9b79c",
-                  width: "800px"
-                }}
-             
-             >
-                <div class="tree">
-                {/* <ul>
-                    <li><i class="fa fa-folder-open"></i> Project
-                        <ul>
-                        <li><i class="fa fa-folder-open"></i> Opened Folder <span>- 15kb</span>
-                            <ul>
-                            <li><i class="fa fa-folder-open"></i> css
-                                <ul>
-                                <li><i class="fa fa-code"></i> CSS Files <span>- 3kb</span>
-                                </li>
-
-                                </ul>
-                            </li>
-                            <li><i class="fa fa-folder"></i> Folder close <span>- 10kb</span>
-                            </li>
-                            <li><i class="fab fa-html5"></i> index.html</li>
-                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
-                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
-                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
-                            
-                            </ul>
-                        </li>
-                        <li><i class="fa fa-folder"></i> Folder close <span>- 420kb</span>
-
-                        </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>
-                                dsa
-                            </li>
-                            <li>
-                                dsa
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul> */}
-                {/* <ul>
-                    <li><i ></i> Project yy
-                        <ul>
-                            <li><i ></i> 222222222222 <span>- 3kb</span></li>
-                            <li className="working"><i ></i> 2222222<span>- 20kb</span></li>
-                        </ul>
-                    </li>
-                    <li><i class=""></i> Project 2
-                        <ul>
-                            <li><i class=""></i> 33333 <span>- 3kb</span></li>
-                            <li><i class=""></i> 2224444444444442222<span>- 20kb</span></li>
-                        </ul>
-                    </li>
-                </ul> */}
-
-                <ul>
-                    lelellelle
-                    <li><i ></i> Project yy
-                        <ul> okokoko
-                            <li><i ></i> 222222222222 <span>- 3kb</span></li>
-                            <li className="working"><i ></i> 2222222<span>- 20kb</span></li>
-                        </ul>
-                    </li>
-                    <li><i class=""></i> Project 2
-                        <ul>okok
-                            <li><i class=""></i> 33333 <span>- 3kb</span></li>
-                            <li>yyyy<span>20kb</span></li>
-                            <li><i class="">icon</i> 2224444444444442222<span>- 20kb</span></li>
-                            <li><i class=""></i> 2224444444444442222<span>- 20kb</span></li>
-                            <li><i class=""></i> 2224444444444442222<span>- 20kb</span></li>
-                        </ul>
-                    </li>
-                </ul>
-                </div>
-            </div>
-            <div style={{backgroundColor: "navy", height: "100px", width: '100%'}}>
-
-            </div>
-
-        </main>
+export default function FileCheck() {
+    const decksNames = useSelector(state =>
+        state.flashcardReducer.decks.map(d => d.title)
     );
+    const [flashcard, setFlashcard] = useState({
+        ref_resource_index: '',
+        // ref_resource_associated_files: undefined
+        // deckName: decksNames.length > 0 ? decksNames[0] : ''
+    });
+    const fileRef = useRef(null)
 
 
-}
+    function handleSubmit(event) {
+        event.preventDefault();
+        //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
+        
+        const form = new FormData()
+        
+        for (var i = 0; i < fileRef.current.files.length; i++) {
+            var file;
 
+            // get item
+            file = fileRef.current.files.item(i);
+            //or
+            file = fileRef.current.files[i];
+
+            console.log(file.name)
+            form.append('refResourceAssociatedFiles', file);
+
+        }
+        
+
+        form.append('refResourceIndex', flashcard.ref_resource_index);
+        // form.append('question', "a srasz?");
+        // form.append('shortAnswer', "ajax");
+
+
+        const fc = {    // todo Flashcard.empty()
+            '@class': 'com.zuber.organizeit.Model.Flashcard',
+            'question': 'wysylanie fc z ref z plikiem',
+            'short_answer': 'shortyyyy',
+            'long_answer': 'any longer',
+            'reference_resources': [
+                {
+                    "@class": "com.zuber.organizeit.Model.BookReference",
+                    "id": '',
+                    "caption": 'test',
+                    "comment": 'test comment',
+                    "author": "test authon",
+                    "title": 'A Great Journey',
+                    "page": 'test page'
+                }
+            ]
+        }
+        form.append('flashcard', new Blob([JSON.stringify(fc)], {
+            type: "application/json"
+        }));
+
+
+        // fileRef.current.files
+        // formData.append('flashcard', new Blob([JSON.stringify(flashcard)], {
+        //     type: "application/json"
+        // }));
+
+        fetch(new URL('/api/dev/filecheck', BACKEND_BASE_URL), {
+            method: 'POST',
+            mode: 'cors',
+            body: form
+        })
+        .catch((e) => console.error("Błąd przy zapisywaniu flashcarda:", e));
+    }
+
+    // function handleFileChange(e) {
+    //     e.preventDefault();
+    //     setFlashcard({ 
+    //         ...flashcard, 
+    //         ref_resource_associated_files: e.target.files[0] });
+    // };
+
+    function handleChange(e) {
+        setFlashcard({
+            ...flashcard,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    return (
+        <form name="ref_files" onSubmit={handleSubmit}>
+
+            <label htmlFor="ref_resource_index">ref_resource_index</label>
+            <input
+                name="ref_resource_index"
+                type="text"
+                onChange={handleChange}
+                value={flashcard.ref_resource_index}
+            />
+
+
+            <label htmlFor="ref_resource_associated_files">ref_resource_associated_files</label>
+            <input
+                name="ref_resource_associated_files"
+                type="file"
+                // onChange={handleFileChange}
+                multiple={true}
+                ref={fileRef}
+                // value={flashcard.ref_resource_associated_files}
+            />
+
+            <button type="submit">Submit</button>
+        </form>
+    );
+};
 

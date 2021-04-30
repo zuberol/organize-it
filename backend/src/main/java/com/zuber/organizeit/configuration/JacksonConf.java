@@ -6,10 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
-import com.zuber.organizeit.Model.Reference.ReferenceResource;
+import com.zuber.organizeit.Model.ReferenceResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -19,34 +20,44 @@ import java.util.regex.Pattern;
 @Configuration
 public class JacksonConf {
 
-    @Primary
+//    @Primary
+//    @Bean
+//    public ObjectMapper jacksonObjectMapper() {
+//        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator
+//                .builder()
+//                .allowIfSubTypeIsArray()
+//                .allowIfSubType(ArrayList.class)
+//                .allowIfBaseType(ArrayList.class)   // todo refactor, nie potrzebne raczej to
+//                .allowIfBaseType(Pattern.compile("java\\.util\\.Collections\\..*"))
+//                .allowIfBaseType(ReferenceResource.class)
+////                .allowIfBaseType(Pattern.compile("java\\.net\\..*"))
+//                .build();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+//        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT, JsonTypeInfo.As.PROPERTY);
+////        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class); //todo chyba nie potrzebne
+//        return objectMapper;
+//    }
+
+//    @Bean
+//    @Primary
+//    public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
+//        Jackson2ObjectMapperBuilder jsonBuilderConfig = new Jackson2ObjectMapperBuilder();
+//        jsonBuilderConfig.propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+//        jsonBuilderConfig.
+//        return jsonBuilderConfig;
+//    }
+//
+
+
+
     @Bean
-    public ObjectMapper jacksonObjectMapper() {
-        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator
-                .builder()
-                .allowIfSubTypeIsArray()
-                .allowIfSubType(ArrayList.class)
-                .allowIfBaseType(ArrayList.class)   // todo refactor, nie potrzebne raczej to
-                .allowIfBaseType(Pattern.compile("java\\.util\\.Collections\\..*"))
-                .allowIfBaseType(ReferenceResource.class)
-//                .allowIfBaseType(Pattern.compile("java\\.net\\..*"))
-                .build();
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT, JsonTypeInfo.As.PROPERTY);
-//        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class); //todo chyba nie potrzebne
-
-
-        return objectMapper;
-
-//        new Jackson2ObjectMapperBuilder().build().
-
+    @Primary
+    public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
+        Jackson2ObjectMapperBuilder jsonBuilderConfig = new Jackson2ObjectMapperBuilder();
+        jsonBuilderConfig.propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+        return jsonBuilderConfig;
     }
-
-
-
-
-
 
 
 

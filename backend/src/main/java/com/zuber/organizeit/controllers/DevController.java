@@ -1,21 +1,18 @@
 package com.zuber.organizeit.controllers;
 
 import com.zuber.organizeit.Model.*;
-import com.zuber.organizeit.Model.Reference.BookReference;
-import com.zuber.organizeit.Model.Reference.ReferenceResource;
-import com.zuber.organizeit.Model.Reference.VideoReference;
+import com.zuber.organizeit.Model.BookReference;
+import com.zuber.organizeit.Model.ReferenceResource;
+import com.zuber.organizeit.Model.VideoReference;
 import com.zuber.organizeit.Model.Repository.DecksRepository;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
-import com.zuber.organizeit.Model.Repository.ImageRefResource;
 import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
-import com.zuber.organizeit.Model.tests.OuterTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -173,6 +170,30 @@ public class DevController {
 //    public void postFileInJson(@RequestPart("flash") Flashcard flash, @RequestPart("file") MultipartFile file) {
 //
 //    }
+
+
+    //jak owrapowac te requesty metadanymi?
+//    https://stackoverflow.com/questions/23410481/spring-controller-fetch-query-parameter-for-a-wrapper-request-class
+//    https://stackoverflow.com/questions/18944627/form-submit-in-spring-mvc-3-explanation/18944736#18944736
+    //
+//    //todo model check
+//    @PostMapping(value = "/filecheck", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    @ModelAttribute
+//    public void postFileInJson(Model model) {
+//
+//
+//    }
+
+    //    @PostMapping(value = "/filecheck", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    public void postFileInJson(@RequestPart("ref_resource_associated_files") List<MultipartFile> resources) {
+//
+//    }
+
+    //todo dev3 wrap all into dto, why not? - rozpruc flashcard object na froncie i dodawac jako form.
+    @PostMapping(value = "/filecheck", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public void postFileInJson(@RequestPart("flashcard") Flashcard flashcard, @ModelAttribute RefFileMetadata metadata) {
+
+    }
 
 
 

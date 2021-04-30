@@ -7,7 +7,12 @@ import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -39,33 +44,61 @@ public class FlashcardsController {
 
 
 
+    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public void postFileInJson(@RequestPart("flashcard") Flashcard flashcard
+            , @RequestPart("ref_files") RefFileMetadata ref_files
+    ) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //todo
-    //    @PostMapping(value = "/flashcard")
-    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
-    public Flashcard saveTest(Flashcard flashcard) {
-        if(flashcard.getFcId() == null) {
-            Long id = flashcardsRepository.getIdFromSeq();
-            flashcard.setFcId(id);
-        }
-        return flashcardsRepository.save(flashcard);
     }
+
+
+
+
+
+
+
+
+    private void saveUploadedFile(MultipartFile file) throws IOException {
+        final String UPLOADED_FOLDER = "/home/jakub/IdeaProjects/personal/organize-it-files";
+
+        if (!file.isEmpty()) {
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//    //todo
+//    //    @PostMapping(value = "/flashcard")
+//    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
+//    public Flashcard saveTest(Flashcard flashcard) {
+//        if(flashcard.getFcId() == null) {
+//            Long id = flashcardsRepository.getIdFromSeq();
+//            flashcard.setFcId(id);
+//        }
+//        return flashcardsRepository.save(flashcard);
+//    }
 
 
 

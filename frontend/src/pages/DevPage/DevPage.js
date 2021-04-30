@@ -8,37 +8,9 @@ import './../../common/Form/form.css';
 //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
 export default function AddTaskModal() {
     return (
-        <main style={{ display: "flex", "justify-content": "center", backgroundColor: '#F1E0C5', 'minHeight': '85vh' }}>
-            <div style={{ display: "flex", "justify-content": "center", backgroundColor: "#c9b79c", width: "800px" }}>
+        <main style={{ display: "flex", "justifyContent": "center", backgroundColor: '#F1E0C5', 'minHeight': '85vh' }}>
+            <div style={{ display: "flex", "justifyContent": "center", backgroundColor: "#c9b79c", width: "800px" }}>
                 <FlashcardCreator />
-                <div class="tree">
-                <ul>
-                    <li><i class="fa fa-folder-open"></i> Project
-                        <ul>
-                        <li><i class="fa fa-folder-open"></i> Opened Folder <span>- 15kb</span>
-                            <ul>
-                            <li><i class="fa fa-folder-open"></i> css
-                                <ul>
-                                <li><i class="fa fa-code"></i> CSS Files <span>- 3kb</span>
-                                </li>
-
-                                </ul>
-                            </li>
-                            <li><i class="fa fa-folder"></i> Folder close <span>- 10kb</span>
-                            </li>
-                            <li><i class="fab fa-html5"></i> index.html</li>
-                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
-                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
-                            <li><i class="fa fa-picture-o"></i> favicon.ico</li>
-                            </ul>
-                        </li>
-                        <li><i class="fa fa-folder"></i> Folder close <span>- 420kb</span>
-
-                        </li>
-                        </ul>
-                    </li>
-                </ul>
-                </div>
             </div>
         </main>
     );
@@ -52,8 +24,8 @@ export default function AddTaskModal() {
             state.flashcardReducer.decks
         );
         const [flashcard, setFlashcard] = useState({    // todo Flashcard.empty()
-            '@class': 'com.zuber.organizeit.Model.Flashcard',
-            'question': 'yyy',
+            // '@class': 'com.zuber.organizeit.Model.Flashcard',
+            'question': 'wysylanie fc z ref z plikiem',
             'short_answer': '',
             'long_answer': '',
             'reference_resources': [
@@ -68,6 +40,7 @@ export default function AddTaskModal() {
                 }
             ]
         });
+        const [files, setFiles] = useState(null);
         const [picked_deck_id, setPickedDeckId] = useState(decks.length > 0 ? decks[0].deck_id : '')
 
         // console.log(flashcard)
@@ -79,7 +52,7 @@ export default function AddTaskModal() {
                     <button className="control-button" type="submit">Submit</button>
                     <button className="control-button" type="button" onClick={() => createRefResource("com.zuber.organizeit.Model.VideoReference")}>+ yy video ref</button>
                     <button className="control-button" type="button" onClick={() => createRefResource("com.zuber.organizeit.Model.BookReference")}>+ book ref</button>
-                    <button className="control-button" type="button" onClick={() => createRefResource("com.zuber.organizeit.Model.ImageRefResource")}>+ img ref</button>
+                    <button className="control-button" type="button" onClick={() => createRefResource("com.zuber.organizeit.Model.ImageReference")}>+ img ref</button>
                 </span>
                 <fieldset>
                     <label htmlFor="question">Question</label>
@@ -127,30 +100,44 @@ export default function AddTaskModal() {
 
 
             const formData = new FormData();
+
+            const ref_files = {
+                'ref_resource_index': '1',
+                'ref_resource_associated_files': files
+            }
+
+            // console.log(document.querySelectorAll('.reference_resources fieldset input.file_ref').files)
+
             // formData.append('file', document.forms["flashcardForm"].file.files[0])
             formData.append('flashcard', new Blob([JSON.stringify(flashcard)], {
                 type: "application/json"
             }));
 
-            fetch(new URL('/api/dev/flashcard', BACKEND_BASE_URL), {
+            formData.append("ref_files", ref_files);
+            // formData.append('ref_files', new Blob([JSON.stringify(ref_files)], {
+            //     type: "application/json"
+            // }))
+
+            fetch(new URL('/api/flashcard', BACKEND_BASE_URL), {
                 method: 'POST',
                 mode: 'cors',
                 body: formData
             })
-                .catch((e) => console.log("Błąd przy zapisywaniu flashcarda:", e));
+            .catch((e) => console.log("Błąd przy zapisywaniu flashcarda:", e));
         }
 
         function createRefResource(res_type) {
 
             let res_def;
             switch (res_type) {
-                case 'com.zuber.organizeit.Model.ImageRefResource': {
+                case 'com.zuber.organizeit.Model.ImageReference': {
                     res_def = {
-                        "@class": "com.zuber.organizeit.Model.ImageRefResource",
+                        "@class": "com.zuber.organizeit.Model.ImageReference",
                         "id": '',
                         "caption": null,
                         "comment": null,
-                        "reference_url": ""
+                        "reference_url": "",
+                        // "file": ""
                     }
                 }
                     break;
@@ -203,11 +190,16 @@ export default function AddTaskModal() {
             });
         }
 
+        // function handleFileUpload(e) {
+
+        // }
+
+
 
         function renderRefResourceInputs(reference_resources) {
             return reference_resources.map(res => res['@class']).map((res, i) => {
                 switch (res) {
-                    case 'com.zuber.organizeit.Model.ImageRefResource':
+                    case 'com.zuber.organizeit.Model.ImageReference':
                         return <fieldset key={i}>
                             <h6>{`${i}# Image reference`}</h6>
                             <label>Reference url</label>
@@ -215,6 +207,12 @@ export default function AddTaskModal() {
                                 type="text"
                                 onChange={(e) => handleChangeReferenceResource(e, i)}
                                 name="reference_url"
+                                value={flashcard.reference_resources[i].reference_url}
+                            />
+                            <input
+                                type="file"
+                                onChange={(e) => setFiles(e.target.files)}
+                                name="file_ref"
                                 value={flashcard.reference_resources[i].reference_url}
                             />
                         </fieldset>
@@ -250,42 +248,6 @@ export default function AddTaskModal() {
                 }
             })
         }
-
-
-        // function createBookRefSource() {
-        //     const refResourcesWrapper = document.querySelector('#flashcardForm span.reference_resources');
-
-
-
-        //     console.log(refResourcesWrapper)
-
-
-
-        //     // const child = React.createElement(
-        //     //     <>
-        //     //         <label></label>
-        //     //         <input></input>
-        //     //     </>
-        //     // )
-
-
-        //     ReactDOM.render(
-        //         <>
-        //             <label></label>
-        //             <input></input>
-        //         </>, 
-        //         document.querySelector('#flashcardForm span.reference_resources'));
-
-        //         ReactDOM
-
-        //     // console.log(child)
-
-        //     // refResourcesWrapper.appendChild(
-        //     //     child
-        //     // )
-
-
-        // }
 
     };
 

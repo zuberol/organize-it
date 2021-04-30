@@ -25,6 +25,7 @@ export default function PlayFlashcardsPage() {
     console.log(currentFlashcard)
     return (
         <main className="flashcard-page_main">
+            <AddTaskModal/>
             <h4>{`${deck.title} ${currentFlashcardId + 1}/${deck.flashcards.length}`}</h4>
             <div className="flashcard">
                 <div className="flashcard__buttons">
@@ -43,7 +44,6 @@ export default function PlayFlashcardsPage() {
                     <button onClick={() => setShowHint(!showHint)}>hint</button>
                     <button onClick={() => setShowAnswer(!showAnswer)}>answer</button>
                     {/* <button onClick={() => setShowAnswer(!showAnswer)}>+</button> */}
-                    <AddTaskModal/>
                 </div>
                 <StyledParagraph active={true}>
                     <p>Question:</p>

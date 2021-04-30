@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.zuber.organizeit.Model.Reference.ReferenceResource;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

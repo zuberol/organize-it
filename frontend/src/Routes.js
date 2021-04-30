@@ -9,7 +9,7 @@ import EditTaskModal from './pages/ProjectsPage/EditTaskModal';
 import AddTaskModal from './pages/PlayFlashcardsPage/AddFlashcardModal';
 
 import DevPage from './pages/DevPage/DevPage';
-// import DevPage2 from './pages/DevPage/DevPage2';
+import DevPage3 from './pages/DevPage/DevPage3';
 import DevPage4 from './pages/DevPage/DevPage4';
 
 
@@ -23,7 +23,7 @@ export default function Routes() {
         <Route exact path="/play-flashcards/:deck_id" component={PlayFlashcardsPage}></Route>
         {/* <Route exact path="/dev" component={EditTaskModal} /> */}
         <Route exact path="/dev" component={DevPage} />
-        {/* <Route exact path="/dev2" component={DevPage2} /> */}
+        <Route exact path="/dev3" component={DevPage3} />
         <Route exact path="/dev4" component={DevPage4} />
         <Route exact path="/meal/add" component={AddMealPage} />
         <Route exact path="/projects" component={ProjectsDashboardPage} />

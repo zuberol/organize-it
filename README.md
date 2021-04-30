@@ -25,3 +25,13 @@ https://material-ui.com/components/tree-view/
 
 ## <3 stackoverflow <3
 https://stackoverflow.com/questions/49845355/spring-boot-controller-upload-multipart-and-json-to-dto
+
+
+
+
+todo bugs:
+- Rootowa klasa nie jest rozpoznawana
+  Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "@class" (class com.zuber.organizeit.Model.Flashcard), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "@class" (class com.zuber.organizeit.Model.Flashcard), not marked as ignorable (5 known properties: "short_answer", "fc_id", "question", "long_answer", "reference_resources"])
+ at [Source: (ByteArrayInputStream); line: 1, column: 12] (through reference chain: com.zuber.organizeit.Model.Flashcard["@class"])],
+- wysylany formularz musi byc w konwencji cammelCase, chociaz backend wysyla w snake_case
+

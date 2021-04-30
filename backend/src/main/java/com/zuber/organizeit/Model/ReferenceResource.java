@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model.Reference;
+package com.zuber.organizeit.Model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

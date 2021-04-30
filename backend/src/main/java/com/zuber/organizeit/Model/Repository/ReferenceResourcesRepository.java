@@ -1,6 +1,6 @@
 package com.zuber.organizeit.Model.Repository;
 
-import com.zuber.organizeit.Model.Reference.ReferenceResource;
+import com.zuber.organizeit.Model.ReferenceResource;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
