@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import './Flashcards.css';
+import './Flashcards.scss';
 import AddTaskModal from './AddFlashcardModal';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faAngleRight, faAngleLeft, faEye, faComment, faStickyNote } from '@fortawesome/free-solid-svg-icons'
 
 
 const StyledParagraph = styled.section`
@@ -27,24 +30,6 @@ export default function PlayFlashcardsPage() {
         <main className="flashcard-page_main">
             <h4>{`${deck.title} ${currentFlashcardId + 1}/${deck.flashcards.length}`}</h4>
             <div className="flashcard">
-                <div className="flashcard__buttons">
-                    <button onClick={() => {
-                        if (currentFlashcardId - 1 >= 0) setCurrentFlashcardId(currentFlashcardId - 1);
-                    }}>{'< -'}</button>
-                    <button onClick={() => {
-                        if (currentFlashcardId + 1 >= deck.flashcards.length) setIsGameOver(true);
-                        else {
-                            setCurrentFlashcardId(currentFlashcardId + 1);
-                            setShowAnswer(false);
-                            setShowHint(false);
-                        }
-
-                    }}>{'- >'}</button>
-                    <button onClick={() => setShowHint(!showHint)}>hint</button>
-                    <button onClick={() => setShowAnswer(!showAnswer)}>answer</button>
-                    {/* <button onClick={() => setShowAnswer(!showAnswer)}>+</button> */}
-                    <AddTaskModal/>
-                </div>
                 <StyledParagraph active={true}>
                     <p>Question:</p>
                     <p>{currentFlashcard.question || '-/-?-/-'}</p>
@@ -66,12 +51,42 @@ export default function PlayFlashcardsPage() {
                     {getReferenceSources(currentFlashcard.reference_resources)}
                     <p>{`https://www.youtube.com/watch?v=9ckv6-yhnIY&ab_channel=ParticuleYair`}</p>
                 </StyledParagraph>
+                <div className="flashcard__buttons">
+                    <button className="flashcard__button" onClick={() => {
+                        if (currentFlashcardId + 1 >= deck.flashcards.length) setIsGameOver(true);
+                        else {
+                            setCurrentFlashcardId(currentFlashcardId + 1);
+                            setShowAnswer(false);
+                            setShowHint(false);
+                        }
+
+                    }}>
+                    <FontAwesomeIcon icon={faAngleRight} />
+                        <span>next</span>
+                    </button>
+                    <button className="flashcard__button" onClick={() => {
+                        if (currentFlashcardId - 1 >= 0) setCurrentFlashcardId(currentFlashcardId - 1);
+                    }}>
+                        <FontAwesomeIcon icon={faAngleLeft} />
+                        <span>previous</span>    
+                    </button>
+                    <button className="flashcard__button" onClick={() => setShowHint(!showHint)}>
+                        <FontAwesomeIcon icon={faComment} />
+                        <span>hint</span>
+                    </button>
+                    <button className="flashcard__button" onClick={() => setShowAnswer(!showAnswer)}>
+                        <FontAwesomeIcon icon={faEye} />
+                        <span>answer</span>
+                    </button>
+                    {/* <button onClick={() => setShowAnswer(!showAnswer)}>+</button> */}
+                    <AddTaskModal/>
+                </div>
             </div>
         </main>
     )
 }
 
 
-function getReferenceSources(referenceSources) {
-    referenceSources.map((ref, id) => <StyledParagraph active={true}>{ref}</StyledParagraph>)
+function getReferenceSources(referenceResources) {
+    referenceResources.map((ref, index) => <StyledParagraph active={true}>{ref.caption}</StyledParagraph>)
 }

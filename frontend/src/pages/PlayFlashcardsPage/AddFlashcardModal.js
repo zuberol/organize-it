@@ -6,6 +6,9 @@ import Fade from '@material-ui/core/Fade';
 import { useSelector } from 'react-redux';
 import { BACKEND_BASE_URL } from '../../utils/config';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +33,10 @@ export default function AddTaskModal() {
 
     return (
         <>
-            <button type="button" onClick={() => setIsModalOpen(true)}>add task modal</button>
+            <button type="button"  className="flashcard__button" onClick={() => setIsModalOpen(true)}>
+                <FontAwesomeIcon icon={faStickyNote} />
+                <span>new</span>
+            </button>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
@@ -119,22 +125,9 @@ export default function AddTaskModal() {
                 mode: 'cors',
                 body: new FormData(event.target)
             })
-            // .then((res) => {
-            //     if(!res.ok) throw `POST /api/flashcard error`
-            //     return fetch(
-            //         new URL('/api/flashcarddasdas', BACKEND_BASE_URL),{
-            //             method: 'POST',
-            //             mode: 'cors',
-            //             body: new FormData(event.target)
-            //         })
-            // })
             .catch((e) => console.error("Błąd przy zapisywaniu flashcarda:", e));
             setIsModalOpen(false);
         }
-
-        // function handleFileChange(e) {
-        //     setFlashcard({ flashcard, file: e.target.files[0] });
-        // };
 
         function handleChange(e) {
             setFlashcard({
@@ -150,18 +143,4 @@ export default function AddTaskModal() {
             });
         }
     };
-
-    // function createInput(caption, index, ) {
-    //     return (
-    //         <span>
-    //             <label htmlFor="">Image reference</label>
-    //             <input
-    //                 type="file"
-    //                 name={`references[${index}][]`}
-    //             />
-    //         </span>
-    //     )
-    // }
-
-
 }

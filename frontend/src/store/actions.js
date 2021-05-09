@@ -1,4 +1,5 @@
 import { BACKEND_BASE_URL } from './../utils/config.js'
+import MOCK_DECKS from '../mock/MockDecks';
 
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const INITIALIZE_DECKS = 'INITIALIZE_DECKS';
@@ -17,7 +18,7 @@ export const fetchdecks = () => {
         })
         .catch(err => {
             console.error(err, "Backend doesn't respond");
-            dispath({type: INITIALIZE_DECKS, decks: []});
+            dispath({type: INITIALIZE_DECKS, decks: MOCK_DECKS});
         })
     }
 }

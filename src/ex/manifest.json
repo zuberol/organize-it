@@ -1,0 +1,17 @@
+{
+    "description": "Marking strings utility",
+    "manifest_version": 2,
+    "name": "Flashcard App",
+    "version": "1.0",
+    "homepage_url": "https://github.com/zuberol/organize-it",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "extension.js"
+            ]
+        }
+    ]
+}
