@@ -45,10 +45,10 @@ public class FlashcardsController {
 
 
     @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public void postFileInJson(@RequestPart("flashcard") Flashcard flashcard
-            , @RequestPart("ref_files") RefFileMetadata ref_files
-    ) {
-
+    public void postFileInJson(@RequestPart("flashcard") Flashcard flashcard, @RequestPart("ref_files") RefFileMetadata ref_files) {
+        //todo
+        if(flashcard.getFcId() == null) flashcard.setFcId(flashcardsRepository.getIdFromSeq());
+        flashcardsRepository.save(flashcard);
     }
 
 
@@ -84,21 +84,6 @@ public class FlashcardsController {
 
 
 
-
-
-
-//
-//
-//    //todo
-//    //    @PostMapping(value = "/flashcard")
-//    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
-//    public Flashcard saveTest(Flashcard flashcard) {
-//        if(flashcard.getFcId() == null) {
-//            Long id = flashcardsRepository.getIdFromSeq();
-//            flashcard.setFcId(id);
-//        }
-//        return flashcardsRepository.save(flashcard);
-//    }
 
 
 

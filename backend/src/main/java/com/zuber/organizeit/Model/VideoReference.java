@@ -12,5 +12,5 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 public class VideoReference extends ReferenceResource {
-    private String referenceUrl; //todo use URL ?
+    private String referenceUrl;
 }

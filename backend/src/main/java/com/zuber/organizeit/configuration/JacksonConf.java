@@ -20,71 +20,23 @@ import java.util.regex.Pattern;
 @Configuration
 public class JacksonConf {
 
-//    @Primary
-//    @Bean
-//    public ObjectMapper jacksonObjectMapper() {
-//        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator
-//                .builder()
-//                .allowIfSubTypeIsArray()
-//                .allowIfSubType(ArrayList.class)
-//                .allowIfBaseType(ArrayList.class)   // todo refactor, nie potrzebne raczej to
-//                .allowIfBaseType(Pattern.compile("java\\.util\\.Collections\\..*"))
-//                .allowIfBaseType(ReferenceResource.class)
-////                .allowIfBaseType(Pattern.compile("java\\.net\\..*"))
-//                .build();
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-//        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT, JsonTypeInfo.As.PROPERTY);
-////        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class); //todo chyba nie potrzebne
-//        return objectMapper;
-//    }
-
-//    @Bean
-//    @Primary
-//    public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
-//        Jackson2ObjectMapperBuilder jsonBuilderConfig = new Jackson2ObjectMapperBuilder();
-//        jsonBuilderConfig.propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-//        jsonBuilderConfig.
-//        return jsonBuilderConfig;
-//    }
-//
-
-
-
-    @Bean
     @Primary
-    public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
-        Jackson2ObjectMapperBuilder jsonBuilderConfig = new Jackson2ObjectMapperBuilder();
-        jsonBuilderConfig.propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-        return jsonBuilderConfig;
+    @Bean
+    public ObjectMapper jacksonObjectMapper() {
+        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator
+                .builder()
+                .allowIfSubTypeIsArray()
+                .allowIfSubType(ArrayList.class)
+                .allowIfBaseType(ArrayList.class)   // todo refactor, nie potrzebne raczej to
+                .allowIfBaseType(Pattern.compile("java\\.util\\.Collections\\..*"))
+                .allowIfBaseType(ReferenceResource.class)
+//                .allowIfBaseType(Pattern.compile("java\\.net\\..*"))
+                .build();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT, JsonTypeInfo.As.PROPERTY);
+//        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class); //todo chyba nie potrzebne
+        return objectMapper;
     }
 
-
-
-
-//    @Primary
-//    @Bean
-//    public ObjectMapper jacksonObjectMapper() {
-//        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator
-//                .builder()
-//                .allowIfSubTypeIsArray()
-//                .allowIfSubType(ArrayList.class)
-//                .allowIfBaseType(ArrayList.class)
-//                .allowIfBaseType(Pattern.compile("java\\.util\\.Collections\\..*"))
-//                .allowIfBaseType(ReferenceResource.class)
-////                .allowIfBaseType(Pattern.compile("java\\.net\\..*"))
-//                .build();
-//        ObjectMapper objectMapper = new ObjectMapper().setPropertyNamingStrategy(
-//                PropertyNamingStrategy.SNAKE_CASE
-//        );
-//
-//        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.EVERYTHING, JsonTypeInfo.As.PROPERTY);
-////        objectMapper.
-//        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class);    // todo dzialalo 1
-//
-//        return objectMapper;
-//
-////        new Jackson2ObjectMapperBuilder().build().
-//
-//    }
 }

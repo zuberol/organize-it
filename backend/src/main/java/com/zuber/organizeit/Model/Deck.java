@@ -38,7 +38,6 @@ public class Deck implements ExternalEntity {
 //    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="fc_id")
 ////    @JsonBackReference //todo nie wiadomo ktore bylo dobrze
 //    private List<Flashcard> flashcards;
-
     @OneToMany
 //    @JsonBackReference //todo nie wiadomo ktore bylo dobrze
 //    @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, property="@chuj")
