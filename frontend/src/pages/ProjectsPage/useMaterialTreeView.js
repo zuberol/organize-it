@@ -32,7 +32,7 @@ const theme = createMuiTheme({
  * @param {Object} props
  * @return {JSX} something
  */
-export default function useTreeView(model) {
+export default function useMaterialTreeView(model) {
   const [expandIndexes, setExpandIndexes] = useState(getNestedObjectsIndexes(model));
 
   return [(

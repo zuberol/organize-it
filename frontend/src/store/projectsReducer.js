@@ -1,7 +1,11 @@
 import * as actionTypes from './projectsActions'
+import MockTasks from '../mock/MockTree2';
 
 const initialProjectsState = {
-    isModalOpen: false
+    isModalOpen: false, //todo refactor to
+    projects: [
+        MockTasks
+    ]
 };
 
 const projectsReducer = ( state = initialProjectsState, action ) => {
@@ -18,6 +22,13 @@ const projectsReducer = ( state = initialProjectsState, action ) => {
             return {
                 ...state,
                 isModalOpen: false
+            }
+        }
+        case actionTypes.INIT_PROJECTS: {
+            console.log(action.projects)
+            return {
+                ...state,
+                projects: action.projects
             }
         }
         default:

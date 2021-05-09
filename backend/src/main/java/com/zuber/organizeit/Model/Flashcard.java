@@ -35,7 +35,6 @@ public class Flashcard implements Serializable {
     @OneToMany
 //    @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, property="@class")
     private List<ReferenceResource> referenceResources;
-//    private String pictureUrl;
 //    private Integer lameScore;
 //    private String codeSample;
 
