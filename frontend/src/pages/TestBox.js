@@ -11,20 +11,20 @@ export default function SimpleFade() {
   const [checked, setChecked] = React.useState(false);
 
   const handleChange = () => {
-    setChecked((prev) => !prev);
+  setChecked((prev) => !prev);
   };
 
   return (
+  <div>
+    <FormControlLabel
+    control={<Switch checked={checked} onChange={handleChange} />}
+    label="Show"
+    />
     <div>
-      <FormControlLabel
-        control={<Switch checked={checked} onChange={handleChange} />}
-        label="Show"
-      />
-      <div>
-        <Fade in={checked}>
-            <h2>hello</h2>
-        </Fade>
-      </div>
+    <Fade in={checked}>
+      <h2>hello</h2>
+    </Fade>
     </div>
+  </div>
   );
 }

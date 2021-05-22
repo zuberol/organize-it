@@ -3,6 +3,7 @@ package com.zuber.organizeit.controllers;
 import com.zuber.organizeit.Model.*;
 import com.zuber.organizeit.Model.BookReference;
 import com.zuber.organizeit.Model.ReferenceResource;
+import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.VideoReference;
 import com.zuber.organizeit.Model.Repository.DecksRepository;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
@@ -24,12 +25,19 @@ public class DevController {
     FlashcardsRepository flashcardsRepository;
     DecksRepository decksRepository;
     ReferenceResourcesRepository referenceResourcesRepository;
+    TaskRepository taskRepository;
 
     @Autowired
-    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository) {
+    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, TaskRepository taskRepository) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
         this.referenceResourcesRepository = referenceResourcesRepository;
+        this.taskRepository = taskRepository;
+    }
+
+    @GetMapping("/root")
+    public Task getRootTask(@RequestParam Long id) {
+        return taskRepository.findById(id).get();
     }
 
 
@@ -37,7 +45,6 @@ public class DevController {
     public List<Deck> ifSnakeCaseWorks() {
         return decksRepository.findAll();
     }
-
 
     @GetMapping("/refsource")
     public ReferenceResource getReferenceResourceOne() {
@@ -86,108 +93,6 @@ public class DevController {
         referenceResourcesRepository.save((ReferenceResource) castowaneiObject);
 
     }
-
-
-//    @PostMapping("/refsourceSave")
-//    public <T extends ReferenceResource> void saveRefResourceFromFrontend(T ref) {
-////        System.out.println(ref.getClass().getName());
-//
-//        System.out.println(((BookReference)ref).getAuthor());
-//        if(ref instanceof BookReference) System.out.println("to jest ksiazka: " + (((BookReference)ref).getAuthor())   );
-//        if(ref instanceof VideoReference) System.out.println("to jest video: " + (((VideoReference)ref).getReferenceUrl().getRef())   );
-//
-//    }
-
-    //@JsonTypeResolver()
-
-
-//    // todo dzialalo 1
-//    @PostMapping(value = "/resources", consumes = "application/json")
-//    public void saveRefResourceFromFrontend(@RequestBody List<ReferenceResource> ref) {
-////        System.out.println(ref.getClass().getName());
-//        System.out.println("klasa pod referencja: " + ref);
-//        ref.forEach(item -> {
-//            if (item instanceof BookReference)
-//                System.out.println("to jest ksiazka: " + (((BookReference) item).getAuthor()));
-//            if (item instanceof VideoReference)
-//                System.out.println("to jest video: " + (((VideoReference) item).getReferenceUrl()));
-//            item.setId(
-//                    referenceResourcesRepository.getIdFromSeq()
-//            );
-//            referenceResourcesRepository.save(item);
-//        });
-//    }
-
-
-//    @GetMapping(value = "/ref/resources")
-//    public List<ReferenceResource> getReferenceSourcessss() {
-//
-//        BookReference bookReference = new BookReference();
-//        bookReference.setAuthor("Harry Potter i komnata wpierdolu");
-//
-//        VideoReference videoReference = new VideoReference();
-//        videoReference.setReferenceUrl("https://www.youtube.com/watch?v=av0y5TAItyk&ab_channel=JWPCREW");
-//
-//        return new ArrayList<>(List.of(videoReference, bookReference));
-//    }
-
-
-//    @GetMapping(value = "/resources/all")
-//    public List<ReferenceResource> getReferenceResourcesAll() {
-//
-//        ImageRefResource imageRefResource = new ImageRefResource();
-//        imageRefResource.setRefImage("https://img-9gag-fun.9cache.com/photo/a5WnX5o_700b.jpg");
-//        imageRefResource.setId(referenceResourcesRepository.getIdFromSeq());
-//
-//        VideoReference videoReference = new VideoReference();
-//        videoReference.setReferenceUrl("https://www.youtube.com/watch?v=rbIfdWnTMNE&ab_channel=AsfaltRecords");
-//        videoReference.setId(referenceResourcesRepository.getIdFromSeq());
-//
-//        BookReference bookReference = new BookReference();
-//        bookReference.setAuthor("Thomas H. Cormen");
-//        bookReference.setId(referenceResourcesRepository.getIdFromSeq());
-//
-//        referenceResourcesRepository.saveAll(
-//                List.of(
-//                        imageRefResource,
-//                        videoReference,
-//                        bookReference
-//                )
-//        );
-//
-//
-//        return referenceResourcesRepository.findAll();
-//    }
-
-//    // todo testing
-//    @PostMapping(value = "/multipart", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    public void ifmultipartWorks(OuterTest test) {
-//
-//    }
-
-
-//    @PostMapping(value = "/file", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    public void postFileInJson(@RequestPart("flash") Flashcard flash, @RequestPart("file") MultipartFile file) {
-//
-//    }
-
-
-    //jak owrapowac te requesty metadanymi?
-//    https://stackoverflow.com/questions/23410481/spring-controller-fetch-query-parameter-for-a-wrapper-request-class
-//    https://stackoverflow.com/questions/18944627/form-submit-in-spring-mvc-3-explanation/18944736#18944736
-    //
-//    //todo model check
-//    @PostMapping(value = "/filecheck", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    @ModelAttribute
-//    public void postFileInJson(Model model) {
-//
-//
-//    }
-
-    //    @PostMapping(value = "/filecheck", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    public void postFileInJson(@RequestPart("ref_resource_associated_files") List<MultipartFile> resources) {
-//
-//    }
 
     //todo dev3 wrap all into dto, why not? - rozpruc flashcard object na froncie i dodawac jako form.
     @PostMapping(value = "/filecheck", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})

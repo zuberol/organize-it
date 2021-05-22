@@ -9,66 +9,62 @@
   padding: 4rem;
 
   .vertical-linker {
-    width: 2rem;
-    min-height: 70%;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // padding-bottom: 5px;
+  width: 2rem;
+  min-height: 70%;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // padding-bottom: 5px;
 
-    & span {
-      border-right: solid cornflowerblue;
-      width: 100%;
-      height: 100%;
-    }
+  & span {
+    border-right: solid cornflowerblue 2px;
+    width: 100%;
+    height: 100%;
+  }
   }
 
   // wrap (linker + folder)
   .branch {
-    display: flex;
-    padding-bottom: 0.5rem;
+  display: flex;
+  padding-bottom: 0.5rem;
   }
 
   .trunk {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
-    align-items: stretch;
+  align-items: center;
+  align-items: stretch;
   }
 
   .horizontal-linker {
-    background-color: transparent;
-    width: 1rem;
-    height: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
+  background-color: transparent;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
 
-    span {
-      background-color: royalblue;
-      width: 100%;
-      height: 2px;
-    }
+  span {
+    background-color: cornflowerblue; //royalblue
+    width: 100%;
+    height: 2px;
+  }
 
   }
 
   .file {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-items: flex-start;
-    background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-items: flex-start;
+  background: transparent;
   }
 
   .dir {
-    background-color: royalblue;
+  background-color: royalblue;
   }
 
 }
-
-// span {
-//   padding-left: 5px;
-// }

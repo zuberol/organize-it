@@ -9,15 +9,15 @@ import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'blue'
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'blue'
   },
   paper: {
-    backgroundColor: '#54494B',
-    boxShadow: theme.shadows[5],
-    padding: "2rem"
+  backgroundColor: '#54494B',
+  boxShadow: theme.shadows[5],
+  padding: "2rem"
   },
 }));
 
@@ -27,36 +27,36 @@ export default function EditTaskModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpen = () => {
-    setIsModalOpen(true);
+  setIsModalOpen(true);
   };
 
   const handleClose = () => {
-    setIsModalOpen(false);
+  setIsModalOpen(false);
   };
 
   return (
-    <main>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={isModalOpen}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 300
-        }}
-      >
-        <Fade in={isModalOpen}>
-          <div className={classes.paper}>
-            <EditTaskForm setIsModalOpen={setIsModalOpen}/>
-          </div>
-        </Fade>
-      </Modal>
-    </main>
+  <main>
+    <button type="button" onClick={handleOpen}>
+    react-transition-group
+    </button>
+    <Modal
+    aria-labelledby="transition-modal-title"
+    aria-describedby="transition-modal-description"
+    className={classes.modal}
+    open={isModalOpen}
+    onClose={handleClose}
+    closeAfterTransition
+    BackdropComponent={Backdrop}
+    BackdropProps={{
+      timeout: 300
+    }}
+    >
+    <Fade in={isModalOpen}>
+      <div className={classes.paper}>
+      <EditTaskForm setIsModalOpen={setIsModalOpen}/>
+      </div>
+    </Fade>
+    </Modal>
+  </main>
   );
 }

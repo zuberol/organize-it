@@ -3,8 +3,8 @@
 
 // Let's create an object o from function f with its own properties a and b:
 let f = function () {
-    this.a = 1;
-    this.b = 2;
+  this.a = 1;
+  this.b = 2;
  }
  let o = new f(); // {a: 1, b: 2}
  

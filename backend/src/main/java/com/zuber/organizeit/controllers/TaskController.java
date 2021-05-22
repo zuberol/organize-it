@@ -23,29 +23,6 @@ public class TaskController {
     }
 
 
-//    @GetMapping("/tasks")
-//    public Stream<TaskDTO> getAllTasks() {
-//        return taskRepository.findAll()
-//                .stream()
-//                .map(task -> TaskDTO.builder()
-//                        .taskId(task.getTaskId())
-//                        .note(task.getNote())
-//                        .subTasksIds(task.getSubTasks().stream().map(Task::getTaskId).collect(Collectors.toList()))
-//                        .build()
-//                );
-//    }
-
-    @GetMapping("/root")
-    public Task getRootTask(@RequestParam Long id) {
-        return taskRepository.findById(id).get();
-    }
-
-    @GetMapping("/roott")   // todo optionale jakos innaczej dzialaja
-    public Task getRootTaskk(@RequestParam Long id) {
-        return taskRepository.findById(id).orElseThrow();
-    }
-
-
     @PostMapping(value = "/task", consumes = "application/json")
     public ResponseEntity<?>  saveTask(@RequestBody Task task) {
         if(task.getTaskId() == null) {

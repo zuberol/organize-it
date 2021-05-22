@@ -1,27 +1,27 @@
 module.exports = {
   'env': {
-    'browser': true,
-    'es2021': true,
+  'browser': true,
+  'es2021': true,
   },
   'extends': [
-    'plugin:react/recommended',
-    'google'
+  'plugin:react/recommended',
+  'google'
   ],
   'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true,
-    },
-    'ecmaVersion': 12,
-    'sourceType': 'module',
+  'ecmaFeatures': {
+    'jsx': true,
+  },
+  'ecmaVersion': 12,
+  'sourceType': 'module',
   },
   'plugins': [
-    'react',
-    'only-warn',
-    'react-hooks'
+  'react',
+  'only-warn',
+  'react-hooks'
   ],
   "rules": {
-    'max-len': 'off',
-    'react-hooks/rules-of-hooks': 'error', // Sprawdza stosowanie zasad hooków
-    'react-hooks/exhaustive-deps': 'warn' // Sprawdza zależności efektów
+  'max-len': 'off',
+  'react-hooks/rules-of-hooks': 'error', // Sprawdza stosowanie zasad hooków
+  'react-hooks/exhaustive-deps': 'warn' // Sprawdza zależności efektów
   }
 };

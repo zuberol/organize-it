@@ -10,17 +10,17 @@ import Routes from './Routes';
 
 
 export default class App extends Component {
-    render() {
-        const rootReducer = combineReducers({
-            mealReducer: mealReducer,
-            flashcardReducer: flashcardReducer,
-            projectsReducer: projectsReducer
-        });
-        const store = createStore(rootReducer, applyMiddleware(thunk));
-        return (
-            <Provider store={store}>
-                <Routes/>
-            </Provider>
-        )
-    }
+  render() {
+    const rootReducer = combineReducers({
+      mealReducer: mealReducer,
+      flashcardReducer: flashcardReducer,
+      projectsReducer: projectsReducer
+    });
+    const store = createStore(rootReducer, applyMiddleware(thunk));
+    return (
+      <Provider store={store}>
+        <Routes/>
+      </Provider>
+    )
+  }
 }

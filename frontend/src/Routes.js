@@ -15,19 +15,19 @@ import DevPage4 from './pages/DevPage/DevPage4';
 
 export default function Routes() {
   return (
-    <BrowserRouter>
-      <Route path="/" component={Header}></Route>
-      <Switch>
-        <Route exact path="/" component={DecksPage} />
-        <Route exact path="/decks" component={DecksPage} />
-        <Route exact path="/play-flashcards/:deck_id" component={PlayFlashcardsPage}></Route>
-        {/* <Route exact path="/dev" component={EditTaskModal} /> */}
-        <Route exact path="/dev" component={DevPage} />
-        <Route exact path="/dev3" component={DevPage3} />
-        <Route exact path="/dev4" component={DevPage4} />
-        <Route exact path="/meal/add" component={AddMealPage} />
-        <Route exact path="/projects" component={ProjectsDashboardPage} />
-      </Switch>
-    </BrowserRouter>
+  <BrowserRouter>
+    <Route path="/" component={Header}></Route>
+    <Switch>
+    <Route exact path="/" component={DecksPage} />
+    <Route exact path="/decks" component={DecksPage} />
+    <Route exact path="/play-flashcards/:deck_id" component={PlayFlashcardsPage}></Route>
+    <Route exact path="/dev" component={DevPage} />
+    <Route exact path="/dev3" component={DevPage3} />
+    <Route exact path="/dev4" component={DevPage4} />
+    <Route exact path="/dev5" component={EditTaskModal} />
+    <Route exact path="/meal/add" component={AddMealPage} />
+    <Route exact path="/projects" component={ProjectsDashboardPage} />
+    </Switch>
+  </BrowserRouter>
   );
 }
