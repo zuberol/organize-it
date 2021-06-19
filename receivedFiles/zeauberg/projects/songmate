@@ -1,0 +1,19 @@
+songmate
+	stworzyc discovery engine
+		ogarnac przykladowe dane
+			userow
+			artystow
+				pobrac dane za pomoca API
+					stworzyc serwis do pobierania
+						nauczyc sie tworzyc task gradle'a
+						zbudowac serwis za pomoca gradle'a
+					zapisac do bazy
+					zmapowac na encje z mojej domeny
+
+
+
+
+
+
+
+
