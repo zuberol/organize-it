@@ -1,0 +1,62 @@
+form {
+  /* margin: 2rem; */
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  // background-color: white;
+
+  div.control-buttons {
+    display: flex;
+    justify-content: flex-start;
+
+    button.control{
+      padding: 6px 16px;
+      margin-right: 4px;
+      border-radius: 5px;
+      text-transform: uppercase;
+  
+    }
+
+    button.submit {
+      color: red;
+      border-radius: 5px;
+      margin-right: 1rem;
+      margin-left: auto;
+    }
+
+    button:hover {
+      background-color: saddlebrown;
+    }
+  }
+
+  input, select {
+    outline: none;
+    background-color: rgba(241, 224, 197, 0.7);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 1rem;
+    margin: 0.3rem 0 1rem 0;
+  }
+
+  label,
+  input {
+    font-family: 'Courier';
+    font-size: inherit;
+  }
+
+  fieldset {
+    border: none;
+    all: unset;
+    border-color: 'black';
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    
+    fieldset {
+      background-color: #71816d;
+      padding: 5px;
+    }
+  }
+}

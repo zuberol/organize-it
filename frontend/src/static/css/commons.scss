@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', Helvetica, Arial, 'Courier New';
+  color: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+
+  h1, h2, h3, h4, h5, h6 {
+    &:hover {
+      color: gold;
+      text-decoration: underline;
+    }
+  }
+
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 0;
+  color: black;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2.5rem;
+}
+
+h5 {
+  font-size: 1.6rem;
+}
+
+h6 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+header {
+  background-color: #71816d;
+  padding: 0.3rem;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+  padding-bottom: 1.2rem;
+  max-height: 15vh;
+}
+
+.circular-img {
+  width: 3rem;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgba(29, 185, 84, 0.8);
+  border-radius: 50%;
+}
+.circular-img:hover {
+  background-color:rgb(236, 168, 69);
+}
+
+
+button {
+  &.iconed {
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 3rem;
+    height: 3rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    svg {
+      font-size: 1.5rem;
+    }
+  
+    span {
+      font-size: 0.5rem;
+      color: black;
+    }
+  
+    &:hover {
+      background-color: seagreen;
+    }
+  }
+  
+  &.transparent {
+    background-color: transparent;
+    border: none;
+  
+    *:hover {
+      color:white;
+    }
+  }
+}
