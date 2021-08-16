@@ -39,7 +39,7 @@ export default function useFsTreeView(tasks = MockTasks, dispatch) {
     <div className="file">
     <div className="leaf"></div>
     <div className="horizontal-linker"><span></span></div>
-    <span style={{"margin-left": "4px"}}>{root.note}</span>
+    <span style={{"marginLeft": "4px"}}>{root.note}</span>
     <button className="transparent" type="button" onClick={() => dispatch(actionTypes.saveTask(
       {
       // '@class': 'com.zuber.organizeit.Model.Task',

@@ -26,7 +26,6 @@ export default function ProjectsDashboardPage() {
       {useFsTreeView(availableProjects[0], dispatch)}
       <div className="dashboard-buttons">
         {/* <button className="" onClick={expandIndexes}>colapse all</button> */}
-        {/* <button className="btn" onClick={rollIndexes}>expand all</button> */}
       </div>
     </div>
   )

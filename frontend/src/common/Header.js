@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import '../static/css/commons.scss';
+import '../common/styles/commons.scss';
 
 //todo dorzucic linki, naprawic buga ze sie '/' swieci jako aktywny caly czas
 export default function Header() {
@@ -16,22 +16,22 @@ export default function Header() {
 
   return (
     <header>
-      <NavLink
+      {/* <NavLink
         to="/"
         activeStyle={activeStyle}
         style={navStyle}
-      >organize-it</NavLink>
+      >organize-it</NavLink> */}
       {/* <a className="" href="/decks/modify">
         <h5 className="logo-title">modify Sets</h5>
       </a>
       <a className="" href="/meal/add">
         <h5 className="logo-title">add meal</h5>
       </a> */}
-      <NavLink
+      {/* <NavLink
         to="/dev"
         activeStyle={activeStyle}
         style={navStyle}
-      >dev</NavLink>
+      >dev</NavLink> */}
       <NavLink
         to="/decks"
         activeStyle={activeStyle}

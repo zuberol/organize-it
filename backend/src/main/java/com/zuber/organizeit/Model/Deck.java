@@ -33,6 +33,7 @@ public class Deck implements ExternalEntity {
     @OneToOne
     private User creator;
 
+    private String someProp;
 
 //    @OneToMany
 //    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="fc_id")

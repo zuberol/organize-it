@@ -81,7 +81,7 @@ public class FlashcardsController {
         flashcard.setFcId(flashcardsRepository.getIdFromSeq());
         flashcardsRepository.save(flashcard);
 
-        //save in flashcard in deck
+        //save flashcard in deck
         decksRepository.findById(deckId).ifPresent(
                 deck -> {
                     deck.getFlashcards().add(flashcard);

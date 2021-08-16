@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchdecks } from '../../store/actions';
 import { BACKEND_BASE_URL } from '../../utils/config';
 import '../../common/Form/form.scss';
-import '../../../src/static/css/commons.scss';
+import '../../common/styles/commons.scss';
 
 import { React, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';

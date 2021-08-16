@@ -22,7 +22,8 @@ public class Task {
 
     @Id
     Long taskId;
-    String note;
+    String note = "";
+    boolean isProject = false;
 
     @ManyToOne(
 //            fetch= FetchType.LAZY,
@@ -48,6 +49,7 @@ public class Task {
         return "Task{" +
                 "taskId=" + taskId +
                 ", note='" + note + '\'' +
+                ", isProject=" + isProject +
                 ", parentTask=" + parentTask +
                 ", subTasks=" + subTasks +
                 '}';

@@ -15,3 +15,4 @@ services:
       core:
         hard: 0
         soft: 0
+    labels: ["prevent_deletion_when_prune=true"]

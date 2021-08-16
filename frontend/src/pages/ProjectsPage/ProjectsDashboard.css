@@ -1,7 +1,6 @@
-main {
+html {
   justify-self: right;
   background-color: #F1F7ED;
-  min-height: 100vh;
 }
 
 .dashboard-wrapper {

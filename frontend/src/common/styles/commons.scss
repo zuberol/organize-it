@@ -11,6 +11,22 @@ body {
   padding: 0;
 }
 
+main.centered-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+
+  h1, h2, h3, h4, h5, h6 {
+    align-self: flex-start;
+  }
+
+  div.page-content {
+    
+  }
+
+}
+
 a {
   text-decoration: none;
 
@@ -64,7 +80,7 @@ header {
   padding-right: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 footer {

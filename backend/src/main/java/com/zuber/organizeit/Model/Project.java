@@ -1,4 +1,4 @@
 package com.zuber.organizeit.Model;
 
-public class Project {
+public class Project extends Task {
 }
