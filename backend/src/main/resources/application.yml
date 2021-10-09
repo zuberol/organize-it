@@ -1,4 +1,9 @@
 spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      enabled: true
   security:
     oauth2:
       client:
@@ -6,4 +11,5 @@ spring:
           google-login:
             provider: google
             client-id: 407066747704-s51j64j8lr7p9fjqigso5ca5c2a8ahr5.apps.googleusercontent.com
-            client-secret: NpWox85Xrjv5yd4o27hoc0m6
+            client-secret: AV91UFmdvR-D1Ce1oUOivMmr
+            scope: https://www.googleapis.com/auth/calendar
