@@ -4,16 +4,16 @@
 
 -- init entity sequences TODO refactor that, make validation on entity definitions
 
-drop sequence if exists flashcard_seq cascade;
-drop sequence if exists deck_seq cascade;
-drop sequence if exists task_seq cascade;
-
-create sequence if not exists flashcard_seq start 1;
-create sequence if not exists deck_seq start 1;
-create sequence if not exists task_seq start 1;
-create sequence if not exists reference_resource_seq start 1;
-
-
+-- drop sequence if exists flashcard_seq cascade;
+-- drop sequence if exists deck_seq cascade;
+-- drop sequence if exists task_seq cascade;
+--
+-- create sequence if not exists flashcard_seq start 1;
+-- create sequence if not exists deck_seq start 1;
+-- create sequence if not exists task_seq start 1;
+-- create sequence if not exists reference_resource_seq start 1;
+--
+--
 
 
 

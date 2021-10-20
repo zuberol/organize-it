@@ -132,8 +132,6 @@ export default function FlashcardCreator() {
     event.preventDefault();
     setIsModalOpen(false)
 
-    console.log(flashcard)
-
 
     const formData = new FormData();
 

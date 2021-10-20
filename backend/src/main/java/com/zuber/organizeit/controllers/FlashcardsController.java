@@ -44,52 +44,52 @@ public class FlashcardsController {
         return decksRepository.findAll();
     }
 
-
-    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public void saveFlashcardWithRefs(
-            @RequestPart("flashcard") Flashcard flashcard,
-            @ModelAttribute RefFileMetadata metadata,
-            Long deckId)  {
-
-        //save ref images
-        for(int i=0; i<metadata.getRefResourceAssociatedFiles().size(); ++i) {
-            MultipartFile file = metadata.getRefResourceAssociatedFiles().get(i);
-            if (!file.isEmpty()) {
-                Path path = Paths.get(UPLOADED_FOLDER_PATH, file.getOriginalFilename());
-                try {
-                    Files.write(path, file.getBytes());
-                    final ReferenceResource referenceResource = flashcard.getReferenceResources().get(Math.toIntExact(metadata.getRefResourceIndex().get(i)));
-                    if(referenceResource instanceof ImageReference) {
-                        ImageReference imageRef = (ImageReference) referenceResource;
-                        imageRef.setImageUri(path.toString());
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        //save ref resources
-        flashcard.setReferenceResources(
-                flashcard.getReferenceResources().stream().peek(ref -> {
-                    ref.setId(referenceResourcesRepository.getIdFromSeq());
-                    referenceResourcesRepository.save(ref);
-                }).collect(Collectors.toList())
-        );
-
-        //save flashcard
-        flashcard.setFcId(flashcardsRepository.getIdFromSeq());
-        flashcardsRepository.save(flashcard);
-
-        //save flashcard in deck
-        decksRepository.findById(deckId).ifPresent(
-                deck -> {
-                    deck.getFlashcards().add(flashcard);
-                    decksRepository.save(deck);
-                }
-        );
-
-    }
+ // todo deleted id sequences
+//    @PostMapping(value = "/flashcard", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    public void saveFlashcardWithRefs(
+//            @RequestPart("flashcard") Flashcard flashcard,
+//            @ModelAttribute RefFileMetadata metadata,
+//            Long deckId)  {
+//
+//        //save ref images
+//        for(int i=0; i<metadata.getRefResourceAssociatedFiles().size(); ++i) {
+//            MultipartFile file = metadata.getRefResourceAssociatedFiles().get(i);
+//            if (!file.isEmpty()) {
+//                Path path = Paths.get(UPLOADED_FOLDER_PATH, file.getOriginalFilename());
+//                try {
+//                    Files.write(path, file.getBytes());
+//                    final ReferenceResource referenceResource = flashcard.getReferenceResources().get(Math.toIntExact(metadata.getRefResourceIndex().get(i)));
+//                    if(referenceResource instanceof ImageReference) {
+//                        ImageReference imageRef = (ImageReference) referenceResource;
+//                        imageRef.setImageUri(path.toString());
+//                    }
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//
+//        //save ref resources
+//        flashcard.setReferenceResources(
+//                flashcard.getReferenceResources().stream().peek(ref -> {
+//                    ref.setId(referenceResourcesRepository.getIdFromSeq());
+//                    referenceResourcesRepository.save(ref);
+//                }).collect(Collectors.toList())
+//        );
+//
+//        //save flashcard
+//        flashcard.setFcId(flashcardsRepository.getIdFromSeq());
+//        flashcardsRepository.save(flashcard);
+//
+//        //save flashcard in deck
+//        decksRepository.findById(deckId).ifPresent(
+//                deck -> {
+//                    deck.getFlashcards().add(flashcard);
+//                    decksRepository.save(deck);
+//                }
+//        );
+//
+//    }
 
     @GetMapping(value = "/flashcard")
     public Flashcard getFlashcard(@RequestParam Long id) {

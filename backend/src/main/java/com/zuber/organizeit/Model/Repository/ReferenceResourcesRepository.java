@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReferenceResourcesRepository extends JpaRepository<ReferenceResource, Long> {
 
-    @Query(value = "SELECT nextval('" + ReferenceResource.ID_SEQ_NAME + "')", nativeQuery = true)
-    Long getIdFromSeq();
     
 }

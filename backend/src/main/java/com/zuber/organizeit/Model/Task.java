@@ -1,57 +1,48 @@
 package com.zuber.organizeit.Model;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 @Entity
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "task_id") //todo chyba musi to byc, ale do sprawdzenia czy dziala deserializacja
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "task_id")
 @Table(name = "tasks")
 public class Task {
 
-    public final static String ID_SEQ_NAME = "task_seq";
-
-
     @Id
+    @Column(name = "task_id")
+    @JsonProperty("task_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long taskId;
+
+    @Builder.Default
     String note = "";
+
+    @Builder.Default
     boolean isProject = false;
 
-    @ManyToOne(
-//            fetch= FetchType.LAZY,
-            cascade={CascadeType.PERSIST,
-                    CascadeType.MERGE}
+    @OneToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            orphanRemoval = true
     )
-    @JsonIdentityReference(alwaysAsId = true)
-    Task parentTask;
-
-    @JsonProperty("parentTask")
-    public void setFoo(Long id) {
-        parentTask = Task.builder().taskId(id).build();     //https://stackoverflow.com/questions/18306040/jackson-deserialize-jsonidentityreference-alwaysasid-true/29742035#29742035
-    }
+    @Builder.Default
+    @OrderBy("taskId DESC")
+    List<Task> subTasks = new LinkedList<>();
 
     @OneToMany(
-//            fetch= FetchType.LAZY,
-            mappedBy = "parentTask"
+            cascade = {CascadeType.ALL}
     )
-    List<Task> subTasks;
+    @Builder.Default
+    List<Tag> tags = new LinkedList<>();
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "taskId=" + taskId +
-                ", note='" + note + '\'' +
-                ", isProject=" + isProject +
-                ", parentTask=" + parentTask +
-                ", subTasks=" + subTasks +
-                '}';
-    }
 }

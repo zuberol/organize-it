@@ -1,3 +1,5 @@
+import { project } from '../mock/MockProject';
+import { Project } from '../Model/Project';
 import { BACKEND_BASE_URL } from '../utils/config';
 
 export const TASK_SUCCESFULLY_DELETED = "TASK_SUCCESFULLY_DELETED";
@@ -8,8 +10,7 @@ export const CREATE_TASK = "CREATE_TASK"; //todo
 export const INIT_PROJECTS = "INIT_PROJECTS";
 export const UPDATE_PROJECTS = "UPDATE_PROJECTS";
 
-export const saveTask = (newTask) => {
-  console.log(newTask)
+export const updateTask = (newTask) => {
   return (dispatch) => {
     fetch(new URL('/api/task', BACKEND_BASE_URL), {
       method: 'POST',
@@ -21,7 +22,7 @@ export const saveTask = (newTask) => {
       body: JSON.stringify(newTask)
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
     })
     .then(() => {
       dispatch({type: CLOSE_MODAL});
@@ -30,10 +31,13 @@ export const saveTask = (newTask) => {
       dispatch(fetchProjects());
     })
     .catch(err => {
-      console.log("fetching projects failed: ", err);
+      console.error("fetching projects failed: ", err);
     })
   }
 }
+
+// todo bugfix
+export const saveTask = updateTask;
 
 export const fetchProjects = () => {
   return (dispatch) => {
@@ -42,8 +46,9 @@ export const fetchProjects = () => {
       mode: 'cors'
     })
     .then(res => res.json())
-    .then((tasks) => {
-      dispatch({type: INIT_PROJECTS, projects: tasks});
+    .then(projectsRecords => projectsRecords.map(Project.recordToProject))
+    .then((projects) => {
+      dispatch({type: INIT_PROJECTS, projects: projects});
     })
     .catch(err => {
       console.error(err, "Backend doesn't respond");

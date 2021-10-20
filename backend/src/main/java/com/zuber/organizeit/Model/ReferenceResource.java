@@ -11,10 +11,10 @@ import java.io.Serializable;
 import java.net.URI;
 
 @Entity
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter
 @Table(name = "referenceResources")
 @Inheritance
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public abstract class ReferenceResource implements Serializable {
 
     public final static String ID_SEQ_NAME = "reference_resource_seq";

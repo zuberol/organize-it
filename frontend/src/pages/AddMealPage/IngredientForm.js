@@ -15,12 +15,10 @@ class IngredientForm extends Component {
   }
 
   onChangeHandler(event) {
-    console.log(event.target.name);
     this.props.changePropValue(this.props.index, event.target.name, event.target.value);
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className={this.state.isSubmited == true ? "submittedIngredient" : "notSubmittedIngredient"}>
         <h6>new ingredient</h6>

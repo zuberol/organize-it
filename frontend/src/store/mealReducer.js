@@ -20,7 +20,7 @@ const mealReducer = ( state = initialMealState, action ) => {
       }
     }
     case actionTypes.CHANGE_MEAL_NAME: {
-      console.log(action);
+      // console.log(action);
       const updatedMeal = new Meal(
         action.newMealName,
         state.createdMeal.ammount,
@@ -40,7 +40,7 @@ const mealReducer = ( state = initialMealState, action ) => {
         }
         else return ingredient;
       });
-      console.log(updatedIngredients)
+      // console.log(updatedIngredients)
       // const updatedMeal = new Meal(
       //   state.createdMeal.name,
       //   state.createdMeal.ammount,

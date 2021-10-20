@@ -1,8 +1,11 @@
-com/zuber/organizeit/integration/TaskTest.java
- com.zuber.organizeit.integration.TaskTest
+com/zuber/organizeit/controllers/ProjectsControllerTest.java
+ com.zuber.organizeit.controllers.ProjectsControllerTest
 com/zuber/organizeit/controllers/FlashcardsControllerTest.java
  com.zuber.organizeit.controllers.FlashcardsControllerTest
 com/zuber/organizeit/OrganizeitApplicationTests.java
  com.zuber.organizeit.OrganizeitApplicationTests
-com/zuber/organizeit/controllers/TaskControllerTest.java
- com.zuber.organizeit.controllers.TaskControllerTest
+com/zuber/organizeit/db/DbConf.java
+ com.zuber.organizeit.db.DbConf
+com/zuber/organizeit/db/JpaRelatedTest.java
+ com.zuber.organizeit.db.JpaRelatedTest
+ com.zuber.organizeit.db.JpaRelatedTest$DbConf

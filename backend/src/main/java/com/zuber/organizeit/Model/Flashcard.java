@@ -1,6 +1,7 @@
 package com.zuber.organizeit.Model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,6 +26,7 @@ public class Flashcard implements Serializable {
     public final static String ID_SEQ_NAME = "flashcard_seq";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fcId;
 
     private String question;

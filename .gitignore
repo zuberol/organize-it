@@ -32,3 +32,5 @@ token.json
 
 backend/gradle**
 backend/build/**
+backend/build/*
+/backend/build/

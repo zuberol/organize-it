@@ -3,17 +3,15 @@ package com.zuber.organizeit.controllers;
 import com.zuber.organizeit.Model.*;
 import com.zuber.organizeit.Model.BookReference;
 import com.zuber.organizeit.Model.ReferenceResource;
-import com.zuber.organizeit.Model.Repository.TaskRepository;
+import com.zuber.organizeit.Model.Repository.*;
 import com.zuber.organizeit.Model.VideoReference;
-import com.zuber.organizeit.Model.Repository.DecksRepository;
-import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
-import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -26,13 +24,15 @@ public class DevController {
     DecksRepository decksRepository;
     ReferenceResourcesRepository referenceResourcesRepository;
     TaskRepository taskRepository;
+    ProjectsRepository projectsRepository;
 
     @Autowired
-    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, TaskRepository taskRepository) {
+    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, TaskRepository taskRepository, ProjectsRepository projectsRepository) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
         this.referenceResourcesRepository = referenceResourcesRepository;
         this.taskRepository = taskRepository;
+        this.projectsRepository = projectsRepository;
     }
 
     @GetMapping("/root")
@@ -100,6 +100,37 @@ public class DevController {
 
     }
 
+    @GetMapping("/save/project")
+    public void saveProject() {
+//        Task rootTask = new Task(
+//                null, "some root", false, null,
+//                new LinkedList<>(List.of()),
+//                new LinkedList<>(List.of(new Tag(null, new LinkedList<>(List.of("hehe")))))
+//        );
+//        Task sub1 = new Task(
+//                null, "some sub2", false, null,
+//                new LinkedList<>(List.of()),
+//                new LinkedList<>(List.of(new Tag(null, new LinkedList<>(List.of("heh sub1 sub1 sub1 ve")))))
+//        );
+//        Task sub2 = new Task(
+//                null, "some sub2", false, null,
+//                new LinkedList<>(List.of()),
+//                new LinkedList<>(List.of(new Tag(null, new LinkedList<>(List.of("hehs  sub2 ub2e")))))
+//        );
+//
+//        rootTask.getSubTasks().add(sub1);
+//        rootTask.getSubTasks().add(sub2);
+//        sub1.setParentTask(rootTask);
+//        sub2.setParentTask(rootTask);
+//
+//        projectsRepository.save(new Project(
+//                null,
+//                "with subTasks",
+//                rootTask,
+//                "some with subtasks",
+//                new LinkedList<>()
+//        ));
+    }
 
 
 }

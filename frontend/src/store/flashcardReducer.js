@@ -7,7 +7,7 @@ const initialGlobalState = {
 const reducer = ( state = initialGlobalState, action ) => {
   if(action.type == actionTypes.DELETE_ITEM) {
     //todo zmienic nazwe filteredFlashcardSet bo  jest mylaca
-    const filteredFlashcardSet = state.decks.filter((fcset, index) => {
+    const filteredFlashcardSet = state.decks.filter((_, index) => {
       return action.itemToDeleteID !== index;
     });
     return {
@@ -18,10 +18,10 @@ const reducer = ( state = initialGlobalState, action ) => {
   else if(action.type == actionTypes.FLASHCARD_DELETED_FROM_DB) {
     //const filteredFlashcardSet = state.decks
   }
-  else if(action.type == actionTypes.DELETING_FLASHCARD_FAILED) {
+  else if (action.type == actionTypes.DELETING_FLASHCARD_FAILED) {
     return state;
   }
-  else if(action.type == actionTypes.INITIALIZE_DECKS) {
+  else if (action.type == actionTypes.INITIALIZE_DECKS) {
     return {
       ...state,
       decks: action.decks

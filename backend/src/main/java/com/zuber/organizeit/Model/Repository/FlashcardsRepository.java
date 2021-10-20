@@ -9,7 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FlashcardsRepository extends JpaRepository<Flashcard, Long> {
 
-    @Query(value = "SELECT nextval('" + Flashcard.ID_SEQ_NAME + "')", nativeQuery = true)
-    Long getIdFromSeq();
-
 }

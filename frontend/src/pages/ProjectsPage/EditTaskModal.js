@@ -53,7 +53,7 @@ export default function EditTaskModal() {
     >
     <Fade in={isModalOpen}>
       <div className={classes.paper}>
-      <EditTaskForm setIsModalOpen={setIsModalOpen}/>
+      {/* <EditTaskForm setIsModalOpen={setIsModalOpen}/> */}
       </div>
     </Fade>
     </Modal>

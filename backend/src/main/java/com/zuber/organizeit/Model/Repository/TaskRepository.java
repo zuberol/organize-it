@@ -11,7 +11,4 @@ import java.util.stream.Stream;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    @Query(value = "SELECT nextval('" + Task.ID_SEQ_NAME + "')", nativeQuery = true)
-    Long getIdFromSeq();
-
 }

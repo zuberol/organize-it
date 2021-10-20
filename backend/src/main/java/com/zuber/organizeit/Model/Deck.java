@@ -1,5 +1,6 @@
 package com.zuber.organizeit.Model;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.zuber.organizeit.Model.tests.ExternalEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter
 @NoArgsConstructor
 @Table(
@@ -25,6 +27,7 @@ public class Deck implements ExternalEntity {
     public final static String ID_SEQ_NAME = "deck_seq";
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long deckId;
 
 
