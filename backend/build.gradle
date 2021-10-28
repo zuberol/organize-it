@@ -1,13 +1,13 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.4'
+    id 'org.springframework.boot' version '2.5.6'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "io.freefair.lombok" version "5.3.0"
+//    id "io.freefair.lombok" version "5.2.0"
 }
 
 group = 'com.zuber'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '16'
 
 repositories {
     mavenCentral()
@@ -24,15 +24,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.projectlombok:lombok:1.18.20'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-test:2.4.4'
     testImplementation 'org.springframework.security:spring-security-test'
     runtimeOnly 'org.postgresql:postgresql'
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
     testImplementation("org.assertj:assertj-core:3.20.2")
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
 
 
-    testImplementation 'com.h2database:h2:1.4.200'
+
+    implementation 'com.h2database:h2:1.4.200'
 }
 
 test {

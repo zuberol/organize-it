@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,13 +27,14 @@ public class Task {
     @Column(name = "task_id")
     @JsonProperty("task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     Long taskId;
 
     @Builder.Default
     String note = "";
 
     @Builder.Default
-    boolean isProject = false;
+    boolean isRoot = false;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
@@ -45,4 +50,11 @@ public class Task {
     @Builder.Default
     List<Tag> tags = new LinkedList<>();
 
+    @Embedded
+    @Builder.Default
+    TimeEstimates timeEstimates = TimeEstimates.builder().build();
+
+
 }
+
+

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.Tag;
 import com.zuber.organizeit.Model.Task;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.InitializingBean;
@@ -40,29 +41,16 @@ public class JpaRelatedTest {
         @Bean
         InitializingBean sendDatabase() {
             return () -> {
-                Task parent = new Task(
-                        null,
-                        "old parent note",
-                        true,
-                        Arrays.asList(
-                                new Task(
-                                        null,
-                                        "child 1 note",
-                                        false,
-                                        new LinkedList<>(),
-                                        new LinkedList<>()
-
-                                ),
-                                new Task(
-                                        null,
-                                        "child 2 note",
-                                        false,
-                                        new LinkedList<>(),
-                                        new LinkedList<>()
-                                )
-                        ),
-                        new LinkedList<>()
-                );
+                Task parent = Task.builder()
+                        .isRoot(true)
+                        .note("old parent note")
+                        .tags(List.of())
+                        .subTasks(
+                        List.of(
+                                Task.builder().note("child 1 note").build(),
+                                Task.builder().note("child 2 note").build()
+                        )
+                ).build();
                 taskRepository.save(parent);
             };
         }

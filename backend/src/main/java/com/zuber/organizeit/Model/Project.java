@@ -22,6 +22,7 @@ public class Project {
     String title;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @Builder.Default
     Task rootTask = Task.builder().note("What's poppin?").build();
 
     String description;
