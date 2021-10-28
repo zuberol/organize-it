@@ -32,7 +32,8 @@
   },
   "devDependencies": {
     "prettier": "^2.4.1",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "nodemon": "^2.0.14"
   },
   "scripts": {
     "start": "react-scripts start",

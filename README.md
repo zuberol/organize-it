@@ -26,6 +26,12 @@ https://material-ui.com/components/tree-view/
 ## <3 stackoverflow <3
 https://stackoverflow.com/questions/49845355/spring-boot-controller-upload-multipart-and-json-to-dto
 
+## Dependencies
+- sdkman
+- nvm 
+https://github.com/nvm-sh/nvm
+- nodejs
+nvm install node # "node" is an alias for the latest version
 
 
 
