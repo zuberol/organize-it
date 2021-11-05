@@ -36,7 +36,7 @@ export default function createProject() {
         <>
             <button type="button" className="flashcard__button" onClick={() => setIsModalOpen(true)}>
                 <FontAwesomeIcon icon={faStickyNote} />
-                <span>new</span>
+                <span>Create project</span>
             </button>
             <Modal
                 aria-labelledby="transition-modal-title"

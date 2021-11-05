@@ -31,7 +31,12 @@ export default function FsTreeView(project, dispatch) {
             <div className="leaf"></div>
             <div className="horizontal-linker"><span></span></div>
             <p style={{ "marginLeft": "4px" }} >{task.note || ""}</p>
-            <input defaultValue={task.note || ""} onBlur={updateTaskNote} style={{ "marginLeft": "4px" }} />
+            {/*<input defaultValue={task.note || ""} onBlur={updateTaskNote} style={{ "marginLeft": "4px" }} />*/}
+            <div>
+              <p>#{task.task_id}   {task.description}</p>
+              {/*<p>{task.name}</p>*/}
+              {/*<p>{task.description}</p>*/}
+            </div>
             <button className="transparent" type="button" onClick={newSubtask}><Icon icon={plus} /></button>
           </div>
           <div className="branch">
@@ -45,21 +50,10 @@ export default function FsTreeView(project, dispatch) {
     }
     return jsx;
 
-
-    function updateTaskNote(e) {
-      dispatch(actionTypes.updateTask({
-        task_id: task.task_id, 
-        note: e.target.value,
-        sub_tasks: [...task.sub_tasks],
-        '@class': Task['@class']
-      }));
-    }
-
     function newSubtask() {
       dispatch(actionTypes.updateTask({
-        task_id: task.task_id, 
-        sub_tasks: [...task.sub_tasks, Task.empty()],
-        '@class': Task['@class']
+        ...task,
+        sub_tasks: [...task.sub_tasks, Task.empty()]
       }));
     }
 

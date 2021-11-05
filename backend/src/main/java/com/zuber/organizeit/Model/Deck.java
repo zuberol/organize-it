@@ -24,7 +24,6 @@ import java.util.List;
 )
 public class Deck implements ExternalEntity {
 
-    public final static String ID_SEQ_NAME = "deck_seq";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

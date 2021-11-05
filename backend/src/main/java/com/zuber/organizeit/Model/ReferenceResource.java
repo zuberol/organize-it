@@ -1,7 +1,6 @@
 package com.zuber.organizeit.Model;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,17 +12,19 @@ import java.net.URI;
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter
-@Table(name = "referenceResources")
+@Table(name = "reference_resources")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="res_id")
 @Inheritance
 public abstract class ReferenceResource implements Serializable {
 
-    public final static String ID_SEQ_NAME = "reference_resource_seq";
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "res_id")
+    @JsonProperty("res_id")
     private Long id;
     private String caption;
     private String comment;
-//    private String referenceUrl;
+    private String referenceUrl;
 //    private Boolean isUrlTypeRef;
 //    private Boolean isBookTypeRef;
 //    private URI uri;

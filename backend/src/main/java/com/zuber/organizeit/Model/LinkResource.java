@@ -1,6 +1,5 @@
 package com.zuber.organizeit.Model;
 
-
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-@DiscriminatorValue("2")
-public class VideoReference extends ReferenceResource {
-    private String referenceUrl;
+@DiscriminatorValue("1")
+public class LinkResource extends ReferenceResource {
+
 }

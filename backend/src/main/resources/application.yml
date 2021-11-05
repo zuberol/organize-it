@@ -1,58 +1,7 @@
 spring:
   profiles:
-    default: dev
+    default: prod
 
   servlet:
     multipart:
       enabled: true
-
-  datasource:
-#    url: jdbc:h2:file:/data/demo
-    url: jdbc:h2:file:./data/demo
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-#      ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
-
-
-
-
-
-#    ## default connection pool
-#    spring.datasource.hikari.connectionTimeout=20000
-#    spring.datasource.hikari.maximumPoolSize=5
-#
-#    ## PostgreSQL
-#    #spring.datasource.url=jdbc:postgresql://localhost:8081/organizeit
-#    #spring.datasource.username=organizeit
-#    #spring.datasource.password=organizeit
-#
-#    ## H2
-#    spring.datasource.url=jdbc:h2://localhost:8081/organizeit
-#    spring.datasource.username=organizeit
-#    spring.datasource.password=organizeit
-#
-#
-#    #drop n create table again, good for testing, comment this in production
-#    #spring.jpa.hibernate.ddl-auto=create
-#    spring.jpa.hibernate.ddl-auto=update
-#    #spring.jpa.hibernate.ddl-auto=create-drop
-#    #spring.jpa.hibernate.ddl-auto=validate
-#
-#    #use data-psql.sql to init db
-#    spring.datasource.initialization-mode=always
-#
-#
-#    spring.profiles.active=dev
-#
-#
-#    spring.servlet.multipart.enabled=true
-#
-#
-#    spring.profiles.default=dev
-
-

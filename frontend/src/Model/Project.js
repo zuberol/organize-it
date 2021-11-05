@@ -4,7 +4,7 @@ export class Project {
     constructor({project_id, title = "", description = "", root_task = Task.empty, tags = []}) {
         this.project_id = project_id;
         this.title = title;
-        this.description = description;
+        this.name = description;
         this.root_task = new Task(root_task);
         this.tags = tags;
         this['@class'] = "com.zuber.organizeit.Model.Project";

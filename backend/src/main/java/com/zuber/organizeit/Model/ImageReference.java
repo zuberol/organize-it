@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
+@DiscriminatorValue("3")
 public class ImageReference extends ReferenceResource {
     private String referenceUrl;
     private String imageUri;

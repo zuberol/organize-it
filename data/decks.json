@@ -1,0 +1,2770 @@
+[
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 121,
+    "title": "pytania - scala.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6406,
+        "question": "Czy można stworzyć instancję klasy bez \"new\"?",
+        "short_answer": null,
+        "long_answer": "Ale case klase już tak, bo to taka faktorka.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6407,
+        "question": "Jak porównywane są klasy a jak case klasy?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6408,
+        "question": "Czy case klasy sa immutable?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6409,
+        "question": "Czym są obiekty?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6410,
+        "question": "Jak działa dziedziczenie w Scali?",
+        "short_answer": null,
+        "long_answer": "Rozszerzamy jedną klasę i wiele traitów",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6411,
+        "question": "Co ma lepszego trait niz interface w Javie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6412,
+        "question": "Czy traity moga miec default implementacje metod?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6413,
+        "question": "Czy traity moga miec parametry?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6414,
+        "question": "Czy obiekty moga miec parametry?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6415,
+        "question": "Gdzie znajduja sie metody equals, hashCode, toString?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6416,
+        "question": "Co to Unit?",
+        "short_answer": null,
+        "long_answer": "to pusty nawias \"()\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6417,
+        "question": "Co musi zrobic kazda funkcja i co ma do tego Unit?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6418,
+        "question": "Czym jest AnyRef jak odpalamy Scale w Javie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6419,
+        "question": "Czy mozna castowac Floata do Longa?",
+        "short_answer": null,
+        "long_answer": "casting is unidirectional",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6420,
+        "question": "Czy jest Nothing?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6421,
+        "question": "Czym jest Null?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6422,
+        "question": "Czy Nothing jest podtypem Null?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6423,
+        "question": "Po co jest Null jak mamy Nothing?",
+        "short_answer": null,
+        "long_answer": "Żeby zapewnić kompatybilność z innymi językami jvm'a,",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6424,
+        "question": "Gdzie w klasie jest zamieszczony default konstruktor?",
+        "short_answer": null,
+        "long_answer": "np class Point(var x: Int, var y: Int)",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6425,
+        "question": "Czy konstruktor moze miec defaultowe wartosci?",
+        "short_answer": null,
+        "long_answer": "tak samo jak w javascripcie to dziala, np. class Point(var x: Int = 0, var y: Int = 0)\n",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6426,
+        "question": "Jak uzyc defaultowego x i swojego y?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6427,
+        "question": "Czym jest def y_= (newValue: Int): Unit = {\n    if (newValue < bound) _y = newValue else printWarning\n  } ?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6428,
+        "question": "Jak uzyc settera? Syntaxowe pytanie",
+        "short_answer": null,
+        "long_answer": "Normalnie point.x = 1 i zostanie automatycznie uzyty",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6429,
+        "question": "Co to +A?",
+        "short_answer": null,
+        "long_answer": "List[+T] oznacza, ze jesli B extends A to List[B] extends List[A]",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6430,
+        "question": "Czy to się skompiluje?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6431,
+        "question": "Co oznacza contravariance -A?",
+        "short_answer": null,
+        "long_answer": "Animal wie jak printowac kota.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6432,
+        "question": "Czy to się skompiluje?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6433,
+        "question": "Co trzeba zrobić, żeby to się skompilowało? Czego się nie kompiluje?",
+        "short_answer": null,
+        "long_answer": "Zmienić typ printera na contrvariant",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6434,
+        "question": "nie dokończone Czy da sie rozszerzyc takie same metody z traitow? Czy istnieja default metody? Ktora default metoda zostanie wywolana?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 122,
+    "title": "pytaniaPostgres.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6435,
+        "question": "$tag$<string_constant>$tag$",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6436,
+        "question": "czy case statement moze wywolac blok kodu?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6437,
+        "question": "Jak wylistowac user defined functions w postgresie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6438,
+        "question": "Co to \"::\"?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6439,
+        "question": "czego sie nie da zrobic wlasną zdefiniowaną funkcją?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 123,
+    "title": "pytania - react.js.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6440,
+        "question": null,
+        "short_answer": null,
+        "long_answer": "Robimy jeden plik html jak robimy react app. Tylko index.html.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6441,
+        "question": "Gdzie jest spawnowana react app?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6442,
+        "question": "Jak stworzyc komponent w reakcie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6443,
+        "question": "Jaka metoda z obiektu React jest uzywana do tworzenia obiekow DOM html z jsx'ow?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6444,
+        "question": "Jakie argumenty przyjmuje React.createElement?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6445,
+        "question": "Co jesli chcemy zrobic nestet component w componencie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6446,
+        "question": "Czego nie mozna uzywac wewnatrz JSX'a?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6447,
+        "question": "Ile komponentow zwracamy w funkcji render() ?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6448,
+        "question": "Jak uzyc javascripta w JSX?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6449,
+        "question": "Jak tworzyc komponent na drugi sposob?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6450,
+        "question": "Jak używać propsow?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6451,
+        "question": "Jak uzyc props.children?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6452,
+        "question": "O co chodzi w React hooks?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6453,
+        "question": "Czy \"state\" property jest w komponentach funkcyjnych?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6454,
+        "question": "Co zrobi React jak jakis element ze \"state\" obiektu ulegnie zmianie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6455,
+        "question": "Jak definiowac metody w klasie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6456,
+        "question": "To Which Events Can You Listen?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6457,
+        "question": "Co robi setState()?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6458,
+        "question": "Co przyjmuje setState w argumencie i skad mamy do tej metody dostep?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6459,
+        "question": "Co sie stanie jak cos zmieni sie w \"state\" property?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6460,
+        "question": "Jak manipulowac \"state\" property w komponentach funkcyjnych?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6461,
+        "question": "Jaka jest roznica zmieniania stanu przez setState w hookach i przez \"state\" z komponentu klasowego?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6462,
+        "question": "Co to stateful component?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6463,
+        "question": "Dlaczego lepiej stateless componenty tworzyc?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6464,
+        "question": "Jak mozna zmieniac stan obiektow poprzez inny obiekt? ",
+        "short_answer": null,
+        "long_answer": "Mozna przekazac referencje na funkcje lub metoda jak jest komponent klasowy i uzyc tej funkcji w komponencie dziecka. Mozna dzieki temu zmieniac stan parent komponenta.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6465,
+        "question": "Jak zmienic cos dynamicznie w parencie przez childa?",
+        "short_answer": null,
+        "long_answer": "Przekazujemy referencje na metoda, ktora zmienia stan przyjmujac event za argument. Funkcja ta jak zostanie uzyta, dostarczy parametr event i zmieni stan na taki jaki chcemy.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6466,
+        "question": "Dlaczego pliki css sie nie zaladowaly z defaultu jak oznaczylismy div jako klase?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6467,
+        "question": "Jak renderowac warunkowo?",
+        "short_answer": null,
+        "long_answer": "we frontendzie songmate",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6468,
+        "question": "Co oznacza: Warning: \"Each child in a list should have a unique \"key\" prop\" ?",
+        "short_answer": null,
+        "long_answer": "Trzeba dodac klucz. React korzysta z key'a, zeby efektywnie renderowac listy. Bez klucza React renderuje cala liste jak sie cos w niej zmieni, bo dziala tak, ze porownuje po zmianie stary DOM z nowym DOMem. I jak cos sie zmienilo to reaguje.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6469,
+        "question": "Dlaczego index w liscie jest zlym kluczem?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6470,
+        "question": "Dlaczego powinno sie robic kopie obiektu/tablicy, ktory chcemy zmienic i pozniej uzyc tego do zmiany?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6471,
+        "question": "Czy mozna uzyc spread operator na obiekcie tak jak na tablicy?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6472,
+        "question": "Jakie dwa sposoby istnieją na stworzenie elementu przez Route?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6473,
+        "question": "Dlaczego trzeba zaimportowac Reacta w pliku z komponentem funkcyjnym?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6474,
+        "question": "Co to lifecycle hooks?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6475,
+        "question": "Jaką mają zaletę klasowe komponenty nad funkcyjnymi?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6476,
+        "question": "Jak dostać się do propsów w komponencie funkcyjnym?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6477,
+        "question": "Co to znaczy causing side efects i dlaczego tego nie robimy w konstruktorze komponentu?",
+        "short_answer": null,
+        "long_answer": "To np. wysylanie ajaxow, jakies takie rzeczy dlugie. Nie robimy, bo przy renderowaniu dlugo to bedzie trwac, a react czesto tworzy nowe obiekty pewnie dlatego",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6478,
+        "question": "Czego nie uzywac w hooku componentDidMount(), a co mozna uzywac? No chyba ze co?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6479,
+        "question": "Co uzywamy, a czego nie uzywamy w konstruktorze komponentu?",
+        "short_answer": null,
+        "long_answer": "Mozemy inicjalizowac state, ale nie uzywamy setState()?",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6480,
+        "question": "Czy mozna mutate state directly?",
+        "short_answer": null,
+        "long_answer": "https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/13556154#notes",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6481,
+        "question": "Gdzie inicjalizuje sie state w komponencie?",
+        "short_answer": null,
+        "long_answer": "W konstruktorze mozna zainicjalizowac, ale pozniej trzeba setState() jak chcemy mutate zrobic",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6482,
+        "question": "Co robi useEffect()?",
+        "short_answer": null,
+        "long_answer": "Dzięki temu mozemy korzystac ze wszystkich wazniejszych lifecycle hookow.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6483,
+        "question": "Co oznacza pusta tablica w argumencie useEffect()?",
+        "short_answer": null,
+        "long_answer": "Oznacza puste dependencje. Tam wrzucamy obiekty, ktore jak sie zmienia, to funkcja bedzie odpalona. Jak jest pusta tablica to tylko za pierwszym razem funkcja sie odpali, przy stworzeniu komponentu funkcyjnego.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6484,
+        "question": "Co sie stanie jak zwrocimy funckje w hooku useEffect()?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6485,
+        "question": "Do czego mozna uzyc lifecycle hooka shouldComponentUpdate?",
+        "short_answer": null,
+        "long_answer": "Zeby okreslic, czy moze sie zrenderowac komponent przy probie. W argumencie przyjmuje nowy props i state",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6486,
+        "question": "Jak optymalizowac aplikacje dzieki shouldComponentUpdate?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6487,
+        "question": "REDUX",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6488,
+        "question": "Jak działa Redux?",
+        "short_answer": null,
+        "long_answer": "Komponenty dispaczują akcje (message z payloadem co sie ma zmienic). Zmieniaja to reducery. Proste funkcje synchroniczne (pozniej bedzie jak zrobic asynchroniczna), ktore zwracaja zmieniony immutable obiekt stanu. Musi to byc nowy obiekt. Potem wrzucane sa do globalnego Central Store, na ktorym sa triggery subskrypcji. Wrzucaja zupdatowany stan do Componentow w propsach.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6489,
+        "question": "Jak zrobic default parameter w javascripcie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6490,
+        "question": "Gdy dodajemy element do tablicy jaka jest roznica pomiedzy push(), a concat() ?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6491,
+        "question": "Czy reducery składowe mają dostęp do global state?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6492,
+        "question": "Co eliminuje redux?",
+        "short_answer": null,
+        "long_answer": "Nie uzywamy juz setState(). Dodatkowa nie korzystamy bezposrednio z state property. Korzystamy z niej przez Reduxa.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6493,
+        "question": "Jakie sa rodzaje storage w przegladarce?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6494,
+        "question": "Kiedy react rerenderuje od elementy?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6495,
+        "question": "Co zastąpił hook useEffect() ?",
+        "short_answer": null,
+        "long_answer": "componentDidMount, componentDidUpdate i componentWillUnmount",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6496,
+        "question": "Jak dziala useEffect() ?",
+        "short_answer": null,
+        "long_answer": "Domyślnie React uruchamia wszystkie efekty po każdym renderowaniu — włącznie z pierwszym.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6497,
+        "question": "Dwie zasady korzystania z hookow?",
+        "short_answer": null,
+        "long_answer": "Wywołuj hooki tylko z najwyższego poziomu kodu. Nie wywołuj hooków z wewnątrz pętli, warunków czy zagnieżdżonych funkcji.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6498,
+        "question": null,
+        "short_answer": null,
+        "long_answer": "Wywołuj hooki tylko z wewnątrz reactowych komponentów funkcyjnych. Nie wywołuj hooków z wewnątrz zwykłych javascriptowych funkcji. (Jest jeszcze tylko jedno miejsce, z którego możesz wywoływać hooki — twoje własne hooki. Za chwilę dowiemy się o tym więcej.)",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6499,
+        "question": "Jak dziala useEffect()?",
+        "short_answer": null,
+        "long_answer": "Jest wykorzystywany przy kazdej zmianie state'a, oraz na poczatku. Renderuje komponent.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6500,
+        "question": "Kiedy useEffect() zachowuje sie jak componentWillUnmont()?",
+        "short_answer": null,
+        "long_answer": "Jak zwrocimy funkcję z useEffect().",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6501,
+        "question": "Co przyjmuje i zwraca useEffect()?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6502,
+        "question": "Ile razy mozna uzyc useEffect i useState w komponencie funkcyjnym?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6503,
+        "question": "Kiedy useEffect() zachowuje sie jak componentDidMount)?",
+        "short_answer": null,
+        "long_answer": "przy pierwszym renderze",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6504,
+        "question": "useEffect przy kazdym renderze sie wywoluje, czyli subsktybujemy sie za kazdym renderem",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6505,
+        "question": "Custom hooki => useSomeFunckName()",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6506,
+        "question": "Co pomyslec jak funkcja zaczyna sie na \"use\"? useWindowWidth() ?",
+        "short_answer": null,
+        "long_answer": "ma jakis stan w sobie",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6507,
+        "question": "Jak różni się w działaniu useState() z setState()? Np jesli dzialamy na tablicy",
+        "short_answer": null,
+        "long_answer": "Nie musisz używać kilku zmiennych stanu. Zmienne stanu mogą równie dobrze przechowywać obiekty i tablice, więc wciąż możesz grupować powiązane dane. Jednakże, w przeciwieństwie do metody this.setState w klasie, aktualizowanie zmiennej stanu zawsze nadpisuje jej wartość, zamiast scalać stare i nowe wartości.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6508,
+        "question": "Co to efekty uboczne?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6509,
+        "question": "Gdzie powinno sie uzywac efektow ubocznych jak mamy komponent klasowy?",
+        "short_answer": null,
+        "long_answer": "w lifecycle methodach: componentDidMount i componentDidUpdate ",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6510,
+        "question": "Jak dzielimy efekty uboczne?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6511,
+        "question": "Kiedy wywoływane są efekty w hookach?",
+        "short_answer": null,
+        "long_answer": "Zamiast myśleć w kategoriach „montowania” i „aktualizacji”, być może łatwiej będzie ci zrozumieć, że efekty wykonywane są „po wyrenderowaniu”. React daje ci gwarancję, że drzewo DOM zostanie zaktualizowane zanim wywoła efekty",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6512,
+        "question": "Gdzie sprzątamy efekty uboczne? np odsubsktybowanie sie?",
+        "short_answer": null,
+        "long_answer": "W hookach zwracajac funkcje w useEffect, a w klasie w componentDidUnmount().",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6513,
+        "question": "Dlaczego efekty działają przy każdej aktualizacji? Czyli faza sprzatania za kazdym renderem ...",
+        "short_answer": null,
+        "long_answer": "Jak props będzie się zmieniał w czasie i nie uwzględnimy tego w componentDidUpdate() to zle sie zasubsktybujemy. W hooku useEffect faza sprzatania jest przy kazdym renderze, wiec nie grozi nam ten wyciek",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6514,
+        "question": "Jak bede chcial uzyc \"if\" z hookiem to jak to zrobic?",
+        "short_answer": null,
+        "long_answer": "Uzyc w srodku hooka",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6515,
+        "question": "Czym jest wlasny hook?",
+        "short_answer": null,
+        "long_answer": "Funkcja ktora uzywa zdefiniowanych hookow",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6516,
+        "question": "Co mogę zrobić z hookami, czego nie można było zrobić z klasami?",
+        "short_answer": null,
+        "long_answer": "Tworzyc wlasne hooki i dzieki temu code reuse robic",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6517,
+        "question": "Dlaczego uzywanie SynteticEvent w React'cie jest spoko?",
+        "short_answer": null,
+        "long_answer": "React normalizes events so that they have consistent properties across different browsers.",
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 124,
+    "title": "pytania - AWS.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6540,
+        "question": "Co to AWS KMS?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6518,
+        "question": "Co to AZ?",
+        "short_answer": null,
+        "long_answer": "Availability zone - to dyskretne datacenter.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6519,
+        "question": "Jakie mamy 2 rodzaje serwisów?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6520,
+        "question": "Co mówi Regional Table?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6521,
+        "question": "Co to IAM?",
+        "short_answer": null,
+        "long_answer": "Serwis AWS, całe security tutaj jest. Userzy, Role itd",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6522,
+        "question": "Jeden IAM User na osobe",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6523,
+        "question": "Jeden IAM Rola na aplikację",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6524,
+        "question": "Co to AMI?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6525,
+        "question": "Co to ENI?",
+        "short_answer": null,
+        "long_answer": "Interfejs sieciowy, mozna go przepisywac innym maszynom łatwo",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6526,
+        "question": "Co to Cross Zone Load Balancing?",
+        "short_answer": null,
+        "long_answer": "Że będzie rzucać klienta między AZ. Jak wyłączone to tylko w jednej zonie będzie działał.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6527,
+        "question": "Co to Connection Draining?",
+        "short_answer": null,
+        "long_answer": "Czas, podczas którego dokańczamy \"in-flight requesty\", gdy kontener jest unhealthy albo sie wylacza. Podczas tego stanu kontenera \"draining\" requesty są przekierowywane do innych kontenerow.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6528,
+        "question": "Jak sie nazywa Connection Draining w CLB load balancerze?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6529,
+        "question": "Jak sie nazywa Connection Draining w ALB i NLB load balancerze?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6530,
+        "question": "Co to ASG?",
+        "short_answer": null,
+        "long_answer": "Są darmowe, mogą tworzyć instancje jak sie zrobią unhealthy (automatycznie zterminuje je i stworzy nowa instancje).",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6531,
+        "question": "Kiedy załącza się connection draining?",
+        "short_answer": null,
+        "long_answer": "Jak scale in jest ASG kasuje nam instancję.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6532,
+        "question": "Jakie są 3 rodzaje Auto scaling policies?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6533,
+        "question": "O co chodzi w Target Tracking Scaling?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6534,
+        "question": "Co to SNI?",
+        "short_answer": null,
+        "long_answer": "Serwer z certyfikatami SSL/TLS.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6535,
+        "question": "Jaki mają scope EBS Volume?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6536,
+        "question": "Jaka jest roznica miedzy EBC a Instance Store?",
+        "short_answer": null,
+        "long_answer": "Instance Store to cała maszyna na raku, szybsza, EBC to wirtualny dysk, musza przez siec dane leciec, wolniejszy przez to.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6537,
+        "question": "Co to EFS?",
+        "short_answer": null,
+        "long_answer": "Dysk z zasięgiem across AZ.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6538,
+        "question": "Czy w EFS instancje EC2 sharuja dane z niego?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6539,
+        "question": "Co to AWS RDS",
+        "short_answer": null,
+        "long_answer": "serwis do robienia bazy danych",
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 125,
+    "title": "pytania - js.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6541,
+        "question": "Co zwróci funkcja?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6542,
+        "question": "Co zwróci funkcja?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6543,
+        "question": "Co to funkcja wyższego rzędu (ang. higher-order function)?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6544,
+        "question": "Jak jest zrobiony polimorfizm w js?",
+        "short_answer": null,
+        "long_answer": "\"Each object has a private property which holds a link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. \"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6545,
+        "question": "Czy wszystkie obiekty dziedzicza po Object?",
+        "short_answer": null,
+        "long_answer": "Nearly all objects in JavaScript are instances of Object which sits on the top of a prototype chain.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6546,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6547,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6548,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6549,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6550,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6551,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6552,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6553,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6554,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6555,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6556,
+        "question": "Co to prototype-based inheritance?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6557,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6558,
+        "question": "Czy w JS jest cos takiego jak instancja?",
+        "short_answer": null,
+        "long_answer": "Formalnie nie, bo nie ma rozroznienia na klasy i instancje, sa tylko obiekty. O obiektach, ktore zostaly stworzone za pomoca pewnej funkcji prototypowej mozemy powiedziec nieformalnie, ze to jest instancja.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6559,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6560,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6561,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6562,
+        "question": null,
+        "short_answer": null,
+        "long_answer": "DOCZYTAC",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6563,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6564,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6565,
+        "question": "Czy  new Employee to to samo co new Employee()",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6566,
+        "question": "Jaka jest różnica między __proto__ [[Prototype]] i prototype?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6567,
+        "question": "W czym jest __proto__ a w czym jest prototype?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6568,
+        "question": "[[prototype]] vs __proto__",
+        "short_answer": null,
+        "long_answer": "[[Prototype]] to podobno link miedzy instancja p1 i Person.prototype, czyli p1.__proto__ albo Object.getPrototypeOf(p1)",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6569,
+        "question": "p1.__proto__ albo Object.getPrototypeOf(p1)",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6570,
+        "question": "czy __proto__ jest dla funkcji czy dla obiektu?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6571,
+        "question": "czy jak wrzucimy do Person.prototype.kolor = 5 to czy instancje to dostana?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6572,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6573,
+        "question": "Jak fajnie uzyc destructuring assignment w argumencie funkcji?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6574,
+        "question": "Jak wysłać tablicę w formularzu?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6575,
+        "question": "Co się stanie ze stanem przy refreshu?",
+        "short_answer": null,
+        "long_answer": "Jak się chce zachować stan, to trzeba go jakoś zapisać czymś",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6576,
+        "question": "Dlaczego korzystając z Link po zmianie strony stan w reduxie się nie zresetował?",
+        "short_answer": null,
+        "long_answer": "Nie wiem, ale tak jest. Tak jest pewnie zaimplementowany Link.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6577,
+        "question": "Jak zachować stan reduxa po zmianie urla? Dlaczego używać Link z react-router-dom zamiast po prostu <a>?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6578,
+        "question": "Po co uzywac Link z react-router-dom?",
+        "short_answer": null,
+        "long_answer": "Żeby nie robić refresha strony, bo się usunie cały stan. Cały VirtualDOM się chyba od nowa przerenderuje.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6579,
+        "question": "Co to Currying?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6580,
+        "question": "Gdzie wykonywac fetche do bazy? W actionCreatorach, czy w reducerach?",
+        "short_answer": null,
+        "long_answer": "W action creatorach raczej. Bo reducery powinny byc pure funkcjami.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6581,
+        "question": "Co to jest weakly typed programming language i czego JS nim jest?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6582,
+        "question": "Czy JS moze wchodzic w interakcje z filesystemem na moim kompie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6583,
+        "question": "Co sie stanie: const some = foo() || returnsHehe() ?",
+        "short_answer": null,
+        "long_answer": "Zwraca pierwszą \"truthy\" wartosc. Czyli jak foo() zwroci Truthy to hehe() sie nawet nie wykona",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6584,
+        "question": "Co sie stanie: logger() && batch() ?",
+        "short_answer": null,
+        "long_answer": "wykona sie wszystko? i zostanie zwrocona ostatnia wartosc",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6585,
+        "question": "czy to jest ok? const obj = { someProp }",
+        "short_answer": null,
+        "long_answer": "To jest skrot dla const obj = { someProp: someProp }",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6586,
+        "question": "jak rozszerzamy klase, ale nie zrobimy konstruktora to czy konstuktor super() sie wykona?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6587,
+        "question": "Kiedy fieldy sa tlumaczone na propertisy w obiekcie?",
+        "short_answer": null,
+        "long_answer": "Dopiero po uzyciu konstruktora rodzica -> super();",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6588,
+        "question": "Jak mozna obejsc bindowanie, zeby funkcja uzyla this.prop z obiektu ktorego stworzylismy instancję, a nie np. z buttona ktory zostal uzyty na 'onclick'?",
+        "short_answer": null,
+        "long_answer": "addEventListener('click', console.log(() => this.prop)); this odwoluje sie do instancji, a nie do buttona dzieki uzyciu arrow functiona",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6589,
+        "question": "Co to Object.getOwnPropertyDescriptors(person)?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6590,
+        "question": "Kiedy trzeba uzyc super() w nawiazaniu do propertisow klasy?",
+        "short_answer": null,
+        "long_answer": "super() przed uzyciem propertisa, np. super(); this.name = 'name'",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6591,
+        "question": "czy kazdy obiekt w js ma prototype?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6592,
+        "question": "Czy funkcje maja prototype?",
+        "short_answer": null,
+        "long_answer": "bo funkcje to tez obiekty",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6593,
+        "question": "Czy prototype ma prototype?",
+        "short_answer": null,
+        "long_answer": "bo to tez jest obiekt, kazdy obiekt musi miec prototype",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6594,
+        "question": "Na co wskazuje Object.prototype?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6595,
+        "question": "Gdzie jest dostepne __proto__ a gdzie prototype?",
+        "short_answer": null,
+        "long_answer": "prototype jest dostepne w construktor functions. Jezeli uzyjemy tej funkcji z \"new\" na poczatku, to to co kryje sie pod foo.prototype bedzie przypisane jako __proto__ w obiekcie ktory stworzymy. Natomiast __proto__ ma KAZDY obiekt w JS. Jezeli nie znajdzie sie cos w stworzonym obiekcie, to jest szukane w obj.__proto__ itd obj.__proto__.__proto__ az trafi na null, czyli Object.prototype.__proto__ == null",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6596,
+        "question": "Czy Object jest rozszerzeniem Function? eg. Object extends Function?",
+        "short_answer": null,
+        "long_answer": "Object.__proto__ == Function.prototype",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6597,
+        "question": "Jakie sa dwie najwazniejsze roznice uzywania Constructor functions i Class?",
+        "short_answer": null,
+        "long_answer": "Z defaultu w CF metody sa enumerable, nie jest wlaczony \"strict mode\". Natomiast w klasach metody nie sa enumerable, a strict mode jest z defaultu wlaczony.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6598,
+        "question": "Co to jest Closure?",
+        "short_answer": null,
+        "long_answer": "A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6599,
+        "question": "Co to Partial Application?",
+        "short_answer": null,
+        "long_answer": "Partial Application: The process of applying a function to some of its arguments.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6600,
+        "question": "Co to HOC?",
+        "short_answer": null,
+        "long_answer": "Funkcja ktora przyjmuje lub zwraca funkcję.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6601,
+        "question": "Co sie stanie i dlaczego?",
+        "short_answer": null,
+        "long_answer": "Wszystkie event handlery są przypisane do \"val i\". Stworzy sie 10 event handlerow i wyswietli sie ostatnia wartosc 10 razy. Tak by bylo jakby bylo bez 2 funkcji. Dzieki 2 funkcjom robimy za kazdy razem nowy \"kontekst lexykalny\" przez co bedzie ok, czyli event handlery dla roznych wartosci.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6602,
+        "question": "Dlaczego w Javie nie ma Closures?",
+        "short_answer": null,
+        "long_answer": "In order to support this feature you need to have first-class functions which java does not support.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6603,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6604,
+        "question": "Co to first class functions?",
+        "short_answer": null,
+        "long_answer": "first-class functions, meaning that functions are treated like any other first-class object — they can be stored in variables, passed around, returned from other functions, and even hold their own properties.",
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 126,
+    "title": "pytania - java.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6605,
+        "question": "What is lambda?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6606,
+        "question": "Can inner class have static method?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6607,
+        "question": "Czy Runnable to interfejs funkcyjny?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6608,
+        "question": "Czym jest interfejs funkcyjny?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6609,
+        "question": "O co chodzi z variable capture w lambdach?",
+        "short_answer": null,
+        "long_answer": "Jak użyjemy zmiennej lokalnej w lambcie z klasy obejmujacej lambde, to nie mozemy jej zmoenic potem jak lambda sie skonczy, bo sie nie skompiluje kod.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6610,
+        "question": "Java reflection opisana",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6611,
+        "question": "Co to RMI?",
+        "short_answer": null,
+        "long_answer": "Można za pomocą tego API wywoływać komendy klas na innej maszynie.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6612,
+        "question": "Czy mozna uzywac referencji na abstract klase w kodzie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6613,
+        "question": "Jak zaimplementowałem endpoint Challenge?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6614,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6615,
+        "question": "Jakie znaki trzeba eskejpowac?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6616,
+        "question": "O czym trzeba pamietac tworzac @Beany w Springu?",
+        "short_answer": null,
+        "long_answer": "\"Most servlets start a separate thread for each incoming request and Spring isnt an exception to that. You need to make sure that the shared beans are thread safe. Otherwise Spring takes care of the rest.\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6617,
+        "question": "O czym trzeba pamietac tworzac asynchroniczne metody wewnatrz controllera? Zwiazane z Principalem",
+        "short_answer": null,
+        "long_answer": "Since the SecurityContext is thread-bound, if you want to do any background processing that calls secure methods (for example, with @Async), you need to ensure that the context is propagated.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6618,
+        "question": "Po co jest Authentication?",
+        "short_answer": null,
+        "long_answer": "Trzymane sa tu prawa uzytkownika, jego nazwa",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6619,
+        "question": "How to Processing Secure Methods Asynchronously?",
+        "short_answer": null,
+        "long_answer": "https://www.baeldung.com/spring-async",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6620,
+        "question": "Gdzie mozna dac adnotacje?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6621,
+        "question": "Po czym dziedzicza wszystkie adnotacje?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6622,
+        "question": "Czy Annotation nadpisuje toString() i hashcode()?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6623,
+        "question": "Jak zadeklarowac default value w definicji adnotacji?",
+        "short_answer": null,
+        "long_answer": "int val() default 9000;",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6624,
+        "question": "Jaka jes zaleta Single-Member annotations?",
+        "short_answer": null,
+        "long_answer": "ale jedyna wartosc musi sie nazywac int value(); => @MyAnno(123)",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6625,
+        "question": "Kiedy mozemy jeszcze uzyc single-member annotations shortcuta?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6626,
+        "question": "Jakie sa restrykcje dla adnotacji?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6627,
+        "question": "Kiedy dwie adnotacje mozemy nazwac repeating?",
+        "short_answer": null,
+        "long_answer": "Jak maja taka sama nazwe @Author ->",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6628,
+        "question": "Czy jest wielokrotne dziedziczenie dla interfejsu?",
+        "short_answer": null,
+        "long_answer": "RegisterableDataUrlMapper extends DataUrlMapper, Extension {}",
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 127,
+    "title": "test.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6629,
+        "question": "Czy case klasy sa immutable?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6630,
+        "question": "Czy można stworzyć instancję klasy bez \"new\"?",
+        "short_answer": null,
+        "long_answer": "Ale case klase już tak, bo to taka faktorka.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6631,
+        "question": "Jak porównywane są klasy a jak case klasy?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6632,
+        "question": "Czym są obiekty?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6633,
+        "question": "Jak działa dziedziczenie w Scali?",
+        "short_answer": null,
+        "long_answer": "Rozszerzamy jedną klasę i wiele traitów",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6634,
+        "question": "Co ma lepszego trait niz interface w Javie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6635,
+        "question": "Czy traity moga miec default implementacje metod?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6636,
+        "question": "Czy traity moga miec parametry?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6637,
+        "question": "Czy obiekty moga miec parametry?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6638,
+        "question": "Gdzie znajduja sie metody equals, hashCode, toString?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6639,
+        "question": "Co to Unit?",
+        "short_answer": null,
+        "long_answer": "to pusty nawias \"()\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6640,
+        "question": "Co musi zrobic kazda funkcja i co ma do tego Unit?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6641,
+        "question": "Czym jest AnyRef jak odpalamy Scale w Javie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6642,
+        "question": "Czy mozna castowac Floata do Longa?",
+        "short_answer": null,
+        "long_answer": "casting is unidirectional",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6643,
+        "question": "Czy jest Nothing?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6644,
+        "question": "Czym jest Null?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6645,
+        "question": "Czy Nothing jest podtypem Null?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6646,
+        "question": "Po co jest Null jak mamy Nothing?",
+        "short_answer": null,
+        "long_answer": "Żeby zapewnić kompatybilność z innymi językami jvm'a,",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6647,
+        "question": "Gdzie w klasie jest zamieszczony default konstruktor?",
+        "short_answer": null,
+        "long_answer": "np class Point(var x: Int, var y: Int)",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6648,
+        "question": "Czy konstruktor moze miec defaultowe wartosci?",
+        "short_answer": null,
+        "long_answer": "tak samo jak w javascripcie to dziala, np. class Point(var x: Int = 0, var y: Int = 0)\r\n",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6649,
+        "question": "Jak uzyc defaultowego x i swojego y?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6650,
+        "question": "Czym jest def y_= (newValue: Int): Unit = {\r\n    if (newValue < bound) _y = newValue else printWarning\r\n  } ?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6651,
+        "question": "Jak uzyc settera? Syntaxowe pytanie",
+        "short_answer": null,
+        "long_answer": "Normalnie point.x = 1 i zostanie automatycznie uzyty",
+        "reference_resources": []
+      }
+    ]
+  },
+  {
+    "@class": "com.zuber.organizeit.Model.Deck",
+    "deck_id": 128,
+    "title": "pytania - spring.csv",
+    "creator": null,
+    "some_prop": null,
+    "flashcards": [
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6678,
+        "question": "W jakiej paczce znajduje sie JPA?",
+        "short_answer": null,
+        "long_answer": "Zobacz opis paczki i klasy jakie się w niej znajdują",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6679,
+        "question": "Jakie są interfejsy w JPA?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6652,
+        "question": "Jak się używa JPQL i HQL? Gdzie co i po co?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6653,
+        "question": "Co to HQL?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6654,
+        "question": "Jak dopisać custom metody do CustomRepo implements CrudRepository<> ?",
+        "short_answer": null,
+        "long_answer": "Trzeba zrobić abstract klase. Interface jak się zrobi, to hibernate próbuje nadpisać metody i jest lipa. Przykład w projekcie songmate.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6655,
+        "question": "Co oznacza kod 401 HTTP?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6656,
+        "question": null,
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6657,
+        "question": "Czym jest JPA?",
+        "short_answer": null,
+        "long_answer": "JPA należy rozumieć, jako zbiór interfejsów, które muszą być zaimplementowane, aby przeprowadzać operacje na bazach danych z poziomu kodu Javy. JPA samo w sobie nie jest w stanie wykonywać operacji na bazach danych",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6658,
+        "question": "Co to JPQL?",
+        "short_answer": null,
+        "long_answer": "To część specyfikacji JPA. Ma składnie podobną do SQL, ale to nie to samo.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6659,
+        "question": "RDBMS",
+        "short_answer": null,
+        "long_answer": "Relational Database Management System",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6660,
+        "question": "JDBC Architecture",
+        "short_answer": null,
+        "long_answer": "Two layers: JDBC API and JDBC Driver API:",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6661,
+        "question": "JDBC API",
+        "short_answer": null,
+        "long_answer": "application-to-JDBC Manager connection",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6662,
+        "question": "JDBC Driver API",
+        "short_answer": null,
+        "long_answer": "JDBC Manager-to-Driver Connection",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6663,
+        "question": "Gdzie znajduje sie JDBC API?",
+        "short_answer": null,
+        "long_answer": "java.sql and javax.sql are the primary packages for JDBC 4.0. Javax to paczki z Javy EE. Od JDBC 3 javax.sql jest czescia paczki java.sql wiec wyjebongo. Nadal jest javax.sql zeby bylo backward compatibile",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6664,
+        "question": "Co robi Driver Manager?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6665,
+        "question": "Czy driver manager jest klasą?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6666,
+        "question": "Jaka jest obecnie najnowsza wersja JDBC?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6667,
+        "question": "Z jakiego JDBC korzystam w pliku PostgresConf w songmacie?",
+        "short_answer": null,
+        "long_answer": "Jest specyfikacja JDBC dostepna w paczkach java.sql i javax.sql. Dodatkowo Spring ma chyba jakąś swoją implementacje JDBC. Zobacz jakie są paczki zaimportowane w pliku. -> import org.springframework.boot.jdbc.DataSourceBuilder; Czyli korzystam z Spring-data-jdbc.\n",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6668,
+        "question": "Co to RDBMS?",
+        "short_answer": null,
+        "long_answer": "Silniki baz danych np. HSQL Database Engine,MySQL,PostgreSQL",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6669,
+        "question": "Czy Spring-Data JPA używa pod maską Hibernate?",
+        "short_answer": null,
+        "long_answer": "JPA to tylko specyfikacja. Potrzebuje implementującego ją providera, żeby śmigało.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6670,
+        "question": "Czy Spring-Data JPA to JPA?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6671,
+        "question": "Jaka jest różnica pomiędzy Spring-Data JPA a JPA?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6672,
+        "question": "Jaka jest przewaga JPA nad JDBC?",
+        "short_answer": null,
+        "long_answer": "W JDBC musimy sami swoje zapytania pisać. W JPA tworzy się komende findUserById(Long id) i implementacja w czasie kompilowania zamienia metodę na zapytania specyficzne dla danego vendora. Vendor jest określony wcześniej, stąd można to zrobić.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6673,
+        "question": "Gdzie JPA sie nie sprawdzi?",
+        "short_answer": null,
+        "long_answer": "If you want to do something more than findById() or save, you must go through hell:",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6674,
+        "question": "Co to JPA Criteria API?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6675,
+        "question": "How to switch prod db and dev db nicely? Using Spring's @Profiles?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6676,
+        "question": "Jaka jest najnowsza wersja Javy EE?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6677,
+        "question": "Częścią jakiej specyfikacji są adnotacje @Entity?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6680,
+        "question": "Co implementują providerzy baz danych w JPA?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6681,
+        "question": "Z jakich API korzysta Hibernate do łączenia z bazą danych?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6682,
+        "question": "Co to Criteria API?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6683,
+        "question": "Co wstrzykujemy jak działamy z JPA?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6684,
+        "question": "Co wstrzykujemy jak działamy z JDBC?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6685,
+        "question": "Co wstrzykujemy jak działamy z Hibernate?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6686,
+        "question": "Jak można tworzyć dynamicznie klasy?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6687,
+        "question": "Co to custom Implementations for Spring Data Repositories?\n",
+        "short_answer": null,
+        "long_answer": "Jesli query jest zbyt zaawansowane i findByName() nie wystarczy, mozemy pisac swoje implementacje query. Musimy zrobic custom interface, custom interface Impl (musi byc ten postfix) i jak robimy ",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6688,
+        "question": "Czy EnableJpaRepositories jest z defaultu włączane?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6689,
+        "question": "Jak dziala EnableJpaRepositories? Jaki ma scope?",
+        "short_answer": null,
+        "long_answer": "Dajemy to przy klasie konfiguracyjnej oznaczonej jako @Configuration, zeby zadzialalo. Szuka beanow w tej paczce, w ktorej jest ta klasa konfiguracyjna. Jesli chcemy, zeby szukalo w innej paczce, to wskazujemy paczke w parametrze basePackages=\"nazwa paczki\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6690,
+        "question": "Is Hibernate persistence provider?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6691,
+        "question": "Jak zainicjalizowac baze danych za pomoca jsona?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6692,
+        "question": "Co ma Spring JPA czego nie ma Spring JDBC?",
+        "short_answer": null,
+        "long_answer": "It doesn't provide cache, lazy loading, write-behind, or many other features of JPA",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6693,
+        "question": "Czy Spring JDBC wspiera derived queries?",
+        "short_answer": null,
+        "long_answer": "Spring Data JDBC does not support derived queries. This means that we can't just write the method name and expect that Spring Data JDBC generates the query.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6694,
+        "question": "Jakie dwa API ma Hibernate?",
+        "short_answer": null,
+        "long_answer": "Native API hibernejta i api JPA. Hibernate jest starsze niz specyfikacja JPA, dlatego wczesniej napisano native API (przestarzale, raczej nie uzywac).",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6695,
+        "question": "Czym jest Hibernate względem JPA?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6696,
+        "question": "Czym jest problem Object-Relational Impedance Mismatch?",
+        "short_answer": null,
+        "long_answer": "To problemy z 5 rzeczami mapując model z relacyjnej bazy danych na model obiektowy w javie. Granularity, Subtypes, Identity, Associations, Data navigation",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6697,
+        "question": "Czy Hibernate potrafi odtworzyc associacje, relacje, dziedziczenie miedzy obiektami?",
+        "short_answer": null,
+        "long_answer": "Hibernate enables you to develop persistent classes following natural Object-oriented idioms including inheritance, polymorphism, association, composition, and the Java collections framework.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6698,
+        "question": "Dlaczego Hibernate > JDBC?",
+        "short_answer": null,
+        "long_answer": "lazy initialization, numerous fetching strategies and optimistic locking",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6699,
+        "question": "W jakiej paczce znajduje sie Hibernate?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6700,
+        "question": "Co robi classloader i jak?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6701,
+        "question": "Czy Hibernate korzysta z Java Reflection?",
+        "short_answer": null,
+        "long_answer": "\"Hibernate needs to create objects for you, using Java Reflection. \"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6702,
+        "question": "Dlaczego na diagramie jpa-hibernate nie ma DataSource?",
+        "short_answer": null,
+        "long_answer": "Bo ono wystepuje w JDBC, zasila je. Hibernate/JPA dziala na JDBC prawdopodobnie(bo chyba moze na czyms innym), dlatego miedzy wierszami gdzies nizej bedzie JDBC razem z DataSource.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6703,
+        "question": "Jak Spring Data JPA rozni sie od JPA?",
+        "short_answer": null,
+        "long_answer": "Usuwa dużo boiler-plate'u, bo uzywamy adnotacji, zamiast sami ustawiac parametry",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6704,
+        "question": "Co to Spring JPA Projections?",
+        "short_answer": null,
+        "long_answer": "Jak nie zmieniamy danych, a tylko je odczytujemy to uzywajac DTO projections jest szybciej entity projections",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6705,
+        "question": "Jak sie robi pagination w JPA?",
+        "short_answer": null,
+        "long_answer": "Za pomocą interface'u Pageable, bardzo proste",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6706,
+        "question": "W czym pomagaja EntityGraphs z JPA?",
+        "short_answer": null,
+        "long_answer": "Pomaga odtworzyc asocjacje obiejtu. Nie musimy robic oddzielnych query po klasy z asocjacji.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6707,
+        "question": "Czy w Spring JPA mozna uzywac procedur/funkcji z bazy danych?",
+        "short_answer": null,
+        "long_answer": "tak i jest to jednoznaczne z uzyciem odnotacji @Procedure na metodzie, ez max",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6708,
+        "question": "Jaka jest autokonfiguracja sping security?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6709,
+        "question": "Co robi @Bean UserDetailsService?",
+        "short_answer": null,
+        "long_answer": "Tu są trzymane informacje o użytkownikach, przy czym korzysta się w autoryzacji i uwierzytelnieniu",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6710,
+        "question": "Ile metod ma AuthenticationManager?",
+        "short_answer": null,
+        "long_answer": "Authentication authenticate(Authentication authentication) throws AuthenticationException;",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6711,
+        "question": "Czy AuthenticationManager jest interfejsem?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6712,
+        "question": "Do czego służy WWW-Authenticate i co to?",
+        "short_answer": null,
+        "long_answer": "To header, który wysyła server, żeby poinformować klienta jakie uwierzytelnienie jest zaimplementowane.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6713,
+        "question": "Co zwróci AuthenticationManager jak podamy invalid input?",
+        "short_answer": null,
+        "long_answer": "Jak nie będzie mógł zadecydować zwróci null",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6714,
+        "question": "Co zwróci AuthenticationManager jak przejdziemy uwierzytelnienie?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6715,
+        "question": "Czym jest ProviderManager?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6716,
+        "question": "Co ma więcej AuthenticationProvider?",
+        "short_answer": null,
+        "long_answer": "Pozwala ona klientowy sprawdzić, czy serwer wspiera żądaną metodę uwierzytelnienia",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6717,
+        "question": "Czy AuthenticationProvider jest interfejsem?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6718,
+        "question": "Co sie stanie jak wszystkie AuthenticationProvidery w chainie zwroca null?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6719,
+        "question": "Co robi ProviderManager jak nie rozpoznaje metody uwierzylnienia?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6720,
+        "question": "Co zrobi ProviderManager jak wszystkie AuthenticationProvidery w chainie zwroca null?",
+        "short_answer": null,
+        "long_answer": "Oddeleguje do parenta decyzje, ktorym inicjalizowalismy w konstruktorze ProviderManagera",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6721,
+        "question": "Co robi AuthenticationManagerBuilder?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6722,
+        "question": "Są authManagery globalne i lokalne. Jak sie je tworzy?",
+        "short_answer": null,
+        "long_answer": "Globalnego sie wstrzykuje @Autowired, lokalnego @Override",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6723,
+        "question": "Czym jest global AuthManager?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6724,
+        "question": "Co jest odpowiednikiem ProviderManagera i AuthProvidera w Access Controll?",
+        "short_answer": null,
+        "long_answer": "AccessDecisionManager tak samo jak ProviderManager deleguje decyzje do chaina AccessDecisionVoterow",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6725,
+        "question": "Czy Filter jest interfejsem? Ile ma metod? Z jakiej jest paczki?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6726,
+        "question": "Po co jest ConfigAtribute? Jakie ma metody i co robia? Czy to klasa?",
+        "short_answer": null,
+        "long_answer": "Ma jedną metodę, która zwraca Stringa. W tym Stringu wrzucamy Role, ktore sa niezbedne, zeby dostac sie do resourcea, ktory jest broniony przez AccessDecisionVotera. Wykorzystuje sie ten interfejs w AccessDecisionManagerze i AccessDecisionVoterze",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6727,
+        "question": "Co to klasa AffirmativeBased?",
+        "short_answer": null,
+        "long_answer": "Rozszerza AccessDecisionManagera. Jesli jakis voter zwroci prawde, to dostep jest udzielany.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6728,
+        "question": "Jak przychodzi request do serwera ze spring sec, to ile FilterChainow bedzie maczalo w nim palce?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6729,
+        "question": "Czy Spring Security miesci sie w jednym Filtrze?",
+        "short_answer": null,
+        "long_answer": "\"Spring Security is installed as a single Filter in the chain, and its concrete type is FilterChainProxy, for reasons that we cover soon.\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6730,
+        "question": "Czy Filtry w Springu sa @Beanami?",
+        "short_answer": null,
+        "long_answer": "\" the security filter is a @Bean in the ApplicationContext\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6731,
+        "question": "Czy FilterChainProxy implementuje javax.servlet.Filter? Co sie w nim znajduje?",
+        "short_answer": null,
+        "long_answer": "\"It is the FilterChainProxy that contains all the security logic arranged internally as a chain (or chains)\"",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6732,
+        "question": "Co trzeba zrobic, zeby stworzyc CustomFilter?",
+        "short_answer": null,
+        "long_answer": "The fact that all filters internal to Spring Security are unknown to the container is important, especially in a Spring Boot application, where, by default, all @Beans of type Filter are registered automatically with the container. So if you want to add a custom filter to the security chain, you need to either not make it be a @Bean or wrap it in a FilterRegistrationBean that explicitly disables the container registration.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6733,
+        "question": "Jest różnica jak czy chcemy zrobić Filtr dla wszystkich requestow, czy tylko dla okreslonych endpointow",
+        "short_answer": null,
+        "long_answer": "Zwiazane z tym czy Filtr powinien byc @Beanem oznaczonym jako @Component czy nie",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6734,
+        "question": "Co robi @EnableGlobalMethodSecurity(securedEnabled = true)?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6735,
+        "question": "Co pozytywnego wynika z Anonymous Authentication w Springu?",
+        "short_answer": null,
+        "long_answer": "W SecurityContextHolderze trzymany jest dzieki temu obiekt Authentication, a nie null. Dzieki temu nie będzie NullPointerException jak będziemy chcieli go użyć.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6736,
+        "question": "Po co jest Access-Control-Allow-Credentials header?",
+        "short_answer": null,
+        "long_answer": "Mówi, czy pozwala na wysyłanie w requestach ciasteczek z innych Originów, niż do tego,  z którym obecnie gadamy.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6737,
+        "question": "Dlaczego u Matta nie trzeba bylo robic @cross origin (allowCredentials = \"true\"), zeby bylo wysylane JSESSION?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6738,
+        "question": "Jak zmapowac Authorities z oAuth2.0 providera?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6739,
+        "question": "Co robią @RegisteredOAuth2AuthorizedClient(\"spotify\") OAuth2AuthorizedClient authorizedClient,\n@AuthenticationPrincipal OAuth2User oauth2User i czym sie roznia?",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6740,
+        "question": "JUNIT",
+        "short_answer": null,
+        "long_answer": null,
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6741,
+        "question": "czego uzywa sie do odpalania testow w JUnit 5 i 4?",
+        "short_answer": null,
+        "long_answer": "In contrast to the competing Runner, TestRule, and MethodRule extension points in JUnit 4, the JUnit Jupiter extension model consists of a single, coherent concept: the Extension API. Note, however, that Extension itself is just a marker interface.",
+        "reference_resources": []
+      },
+      {
+        "@class": "com.zuber.organizeit.Model.Flashcard",
+        "fc_id": 6742,
+        "question": "Jak zarejestrowac Extention? 3 Sposoby",
+        "short_answer": null,
+        "long_answer": "Extensions can be registered declaratively via @ExtendWith, programmatically via @RegisterExtension, or automatically via Java’s ServiceLoader mechanism.",
+        "reference_resources": []
+      }
+    ]
+  }
+]

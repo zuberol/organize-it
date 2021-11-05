@@ -23,7 +23,6 @@ import java.util.List;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Flashcard implements Serializable {
 
-    public final static String ID_SEQ_NAME = "flashcard_seq";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

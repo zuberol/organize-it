@@ -17,6 +17,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://85.222.6.237:3000"})
 @RequestMapping("/api")
@@ -34,9 +36,9 @@ public class FlashcardsController {
         this.referenceResourcesRepository = referenceResourcesRepository;
     }
 
-    @GetMapping("/deck")
+    @GetMapping(value = "/deck", produces = APPLICATION_JSON_VALUE)
     public Deck getDeck(@RequestParam Long deckId) {
-        return decksRepository.getOne(deckId);
+        return decksRepository.getById(deckId);
     }
 
     @GetMapping("/decks")

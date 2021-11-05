@@ -25,12 +25,12 @@ public class DbConf {
     public InitializingBean initDB() {
         return () -> {
             Task parent = Task.builder()
-                    .note("n 0 old parent note")
+                    .description("n 0 old parent note")
                     .isRoot(true)
                     .subTasks(
                             List.of(
                             Task.builder()
-                                    .note("n 1 child id 2 note")
+                                    .description("n 1 child id 2 note")
                                     .subTasks(List.of())
                                     .tags(List.of())
                                     .timeEstimates(
@@ -41,10 +41,10 @@ public class DbConf {
                                     ).build()
                             ,
                             Task.builder()
-                                    .note("n 1 child id 3 note")
+                                    .description("n 1 child id 3 note")
                                     .subTasks(List.of(
                                             Task.builder()
-                                                    .note("n 2 child id 4 note")
+                                                    .description("n 2 child id 4 note")
                                                     .subTasks(List.of())
                                                     .tags(List.of())
                                                     .timeEstimates(
@@ -57,7 +57,7 @@ public class DbConf {
                                             Task.builder()
                                                     .taskId(null)
                                                     .isRoot(false)
-                                                    .note("n 2 child id 4 note")
+                                                    .description("n 2 child id 4 note")
                                                     .subTasks(List.of())
                                                     .tags(List.of())
                                                     .timeEstimates(

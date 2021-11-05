@@ -1,0 +1,22 @@
+
+## PostgreSQL
+spring:
+  sql:
+    init:
+      data-locations: classpath*:data-prod.sql
+      mode: always
+
+  datasource:
+    url: jdbc:postgresql://localhost:8081/organizeit
+    username: organizeit
+    password: organizeit
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        schema_update:
+        unique_constraint_strategy: RECREATE_QUIETLY
+    defer-datasource-initialization: true
+

@@ -43,12 +43,12 @@ public class JpaRelatedTest {
             return () -> {
                 Task parent = Task.builder()
                         .isRoot(true)
-                        .note("old parent note")
+                        .description("old parent note")
                         .tags(List.of())
                         .subTasks(
                         List.of(
-                                Task.builder().note("child 1 note").build(),
-                                Task.builder().note("child 2 note").build()
+                                Task.builder().description("child 1 note").build(),
+                                Task.builder().description("child 2 note").build()
                         )
                 ).build();
                 taskRepository.save(parent);

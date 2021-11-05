@@ -1,34 +1,5 @@
 
 
-
-
--- init entity sequences TODO refactor that, make validation on entity definitions
-
--- drop sequence if exists flashcard_seq cascade;
--- drop sequence if exists deck_seq cascade;
--- drop sequence if exists task_seq cascade;
---
--- create sequence if not exists flashcard_seq start 1;
--- create sequence if not exists deck_seq start 1;
--- create sequence if not exists task_seq start 1;
--- create sequence if not exists reference_resource_seq start 1;
---
---
-
-
-
--- insert into tasks (note, task_id, parent_task_task_id) values ('nauczyc sie AWS', nextval('task_seq'), null);
--- insert into tasks (note, task_id, parent_task_task_id) values ('zdeplojowac przykladowa apke w AWSie', nextval('task_seq'), 1);
--- insert into tasks (note, task_id, parent_task_task_id) values ('zrobic bigos', nextval('task_seq'), 1);
--- insert into tasks (note, task_id, parent_task_task_id) values ('ogarnac EC2', nextval('task_seq'), 2);
--- insert into tasks (note, task_id, parent_task_task_id) values ('ogarnac role', nextval('task_seq'), 2);
--- insert into tasks (note, task_id, parent_task_task_id) values ('ogarnac code pipeline', nextval('task_seq'), 2);
---
--- insert into tasks (note, task_id, parent_task_task_id) values ('jedzenie', nextval('task_seq'), 1);
--- insert into tasks (note, task_id, parent_task_task_id) values ('zjesc obiad', nextval('task_seq'), 6);
--- insert into tasks (note, task_id, parent_task_task_id) values ('zjesc sniadanie', nextval('task_seq'), 6);
-
-
 --https://stackoverflow.com/questions/18533625/copy-multiple-csv-files-into-postgres
 create or replace procedure migrate(
     files_dir_path TEXT
@@ -68,7 +39,6 @@ as '
 
     end;
 ';
-call migrate('/var/lib/postgresql/sheets');
 
 
 
@@ -87,16 +57,21 @@ as '
             LOOP
                 select deck_id into last_deck_id from decks where title like row_to_migrate.deck_title;
                 if not found then
-                    execute ''insert into decks(deck_id, title) values ($1, $2)'' using nextval(''deck_seq''), row_to_migrate.deck_title;
+                    execute ''insert into decks(deck_id, title) values ($1, $2)'' using nextval(''decks_deck_id_seq''), row_to_migrate.deck_title;
                     select deck_id into last_deck_id from decks where title like row_to_migrate.deck_title;
                 end if;
 
 
-                execute ''insert into flashcards (fc_id, question, long_answer) values ($1, $2, $3)'' using nextval(''flashcard_seq''), row_to_migrate.question, row_to_migrate.long_answer;
-                execute ''insert into decks_flashcards (deck_deck_id, flashcards_fc_id) values ($1, $2)'' using last_deck_id, currval(''flashcard_seq'') ;
+                execute ''insert into flashcards (fc_id, question, long_answer, short_answer) values ($1, $2, $3, $4)'' using nextval(''flashcards_fc_id_seq''), row_to_migrate.question, row_to_migrate.long_answer, row_to_migrate.short_answer;
+                execute ''insert into decks_flashcards (deck_deck_id, flashcards_fc_id) values ($1, $2)'' using last_deck_id, currval(''flashcards_fc_id_seq'');
+
+                execute ''insert into reference_resources (res_id, dtype, reference_url) values ($1, $2, $3)'' using nextval(''reference_resources_res_id_seq''), 1, row_to_migrate.ref_url;
+                execute ''insert into flashcards_reference_resources (flashcard_fc_id, reference_resources_res_id) values ($1, $2)'' using currval(''flashcards_fc_id_seq''), currval(''reference_resources_res_id_seq'') ;
             END LOOP;
 
 
     end;
 ';
+
+call migrate('/var/lib/postgresql/sheets');
 call migrateToTables();

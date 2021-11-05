@@ -38,7 +38,7 @@ Jak można tworzyć dynamicznie klasy?,,Java Reflection,,https://www.baeldung.co
 Czy EnableJpaRepositories jest z defaultu włączane?,nie,bez tego hibernate nie wstrzyknie implementacji,,,,
 Jak dziala EnableJpaRepositories? Jaki ma scope?,,,"Dajemy to przy klasie konfiguracyjnej oznaczonej jako @Configuration, zeby zadzialalo. Szuka beanow w tej paczce, w ktorej jest ta klasa konfiguracyjna. Jesli chcemy, zeby szukalo w innej paczce, to wskazujemy paczke w parametrze basePackages=""nazwa paczki""",,,
 Is Hibernate persistence provider?,tak,"""Spring with JPA, using Hibernate as a persistence provider.""",,https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa,,
-Jak zainicjalizowac baze danych za pomoca jsona?,,zamiast data-psql.sql mamy jsona,,https://www.baeldung.com/spring-data-jpa-repository-populators,,
+Jak zainicjalizowac baze danych za pomoca jsona?,,zamiast data-prod.sql mamy jsona,,https://www.baeldung.com/spring-data-jpa-repository-populators,,
 Co ma Spring JPA czego nie ma Spring JDBC?,,,"It doesn't provide cache, lazy loading, write-behind, or many other features of JPA",https://www.baeldung.com/spring-data-jdbc-intro,,
 Czy Spring JDBC wspiera derived queries?,,,Spring Data JDBC does not support derived queries. This means that we can't just write the method name and expect that Spring Data JDBC generates the query.,https://www.baeldung.com/spring-data-jdbc-intro,,
 Jakie dwa API ma Hibernate?,,,"Native API hibernejta i api JPA. Hibernate jest starsze niz specyfikacja JPA, dlatego wczesniej napisano native API (przestarzale, raczej nie uzywac).",https://stackoverflow.com/questions/20820880/hibernate-native-vs-hibernate-jpa,,

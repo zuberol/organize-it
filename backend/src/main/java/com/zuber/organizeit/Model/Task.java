@@ -31,10 +31,19 @@ public class Task {
     Long taskId;
 
     @Builder.Default
-    String note = "";
+    String name = "";
+
+    @Builder.Default
+    String description = "";
 
     @Builder.Default
     boolean isRoot = false;
+
+    @Builder.Default
+    boolean isDone = false;
+
+    @Builder.Default
+    boolean isArchived = false;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},

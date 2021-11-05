@@ -19,11 +19,11 @@ public class Project {
     @JsonProperty("project_id")
     private Long id;
 
-    String title;
+    String name;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @Builder.Default
-    Task rootTask = Task.builder().note("What's poppin?").build();
+    Task rootTask = Task.builder().description("What's poppin?").build();
 
     String description;
 

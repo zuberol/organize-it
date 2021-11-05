@@ -66,7 +66,7 @@ export default function PlayFlashcardsPage() {
           <StyledParagraph active={[showAnswer, currentFlashcard.reference_resources]} centered>
             <hr/>
             <p>Refs:</p>
-            {currentFlashcard.reference_resources.map((ref, index) => <p key={index}>{ref.caption}</p>)}
+            {currentFlashcard.reference_resources.map((ref, index) => <a href={ref.reference_url} key={index}>{ref.reference_url}</a>)}
           </StyledParagraph>
         </div>
         <div className="flashcard__buttons">
