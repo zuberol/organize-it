@@ -14,7 +14,7 @@ TASK_PARENT_PATH=null
 while getopts ":n:p:d:" arg; do
 	[[ $OPTARG =~ ^- ]] && echo "Argument \"${arg}\" can't start with: \"-\". Skipping..." && exit $INVALID_ARGUMENT;
   case $arg in
-    n) NAME=$OPTARG; LEGAL_CHARS=${NAME//[^a-zA-Z0-9]/_}; TASK_FILE_CAPTION=${LEGAL_CHARS:0:25}; ;;
+    n) NAME=$OPTARG; LEGAL_CHARS=${NAME//[^a-zA-Z0-9]/_}; TASK_FILE_CAPTION=${LEGAL_CHARS:0:50}; ;;
 		d) DESCRIPTION=$OPTARG;;
 		p) TASK_PARENT_PATH=${ORGANIZE_IT_PROJECTS}/${OPTARG/#\//};;
 		?) echo "Argument was empty. Skipping..." && exit $INVALID_ARGUMENT; ;;
