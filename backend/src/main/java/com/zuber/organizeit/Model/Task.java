@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -16,18 +17,35 @@ import java.util.List;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter
 @Builder
-@AllArgsConstructor
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "task_id")
 @Table(name = "tasks")
 public class Task {
 
+    public Task() {}
+
+    public Task(String name) {
+        this.name = name;
+    }
+
+    public Task(Long taskId, String name, String description, boolean isRoot, boolean isDone, boolean isArchived, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates) {
+        this.taskId = taskId;
+        this.name = name;
+        this.description = description;
+        this.isRoot = isRoot;
+        this.isDone = isDone;
+        this.isArchived = isArchived;
+        this.subTasks = subTasks;
+        this.tags = tags;
+        this.timeEstimates = timeEstimates;
+    }
+
     @Id
     @Column(name = "task_id")
-    @JsonProperty("task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @NotNull // todo czy to dziala? co to robi jak sie wrzuci null'a?
+    @JsonProperty("task_id")
     Long taskId;
 
     @Builder.Default
@@ -53,17 +71,20 @@ public class Task {
     @OrderBy("taskId DESC")
     List<Task> subTasks = new LinkedList<>();
 
-    @OneToMany(
-            cascade = {CascadeType.ALL}
-    )
-    @Builder.Default
+    @OneToMany(cascade = {CascadeType.ALL})
     List<Tag> tags = new LinkedList<>();
 
     @Embedded
     @Builder.Default
     TimeEstimates timeEstimates = TimeEstimates.builder().build();
 
-
+    @Override
+    public String toString() {
+        return "Task{" +
+                "name='" + name + '\'' +
+                ", subTasks=" + subTasks +
+                '}';
+    }
 }
 
 

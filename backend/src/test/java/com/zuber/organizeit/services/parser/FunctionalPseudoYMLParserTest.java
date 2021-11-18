@@ -1,4 +1,4 @@
-package com.zuber.organizeit.integration;
+package com.zuber.organizeit.services.parser;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.regex.Pattern;
 
-public class YamlParser {
+import static org.junit.jupiter.api.Assertions.*;
 
+class FunctionalPseudoYMLParserTest {
     int countLeadingTabs(String s) {
         return countLeadingTabs(s, 0);
     }
@@ -30,5 +30,4 @@ public class YamlParser {
 
         Assertions.assertEquals(2, countLeadingTabs("\t\t"));
     }
-
 }

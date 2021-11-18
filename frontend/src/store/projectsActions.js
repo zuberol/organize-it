@@ -41,7 +41,7 @@ export const saveTask = updateTask;
 
 export const fetchProjects = () => {
   return (dispatch) => {
-    fetch('http://localhost:8080/api/projects', {
+    fetch('http://localhost:8080/api/dev/devDTO/projects', {
       method: 'GET',
       mode: 'cors'
     })
