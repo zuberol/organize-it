@@ -11,7 +11,11 @@
 			widget projektami z wyswietlonym progresem
 			widget z taskami wykonanymi dzisiaj
 				dodanie archiwizacji taskow
+
 		filtrowanie drzewa
+            backend bedzie wysylal indexy taskow w odpowiedzi na filtr+filtr+filtr get
+            frontend bedzie pokazywal taski tylko te co dostanie indexy
+                nie takie fajne ale zadziala narazie
 
         zaczac robic codziennie flashcardy przez pol godziny
             mechanizm losowania flashcardow

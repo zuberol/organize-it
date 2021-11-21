@@ -8,14 +8,13 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 @Embeddable
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter @Setter
+@Builder @AllArgsConstructor @Getter @EqualsAndHashCode
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class TimeEstimates {
     @Builder.Default Timestamp whenCreated = new Timestamp(Instant.now().toEpochMilli());
     @Builder.Default Timestamp timeEstimated = new Timestamp(0);
     @Builder.Default Timestamp timeSpent = new Timestamp(0);
     @Builder.Default int accFactor = 1;
+
+    protected TimeEstimates() {}
 }

@@ -1,4 +1,5 @@
 import DecksPage from './pages/DecksPage/DecksPage';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
 import AddMealPage from './pages/AddMealPage/AddMealPage';
 import PlayFlashcardsPage from './pages/PlayFlashcardsPage/PlayFlashcardsPage';
 import ProjectsDashboardPage from './pages/ProjectsPage/ProjectsDashboardPage';
@@ -18,7 +19,7 @@ export default function Routes() {
   <BrowserRouter>
     <Route path="/" component={Header}></Route>
     <Switch>
-    <Route exact path="/" component={DecksPage} />
+    <Route exact path="/" component={DashboardPage} />
     <Route exact path="/decks" component={DecksPage} />
     <Route exact path="/play-flashcards/:deck_id" component={PlayFlashcardsPage}></Route>
     <Route exact path="/dev" component={DevPage} />

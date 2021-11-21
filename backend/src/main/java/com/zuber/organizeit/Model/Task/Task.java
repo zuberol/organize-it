@@ -6,6 +6,7 @@ import com.zuber.organizeit.Model.Tag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.*;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Table(name = "tasks")
 public class Task {
 
-    public Task() {}
+    protected Task() {}
 
     public Task(Long id) {this.taskId = id;}
 
@@ -28,7 +29,7 @@ public class Task {
         this.name = name;
     }
 
-    public Task(Long taskId, String name, String description, boolean isProject, boolean isDone, boolean isArchived, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates) {
+    public Task(Long taskId, String name, String description, boolean isProject, boolean isDone, boolean isArchived, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates, String locallySavedURI) {
         this.taskId = taskId;
         this.name = name;
         this.description = description;
@@ -38,53 +39,58 @@ public class Task {
         this.subTasks = subTasks;
         this.tags = tags;
         this.timeEstimates = timeEstimates;
+        this.locallySavedURI = locallySavedURI;
     }
 
     @Id
     @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("task_id")
-    Long taskId;
+    private Long taskId;
 
     @Builder.Default
-    String name = "";
+    private String name = "";
 
     @Builder.Default
-    String description = "";
+    private String description = "";
 
     @Builder.Default
-    boolean isProject = false;
+    private boolean isProject = false;
 
     @Builder.Default
-    boolean isDone = false;
+    private boolean isDone = false;
 
     @Builder.Default
-    boolean isArchived = false;
+    private boolean isArchived = false;
 
 
     @ManyToMany(
 //            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            cascade = CascadeType.ALL//,
+//            cascade = CascadeType.ALL,
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
 //            orphanRemoval = true // todo chyba ok
     )
     @Builder.Default
     @OrderBy("taskId DESC")
-    List<Task> subTasks = new LinkedList<>();
+    private List<Task> subTasks = new LinkedList<>();
 
     @OneToMany(cascade = {CascadeType.ALL})
-    List<Tag> tags = new LinkedList<>();
+    private List<Tag> tags = new LinkedList<>();
 
     @Embedded
     @Builder.Default
-    TimeEstimates timeEstimates = TimeEstimates.builder().build();
+    private TimeEstimates timeEstimates = TimeEstimates.builder().build();
 
+    @Column(unique = true) //todo
+    private String locallySavedURI; //todo to Path
 
-    public static Task fromDto(TaskDto taskDto) {
-        return Task.builder().build().modify(taskDto);
+    public static Task fromDto(TaskTO taskTO) {
+        return Task.builder().build().modify(taskTO);
     }
 
-    public TaskDto toDTO() {
-        return TaskDto.builder()
+    public TaskTO toDTO() {
+        return TaskTO.builder()
                 .name(getName())
                 .taskId(getTaskId())
                 .description(getDescription())
@@ -93,23 +99,23 @@ public class Task {
                 .build();
     }
 
-    public Task modify(TaskDto taskDTO) {
-        Optional.ofNullable(taskDTO.taskId).ifPresent(this::setTaskId);
-        Optional.ofNullable(taskDTO.name).ifPresent(this::setName);
-        Optional.ofNullable(taskDTO.isArchived).ifPresent(this::setArchived);
-        Optional.ofNullable(taskDTO.description).ifPresent(this::setDescription);
-        Optional.ofNullable(taskDTO.isDone).ifPresent(this::setDone);
-        Optional.ofNullable(taskDTO.subtaskIds)
+    public Task modify(TaskTO taskTO) {
+        Optional.ofNullable(taskTO.taskId).ifPresent(this::setTaskId);
+        Optional.ofNullable(taskTO.name).ifPresent(this::setName);
+        Optional.ofNullable(taskTO.isArchived).ifPresent(this::setArchived);
+        Optional.ofNullable(taskTO.description).ifPresent(this::setDescription);
+        Optional.ofNullable(taskTO.isDone).ifPresent(this::setDone);
+        Optional.ofNullable(taskTO.subtaskIds)
                 .map(Task.filterNulls).ifPresent(this::setSubTasks);
         return this;
     }
 
 
-    public HashSet<TaskDto> nonArchivedTasks() {
+    public HashSet<TaskTO> nonArchivedTasks() {
         return nonArchivedTasks(new HashSet<>());
     }
 
-    private HashSet<TaskDto> nonArchivedTasks(HashSet<TaskDto> tasks) {
+    private HashSet<TaskTO> nonArchivedTasks(HashSet<TaskTO> tasks) {
         if(isNotArchived()){
             tasks.add(toDTO());
             subTasks.forEach(subtask -> nonArchivedTasks(tasks));
@@ -135,6 +141,42 @@ public class Task {
                     .filter(Objects::nonNull)
                     .map(Task::new)
                     .collect(Collectors.toList());
+
+//    public Task mergeNotNull(Task toMerge) {
+////        Optional.ofNullable(toMerge.taskId).ifPresent(this::setTaskId);
+//        Optional.ofNullable(toMerge.name).ifPresent(this::setName);
+//        Optional.ofNullable(toMerge.description).ifPresent(this::setDescription);
+//        Optional.ofNullable(toMerge.locallySavedURI).ifPresent(this::setLocallySavedURI);
+//        Optional.ofNullable(toMerge.subTasks).ifPresent(this::setSubTasks);
+//        Optional.of(toMerge.isArchived).ifPresent(this::setArchived);
+//        Optional.of(toMerge.isDone).ifPresent(this::setDone);
+//        Optional.of(toMerge.isProject).ifPresent(this::setProject);
+//        return this;
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return isProject == task.isProject &&
+                isDone == task.isDone &&
+                isArchived == task.isArchived &&
+                Objects.equals(taskId, task.taskId) &&
+                Objects.equals(name, task.name) &&
+                Objects.equals(description, task.description) &&
+                Objects.equals(subTasks, task.subTasks) &&
+                Objects.equals(tags, task.tags) &&
+                Objects.equals(timeEstimates, task.timeEstimates) &&
+                Objects.equals(locallySavedURI, task.locallySavedURI);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(taskId, name, description, isProject, isDone, isArchived, subTasks, tags, timeEstimates, locallySavedURI);
+    }
+
+
 }
 
 

@@ -2,7 +2,7 @@ package com.zuber.organizeit.controllers;
 
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.Model.Task.TaskDto;
+import com.zuber.organizeit.Model.Task.TaskTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,36 +24,36 @@ public class ProjectsController {
     }
 
     @GetMapping("/projects")
-    public List<TaskDto> getProjects() {
+    public List<TaskTO> getProjects() {
         return entityDao.findAllNonArchivedProjects();
     }
 
     @GetMapping(value = "/task")
-    public ResponseEntity<TaskDto> getTask(@RequestBody TaskDto taskDTO) {
+    public ResponseEntity<TaskTO> getTask(@RequestBody TaskTO taskTO) {
         return ResponseEntity.of(
-                Optional.ofNullable(taskDTO).flatMap(entityDao::findById)
+                Optional.ofNullable(taskTO).flatMap(entityDao::findById)
         );
     }
 
     @PostMapping(value = "/task", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<TaskDto> modifyTask(@RequestBody TaskDto taskDTO) { // todo validate
+    public ResponseEntity<TaskTO> modifyTask(@RequestBody TaskTO taskTO) { // todo validate
         return ResponseEntity.of(
-                Optional.ofNullable(taskDTO).flatMap(entityDao::modifyTask)
+                Optional.ofNullable(taskTO).flatMap(entityDao::modifyTask)
         );
     }
 
     @Transactional
     @PostMapping(value = "/task/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<TaskDto> createProject(@RequestBody TaskDto taskDTO) { // todo validate
+    public ResponseEntity<TaskTO> createProject(@RequestBody TaskTO taskTO) { // todo validate
         return ResponseEntity.of(
-                Optional.ofNullable(taskDTO).flatMap(entityDao::createProject)
+                Optional.ofNullable(taskTO).flatMap(entityDao::createProject)
         );
     }
 
     @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<TaskDto> appendNewSubtask(@RequestBody TaskDto taskDTO) { // todo validate
+    public ResponseEntity<TaskTO> appendNewSubtask(@RequestBody TaskTO taskTO) { // todo validate
         return ResponseEntity.of(
-               Optional.ofNullable(taskDTO).flatMap(entityDao::appendNewSubtask)
+               Optional.ofNullable(taskTO).flatMap(entityDao::appendNewSubtask)
         );
     }
 

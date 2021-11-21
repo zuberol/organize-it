@@ -1,9 +1,7 @@
 package com.zuber.organizeit.Model.Repository;
 
 import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.Model.Task.TaskDto;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.zuber.organizeit.Model.Task.TaskTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,15 +24,27 @@ public class EntityDAO {
         this.em = em;
     }
 
-    public Optional<TaskDto> findById(TaskDto taskDto) {
-        return ofNullable(taskDto)
-                .map(TaskDto::getTaskId)
+    public Task merge(Task task) {
+        return em.merge(task);
+    }
+
+    public void delete(Task task) {
+        taskRepository.delete(task);
+    }
+
+    public Optional<TaskTO> findById(TaskTO taskTO) {
+        return ofNullable(taskTO)
+                .map(TaskTO::getTaskId)
                 .flatMap(id -> ofNullable(em.find(Task.class, id)))
                 .filter(Task::isNotArchived)
                 .map(Task::toDTO);
     }
 
-    public List<TaskDto> findAllNonArchivedProjects() {
+    public Optional<Task> findByLocallySavedURI(String uri) {
+        return taskRepository.findTaskByLocallySavedURI(uri);
+    }
+
+    public List<TaskTO> findAllNonArchivedProjects() {
         return taskRepository.findAll()
                 .stream()
                 .filter(Task::isProject).filter(Task::isNotArchived)
@@ -42,24 +52,24 @@ public class EntityDAO {
                 .collect(Collectors.toList());
     }
 
-    public Optional<TaskDto> modifyTask(TaskDto dto) {
+    public Optional<TaskTO> modifyTask(TaskTO dto) {
         return Optional.of(dto)
-                .flatMap(taskDto -> ofNullable(taskDto.getTaskId()))
+                .flatMap(taskTO -> ofNullable(taskTO.getTaskId()))
                 .flatMap(taskRepository::findById)
                 .map(task -> task.modify(dto))
                 .map(Task::toDTO);
     }
 
-    public Optional<TaskDto> appendNewSubtask(TaskDto dto) {
+    public Optional<TaskTO> appendNewSubtask(TaskTO dto) {
         return Optional.of(dto)
-                .map(TaskDto::getTaskId)
+                .map(TaskTO::getTaskId)
                 .flatMap(taskRepository::findById)
                 .map(Task::withNewSubtask)
                 .map(taskRepository::save)
                 .map(Task::toDTO);
     }
     
-    public Optional<TaskDto> createProject(TaskDto dto) {
+    public Optional<TaskTO> createProject(TaskTO dto) {
         return Optional.of(dto)
                 .map(Task::fromDto)
                 .map(task -> {
@@ -79,4 +89,13 @@ public class EntityDAO {
                 .map(Task::toDTO);
     }
 
+    public Task save(Task task) {
+        return taskRepository.save(task);
+    }
+
+    // czy mozna tu przekazac Optionala? czy jest iterable?
+    // nie mozna, ale Option ze scali juz tak chyba
+    public List<Task> saveAll(Iterable<Task> tasks) {
+        return taskRepository.saveAll(tasks);
+    }
 }

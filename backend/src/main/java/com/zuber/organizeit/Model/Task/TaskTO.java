@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor @Setter // todo remove it later
-public class TaskDto {
+public class TaskTO {
     @Nullable Long taskId;
     @Nullable String name;
     @Nullable String description;

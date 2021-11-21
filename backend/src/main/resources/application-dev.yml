@@ -11,6 +11,8 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     properties:
       show-sql: true
+#      hibernate:
+#        format_sql: true
   h2:
     console:
       enabled: true
