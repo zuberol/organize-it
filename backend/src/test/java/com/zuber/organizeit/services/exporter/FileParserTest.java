@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.parser;
+package com.zuber.organizeit.services.exporter;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,9 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class FunctionalPseudoYMLParserTest {
+class FileParserTest {
     int countLeadingTabs(String s) {
         return countLeadingTabs(s, 0);
     }

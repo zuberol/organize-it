@@ -25,6 +25,7 @@ public class DbConf {
     public InitializingBean initDB() {
         return () -> {
             Task parent = Task.builder()
+                    .name("hehe")
                     .description("n 0 old parent note")
                     .isRoot(true)
                     .subTasks(
@@ -78,7 +79,14 @@ public class DbConf {
                                     ).build()
                     )
             ).build();
+
+            Task doneTask = Task.builder().name("undoneTaskkk")
+                    .isDone(true)
+                    .build();
+
+
             taskRepository.save(parent);
+            taskRepository.save(doneTask);
         };
     }
 }

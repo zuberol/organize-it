@@ -1,6 +1,7 @@
 package com.zuber.organizeit.controllers;
 
 
+import com.zuber.organizeit.Model.Repository.EntityDAO;
 import com.zuber.organizeit.Model.Project;
 import com.zuber.organizeit.Model.Repository.ProjectsRepository;
 import com.zuber.organizeit.Model.Task;
@@ -19,11 +20,13 @@ public class ProjectsController {
 
     TaskRepository taskRepository;
     ProjectsRepository projectsRepository;
+    EntityDAO entityDao;
 
     @Autowired
-    public ProjectsController(TaskRepository taskRepository, ProjectsRepository projectsRepository) {
+    public ProjectsController(TaskRepository taskRepository, ProjectsRepository projectsRepository, EntityDAO entityDao) {
         this.taskRepository = taskRepository;
         this.projectsRepository = projectsRepository;
+        this.entityDao = entityDao;
     }
 
     @GetMapping("/tasks")
@@ -46,6 +49,11 @@ public class ProjectsController {
         taskRepository.delete(task);
     }
 
+    @GetMapping("/project/undone/{projectName}")
+    public List<Task> findUndoneSubTasks(@PathVariable("projectName") String taskName) {
+        return entityDao.findUndoneTasks(taskName);
+    }
+
     @GetMapping("/projects")
     public List<Project> getProjects() {
         return projectsRepository.findAll();
@@ -55,4 +63,5 @@ public class ProjectsController {
     public Project saveProject(Project project) {
         return projectsRepository.save(project);
     }
+
 }

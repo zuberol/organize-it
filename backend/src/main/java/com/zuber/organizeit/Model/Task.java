@@ -1,17 +1,12 @@
 package com.zuber.organizeit.Model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.sun.istack.NotNull;
-import lombok.*;
-import org.springframework.util.Assert;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,13 +24,14 @@ public class Task {
         this.name = name;
     }
 
-    public Task(Long taskId, String name, String description, boolean isRoot, boolean isDone, boolean isArchived, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates) {
+    public Task(Long taskId, String name, String description, boolean isRoot, boolean isDone, boolean isArchived, PriorityPoint priorityPoint, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates) {
         this.taskId = taskId;
         this.name = name;
         this.description = description;
         this.isRoot = isRoot;
         this.isDone = isDone;
         this.isArchived = isArchived;
+        this.priorityPoint = priorityPoint;
         this.subTasks = subTasks;
         this.tags = tags;
         this.timeEstimates = timeEstimates;
@@ -44,7 +40,6 @@ public class Task {
     @Id
     @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull // todo czy to dziala? co to robi jak sie wrzuci null'a?
     @JsonProperty("task_id")
     Long taskId;
 
@@ -62,6 +57,10 @@ public class Task {
 
     @Builder.Default
     boolean isArchived = false;
+
+//    @Builder.Default
+    @Embedded
+    PriorityPoint priorityPoint;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},

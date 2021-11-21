@@ -131,19 +131,22 @@ public class DevController {
 //                new LinkedList<>()
 //        ));
     }
-    @GetMapping("/devDTO/rootTask")
-    Task testDevDTOdummyRootTask() {
-        return DevDTO.getRootTask();
-    }
 
-    @GetMapping("/devDTO/projects")
-    List<Project> testDevDTODummyProjectTest() {
-        return List.of(
-                Project.builder()
-                        .name("Dummy")
-                        .rootTask(DevDTO.getRootTask())
-                .build()
-        );
-    }
+
+
+//    @GetMapping("/devDTO/rootTask")
+//    Task testDevDTOdummyRootTask() {
+//        return DevDTO.getRootTask();
+//    }
+//
+//    @GetMapping("/devDTO/projects")
+//    List<Project> testDevDTODummyProjectTest() {
+//        return List.of(
+//                Project.builder()
+//                        .name("Dummy")
+//                        .rootTask(DevDTO.getRootTask())
+//                .build()
+//        );
+//    }
 
 }

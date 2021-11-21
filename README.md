@@ -11,11 +11,19 @@
 			widget z taskami wykonanymi dzisiaj
 				dodanie archiwizacji taskow
 		filtrowanie drzewa
-		dane z basha do javy
-			parser javy
-				test case
-				regexy w javie
 
+        zaczac robic codziennie flashcardy przez pol godziny
+            mechanizm losowania flashcardow
+
+            
+        ogarnac hibernate?
+            viktora film najpierw
+            https://eventory.cc/event/jdd-2021/space/stream/68537
+
+		code editor
+			react
+				https://github.com/securingsincity/react-ace
+			dopisac parser zeby dzialal z kodem
 
 	nice to have
 		dodac strip() w parserze jak ustawia nazwe taska
@@ -33,6 +41,9 @@
 				rozdzieliloby to concerns'y
 				dostep do DomainEntity bylby przez jakas fasade wtedy, ktora laczylaby te 3 swiaty
 					w apce uzywalbym DomainEntity, wysylal jacksonDTO
+            rozdzielic na taski male
+                dodac embeddedId w oddzielnym/odseparowanym projekcie
+                    podejrzec jak ktos implementuje DDD tym patternem
 			
 			ogarniecie lomboka
 				dodanie lomboka
@@ -72,12 +83,6 @@
 		tool
 			react
 				widget z nastepnym taskiem do wykonania
-			
-
-## done
-	quick quiz hyperlink do strony z powtorzeniami, fiszkami,
-	listy pomysłów e.g. projekty ...
-	
 
 
 ## ideas
@@ -93,8 +98,8 @@ https://stackoverflow.com/questions/49845355/spring-boot-controller-upload-multi
 https://material-ui.com/components/tree-view/
 
 ## Dependencies
- sdkman
- nvm 
+sdkman
+nvm
 https://github.com/nvm-sh/nvm
- nodejs
+nodejs
 nvm install node # "node" is an alias for the latest version
