@@ -6,13 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
-import com.zuber.organizeit.Model.ReferenceResource;
+import com.zuber.organizeit.Model.Flashcard.ReferenceResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -38,5 +37,7 @@ public class JacksonConf {
 //        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class); //todo chyba nie potrzebne
         return objectMapper;
     }
+
+
 
 }

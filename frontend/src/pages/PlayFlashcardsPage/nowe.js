@@ -131,7 +131,6 @@ export default function FlashcardCreator() {
     event.preventDefault();
     setIsModalOpen(false);
 
-    console.log(flashcard);
 
 
     const formData = new FormData();
@@ -142,7 +141,6 @@ export default function FlashcardCreator() {
       'ref_resource_associated_files': files
     }
 
-    console.log(ref_files);
 
     // formData.append('file', document.forms["flashcardForm"].file.files[0])
     formData.append('flashcard', new Blob([JSON.stringify(flashcard)], {

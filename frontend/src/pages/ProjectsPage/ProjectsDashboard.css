@@ -1,10 +1,10 @@
 html {
   justify-self: right;
-  background-color: #F1F7ED;
+  /*background-color: #F1F7ED;*/
 }
 
 .dashboard-wrapper {
-  background-color: seagreen;
+  background-color: white;
   width: 100vw;
   height: 100vh;
 }

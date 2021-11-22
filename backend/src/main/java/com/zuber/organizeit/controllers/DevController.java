@@ -1,18 +1,12 @@
 package com.zuber.organizeit.controllers;
 
-import com.zuber.organizeit.Model.*;
-import com.zuber.organizeit.Model.BookReference;
-import com.zuber.organizeit.Model.ReferenceResource;
-import com.zuber.organizeit.Model.Repository.TaskRepository;
-import com.zuber.organizeit.Model.VideoReference;
-import com.zuber.organizeit.Model.Repository.DecksRepository;
-import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
-import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
+import com.zuber.organizeit.Model.Flashcard.*;
+import com.zuber.organizeit.Model.MultipartTest.RefFileMetadata;
+import com.zuber.organizeit.Model.Repository.*;
+import com.zuber.organizeit.Model.Task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -100,6 +94,54 @@ public class DevController {
 
     }
 
+    @GetMapping("/save/project")
+    public void saveProject() {
+//        Task rootTask = new Task(
+//                null, "some root", false, null,
+//                new LinkedList<>(List.of()),
+//                new LinkedList<>(List.of(new Tag(null, new LinkedList<>(List.of("hehe")))))
+//        );
+//        Task sub1 = new Task(
+//                null, "some sub2", false, null,
+//                new LinkedList<>(List.of()),
+//                new LinkedList<>(List.of(new Tag(null, new LinkedList<>(List.of("heh sub1 sub1 sub1 ve")))))
+//        );
+//        Task sub2 = new Task(
+//                null, "some sub2", false, null,
+//                new LinkedList<>(List.of()),
+//                new LinkedList<>(List.of(new Tag(null, new LinkedList<>(List.of("hehs  sub2 ub2e")))))
+//        );
+//
+//        rootTask.getSubTasks().add(sub1);
+//        rootTask.getSubTasks().add(sub2);
+//        sub1.setParentTask(rootTask);
+//        sub2.setParentTask(rootTask);
+//
+//        projectsRepository.save(new Project(
+//                null,
+//                "with subTasks",
+//                rootTask,
+//                "some with subtasks",
+//                new LinkedList<>()
+//        ));
+    }
 
+
+
+
+//    @GetMapping("/devDTO/rootTask")
+//    Task testDevDTOdummyRootTask() {
+//        return DevDTO.getRootTask();
+//    }
+//
+//    @GetMapping("/devDTO/projects")
+//    List<Project> testDevDTODummyProjectTest() {
+//        return List.of(
+//                Project.builder()
+//                        .name("Dummy")
+//                        .rootTask(DevDTO.getRootTask())
+//                .build()
+//        );
+//    }
 
 }

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { saveTask } from '../../store/projectsActions';
 
 
+// todo broken bo nie korzysta z Task.js
 export default function EditTaskForm(props) {
   const [note, setNote] = useState("");
   const [parentId, setParentId] = useState("");

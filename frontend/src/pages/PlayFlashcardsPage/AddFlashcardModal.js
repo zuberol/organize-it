@@ -33,7 +33,7 @@ export default function AddTaskModal() {
 
   return (
     <>
-      <button type="button"  className="flashcard__button" onClick={() => setIsModalOpen(true)}>
+      <button type="button" className="flashcard__button" onClick={() => setIsModalOpen(true)}>
         <FontAwesomeIcon icon={faStickyNote} />
         <span>new</span>
       </button>

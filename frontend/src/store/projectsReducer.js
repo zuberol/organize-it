@@ -25,7 +25,6 @@ const projectsReducer = ( state = initialProjectsState, action ) => {
       }
     }
     case actionTypes.INIT_PROJECTS: {
-      console.log(action.projects)
       return {
         ...state,
         projects: action.projects

@@ -13,7 +13,7 @@ function ObjectCreationCheck() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(flashcard)
+    // console.log(flashcard)
     //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
     fetch(new URL('/api/dev/multipart', BACKEND_BASE_URL), {
       method: 'POST',
@@ -27,10 +27,10 @@ function ObjectCreationCheck() {
   function handleChange(e, ref_index) {
     const prop = e.target.name;
     const val = e.target.value;
-    console.log({
-      ...flashcard,
-      [prop]: val
-    })
+    // console.log({
+    //   ...flashcard,
+    //   [prop]: val
+    // })
     // setFlashcard({
     //   ...flashcard,
     //   // [e.target.name]: e.target.value

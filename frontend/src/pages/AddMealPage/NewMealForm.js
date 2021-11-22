@@ -8,7 +8,6 @@ import * as actionTypes from '../../store/mealActions';
 
 class NewMealForm extends Component {
   createIngredientInput() {
-    console.log("input created") 
   }
 
   onChangeHandler(event) {
@@ -16,7 +15,6 @@ class NewMealForm extends Component {
   }
 
   sendMealToBackend = () => {
-    console.log('sending ...', this.props.createdMeal)
 
     return fetch(new URL('/meal', BACKEND_BASE_URL),{
       method: 'POST',
@@ -29,7 +27,6 @@ class NewMealForm extends Component {
   }
 
   render() {
-    console.log(this.props.createdMeal.name)
     const ingredientList = this.props.createdMeal.ingredients.map((ingredient, index) => <IngredientForm ingredient={ingredient} key={index} index={index}/>);
     return (
       <form id="mealCreator">
