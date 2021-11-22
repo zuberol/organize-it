@@ -33,7 +33,7 @@ public class JpaRelatedTest {
         InitializingBean sendDatabase() {
             return () -> {
                 Task parent = Task.builder()
-                        .isRoot(true)
+                        .isProject(true)
                         .description("old parent note")
                         .tags(List.of())
                         .subTasks(

@@ -20,15 +20,13 @@ public class DevController {
     DecksRepository decksRepository;
     ReferenceResourcesRepository referenceResourcesRepository;
     TaskRepository taskRepository;
-    ProjectsRepository projectsRepository;
 
     @Autowired
-    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, TaskRepository taskRepository, ProjectsRepository projectsRepository) {
+    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, TaskRepository taskRepository) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
         this.referenceResourcesRepository = referenceResourcesRepository;
         this.taskRepository = taskRepository;
-        this.projectsRepository = projectsRepository;
     }
 
     @GetMapping("/root")
@@ -127,6 +125,7 @@ public class DevController {
 //                new LinkedList<>()
 //        ));
     }
+
 
 
 

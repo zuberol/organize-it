@@ -2,13 +2,11 @@ package com.zuber.organizeit.controllers;
 
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.Model.Task.Project;
-import com.zuber.organizeit.Model.Repository.ProjectsRepository;
-import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.Model.Repository.TaskRepository;
+import com.zuber.organizeit.Model.Task.TaskDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -18,50 +16,45 @@ import java.util.*;
 @RequestMapping("/api")
 public class ProjectsController {
 
-    TaskRepository taskRepository;
-    ProjectsRepository projectsRepository;
     EntityDAO entityDao;
 
     @Autowired
-    public ProjectsController(TaskRepository taskRepository, ProjectsRepository projectsRepository, EntityDAO entityDao) {
-        this.taskRepository = taskRepository;
-        this.projectsRepository = projectsRepository;
+    public ProjectsController(EntityDAO entityDao) {
         this.entityDao = entityDao;
     }
 
     @GetMapping("/tasks")
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
+    public List<TaskDto> getProjects() {
+        return entityDao.findAllNonArchivedProjects();
     }
 
-    @GetMapping(value = "/task/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable("id") Long id) {
-        return ResponseEntity.of(taskRepository.findById(id));
+    @GetMapping(value = "/task")
+    public ResponseEntity<TaskDto> getTask(@RequestBody TaskDto taskDTO) {
+        return ResponseEntity.of(
+                Optional.ofNullable(taskDTO).flatMap(entityDao::findById)
+        );
     }
 
     @PostMapping(value = "/task", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Task saveTask(@RequestBody Task task) {
-        return taskRepository.save(task);
+    public ResponseEntity<TaskDto> modifyTask(@RequestBody TaskDto taskDTO) { // todo validate
+        return ResponseEntity.of(
+                Optional.ofNullable(taskDTO).flatMap(entityDao::modifyTask)
+        );
     }
 
-    @DeleteMapping(value = "/task", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public void deleteTask(@RequestBody Task task) {
-        taskRepository.delete(task);
+    @Transactional
+    @PostMapping(value = "/task/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<TaskDto> createProject(@RequestBody TaskDto taskDTO) { // todo validate
+        return ResponseEntity.of(
+                Optional.ofNullable(taskDTO).flatMap(entityDao::createProject)
+        );
     }
 
-    @GetMapping("/project/undone/{projectName}")
-    public List<Task> findUndoneSubTasks(@PathVariable("projectName") String taskName) {
-        return entityDao.findUndoneTasks(taskName);
-    }
-
-    @GetMapping("/projects")
-    public List<Project> getProjects() {
-        return projectsRepository.findAll();
-    }
-
-    @PostMapping(value = "/project", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public Project saveProject(Project project) {
-        return projectsRepository.save(project);
+    @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<TaskDto> appendNewSubtask(@RequestBody TaskDto taskDTO) { // todo validate
+        return ResponseEntity.of(
+               Optional.ofNullable(taskDTO).flatMap(entityDao::appendNewSubtask)
+        );
     }
 
 }

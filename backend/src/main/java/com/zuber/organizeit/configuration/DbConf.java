@@ -27,7 +27,7 @@ public class DbConf {
             Task parent = Task.builder()
                     .name("hehe")
                     .description("n 0 old parent note")
-                    .isRoot(true)
+                    .isProject(true)
                     .subTasks(
                             List.of(
                             Task.builder()
@@ -57,7 +57,7 @@ public class DbConf {
                                                     ).build(),
                                             Task.builder()
                                                     .taskId(null)
-                                                    .isRoot(false)
+                                                    .isProject(false)
                                                     .description("n 2 child id 4 note")
                                                     .subTasks(List.of())
                                                     .tags(List.of())
