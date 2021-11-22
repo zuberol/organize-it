@@ -1,6 +1,7 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.zuber.organizeit.Model.User.User;
 import com.zuber.organizeit.Model.tests.ExternalEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

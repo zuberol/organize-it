@@ -1,5 +1,4 @@
-package com.zuber.organizeit.Model;
-
+package com.zuber.organizeit.Model.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
@@ -14,11 +13,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-@DiscriminatorValue("5")
-public class CodeReference extends ReferenceResource {
-    String sourceCode;
+@DiscriminatorValue("1")
+public class LinkResource extends ReferenceResource {
 
-    public CodeReference(String sourceCode) {
-        this.sourceCode = sourceCode;
-    }
 }

@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.User;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

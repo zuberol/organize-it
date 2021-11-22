@@ -1,7 +1,9 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Task;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.zuber.organizeit.Model.Tag;
+import com.zuber.organizeit.Model.Task.Task;
 import lombok.*;
 
 import javax.persistence.*;

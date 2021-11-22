@@ -1,12 +1,11 @@
 package com.zuber.organizeit.Model.Repository;
 
-import com.zuber.organizeit.Model.Task;
+import com.zuber.organizeit.Model.Task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class EntityDAO {

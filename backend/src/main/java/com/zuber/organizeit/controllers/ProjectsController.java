@@ -2,9 +2,9 @@ package com.zuber.organizeit.controllers;
 
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.Model.Project;
+import com.zuber.organizeit.Model.Task.Project;
 import com.zuber.organizeit.Model.Repository.ProjectsRepository;
-import com.zuber.organizeit.Model.Task;
+import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

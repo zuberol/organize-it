@@ -1,5 +1,4 @@
-package com.zuber.organizeit.Model;
-
+package com.zuber.organizeit.Model.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
@@ -11,11 +10,11 @@ import javax.persistence.Entity;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
-@DiscriminatorValue("3")
-public class ImageReference extends ReferenceResource {
-    private String referenceUrl;
-    private String imageUri;
+@DiscriminatorValue("4")
+public class BookReference extends ReferenceResource {
+    private String title;
+    private String author;
+    private String page;
 }

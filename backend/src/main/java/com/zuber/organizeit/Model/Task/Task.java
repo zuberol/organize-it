@@ -1,10 +1,12 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Task;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.zuber.organizeit.Model.Tag;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.LinkedList;
@@ -24,14 +26,13 @@ public class Task {
         this.name = name;
     }
 
-    public Task(Long taskId, String name, String description, boolean isRoot, boolean isDone, boolean isArchived, PriorityPoint priorityPoint, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates) {
+    public Task(Long taskId, String name, String description, boolean isRoot, boolean isDone, boolean isArchived, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates) {
         this.taskId = taskId;
         this.name = name;
         this.description = description;
         this.isRoot = isRoot;
         this.isDone = isDone;
         this.isArchived = isArchived;
-        this.priorityPoint = priorityPoint;
         this.subTasks = subTasks;
         this.tags = tags;
         this.timeEstimates = timeEstimates;
@@ -58,9 +59,6 @@ public class Task {
     @Builder.Default
     boolean isArchived = false;
 
-//    @Builder.Default
-    @Embedded
-    PriorityPoint priorityPoint;
 
     @OneToMany(
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
@@ -76,6 +74,12 @@ public class Task {
     @Embedded
     @Builder.Default
     TimeEstimates timeEstimates = TimeEstimates.builder().build();
+
+
+//    @Autowired
+//    StructureManipulator structureManipulator;
+
+
 
     @Override
     public String toString() {

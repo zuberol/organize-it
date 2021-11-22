@@ -1,8 +1,8 @@
 package com.zuber.organizeit.configuration;
 
 import com.zuber.organizeit.Model.Repository.TaskRepository;
-import com.zuber.organizeit.Model.Task;
-import com.zuber.organizeit.Model.TimeEstimates;
+import com.zuber.organizeit.Model.Task.Task;
+import com.zuber.organizeit.Model.Task.TimeEstimates;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Task;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;

@@ -1,21 +1,15 @@
 package com.zuber.organizeit.controllers;
 
 
-import com.zuber.organizeit.Model.*;
+import com.zuber.organizeit.Model.Flashcard.Deck;
+import com.zuber.organizeit.Model.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Repository.DecksRepository;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 

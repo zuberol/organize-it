@@ -6,16 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
-import com.zuber.organizeit.Model.ReferenceResource;
-import com.zuber.organizeit.Model.Tag;
-import org.springframework.boot.json.GsonJsonParser;
-import org.springframework.boot.json.JacksonJsonParser;
+import com.zuber.organizeit.Model.Flashcard.ReferenceResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.regex.Pattern;

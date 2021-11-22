@@ -1,6 +1,6 @@
 package com.zuber.organizeit.services;
 
-import com.zuber.organizeit.Model.Task;
+import com.zuber.organizeit.Model.Task.Task;
 import org.springframework.stereotype.Service;
 
 @Service

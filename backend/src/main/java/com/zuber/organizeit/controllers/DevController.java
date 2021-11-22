@@ -1,17 +1,13 @@
 package com.zuber.organizeit.controllers;
 
-import com.zuber.organizeit.Model.*;
-import com.zuber.organizeit.Model.BookReference;
-import com.zuber.organizeit.Model.ReferenceResource;
+import com.zuber.organizeit.Model.Flashcard.*;
+import com.zuber.organizeit.Model.MultipartTest.RefFileMetadata;
 import com.zuber.organizeit.Model.Repository.*;
-import com.zuber.organizeit.Model.VideoReference;
+import com.zuber.organizeit.Model.Task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.LinkedList;
 import java.util.List;
 
 

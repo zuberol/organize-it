@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model;
+package com.zuber.organizeit.Model.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

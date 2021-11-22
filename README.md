@@ -5,6 +5,7 @@
 - but when learning it's better to make a bunch of shitty apps than one good
 
 ## Roadmap:
+
 	essential
 		widoczny progres
 			widget projektami z wyswietlonym progresem
@@ -44,45 +45,42 @@
             rozdzielic na taski male
                 dodac embeddedId w oddzielnym/odseparowanym projekcie
                     podejrzec jak ktos implementuje DDD tym patternem
-			
 			ogarniecie lomboka
 				dodanie lomboka
 					wywalenie lomboka
 						z klas ktore obecnie uzywam
 						z reszty klas
-					
+            przerobienie drzewa na graf
+                taski z roznych projektow powinny moc byc od siebie zalezne 
+                    np. sprzedanie fotela i zarobienie hajsu moze odblokowac task kupienia nowego snowboardu	
+            obliczanie czasu potrzebnego na zrobienie zadania,
+        sposob  za ktory task sie zabrac?
+            zabierac sie za to co mam ochote?
+             ktore taski trzeba zrobic zeby najwiecej zyskac?
+                ktory task jest wazniejszy?
+                    potrzebne rozroznienie, statystyka, priority pointsy
+                        -np.
+                            ile taskow ten task odblokuje? albo w ilu uczestniczy? 
+                            punkty za kazdy task?
+                                jak przyznawac punkty?
+                                    minor, medium, hard -> 1, 2, 5
 
-	przerobienie drzewa na graf
-		taski z roznych projektow powinny moc byc od siebie zalezne 
-			np. sprzedanie fotela i zarobienie hajsu moze odblokowac task kupienia nowego snowboardu	
-	obliczanie czasu potrzebnego na zrobienie zadania,
-	
-	
-	sposob  za ktory task sie zabrac?
-		zabierac sie za to co mam ochote?
-		 ktore taski trzeba zrobic zeby najwiecej zyskac?
-			ktory task jest wazniejszy?
-				potrzebne rozroznienie, statystyka
-					-np.
-						ile taskow ten task odblokuje? albo w ilu uczestniczy? 
-						punkty za kazdy task?
-							jak przyznawac punkty?
-								minor, medium, hard -> 1, 2, 5
-	tool
-		react
-			wyswietlanie description aktywnego taska
-				widget z focus view taska/projektu  wyswietla sie description, zmienia sie background image
+    minor
+        tool
+            react
+                wyswietlanie description aktywnego taska
+                    widget z focus view taska/projektu  wyswietla sie description, zmienia sie background image
 
-	marginal
-		dodawanie zadań powtarzających się do google callendara (jedno zadanie które wykonujemy codziennie o jednej porze i mamy obliczone ile nam zajmie czasu),
-		podstrona do wprowadzania pytań,
-		planowanie zadan  trzeba co niedziele planowac i wrzucac recznie zadania do wykonania. Wrzucamy z puli zadan.
-		widget z lista z taskami do wykonania ( liscie drzewa )
-			posortowane po high level task
-			
-		tool
-			react
-				widget z nastepnym taskiem do wykonania
+    marginal
+        dodawanie zadań powtarzających się do google callendara (jedno zadanie które wykonujemy codziennie o jednej porze i mamy obliczone ile nam zajmie czasu),
+        podstrona do wprowadzania pytań,
+        planowanie zadan  trzeba co niedziele planowac i wrzucac recznie zadania do wykonania. Wrzucamy z puli zadan.
+        widget z lista z taskami do wykonania ( liscie drzewa )
+            posortowane po high level task
+            
+        tool
+            react
+                widget z nastepnym taskiem do wykonania
 
 
 ## ideas
