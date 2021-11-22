@@ -17,5 +17,4 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findTaskByNameAndIsDoneIsFalse(String taskName);
 //    List<Task> findTaskByNameAndDoneIsFalse(String taskName);
 
-    Optional<Task> findTaskBySavePath(String savePath);
 }
