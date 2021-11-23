@@ -22,11 +22,11 @@ public abstract class ReferenceResource implements Serializable {
     @Column(name = "res_id")
     @JsonProperty("res_id")
     private Long id;
+
     private String caption;
+
     private String comment;
+
     private String referenceUrl;
-//    private Boolean isUrlTypeRef;
-//    private Boolean isBookTypeRef;
-//    private URI uri;
 
 }

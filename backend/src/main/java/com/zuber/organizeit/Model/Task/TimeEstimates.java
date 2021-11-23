@@ -18,5 +18,4 @@ public class TimeEstimates {
     @Builder.Default Timestamp timeEstimated = new Timestamp(0);
     @Builder.Default Timestamp timeSpent = new Timestamp(0);
     @Builder.Default int accFactor = 1;
-
 }

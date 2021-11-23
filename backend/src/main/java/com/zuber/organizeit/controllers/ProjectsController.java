@@ -23,7 +23,7 @@ public class ProjectsController {
         this.entityDao = entityDao;
     }
 
-    @GetMapping("/tasks")
+    @GetMapping("/projects")
     public List<TaskDto> getProjects() {
         return entityDao.findAllNonArchivedProjects();
     }

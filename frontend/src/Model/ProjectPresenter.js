@@ -4,20 +4,17 @@ import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
 
 // todo poprawic z uwzglednieniem class Project
 export default function projectPresenterFactory(project) {
-    // if(project['@class'] === "com.zuber.organizeit.Model.Project") {
         const { name, description } = project;
         return {
             ...project,
             presenter: function () {
                 return (
-                    <div style={{display: 'flex', 'flexDirection': 'row', 'align-items': 'center', margin: '20px'}}>
+                    <div style={{display: 'flex', 'flexDirection': 'column', 'align-items': 'center', margin: '20px'}}>
                         <FontAwesomeIcon icon={faStickyNote} />
-                        {/*<h4>{name}</h4>*/}
-                        <p>{name}</p>
+                        <h4>{name}</h4>
+                        <p>{description}</p>
                     </div>
                 )
             }
         };
-    // } // todo
-    // else return project;
 }

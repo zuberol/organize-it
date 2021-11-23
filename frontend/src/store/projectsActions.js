@@ -41,12 +41,12 @@ export const saveTask = updateTask;
 
 export const fetchProjects = () => {
   return (dispatch) => {
-    fetch('http://localhost:8080/api/dev/devDTO/projects', {
+    fetch('http://localhost:8080/api/projects', {
       method: 'GET',
       mode: 'cors'
     })
     .then(res => res.json())
-    .then(projectsRecords => projectsRecords.map(Project.recordToProject))
+    // .then(projectsRecords => projectsRecords.map(Project.recordToProject))
     .then((projects) => {
       dispatch({type: INIT_PROJECTS, projects: projects});
     })

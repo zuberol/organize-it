@@ -85,6 +85,7 @@ public class Task {
 
     public TaskDto toDTO() {
         return TaskDto.builder()
+                .name(getName())
                 .taskId(getTaskId())
                 .description(getDescription())
                 .subtaskIds(getSubTasks().stream().map(Task::getTaskId).collect(Collectors.toList()))

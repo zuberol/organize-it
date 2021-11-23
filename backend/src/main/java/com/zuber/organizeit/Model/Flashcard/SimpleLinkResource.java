@@ -14,6 +14,6 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @DiscriminatorValue("1")
-public class LinkResource extends ReferenceResource {
+public class SimpleLinkResource extends ReferenceResource {
 
 }
