@@ -24,7 +24,17 @@
 		code editor
 			react
 				https://github.com/securingsincity/react-ace
-			dopisac parser zeby dzialal z kodem
+			    dopisac parser zeby dzialal z kodem
+
+
+        priority
+            nowe taski na szczycie listy
+            dodane priority pushuje do gory listy
+                dodanie przycisku + zeby podbic priority
+                dodac priority na backendzie
+
+        PARSER taskow
+            dodaj roottask na startupie apki jak nie znajdziesz po nazwie
 
 	nice to have
 		dodac strip() w parserze jak ustawia nazwe taska

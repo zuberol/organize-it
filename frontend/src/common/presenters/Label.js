@@ -21,7 +21,7 @@ const Label = styled.button`
 export function Label(captioned) {
     const { name, description } = captioned;
     return (
-        <div style={{display: 'flex', 'flexDirection': 'column', 'align-items': 'center', margin: '20px'}}>
+        <div className="">
             <FontAwesomeIcon icon={faStickyNote} />
             <h4>{name}</h4>
             <p>{description}</p>
