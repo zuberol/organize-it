@@ -2,6 +2,7 @@ package com.zuber.organizeit.services.exporter;
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
 import com.zuber.organizeit.Model.Task.Task;
+import org.apache.commons.fileupload.util.Streams;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Optional.of;
+import static java.util.Optional.ofNullable;
 
 @Service
 public class ExporterService {
@@ -27,17 +32,17 @@ public class ExporterService {
     public void initDb(Collection<Path> dirs) {
         dirs.stream()
                 .map(PseudoYAMLParser::parseDir)
+                .flatMap(Collection::stream)
+//                .peek(System.out::println)
                 .collect(Collectors.toList())
-                .forEach(linkages -> linkages.forEach((task, subtask) -> {
-                    task = saveMergedTask(task);
-                    final Task savedSubtask = saveMergedTask(subtask);
-                    List<Task> filteredSubtasks = task.getSubTasks()
-                            .stream()
-                            .map(replaceOneWith(savedSubtask))
-                            .toList();
-                    task.setSubTasks(filteredSubtasks);
+                .forEach(linkage -> {
+                    Task task = mergeWithPersistedTask(linkage.task());
+                    Task subtask = mergeWithPersistedTask(linkage.subtask());
+                    task.getSubTasks().add(subtask);
                     entityDAO.save(task);
-                }));
+                });
+
+        Integer integer = new Integer(1);
     }
 
     @NotNull
@@ -48,17 +53,29 @@ public class ExporterService {
     }
 
     // todo
-    private Task saveMergedTask(Task task) {
-        Optional<Task> savedTaskOpt = entityDAO.findByLocallySavedURI(task.getLocallySavedURI());
-        if (savedTaskOpt.isPresent()) {
-            Task toMerge = savedTaskOpt.get();
-            Optional.ofNullable(toMerge.getTaskId()).ifPresent(task::setTaskId);
-            Optional.ofNullable(toMerge.getName()).ifPresent(task::setName);
-            Optional.ofNullable(toMerge.getDescription()).ifPresent(task::setDescription);
-            Optional.ofNullable(toMerge.getLocallySavedURI()).ifPresent(task::setLocallySavedURI);
-            Optional.ofNullable(toMerge.getSubTasks()).ifPresent(task::setSubTasks); //todo broken
+    private Task mergeWithPersistedTask(Task taskTO) {
+        Task mergedTask;
+        Optional<Task> taskFromDbOpt = entityDAO.findByLocallySavedURI(taskTO.getLocallySavedURI());
+        if (taskFromDbOpt.isPresent()) {
+            Task taskFromDb = taskFromDbOpt.get();
+            ofNullable(taskTO.getTaskId()).ifPresent(taskFromDb::setTaskId);
+            ofNullable(taskTO.getName()).ifPresent(taskFromDb::setName);
+            ofNullable(taskTO.getDescription()).ifPresent(taskFromDb::setDescription);
+            ofNullable(taskTO.getLocallySavedURI()).ifPresent(taskFromDb::setLocallySavedURI);
+
+//            Stream<Task> subtasksFromTo = taskTO.getSubTasks().stream().map(subtask -> entityDAO.findByLocallySavedURI(subtask.getLocallySavedURI()))
+//                    .flatMap(Optional::stream);
+//            Stream<Task> subtasksFromDb = taskFromDb.getSubTasks().stream();
+//            List<Task> subtasks = Stream.concat(subtasksFromTo, subtasksFromDb).collect(Collectors.toList());
+//            taskFromDb.setSubTasks(subtasks);
+
+            mergedTask = entityDAO.save(taskFromDb);
         }
-        return entityDAO.save(task);
+        else {
+            mergedTask = entityDAO.save(taskTO);
+        }
+        return mergedTask;
     }
+
 
 }

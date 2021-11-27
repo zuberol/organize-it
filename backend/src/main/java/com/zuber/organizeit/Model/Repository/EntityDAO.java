@@ -40,6 +40,10 @@ public class EntityDAO {
                 .map(Task::toDTO);
     }
 
+    public Optional<Task> findById(Long id) {
+        return taskRepository.findById(id);
+    }
+
     public Optional<Task> findByLocallySavedURI(String uri) {
         return taskRepository.findTaskByLocallySavedURI(uri);
     }
@@ -91,6 +95,10 @@ public class EntityDAO {
 
     public Task save(Task task) {
         return taskRepository.save(task);
+    }
+
+    public void persist(Task task) {
+        em.persist(task);
     }
 
     // czy mozna tu przekazac Optionala? czy jest iterable?

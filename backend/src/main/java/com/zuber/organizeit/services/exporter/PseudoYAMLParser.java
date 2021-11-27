@@ -2,7 +2,6 @@ package com.zuber.organizeit.services.exporter;
 
 
 import com.zuber.organizeit.Model.Task.Task;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -67,8 +66,8 @@ public class PseudoYAMLParser {
     }
 
     // dir parse
-    public static HashMap<Task, Task> parseDir(Path dirPath) {
-        HashMap<Task, Task> taskSubtaskLinkages = new HashMap<>();
+    public static HashSet<Linkage> parseDir(Path dirPath) {
+        HashSet<Linkage> taskSubtaskLinkages = new HashSet<>();
         try {
             taskSubtaskLinkages = parseDirThrowable(dirPath);
         } catch (Exception e) {
@@ -77,9 +76,11 @@ public class PseudoYAMLParser {
         return taskSubtaskLinkages;
     }
 
-    private static HashMap<Task, Task> parseDirThrowable(Path dirPath) throws Exception {
+    public record Linkage(Task task, Task subtask){}
+
+    private static HashSet<Linkage> parseDirThrowable(Path dirPath) throws Exception {
         if(!Files.isDirectory(dirPath)) throw new IllegalArgumentException("Not a directory.");
-        HashMap<Task, Task> linkages = new HashMap<>();
+        HashSet<Linkage> linkages = new HashSet<>();
         SimpleFileVisitor<Path> fileVisitor = new SimpleFileVisitor<>() {
 
             @Override
@@ -92,7 +93,7 @@ public class PseudoYAMLParser {
                         .name(file.getFileName().toString())
                         .locallySavedURI(file.toAbsolutePath().toString())
                         .build();
-                linkages.put(task, subTask);
+                linkages.add(new Linkage(task, subTask));
                 return super.visitFile(file, attrs);
             }
 
@@ -106,7 +107,7 @@ public class PseudoYAMLParser {
                         .name(dir.getFileName().toString())
                         .locallySavedURI(dir.toAbsolutePath().toString())
                         .build();
-                linkages.put(task, subTask);
+                linkages.add(new Linkage(task, subTask));
                 return super.preVisitDirectory(dir, attrs);
             }
 
