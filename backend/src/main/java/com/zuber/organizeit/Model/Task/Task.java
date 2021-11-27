@@ -131,8 +131,9 @@ public class Task {
         return !isArchived();
     }
 
-    public static Task withNewSubtask(Task task) {
+    public static Task withNewSubtask(Task task, EntityManager em) {
         task.getSubTasks().add(Task.builder().build());
+        em.persist(task);
         return task;
     }
 

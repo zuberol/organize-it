@@ -65,11 +65,10 @@ public class EntityDAO {
     }
 
     public Optional<TaskTO> appendNewSubtask(TaskTO dto) {
-        return Optional.of(dto)
+         return Optional.of(dto)
                 .map(TaskTO::getTaskId)
                 .flatMap(taskRepository::findById)
-                .map(Task::withNewSubtask)
-                .map(taskRepository::save)
+                .map(task -> Task.withNewSubtask(task, em))
                 .map(Task::toDTO);
     }
     
