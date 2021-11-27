@@ -41,6 +41,7 @@
             dodaj roottask na startupie apki jak nie znajdziesz po nazwie
 
 	nice to have
+        dodac logowanie
 		dodac strip() w parserze jak ustawia nazwe taska
 		dodawanie pytan do quizow 
 			formularz
@@ -100,6 +101,14 @@
 ## ideas
  	dyskryminator taskow  przycisk ktory jak klikniemy to spycha na koniec listy  do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny
 	przycisk w roocie expand all, tylko itemki z pod roota
+
+## inbox
+    co to jest spliterator i jak tego uzywac, do czego?
+    jak dzialac na streamach zeby dobry performance byl?
+        o co chodzi z 
+            short circut optimization?
+            tail optimizationem
+            porownac mozna bytecode
 
 
 

@@ -2,6 +2,7 @@ package com.zuber.organizeit.db;
 
 import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.Task.Task;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -248,6 +249,13 @@ public class JpaRelatedTest {
 //
 //
 //    }
+
+    @Test
+    @Disabled("what happends when we filter modify subtasks with id which doesnt exist?")
+    void howWillHibernateReact(){
+        // todo
+    }
+
 
 
 }
