@@ -81,6 +81,7 @@
                                     minor, medium, hard -> 1, 2, 5
 
     minor
+        api do zliczania treningow biegowych
         tool
             react
                 wyswietlanie description aktywnego taska
