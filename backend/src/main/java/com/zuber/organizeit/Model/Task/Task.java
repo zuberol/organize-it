@@ -2,20 +2,23 @@ package com.zuber.organizeit.Model.Task;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.Tag;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.Optional.ofNullable;
+
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter @Setter
+@Getter @Setter @AllArgsConstructor
 @Builder
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "task_id")
 @Table(name = "tasks")
@@ -29,18 +32,6 @@ public class Task {
         this.name = name;
     }
 
-    public Task(Long taskId, String name, String description, boolean isProject, boolean isDone, boolean isArchived, List<Task> subTasks, List<Tag> tags, TimeEstimates timeEstimates, String locallySavedURI) {
-        this.taskId = taskId;
-        this.name = name;
-        this.description = description;
-        this.isProject = isProject;
-        this.isDone = isDone;
-        this.isArchived = isArchived;
-        this.subTasks = subTasks;
-        this.tags = tags;
-        this.timeEstimates = timeEstimates;
-        this.locallySavedURI = locallySavedURI;
-    }
 
     @Id
     @Column(name = "task_id")
@@ -72,7 +63,7 @@ public class Task {
 //            orphanRemoval = true // todo chyba ok
     )
     @Builder.Default
-    @OrderBy("taskId DESC")
+    @OrderBy("priorityPoint DESC")
     private List<Task> subTasks = new LinkedList<>();
 
     @OneToMany(cascade = {CascadeType.ALL})
@@ -85,8 +76,34 @@ public class Task {
     @Column(unique = true) //todo
     private String locallySavedURI; //todo to Path
 
-    public static Task fromDto(TaskTO taskTO) {
-        return Task.builder().build().modify(taskTO);
+    @Column(name = "priority")
+    @Builder.Default
+    private Long priorityPoint = 1000L;
+
+    public static Task newFromDto(TaskTO taskTO) {
+        return Task.builder().build().modifyBasicData(taskTO);
+    }
+
+    public Task modifyBasicData(TaskTO taskTO) {
+        ofNullable(taskTO.taskId).ifPresent(this::setTaskId);
+        ofNullable(taskTO.name).ifPresent(this::setName);
+        ofNullable(taskTO.isArchived).ifPresent(this::setArchived);
+        ofNullable(taskTO.description).ifPresent(this::setDescription);
+        ofNullable(taskTO.isDone).ifPresent(this::setDone);
+        ofNullable(taskTO.isProject).ifPresent(this::setProject);
+        ofNullable(taskTO.priorityPoint).ifPresent(this::setPriorityPoint);
+
+//        Optional.ofNullable(taskTO.subtaskIds)
+//                .map(Task.filterNulls).ifPresent(this::setSubTasks);
+        return this;
+    }
+
+    public Task setSubtasksFromTO(TaskTO taskTO, TaskRepository repo) {
+        ofNullable(taskTO)
+                .map(TaskTO::getSubtaskIds)
+                .map(repo::findAllById)
+                .ifPresent(this::setSubTasks);
+        return this;
     }
 
     public TaskTO toDTO() {
@@ -95,19 +112,10 @@ public class Task {
                 .taskId(getTaskId())
                 .description(getDescription())
                 .subtaskIds(getSubTasks().stream().map(Task::getTaskId).collect(Collectors.toList()))
+                .isProject(isProject())
+                .priorityPoint(getPriorityPoint())
                 .isDone(isDone())
                 .build();
-    }
-
-    public Task modify(TaskTO taskTO) {
-        Optional.ofNullable(taskTO.taskId).ifPresent(this::setTaskId);
-        Optional.ofNullable(taskTO.name).ifPresent(this::setName);
-        Optional.ofNullable(taskTO.isArchived).ifPresent(this::setArchived);
-        Optional.ofNullable(taskTO.description).ifPresent(this::setDescription);
-        Optional.ofNullable(taskTO.isDone).ifPresent(this::setDone);
-        Optional.ofNullable(taskTO.subtaskIds)
-                .map(Task.filterNulls).ifPresent(this::setSubTasks);
-        return this;
     }
 
 

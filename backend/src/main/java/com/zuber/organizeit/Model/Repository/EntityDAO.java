@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
@@ -60,7 +61,9 @@ public class EntityDAO {
         return Optional.of(dto)
                 .flatMap(taskTO -> ofNullable(taskTO.getTaskId()))
                 .flatMap(taskRepository::findById)
-                .map(task -> task.modify(dto))
+                .map(task -> task.modifyBasicData(dto))
+                .map(task -> task.setSubtasksFromTO(dto, taskRepository))
+                .map(taskRepository::save)
                 .map(Task::toDTO);
     }
 
@@ -73,21 +76,10 @@ public class EntityDAO {
     }
     
     public Optional<TaskTO> createProject(TaskTO dto) {
+
         return Optional.of(dto)
-                .map(Task::fromDto)
-                .map(task -> {
-                    task.setProject(true);
-                    return task;
-                })
-                .map(task -> {
-                    assert dto.getSubtaskIds() != null;
-                    task.setSubTasks(
-                            taskRepository.findAllById(dto.getSubtaskIds())
-                    );
-//                    em.persist(task);
-                    return task;
-                })
-//                .map(em::save)
+                .map(Task::newFromDto)
+                .map(task -> task.setSubtasksFromTO(dto, taskRepository))
                 .map(taskRepository::save)
                 .map(Task::toDTO);
     }

@@ -18,4 +18,6 @@ public class TaskTO {
     @Nullable List<Long> subtaskIds;
     @Nullable Boolean isDone;
     @Nullable Boolean isArchived;
+    @Nullable Boolean isProject;
+    @Nullable Long priorityPoint;
 }

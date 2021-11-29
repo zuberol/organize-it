@@ -13,16 +13,14 @@
 				dodanie archiwizacji taskow
 
 		filtrowanie drzewa
-            backend bedzie wysylal indexy taskow w odpowiedzi na filtr+filtr+filtr get
-            frontend bedzie pokazywal taski tylko te co dostanie indexy
-                nie takie fajne ale zadziala narazie
-
-        zaczac robic codziennie flashcardy przez pol godziny
+			backend bedzie wysylal indexy taskow w odpowiedzi na filtr+filtr+filtr get
+      frontend bedzie pokazywal taski tylko te co dostanie indexy
+				nie takie fajne ale zadziala narazie
+				zaczac robic codziennie flashcardy przez pol godziny
             mechanizm losowania flashcardow
 
-            
         ogarnac hibernate?
-            viktora film najpierw
+				viktora film najpierw
             https://eventory.cc/event/jdd-2021/space/stream/68537
 
 		code editor
