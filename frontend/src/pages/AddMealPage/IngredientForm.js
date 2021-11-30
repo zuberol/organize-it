@@ -2,7 +2,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import deleteImg from '../../assets/delete.png';
-import * as actionTypes from '../../store/mealActions';
+import { DELETE_INGREDIENT, CHANGE_INGREDIENT_PROP } from '../../store/meal/actions';
 
 
 class IngredientForm extends Component {
@@ -37,9 +37,9 @@ class IngredientForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClickDelete: (index) => dispatch({type: actionTypes.DELETE_INGREDIENT, ingredientToDeleteIndex: index}),
+    onClickDelete: (index) => dispatch({type: DELETE_INGREDIENT, ingredientToDeleteIndex: index}),
     changePropValue: (ingredientFormIndex, propName, val) => dispatch({
-      type: actionTypes.CHANGE_INGREDIENT_PROP, 
+      type: CHANGE_INGREDIENT_PROP, 
       ingredientToUpdateIndex: ingredientFormIndex, 
       propToChange: propName,
       newPropValue: val

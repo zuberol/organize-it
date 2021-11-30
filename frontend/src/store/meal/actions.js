@@ -1,4 +1,3 @@
-import { BACKEND_BASE_URL } from '../utils/config';
 
 export const INGREDIENT_SUBMITED = 'INGREDIENT_SUBMITED';
 export const INGREDIENT_NOT_SUBMITED = 'INGREDIENT_NOT_SUBMITED';

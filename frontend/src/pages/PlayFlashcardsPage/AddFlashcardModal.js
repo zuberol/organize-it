@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddTaskModal() {
+export default function AddFlashcardModal() {
   const classes = useStyles();
   // const isModalOpen = useSelector(state => state.projectsReducer.isModalOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,14 +51,14 @@ export default function AddTaskModal() {
       >
         <Fade in={isModalOpen}>
           <div className={classes.paper}>
-            <TaskForm setIsModalOpen={setIsModalOpen} />
+            <NewFlashcardForm setIsModalOpen={setIsModalOpen} />
           </div>
         </Fade>
       </Modal>
     </>
   );
 
-  function TaskForm() {
+  function NewFlashcardForm() {
     const decksNames = useSelector(state =>
       state.flashcardReducer.decks.map(d => d.title)
     );
@@ -119,7 +119,6 @@ export default function AddTaskModal() {
 
     function handleSubmit(event) {
       event.preventDefault();
-      //todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
       fetch(new URL('/api/flashcard', BACKEND_BASE_URL), {
         method: 'POST',
         mode: 'cors',

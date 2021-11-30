@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import './AddMeal.css';
 import { BACKEND_BASE_URL } from "../../utils/config";
 import IngredientForm from './IngredientForm';
-import * as actionTypes from '../../store/mealActions';
+import { CHANGE_MEAL_NAME } from '../../store/meal/actions';
 
 
 class NewMealForm extends Component {
@@ -52,7 +52,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeMealName: (name) => dispatch({type: actionTypes.CHANGE_MEAL_NAME, newMealName: name})
+    changeMealName: (name) => dispatch({type: CHANGE_MEAL_NAME, newMealName: name})
   }
 };
 

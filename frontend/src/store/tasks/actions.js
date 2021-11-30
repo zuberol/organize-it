@@ -1,16 +1,11 @@
-import { project } from '../mock/MockProject';
-import { Project } from '../Model/Project';
-import { BACKEND_BASE_URL } from '../utils/config';
+import { Project } from '../../Model/Project';
+import { BACKEND_BASE_URL } from '../../utils/config';
 
-export const TASK_SUCCESFULLY_DELETED = "TASK_SUCCESFULLY_DELETED";
-export const TASK_SUCCESFULLY_CREATED = "TASK_SUCCESFULLY_CREATED";   //nie potrzebne chyba
 export const CLOSE_MODAL = "CLOSE_MODAL";
 export const OPEN_MODAL = "OPEN_MODAL";
-export const CREATE_TASK = "CREATE_TASK"; //todo
 export const INIT_PROJECTS = "INIT_PROJECTS";
-export const UPDATE_PROJECTS = "UPDATE_PROJECTS";
 
-export const updateTask = (newTask) => {
+export function updateTask(newTask) {
   return (dispatch) => {
     fetch(new URL('/api/task', BACKEND_BASE_URL), {
       method: 'POST',
@@ -39,7 +34,7 @@ export const updateTask = (newTask) => {
 // todo bugfix
 export const saveTask = updateTask;
 
-export const fetchProjects = () => {
+export function fetchProjects() {
   return (dispatch) => {
     fetch('http://localhost:8080/api/dev/devDTO/projects', {
       method: 'GET',

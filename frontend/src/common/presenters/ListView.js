@@ -1,4 +1,4 @@
-import * as actionTypes from '../../store/actions';
+import { DELETE_ITEM } from '../../store/flashcards/actions';
 import { useDispatch } from 'react-redux';
 import './ListView.scss';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
     <ListItem
       key={deck.deck_id}
       deck={deck}
-      deleteItem={() => dispatch({type: actionTypes.DELETE_ITEM, itemToDeleteID: deck.deck_id})}
+      deleteItem={() => dispatch({type: DELETE_ITEM, itemToDeleteID: deck.deck_id})}
     />)
 }
 

@@ -1,7 +1,6 @@
-import { React, useState } from 'react';
-import MockTasks from '../../../mock/MockTree2';
+import { React } from 'react';
 import './fsTreeView.scss';
-import * as actionTypes from '../../../store/projectsActions';
+import * as actionTypes from '../../../store/tasks/actions';
 import Task from '../../../Model/Task';
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';

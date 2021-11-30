@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { saveTask } from '../../store/projectsActions';
+import { saveTask } from '../../store/tasks/actions';
 
 
 // todo broken bo nie korzysta z Task.js

@@ -1,8 +1,8 @@
-import * as actionTypes from './projectsActions'
-import MockTasks from '../mock/MockTree2';
+import { OPEN_MODAL, CLOSE_MODAL, INIT_PROJECTS } from './actions';
+import MockTasks from '../../mock/MockTree2';
 
 const initialProjectsState = {
-  isModalOpen: false, //todo refactor to
+  isModalOpen: false,
   projects: [
     MockTasks
   ]
@@ -10,21 +10,21 @@ const initialProjectsState = {
 
 const projectsReducer = ( state = initialProjectsState, action ) => {
   switch (action.type) {
-    case actionTypes.OPEN_MODAL: {
+    case OPEN_MODAL: {
 
       return {
         ...state,
         isModalOpen: true
       }
     }
-    case actionTypes.CLOSE_MODAL: {
+    case CLOSE_MODAL: {
 
       return {
         ...state,
         isModalOpen: false
       }
     }
-    case actionTypes.INIT_PROJECTS: {
+    case INIT_PROJECTS: {
       return {
         ...state,
         projects: action.projects

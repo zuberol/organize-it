@@ -1,4 +1,4 @@
-import { BACKEND_BASE_URL } from './../utils/config.js'
+import { BACKEND_BASE_URL } from '../../utils/config.js'
 
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const INITIALIZE_DECKS = 'INITIALIZE_DECKS';

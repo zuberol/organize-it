@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchdecks } from '../../store/actions';
+import { fetchdecks } from '../../store/flashcards/actions';
 import { BACKEND_BASE_URL } from '../../utils/config';
 import '../../common/Form/form.scss';
 import '../../common/styles/commons.scss';

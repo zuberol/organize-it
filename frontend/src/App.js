@@ -2,9 +2,9 @@ import { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import flashcardReducer from './store/flashcardReducer';
-import mealReducer from './store/mealReducer';
-import projectsReducer from './store/projectsReducer';
+import flashcardReducer from './store/flashcards/flashcardReducer';
+import mealReducer from './store/meal/reducer';
+import projectsReducer from './store/tasks/reducer';
 import { combineReducers } from 'redux'
 import Routes from './Routes';
 

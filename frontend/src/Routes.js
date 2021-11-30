@@ -6,7 +6,6 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Header from './common/Header'
 
 import EditTaskModal from './pages/ProjectsPage/EditTaskModal';
-import AddTaskModal from './pages/PlayFlashcardsPage/AddFlashcardModal';
 
 import DevPage from './pages/DevPage/DevPage';
 import DevPage3 from './pages/DevPage/DevPage3';

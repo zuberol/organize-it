@@ -1,5 +1,5 @@
-import Meal from '../Model/Meal';
-import * as actionTypes from './mealActions';
+import Meal from '../../Model/Meal';
+import { DELETE_INGREDIENT, CHANGE_MEAL_NAME, CHANGE_INGREDIENT_PROP } from './actions';
 
 const initialMealState = {
   createdMeal: new Meal('Platki z margaryna','')
@@ -7,7 +7,7 @@ const initialMealState = {
 
 const mealReducer = ( state = initialMealState, action ) => {
   switch (action.type) {
-    case actionTypes.DELETE_INGREDIENT: {
+    case DELETE_INGREDIENT: {
       const filteredIngredients = state.createdMeal.ingredients.filter((ingredient, index) => index != action.ingredientToDeleteIndex);
       const updatedMeal = new Meal(
         state.createdMeal.name,
@@ -19,7 +19,7 @@ const mealReducer = ( state = initialMealState, action ) => {
         createdMeal: updatedMeal
       }
     }
-    case actionTypes.CHANGE_MEAL_NAME: {
+    case CHANGE_MEAL_NAME: {
       // console.log(action);
       const updatedMeal = new Meal(
         action.newMealName,
@@ -31,7 +31,7 @@ const mealReducer = ( state = initialMealState, action ) => {
         createdMeal: updatedMeal
       }
     }
-    case actionTypes.CHANGE_INGREDIENT_PROP:
+    case CHANGE_INGREDIENT_PROP:
       const updatedIngredients = state.createdMeal.ingredients.map((ingredient, index) => {
         if(index == action.ingredientToUpdateIndex) {
           const copy = Object.assign({}, ingredient);

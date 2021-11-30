@@ -1,4 +1,4 @@
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/flashcards/actions';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useListView } from '../../common/presenters/ListView';

@@ -1,0 +1,6 @@
+{
+    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    "search.exclude": {
+        "**/build": true
+    }
+}
