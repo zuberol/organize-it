@@ -1,5 +1,5 @@
+import { TASK } from '../../config/backendRoutes';
 import { Project } from '../../Model/Project';
-import { BACKEND_BASE_URL } from '../../utils/config';
 
 export const CLOSE_MODAL = "CLOSE_MODAL";
 export const OPEN_MODAL = "OPEN_MODAL";
@@ -7,7 +7,7 @@ export const INIT_PROJECTS = "INIT_PROJECTS";
 
 export function updateTask(newTask) {
   return (dispatch) => {
-    fetch(new URL('/api/task', BACKEND_BASE_URL), {
+    fetch(TASK, {
       method: 'POST',
       mode: 'cors',
       credentials: 'include',

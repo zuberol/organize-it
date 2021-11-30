@@ -3,7 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { makeStyles } from '@material-ui/core/styles';
-import { BACKEND_BASE_URL } from '../../../utils/config';
+import { PROJECT } from '../../../config/backendRoutes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
 
@@ -48,8 +48,7 @@ export default function createProject() {
                 BackdropComponent={Backdrop}
                 BackdropProps={{
                     timeout: 300
-                }}
-            >
+                }}>
                 <Fade in={isModalOpen}>
                     <div className={classes.paper}>
                         <div>
@@ -83,12 +82,12 @@ export default function createProject() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        fetch(new URL('/api/project', BACKEND_BASE_URL), {
+        fetch(PROJECT, {
             method: 'POST',
             mode: 'cors',
             body: new FormData(event.target)
         })
-            .catch((e) => console.error("Błąd przy zapisywaniu projectu:", e));
+        .catch((e) => console.error("Błąd przy zapisywaniu projectu:", e));
         setIsModalOpen(false);
     }
 

@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchdecks } from '../../store/flashcards/actions';
-import { BACKEND_BASE_URL } from '../../utils/config';
 import '../../common/Form/form.scss';
 import '../../common/styles/commons.scss';
 
@@ -12,6 +11,7 @@ import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStickyNote } from '@fortawesome/free-solid-svg-icons';
+import { FLASHCARD } from '../../config/backendRoutes';
 
 
 const StyledSelect = styled.select`
@@ -179,7 +179,7 @@ export default function FlashcardCreator(props) {
     }));
     formData.append('deckId', props.picked_deck_id || picked_deck_id);
 
-    fetch(new URL('/api/flashcard', BACKEND_BASE_URL), {
+    fetch(FLASHCARD, {
       method: 'POST',
       mode: 'cors',
       body: formData

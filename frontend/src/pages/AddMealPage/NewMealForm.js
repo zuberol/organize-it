@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 // import './AddMeal.css';
-import { BACKEND_BASE_URL } from "../../utils/config";
+import { MEAL } from "../../config/backendRoutes";
 import IngredientForm from './IngredientForm';
 import { CHANGE_MEAL_NAME } from '../../store/meal/actions';
 
@@ -16,7 +16,7 @@ class NewMealForm extends Component {
 
   sendMealToBackend = () => {
 
-    return fetch(new URL('/meal', BACKEND_BASE_URL),{
+    return fetch(MEAL,{
       method: 'POST',
       mode: 'cors',
       headers: {

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { BACKEND_BASE_URL } from '../../utils/config';
+import { FILECHECK } from '../../config/backendRoutes';
 import React from 'react';
 import './../../common/Form/form.scss';
 // import './../../common/Form/treeStructure.scss';
@@ -72,7 +72,7 @@ export default function FileCheck() {
     //   type: "application/json"
     // }));
 
-    fetch(new URL('/api/dev/filecheck', BACKEND_BASE_URL), {
+    fetch(FILECHECK, {
       method: 'POST',
       mode: 'cors',
       body: form
