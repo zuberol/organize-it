@@ -5,7 +5,7 @@ const CODE_DIRS = [
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const TOKEN_PATH = 'token.json';
 
-const BACKEND_BASE_URL = "http://localhost:8080";
+const BACKEND_BASE_URL = "http://192.168.0.52:8080";
 
 module.exports = {
   CODE_DIRS: CODE_DIRS,

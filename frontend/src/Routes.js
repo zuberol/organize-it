@@ -5,7 +5,6 @@ import ProjectsDashboardPage from './pages/ProjectsPage/ProjectsDashboardPage';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Header from './common/Header'
 
-import EditTaskModal from './pages/ProjectsPage/EditTaskModal';
 
 import DevPage from './pages/DevPage/DevPage';
 import DevPage3 from './pages/DevPage/DevPage3';
@@ -23,7 +22,6 @@ export default function Routes() {
     <Route exact path="/dev" component={DevPage} />
     <Route exact path="/dev3" component={DevPage3} />
     <Route exact path="/dev4" component={DevPage4} />
-    <Route exact path="/dev5" component={EditTaskModal} />
     <Route exact path="/meal/add" component={MealPage} />
     <Route exact path="/projects" component={ProjectsDashboardPage} />
     </Switch>
