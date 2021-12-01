@@ -18,9 +18,52 @@ export default class Task {
 
   static recordToTask(taskRecord) {
     let task = Task.empty();
-    if (taskRecord["@class"] === Task["@class"]) task == new Task({...taskRecord});
+    if (taskRecord["@class"] === Task["@class"]) task == new Task({ ...taskRecord });
     return task;
   }
 
 
 }
+
+export function TaskForm() {
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="task_id">Task ID</label>
+      <input
+        name="task_id"
+        type="number"
+        onChange={handleChange}
+      />
+      <label htmlFor="name">Name</label>
+      <input
+        name="name"
+        type="text"
+        onChange={handleChange}
+      />
+      <label htmlFor="description">Description</label>
+      <input
+        name="description"
+        type="text"
+        onChange={handleChange}
+      />
+      <label htmlFor="tags">Tags (comma separated)</label>
+      <input
+        name="tags"
+        type="text"
+        onChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  )
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // todo
+  }
+
+  function handleChange(e) {
+    // todo
+  }
+
+}
+

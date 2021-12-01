@@ -33,28 +33,28 @@ export default function EditTaskModal() {
   };
 
   return (
-  <main>
-    <button type="button" onClick={handleOpen}>
-    react-transition-group
-    </button>
-    <Modal
-    aria-labelledby="transition-modal-title"
-    aria-describedby="transition-modal-description"
-    className={classes.modal}
-    open={isModalOpen}
-    onClose={handleClose}
-    closeAfterTransition
-    BackdropComponent={Backdrop}
-    BackdropProps={{
-      timeout: 300
-    }}
-    >
-    <Fade in={isModalOpen}>
-      <div className={classes.paper}>
-      {/* <EditTaskForm setIsModalOpen={setIsModalOpen}/> */}
-      </div>
-    </Fade>
-    </Modal>
-  </main>
+    <>
+      <button type="button" onClick={handleOpen}>
+      react-transition-group
+      </button>
+      <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      className={classes.modal}
+      open={isModalOpen}
+      onClose={handleClose}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 300
+      }}
+      >
+      <Fade in={isModalOpen}>
+        <div className={classes.paper}>
+        {/* <EditTaskForm setIsModalOpen={setIsModalOpen}/> */}
+        </div>
+      </Fade>
+      </Modal>
+    </>
   );
 }

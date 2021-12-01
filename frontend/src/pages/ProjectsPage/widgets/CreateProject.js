@@ -9,7 +9,7 @@ import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const useStyles = makeStyles((theme) => ({
+const usePaperStyle = makeStyles((theme) => ({
     modal: {
         display: 'flex',
         alignItems: 'center',
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function createProject() {
-    const classes = useStyles();
+export default function CreateProject() {
+    const classes = usePaperStyle();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [project, setProject] = useState({
         title: '',
@@ -51,29 +51,27 @@ export default function createProject() {
                 }}>
                 <Fade in={isModalOpen}>
                     <div className={classes.paper}>
-                        <div>
-                            <form onSubmit={handleSubmit}>
-                                <input
-                                    name="title"
-                                    type="text"
-                                    onChange={handleChange}
-                                    value={project.title}
-                                />
-                                <input
-                                    name="description"
-                                    type="text"
-                                    onChange={handleChange}
-                                    value={project.description}
-                                />
-                                <input
-                                    name="tags"
-                                    type="text"
-                                    onChange={handleTagsChange}
-                                    value={JSON.stringify(...project.tags).replaceAll(`"`, "")}
-                                />
-                                <button type="submit">Submit</button>
-                            </form>
-                        </div>
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                name="title"
+                                type="text"
+                                onChange={handleChange}
+                                value={project.title}
+                            />
+                            <input
+                                name="description"
+                                type="text"
+                                onChange={handleChange}
+                                value={project.description}
+                            />
+                            <input
+                                name="tags"
+                                type="text"
+                                onChange={handleTagsChange}
+                                value={JSON.stringify(...project.tags).replaceAll(`"`, "")}
+                            />
+                            <button type="submit">Submit</button>
+                        </form>
                     </div>
                 </Fade>
             </Modal>

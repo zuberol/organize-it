@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-// import './AddMeal.css';
 import { MEAL } from "../../config/backendRoutes";
 import IngredientForm from './IngredientForm';
 import { CHANGE_MEAL_NAME } from '../../store/meal/actions';

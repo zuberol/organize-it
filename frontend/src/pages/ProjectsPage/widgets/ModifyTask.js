@@ -7,7 +7,7 @@ import {BACKEND_BASE_URL} from "../../../utils/config";
 import {fetchdecks} from "../../../store/actions";
 
 
-export function modifyTaskDetails(taskDatum) {
+export function ModifyTask(taskDatum) {
   // const dispatch = useDispatch();
   const [ isModalOpen, setIsModalOpen ] = useState(false);
   const [ task, setTask ] = useState(taskDatum);

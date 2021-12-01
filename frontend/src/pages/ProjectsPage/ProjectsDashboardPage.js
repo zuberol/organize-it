@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actionTypes from '../../store/tasks/actions';
 import FsTreeView from './fsTreeView/FsTreeView';
 import './ProjectsDashboard.css'
-import createProjectBtn from './widgets/createProjectWidget';
+import createProjectBtn from './widgets/CreateProject';
 import useCardAwareListView from '../../common/presenters/CardAwareListView';
 import withProjectPresenter from '../../Model/ProjectPresenter';
 import * as R from 'ramda';

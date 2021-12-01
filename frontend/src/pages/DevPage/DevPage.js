@@ -1,15 +1,26 @@
 import FlashcardCreator from '../PlayFlashcardsPage/FlashcardCreator';
+import { StyledModal } from '../../common/presenters/StyledModal'
+import { faBook, faAddressCard, faAnchor } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react';
+import { TaskForm } from "../../Model/Task";
 
-//todo chaining promises https://gomakethings.com/how-to-use-the-fetch-method-to-make-multiple-api-calls-with-vanilla-javascript/
+
+
 export default function AddTaskModal() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
+
     <main style={{ display: "flex", "justifyContent": "center", backgroundColor: '#F1E0C5', 'minHeight': '85vh' }}>
-      <div style={{ display: "flex", "justifyContent": "center", backgroundColor: "#c9b79c", width: "800px" }}>
-        <FlashcardCreator />
-      </div>
+      <StyledModal
+        icon={faAddressCard}
+        title="Styled button"
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      >
+        <TaskForm/>
+      </StyledModal>
     </main>
   );
-
 
 }
 

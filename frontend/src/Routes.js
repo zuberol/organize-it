@@ -1,5 +1,5 @@
 import DecksPage from './pages/DecksPage/DecksPage';
-import AddMealPage from './pages/AddMealPage/AddMealPage';
+import MealPage from './pages/MealPage/MealPage';
 import PlayFlashcardsPage from './pages/PlayFlashcardsPage/PlayFlashcardsPage';
 import ProjectsDashboardPage from './pages/ProjectsPage/ProjectsDashboardPage';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
@@ -24,7 +24,7 @@ export default function Routes() {
     <Route exact path="/dev3" component={DevPage3} />
     <Route exact path="/dev4" component={DevPage4} />
     <Route exact path="/dev5" component={EditTaskModal} />
-    <Route exact path="/meal/add" component={AddMealPage} />
+    <Route exact path="/meal/add" component={MealPage} />
     <Route exact path="/projects" component={ProjectsDashboardPage} />
     </Switch>
   </BrowserRouter>
