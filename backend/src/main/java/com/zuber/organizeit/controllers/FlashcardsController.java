@@ -9,6 +9,7 @@ import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -32,7 +33,9 @@ public class FlashcardsController {
 
     @GetMapping(value = "/deck", produces = APPLICATION_JSON_VALUE)
     public Deck getDeck(@RequestParam Long deckId) {
-        return decksRepository.getById(deckId);
+        Deck deck = decksRepository.getById(deckId);
+        Collections.shuffle(deck.getFlashcards());
+        return deck;
     }
 
     @GetMapping("/decks")

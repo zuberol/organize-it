@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import static java.util.Optional.ofNullable;
 
 @Entity
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+//@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter @AllArgsConstructor
 @Builder
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "task_id")
@@ -80,50 +80,50 @@ public class Task {
     @Builder.Default
     private Long priorityPoint = 1000L;
 
-    public static Task newFromDto(TaskTO taskTO) {
-        return Task.builder().build().modifyBasicData(taskTO);
+    public static Task newFromDto(TaskDTO taskDTO) {
+        return Task.builder().build().modifyBasicData(taskDTO);
     }
 
-    public Task modifyBasicData(TaskTO taskTO) {
-        ofNullable(taskTO.taskId).ifPresent(this::setTaskId);
-        ofNullable(taskTO.name).ifPresent(this::setName);
-        ofNullable(taskTO.isArchived).ifPresent(this::setArchived);
-        ofNullable(taskTO.description).ifPresent(this::setDescription);
-        ofNullable(taskTO.isDone).ifPresent(this::setDone);
-        ofNullable(taskTO.isProject).ifPresent(this::setProject);
-        ofNullable(taskTO.priorityPoint).ifPresent(this::setPriorityPoint);
+    public Task modifyBasicData(TaskDTO taskDTO) {
+        ofNullable(taskDTO.taskId).ifPresent(this::setTaskId);
+        ofNullable(taskDTO.name).ifPresent(this::setName);
+        ofNullable(taskDTO.isArchived).ifPresent(this::setArchived);
+        ofNullable(taskDTO.description).ifPresent(this::setDescription);
+        ofNullable(taskDTO.isDone).ifPresent(this::setDone);
+        ofNullable(taskDTO.isProject).ifPresent(this::setProject);
+        ofNullable(taskDTO.priority).ifPresent(this::setPriorityPoint);
 
 //        Optional.ofNullable(taskTO.subtaskIds)
 //                .map(Task.filterNulls).ifPresent(this::setSubTasks);
         return this;
     }
 
-    public Task setSubtasksFromTO(TaskTO taskTO, TaskRepository repo) {
-        ofNullable(taskTO)
-                .map(TaskTO::getSubtaskIds)
+    public Task setSubtasksFromTO(TaskDTO taskDTO, TaskRepository repo) {
+        ofNullable(taskDTO)
+                .map(TaskDTO::getSubtaskIds)
                 .map(repo::findAllById)
                 .ifPresent(this::setSubTasks);
         return this;
     }
 
-    public TaskTO toDTO() {
-        return TaskTO.builder()
+    public TaskDTO toDTO() {
+        return TaskDTO.builder()
                 .name(getName())
                 .taskId(getTaskId())
                 .description(getDescription())
                 .subtaskIds(getSubTasks().stream().map(Task::getTaskId).collect(Collectors.toList()))
                 .isProject(isProject())
-                .priorityPoint(getPriorityPoint())
+                .priority(getPriorityPoint())
                 .isDone(isDone())
                 .build();
     }
 
 
-    public HashSet<TaskTO> nonArchivedTasks() {
+    public HashSet<TaskDTO> nonArchivedTasks() {
         return nonArchivedTasks(new HashSet<>());
     }
 
-    private HashSet<TaskTO> nonArchivedTasks(HashSet<TaskTO> tasks) {
+    private HashSet<TaskDTO> nonArchivedTasks(HashSet<TaskDTO> tasks) {
         if(isNotArchived()){
             tasks.add(toDTO());
             subTasks.forEach(subtask -> nonArchivedTasks(tasks));

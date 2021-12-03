@@ -1,14 +1,13 @@
 package com.zuber.organizeit.Model.Repository;
 
 import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.Model.Task.TaskTO;
+import com.zuber.organizeit.Model.Task.TaskDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
@@ -33,12 +32,11 @@ public class EntityDAO {
         taskRepository.delete(task);
     }
 
-    public Optional<TaskTO> findById(TaskTO taskTO) {
-        return ofNullable(taskTO)
-                .map(TaskTO::getTaskId)
+    public Optional<Task> findById(TaskDTO taskDTO) {
+        return ofNullable(taskDTO)
+                .map(TaskDTO::getTaskId)
                 .flatMap(id -> ofNullable(em.find(Task.class, id)))
-                .filter(Task::isNotArchived)
-                .map(Task::toDTO);
+                .filter(Task::isNotArchived);
     }
 
     public Optional<Task> findById(Long id) {
@@ -49,39 +47,35 @@ public class EntityDAO {
         return taskRepository.findTaskByLocallySavedURI(uri);
     }
 
-    public List<TaskTO> findAllNonArchivedProjects() {
+    public List<Task> findAllNonArchivedProjects() {
         return taskRepository.findAll()
                 .stream()
                 .filter(Task::isProject).filter(Task::isNotArchived)
-                .map(Task::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public Optional<TaskTO> modifyTask(TaskTO dto) {
+    public Optional<Task> modifyTask(TaskDTO dto) {
         return Optional.of(dto)
-                .flatMap(taskTO -> ofNullable(taskTO.getTaskId()))
+                .flatMap(taskDTO -> ofNullable(taskDTO.getTaskId()))
                 .flatMap(taskRepository::findById)
                 .map(task -> task.modifyBasicData(dto))
                 .map(task -> task.setSubtasksFromTO(dto, taskRepository))
-                .map(taskRepository::save)
-                .map(Task::toDTO);
+                .map(taskRepository::save);
     }
 
-    public Optional<TaskTO> appendNewSubtask(TaskTO dto) {
+    public Optional<Task> appendNewSubtask(TaskDTO dto) {
          return Optional.of(dto)
-                .map(TaskTO::getTaskId)
+                .map(TaskDTO::getTaskId)
                 .flatMap(taskRepository::findById)
-                .map(task -> Task.withNewSubtask(task, em))
-                .map(Task::toDTO);
+                .map(task -> Task.withNewSubtask(task, em));
     }
     
-    public Optional<TaskTO> createProject(TaskTO dto) {
+    public Optional<Task> createTask(TaskDTO dto) {
 
         return Optional.of(dto)
                 .map(Task::newFromDto)
                 .map(task -> task.setSubtasksFromTO(dto, taskRepository))
-                .map(taskRepository::save)
-                .map(Task::toDTO);
+                .map(taskRepository::save);
     }
 
     public Task save(Task task) {
@@ -97,4 +91,10 @@ public class EntityDAO {
     public List<Task> saveAll(Iterable<Task> tasks) {
         return taskRepository.saveAll(tasks);
     }
+
+    public List<Task> getInboxTasks() {
+        return taskRepository.isNotSubtaskAndIsNotProject();
+    }
+
+
 }

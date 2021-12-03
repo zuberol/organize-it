@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor @Setter // todo remove it later
-public class TaskTO {
+public class TaskDTO {
     @Nullable Long taskId;
     @Nullable String name;
     @Nullable String description;
@@ -19,5 +19,5 @@ public class TaskTO {
     @Nullable Boolean isDone;
     @Nullable Boolean isArchived;
     @Nullable Boolean isProject;
-    @Nullable Long priorityPoint;
+    @Nullable Long priority;
 }

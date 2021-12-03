@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 @Component
-//@Profile("dev")
+@Profile("dev")
 public class InitDbConf implements CommandLineRunner {
 
     ExporterService exporterService;
