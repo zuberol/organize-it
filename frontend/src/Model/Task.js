@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TASK } from "../config/backendRoutes";
+import { TASK_NEW_URL, TASK_URL } from "../config/backendRoutes";
 
 export default class Task {
   constructor({ task_id = null, name: name = "", description: description = "", sub_tasks = [], isDone: isDone, isArchived: isArchived }) {
@@ -24,7 +24,7 @@ export default class Task {
 
 }
 
-export function TaskForm({task_id}) {
+export function TaskForm({task_id, newTask}) {
   const [taskTO, setTaskTO] =  useState({});
   return (
     <form onSubmit={handleSubmit}>
@@ -83,10 +83,8 @@ export function TaskForm({task_id}) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('sending?')
-    fetch(TASK, {
+    fetch((newTask && TASK_NEW_URL) || TASK_URL, {
       method: 'POST',
-      // mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },

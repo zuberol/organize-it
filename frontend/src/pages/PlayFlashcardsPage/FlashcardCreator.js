@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStickyNote } from '@fortawesome/free-solid-svg-icons';
-import { FLASHCARD } from '../../config/backendRoutes';
+import { FLASHCARD_URL } from '../../config/backendRoutes';
 
 
 const StyledSelect = styled.select`
@@ -179,7 +179,7 @@ export default function FlashcardCreator(props) {
     }));
     formData.append('deckId', props.picked_deck_id || picked_deck_id);
 
-    fetch(FLASHCARD, {
+    fetch(FLASHCARD_URL, {
       method: 'POST',
       mode: 'cors',
       body: formData

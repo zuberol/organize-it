@@ -1,6 +1,6 @@
 import { React } from 'react';
 import './fsTreeView.scss';
-import * as actionTypes from '../../../store/tasks/actions';
+import { updateTask } from '../../../store/tasks/actions';
 import Task from '../../../Model/Task';
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
@@ -8,15 +8,15 @@ import { faPlusCircle as plus } from '@fortawesome/free-solid-svg-icons';
 
 /**
  *
- * @param {Project} project
+ * @param {Task} task
  * @return {JSX} filled tree container
  */
-export default function FsTreeView(project, dispatch) {
-  if (typeof project === 'object' && Object.keys(project).length === 0) return <div>{"Invalid project data"}</div>;
+export default function FsTreeView(task, dispatch) {
+  if (typeof task === 'object' && Object.keys(task).length === 0) return <div></div>;
   return (
     <div className="treeContainer">
         <div>
-        {TreeNode(project.root_task, dispatch)}
+        {TreeNode(task, dispatch)}
         </div>
     </div>
   );
@@ -36,7 +36,7 @@ export default function FsTreeView(project, dispatch) {
               {/*<p>{task.name}</p>*/}
               {/*<p>{task.description}</p>*/}
             </div>
-            <button className="transparent" type="button" onClick={newSubtask}><Icon icon={plus} /></button>
+            {/* <button className="transparent" type="button" onClick={newSubtask}><Icon icon={plus} /></button> */}
           </div>
           <div className="branch">
             <div className="vertical-linker"><span></span></div>
@@ -50,7 +50,7 @@ export default function FsTreeView(project, dispatch) {
     return jsx;
 
     function newSubtask() {
-      dispatch(actionTypes.updateTask({
+      dispatch(updateTask({
         ...task,
         sub_tasks: [...task.sub_tasks, Task.empty()]
       }));

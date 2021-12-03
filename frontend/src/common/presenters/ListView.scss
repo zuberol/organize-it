@@ -17,3 +17,39 @@ article.simple {
 
   }
 }
+
+ul.generic-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  gap: 10px;
+
+  li {
+    list-style: none;
+    background-color: bisque;
+    border-radius: 5px;
+    max-width: 400px;
+    min-width: 200px;    
+
+    div.caption {
+      background-color: #71816d;
+      border-radius: 5px 5px 0px 0px;
+      min-height: 1em;
+      padding: 5px;
+    }
+
+    div.details {
+      min-height: 2em;
+    }
+
+    p, h4 {
+      margin: 0;
+      padding: 5px;
+    }
+
+  }
+}

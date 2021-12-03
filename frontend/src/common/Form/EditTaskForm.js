@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { saveTask } from '../../store/tasks/actions';
+import { updateTask } from '../../store/tasks/actions';
 
 
 // todo broken bo nie korzysta z Task.js
@@ -23,9 +23,8 @@ export default function EditTaskForm(props) {
 
   function submit(event) {
     event.preventDefault();
-    console.log('submitting new task ...');
     dispatch(
-      saveTask({
+      updateTask({
         taskId: null,
         parentId: parentId,
         note: note

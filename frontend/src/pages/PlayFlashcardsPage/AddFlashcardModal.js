@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddFlashcardModal() {
   const classes = useStyles();
-  // const isModalOpen = useSelector(state => state.projectsReducer.isModalOpen);
+  // const isModalOpen = useSelector(state => state.tasksReducer.isModalOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 

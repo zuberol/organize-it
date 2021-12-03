@@ -1,27 +1,21 @@
-import { OPEN_MODAL, CLOSE_MODAL, INIT_PROJECTS } from './actions';
-import MockTasks from '../../mock/MockTree2';
+import { TOGGLE_MODAL, INIT_PROJECTS, INIT_INBOX, NEW_ACTIVE_PROJECT } from './actions';
 
 const initialProjectsState = {
   isModalOpen: false,
   projects: [
-    MockTasks
-  ]
+    
+  ],
+  activeProject: {},
+  inboxTasks: []
 };
 
-const projectsReducer = ( state = initialProjectsState, action ) => {
+export const tasksReducer = ( state = initialProjectsState, action ) => {
   switch (action.type) {
-    case OPEN_MODAL: {
+    case TOGGLE_MODAL: {
 
       return {
         ...state,
-        isModalOpen: true
-      }
-    }
-    case CLOSE_MODAL: {
-
-      return {
-        ...state,
-        isModalOpen: false
+        isModalOpen: !state.isModalOpen
       }
     }
     case INIT_PROJECTS: {
@@ -30,9 +24,18 @@ const projectsReducer = ( state = initialProjectsState, action ) => {
         projects: action.projects
       }
     }
+    case INIT_INBOX: {
+      return {
+        ...state,
+        inboxTasks: action.inboxTasks
+      }
+    }
+    case NEW_ACTIVE_PROJECT: 
+      return {
+        ...state,
+        activeProject: state.projects.find(project => project.task_id == action.activeProjectId) || {}
+      }
     default:
       return state;
   }
 };
-
-export default projectsReducer;

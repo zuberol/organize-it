@@ -16,11 +16,12 @@ export default function Header() {
 
   return (
     <header>
-      {/* <NavLink
+      <NavLink
         to="/"
         activeStyle={activeStyle}
+        exact={true}
         style={navStyle}
-      >organize-it</NavLink> */}
+      >organize-it</NavLink>
       {/* <a className="" href="/decks/modify">
         <h5 className="logo-title">modify Sets</h5>
       </a>
@@ -30,16 +31,19 @@ export default function Header() {
       {/* <NavLink
         to="/dev"
         activeStyle={activeStyle}
+        exact={true}
         style={navStyle}
       >dev</NavLink> */}
       <NavLink
         to="/decks"
         activeStyle={activeStyle}
+        exact={true}
         style={navStyle}
       >Decks</NavLink>
       <NavLink
         to="/projects"
         activeStyle={activeStyle}
+        exact={true}
         style={navStyle}
       >Projects</NavLink>
     </header>

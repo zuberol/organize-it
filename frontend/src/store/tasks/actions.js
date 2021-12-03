@@ -1,26 +1,26 @@
-import { TASK } from '../../config/backendRoutes';
-import { Project } from '../../Model/Project';
+import { dispatch } from 'd3-dispatch';
+import { TASK_URL, PROJECTS_URL, TASK_INBOX_URL } from '../../config/backendRoutes';
 
-export const CLOSE_MODAL = "CLOSE_MODAL";
-export const OPEN_MODAL = "OPEN_MODAL";
 export const INIT_PROJECTS = "INIT_PROJECTS";
+export const INIT_INBOX = "INIT_INBOX";
+export const NEW_ACTIVE_PROJECT = "NEW_ACTIVE_PROJECT";
+export const TOGGLE_MODAL = "TOGGLE_MODAL";
 
-export function updateTask(newTask) {
+export function updateTask(task) {
   return (dispatch) => {
-    fetch(TASK, {
+    fetch(TASK_URL, {
       method: 'POST',
-      mode: 'cors',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(newTask)
+      body: JSON.stringify(task)
     })
     .catch(err => {
       console.error(err);
     })
     .then(() => {
-      dispatch({type: CLOSE_MODAL});
+      dispatch({type: TOGGLE_MODAL});
     })
     .then(() => {
       dispatch(fetchProjects());
@@ -31,23 +31,30 @@ export function updateTask(newTask) {
   }
 }
 
-// todo bugfix
-export const saveTask = updateTask;
-
 export function fetchProjects() {
   return (dispatch) => {
-    fetch('http://localhost:8080/api/dev/devDTO/projects', {
-      method: 'GET',
-      mode: 'cors'
-    })
+    fetch(PROJECTS_URL)
     .then(res => res.json())
-    .then(projectsRecords => projectsRecords.map(Project.recordToProject))
     .then((projects) => {
-      dispatch({type: INIT_PROJECTS, projects: projects});
+      dispatch({type: INIT_PROJECTS, projects});
     })
     .catch(err => {
       console.error(err, "Backend doesn't respond");
       dispatch({type: INIT_PROJECTS, projects: []});
+    })
+  }
+}
+
+export function fetchInbox() {
+  return (dispatch) => {
+    fetch(TASK_INBOX_URL)
+    .then(res => res.json())
+    .then((inboxTasks) => {
+      dispatch({type: INIT_INBOX, inboxTasks});
+    })
+    .catch(err => {
+      console.error(err, "Backend doesn't respond");
+      dispatch({type: INIT_INBOX, inboxTasks: []});
     })
   }
 }

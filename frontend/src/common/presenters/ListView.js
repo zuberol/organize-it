@@ -1,8 +1,10 @@
 import { DELETE_ITEM } from '../../store/flashcards/actions';
 import { useDispatch } from 'react-redux';
+import { updateTask } from "../../store/tasks/actions";
 import './ListView.scss';
 import { Link } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAward } from '@fortawesome/free-solid-svg-icons'
 
 /**
  *
@@ -31,4 +33,38 @@ function ListItem(props) {
             <div className="control-buttons"></div>
         </article>
     )
+}
+
+
+export function GenericList(props) {
+    const dispatch = useDispatch();
+    const Items = props && props.data && props.data.map((di, index) => 
+        <li key={index}>
+            <div className="caption">
+                <h4>{di.name || di.title}</h4>
+            </div>
+           <div className="details">
+                {di.description && <p>{di.description}</p>}
+           </div>
+           <div className="">
+                <button type="button" className="flashcard__button" onClick={() => {
+                  dispatch(
+                    updateTask({
+                      task_id: di.task_id,
+                      is_archived: 'true'
+                  }));
+                }}>
+                    <FontAwesomeIcon icon={faAward} />
+                    <span>Remove</span>
+                </button>
+           </div>
+        </li>
+    );
+
+    return (
+        <ul className="generic-list">
+           {Items}
+        </ul>
+    )
+
 }

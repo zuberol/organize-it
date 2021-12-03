@@ -1,4 +1,4 @@
-import { DECKS } from '../../config/backendRoutes.js';
+import { DECKS_URL } from '../../config/backendRoutes.js';
 
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const INITIALIZE_DECKS = 'INITIALIZE_DECKS';
@@ -7,7 +7,7 @@ export const DELETING_FLASHCARD_FAILED = 'DELETING_FLASHCARD_FAILED';
 
 export const fetchdecks = () => {
   return (dispatch) => {
-    fetch(DECKS, {
+    fetch(DECKS_URL, {
       method: 'GET',
       mode: 'cors'
     })

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { FILECHECK } from '../../config/backendRoutes';
+import { FILECHECK_URL } from '../../config/backendRoutes';
 import React from 'react';
 import './../../common/Form/form.scss';
 // import './../../common/Form/treeStructure.scss';
@@ -32,7 +32,6 @@ export default function FileCheck() {
       //or
       file = fileRef.current.files[i];
 
-      console.log(file.name)
       form.append('refResourceAssociatedFiles', file);
 
     }
@@ -72,7 +71,7 @@ export default function FileCheck() {
     //   type: "application/json"
     // }));
 
-    fetch(FILECHECK, {
+    fetch(FILECHECK_URL, {
       method: 'POST',
       mode: 'cors',
       body: form
