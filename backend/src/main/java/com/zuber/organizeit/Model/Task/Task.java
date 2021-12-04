@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.*;
@@ -54,11 +55,14 @@ public class Task {
     @Builder.Default
     private boolean isArchived = false;
 
+    public enum ParsableProperty {
+        NAME, DESCRIPTION, IS_PROJECT
+    }
 
     @ManyToMany(
 //            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
 //            cascade = CascadeType.ALL,
-            cascade = CascadeType.ALL,
+            cascade = {CascadeType.ALL, CascadeType.REMOVE},
             fetch = FetchType.EAGER
 //            orphanRemoval = true // todo chyba ok
     )

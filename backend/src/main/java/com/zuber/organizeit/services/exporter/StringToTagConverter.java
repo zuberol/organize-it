@@ -1,4 +1,4 @@
-package com.zuber.organizeit.utils;
+package com.zuber.organizeit.services.exporter;
 
 import com.zuber.organizeit.Model.Tag;
 import org.springframework.boot.json.JacksonJsonParser;

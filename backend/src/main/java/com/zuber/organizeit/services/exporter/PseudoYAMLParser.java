@@ -10,12 +10,18 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.zuber.organizeit.Model.Task.Task.ParsableProperty.*;
+import static java.util.Optional.of;
 
 @Component
 public class PseudoYAMLParser {
 
     // file parse
     private static final Function<String, Long> toLeadingTabs = line -> line.chars().takeWhile(ch -> ch == '\t').count();
+    private static final String DESCRIPTION_FILE = "description";
+
 
     public static Optional<Task> parse(String file)  {
         Optional<Task> parsedTask = Optional.empty();
@@ -29,7 +35,7 @@ public class PseudoYAMLParser {
             while (!queue.isEmpty()) {
                 prev = findAncestor(queue.poll(), prev);
             }
-            parsedTask = Optional.of(rootTask);
+            parsedTask = of(rootTask);
         } catch (IOException e) {
             throw new IllegalArgumentException("File not found", e.getCause());
         }
@@ -81,18 +87,41 @@ public class PseudoYAMLParser {
     private static HashSet<Linkage> parseDirThrowable(Path dirPath) throws Exception {
         if(!Files.isDirectory(dirPath)) throw new IllegalArgumentException("Not a directory.");
         HashSet<Linkage> linkages = new HashSet<>();
+        HashMap<Path ,Task> spottedTasks = new HashMap<>();
         SimpleFileVisitor<Path> fileVisitor = new SimpleFileVisitor<>() {
 
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                Task task = Task.builder()
-                        .name(file.getParent().getFileName().toString())
+                Function<Path, Stream<? extends String>> sneakyFileToLines = f -> {
+                    Stream<String> lines = Stream.empty();
+                    try {
+                        lines = Files.readAllLines(f).stream();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return lines;
+                };
+
+                Map<String, String> parsedTasksProperties = of(file).filter(f -> f.getFileName().toString().equals(DESCRIPTION_FILE))
+                        .stream()
+                        .flatMap(sneakyFileToLines)
+                        .map(line -> line.split("=", 2))
+                        .filter(props -> props.length == 2)
+                        .collect(Collectors.toMap(arr -> arr[0], arr -> arr[1]));
+
+
+                Task task = spottedTasks.getOrDefault(file.getParent(), Task.builder()
+                        .name(parsedTasksProperties.getOrDefault(NAME.name(), file.getParent().getFileName().toString()))
+                        .description(parsedTasksProperties.getOrDefault(DESCRIPTION.name(), "..."))
+                        .isProject(Boolean.parseBoolean(parsedTasksProperties.getOrDefault(IS_PROJECT.name(), "false")))
                         .locallySavedURI(file.getParent().toAbsolutePath().toString())
-                        .build();
-                Task subTask = Task.builder()
+                        .build());
+                spottedTasks.put(file.getParent(), task);
+
+                Task subTask = spottedTasks.getOrDefault(file, Task.builder()
                         .name(file.getFileName().toString())
                         .locallySavedURI(file.toAbsolutePath().toString())
-                        .build();
+                        .build());
                 linkages.add(new Linkage(task, subTask));
                 return super.visitFile(file, attrs);
             }

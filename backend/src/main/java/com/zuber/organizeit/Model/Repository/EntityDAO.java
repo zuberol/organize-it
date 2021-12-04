@@ -2,7 +2,10 @@ package com.zuber.organizeit.Model.Repository;
 
 import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TaskDTO;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -22,14 +25,6 @@ public class EntityDAO {
     public EntityDAO(TaskRepository taskRepository, EntityManager em) {
         this.taskRepository = taskRepository;
         this.em = em;
-    }
-
-    public Task merge(Task task) {
-        return em.merge(task);
-    }
-
-    public void delete(Task task) {
-        taskRepository.delete(task);
     }
 
     public Optional<Task> findById(TaskDTO taskDTO) {
@@ -80,16 +75,6 @@ public class EntityDAO {
 
     public Task save(Task task) {
         return taskRepository.save(task);
-    }
-
-    public void persist(Task task) {
-        em.persist(task);
-    }
-
-    // czy mozna tu przekazac Optionala? czy jest iterable?
-    // nie mozna, ale Option ze scali juz tak chyba
-    public List<Task> saveAll(Iterable<Task> tasks) {
-        return taskRepository.saveAll(tasks);
     }
 
     public List<Task> getInboxTasks() {

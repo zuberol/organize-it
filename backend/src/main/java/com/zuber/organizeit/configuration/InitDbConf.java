@@ -21,10 +21,11 @@ public class InitDbConf implements CommandLineRunner {
     }
 
         private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/wrapProject/testProject");
+        private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
 
         @Override
-        public void run(String...args) throws Exception {
-            exporterService.initDb(List.of(testProject));
+        public void run(String...args) {
+            exporterService.initDb(List.of(projectsDir));
         }
 
 
