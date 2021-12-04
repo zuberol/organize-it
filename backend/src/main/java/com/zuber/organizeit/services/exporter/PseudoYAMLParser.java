@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 import static com.zuber.organizeit.Model.Task.Task.ParsableProperty.*;
 import static java.util.Optional.of;
+import static java.util.stream.Collectors.*;
 
 @Component
 public class PseudoYAMLParser {
@@ -30,7 +31,7 @@ public class PseudoYAMLParser {
         try {
             lines = Files.readAllLines(Paths.get(file)).stream().filter(s -> !s.isBlank()).toList();
             Queue<Task> queue = lines.stream().map(Task::new)
-                    .collect(Collectors.toCollection(LinkedList::new));
+                    .collect(toCollection(LinkedList::new));
             Task prev = rootTask;
             while (!queue.isEmpty()) {
                 prev = findAncestor(queue.poll(), prev);
@@ -72,8 +73,8 @@ public class PseudoYAMLParser {
     }
 
     // dir parse
-    public static HashSet<Linkage> parseDir(Path dirPath) {
-        HashSet<Linkage> taskSubtaskLinkages = new HashSet<>();
+    public static Set<Linkage> parseDir(Path dirPath) {
+        Set<Linkage> taskSubtaskLinkages = new HashSet<>();
         try {
             taskSubtaskLinkages = parseDirThrowable(dirPath);
         } catch (Exception e) {
@@ -83,11 +84,12 @@ public class PseudoYAMLParser {
     }
 
     public record Linkage(Task task, Task subtask){}
+    public record LinkagePath(Path task, Path subtask){}
 
-    private static HashSet<Linkage> parseDirThrowable(Path dirPath) throws Exception {
+    private static Set<Linkage> parseDirThrowable(Path dirPath) throws Exception {
         if(!Files.isDirectory(dirPath)) throw new IllegalArgumentException("Not a directory.");
-        HashSet<Linkage> linkages = new HashSet<>();
-        HashMap<Path ,Task> spottedTasks = new HashMap<>();
+        HashSet<LinkagePath> linkages = new HashSet<>();
+        HashMap<Path, Task> spottedTasks = new HashMap<>();
         SimpleFileVisitor<Path> fileVisitor = new SimpleFileVisitor<>() {
 
             @Override
@@ -107,43 +109,54 @@ public class PseudoYAMLParser {
                         .flatMap(sneakyFileToLines)
                         .map(line -> line.split("=", 2))
                         .filter(props -> props.length == 2)
-                        .collect(Collectors.toMap(arr -> arr[0], arr -> arr[1]));
+                        .collect(toMap(arr -> arr[0], arr -> arr[1]));
 
 
                 Task task = spottedTasks.getOrDefault(file.getParent(), Task.builder()
-                        .name(parsedTasksProperties.getOrDefault(NAME.name(), file.getParent().getFileName().toString()))
-                        .description(parsedTasksProperties.getOrDefault(DESCRIPTION.name(), "..."))
-                        .isProject(Boolean.parseBoolean(parsedTasksProperties.getOrDefault(IS_PROJECT.name(), "false")))
+                        .name(file.getParent().getFileName().toString())
                         .locallySavedURI(file.getParent().toAbsolutePath().toString())
                         .build());
+                task.setName(parsedTasksProperties.getOrDefault(NAME.name(), file.getParent().getFileName().toString()));
+                task.setDescription(parsedTasksProperties.getOrDefault(DESCRIPTION.name(), "..."));
+                task.setProject(Boolean.parseBoolean(parsedTasksProperties.getOrDefault(IS_PROJECT.name(), "false")));
                 spottedTasks.put(file.getParent(), task);
 
                 Task subTask = spottedTasks.getOrDefault(file, Task.builder()
                         .name(file.getFileName().toString())
                         .locallySavedURI(file.toAbsolutePath().toString())
                         .build());
-                linkages.add(new Linkage(task, subTask));
+                spottedTasks.put(file, subTask);
+
+                linkages.add(new LinkagePath(file.getParent(), file));
                 return super.visitFile(file, attrs);
             }
 
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-                Task task = Task.builder()
+                Task task = spottedTasks.getOrDefault(dir.getParent(), Task.builder()
                         .name(dir.getParent().getFileName().toString())
                         .locallySavedURI(dir.getParent().toAbsolutePath().toString())
-                        .build();
-                Task subTask = Task.builder()
+                        .build());
+                spottedTasks.put(dir.getParent(), task);
+                Task subTask = spottedTasks.getOrDefault(dir, Task.builder()
                         .name(dir.getFileName().toString())
                         .locallySavedURI(dir.toAbsolutePath().toString())
-                        .build();
-                linkages.add(new Linkage(task, subTask));
+                        .build());
+
+                spottedTasks.put(dir, subTask);
+
+                linkages.add(new LinkagePath(dir.getParent(), dir));
                 return super.preVisitDirectory(dir, attrs);
             }
 
         };
 
         Files.walkFileTree(dirPath, fileVisitor);
-        return linkages;
+
+        return linkages.stream().map(linkagePath -> new Linkage(
+                spottedTasks.get(linkagePath.task),
+                spottedTasks.get(linkagePath.subtask)
+        )).collect(toSet());
     }
 
 }
