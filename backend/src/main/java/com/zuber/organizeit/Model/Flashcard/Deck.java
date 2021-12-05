@@ -9,6 +9,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @Getter @Setter @NoArgsConstructor
@@ -19,12 +22,12 @@ import java.util.List;
 public class Deck {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long deckId;
 
     private String title;
 
-    @OneToMany
+    @OneToMany(cascade = ALL)
     private List<Flashcard> flashcards;
 
 }

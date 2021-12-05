@@ -56,7 +56,7 @@ public class Task {
     private boolean isArchived = false;
 
     public enum ParsableProperty {
-        NAME, DESCRIPTION, IS_PROJECT
+        NAME, DESCRIPTION, IS_PROJECT, PRIORITY, IS_ARCHIVED
     }
 
     @ManyToMany(

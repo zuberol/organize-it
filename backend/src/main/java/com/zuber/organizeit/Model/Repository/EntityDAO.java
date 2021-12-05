@@ -1,11 +1,9 @@
 package com.zuber.organizeit.Model.Repository;
 
+import com.zuber.organizeit.Model.Flashcard.Deck;
 import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TaskDTO;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -20,11 +18,13 @@ public class EntityDAO {
 
     final TaskRepository taskRepository;
     final EntityManager em;
+    final DecksRepository decksRepository;
 
     @Autowired
-    public EntityDAO(TaskRepository taskRepository, EntityManager em) {
+    public EntityDAO(TaskRepository taskRepository, EntityManager em, DecksRepository decksRepository) {
         this.taskRepository = taskRepository;
         this.em = em;
+        this.decksRepository = decksRepository;
     }
 
     public Optional<Task> findById(TaskDTO taskDTO) {
@@ -76,10 +76,12 @@ public class EntityDAO {
     public Task save(Task task) {
         return taskRepository.save(task);
     }
+    public Deck save(Deck deck) {
+        return decksRepository.save(deck);
+    }
 
     public List<Task> getInboxTasks() {
         return taskRepository.isNotSubtaskAndIsNotProject();
     }
-
 
 }

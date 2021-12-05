@@ -14,7 +14,7 @@ import java.net.URI;
 @Getter @Setter
 @Table(name = "reference_resources")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="res_id")
-@Inheritance
+@Inheritance //todo Superbuilder
 public abstract class ReferenceResource implements Serializable {
 
     @Id
@@ -28,5 +28,7 @@ public abstract class ReferenceResource implements Serializable {
     private String comment;
 
     private String referenceUrl;
+
+    private String locallySavedURI;
 
 }

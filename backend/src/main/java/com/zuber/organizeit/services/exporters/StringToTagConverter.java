@@ -1,13 +1,10 @@
-package com.zuber.organizeit.services.exporter;
+package com.zuber.organizeit.services.exporters;
 
 import com.zuber.organizeit.Model.Tag;
-import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Component
 public class StringToTagConverter

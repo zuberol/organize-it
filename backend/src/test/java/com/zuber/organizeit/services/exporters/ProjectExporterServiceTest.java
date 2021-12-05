@@ -1,20 +1,12 @@
-package com.zuber.organizeit.services.exporter;
+package com.zuber.organizeit.services.exporters;
 
-import com.zuber.organizeit.Model.Repository.EntityDAO;
 import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.controllers.FlashcardsController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
@@ -32,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @Disabled("Broken")
 //@RunWith(SpringRunner.class)
-class ExporterServiceTest {
+class ProjectExporterServiceTest {
 
 
     @Autowired
@@ -41,7 +33,7 @@ class ExporterServiceTest {
     EntityManager entityManager;
 
     @Autowired
-    ExporterService exporterService;
+    ProjectExporterService projectExporterService;
 
 //
 //    @TestConfiguration
@@ -87,7 +79,7 @@ class ExporterServiceTest {
         taskRepository.flush();
         assertThat(taskRepository.findAll().size()).isEqualTo(2);
 
-        exporterService.initDb(List.of(Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/testProject")));
+        projectExporterService.initDb(List.of(Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/testProject")));
         taskRepository.flush();
         assertThat(taskRepository.findTaskByName("testProject").get().getSubTasks().size()).isEqualTo(5);
 

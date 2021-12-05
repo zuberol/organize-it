@@ -1,13 +1,9 @@
-package com.zuber.organizeit.services.exporter;
+package com.zuber.organizeit.services.exporters;
 
-
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.function.Function;
 
 public interface FileParser <R> {
 
-    Optional<R> parse(Path file);
+//    Optional<R> parse(Path file);
 //
 //    public static Task parse(Path ymlPath) {
 //        try {

@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporter;
+package com.zuber.organizeit.services.exporters;
 
 
 import com.zuber.organizeit.Model.Task.Task;
@@ -9,10 +9,11 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.zuber.organizeit.Model.Task.Task.ParsableProperty.*;
+import static java.lang.Boolean.*;
+import static java.lang.Long.*;
 import static java.util.Optional.of;
 import static java.util.stream.Collectors.*;
 
@@ -74,7 +75,7 @@ public class PseudoYAMLParser {
 
     // dir parse
     public static Set<Linkage> parseDir(Path dirPath) {
-        Set<Linkage> taskSubtaskLinkages = new HashSet<>();
+        Set<Linkage> taskSubtaskLinkages = new HashSet<>(); //todo czy to moze zwrocic nulla?
         try {
             taskSubtaskLinkages = parseDirThrowable(dirPath);
         } catch (Exception e) {
@@ -118,7 +119,9 @@ public class PseudoYAMLParser {
                         .build());
                 task.setName(parsedTasksProperties.getOrDefault(NAME.name(), file.getParent().getFileName().toString()));
                 task.setDescription(parsedTasksProperties.getOrDefault(DESCRIPTION.name(), "..."));
-                task.setProject(Boolean.parseBoolean(parsedTasksProperties.getOrDefault(IS_PROJECT.name(), "false")));
+                task.setProject(parseBoolean(parsedTasksProperties.getOrDefault(IS_PROJECT.name(), "false")));
+                task.setArchived(parseBoolean(parsedTasksProperties.getOrDefault(IS_ARCHIVED.name(), "false")));
+                task.setPriorityPoint(parseLong(parsedTasksProperties.getOrDefault(PRIORITY.name(), "1000")));
                 spottedTasks.put(file.getParent(), task);
 
                 Task subTask = spottedTasks.getOrDefault(file, Task.builder()

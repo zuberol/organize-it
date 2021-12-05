@@ -2,9 +2,8 @@ package com.zuber.organizeit.Model.Flashcard;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -14,9 +13,11 @@ import javax.persistence.Entity;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter @NoArgsConstructor
 @DiscriminatorValue("5")
+//@SuperBuilder //todo Superbuilder
 public class CodeReference extends ReferenceResource {
 
-    public CodeReference(String sourceCode) {
+    // for lombok
+    private CodeReference(String sourceCode) {
         this.sourceCode = sourceCode;
     }
 

@@ -1,0 +1,34 @@
+package com.zuber.organizeit.services.exporters;
+
+import com.zuber.organizeit.Model.Flashcard.Deck;
+import com.zuber.organizeit.Model.Repository.EntityDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.nio.file.Path;
+import java.util.Collection;
+
+@Service
+public class FlashcardExporterService {
+
+    private EntityDAO entityDAO;
+
+    @Autowired
+    public FlashcardExporterService(EntityDAO entityDAO) {
+        this.entityDAO = entityDAO;
+    }
+
+    public void initDb(Collection<Path> deckDirs) {
+
+        deckDirs.stream()
+                .map(deckPath -> {
+
+                    Deck deck = new Deck();
+                    deck.setTitle(deckPath.getFileName().toString());
+                    deck.setFlashcards(FlashcardParser.parse(deckDirs.iterator().next()));
+                    return deck;
+                })
+                .forEach(entityDAO::save);
+
+    }
+}
