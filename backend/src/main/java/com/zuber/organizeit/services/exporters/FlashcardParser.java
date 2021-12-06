@@ -15,12 +15,12 @@ import java.util.regex.Pattern;
 @Component
 public class FlashcardParser {
 
-    public static List<Flashcard> parse(Path deckDir) {
-        class FileVisitor<T> extends SimpleFileVisitor<T> {
+    public static List<Flashcard> parse(Path decksDir) {
+        class CustomFileVisitor<T> extends SimpleFileVisitor<T> {
             public final List<Flashcard> parsedFlashcards = new ArrayList<>();
         }
 
-        FileVisitor<Path> customFileVisitor = new FileVisitor<>() {
+        CustomFileVisitor<Path> customFileVisitor = new CustomFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path fileInDeckDir, BasicFileAttributes attrs) throws IOException {
                 if(fileInDeckDir.getFileName().toString().endsWith("flashcards")) {
@@ -28,15 +28,11 @@ public class FlashcardParser {
                 }
                 return super.visitFile(fileInDeckDir, attrs);
             }
-
-//            @Override
-//            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) {
-//                throw new IllegalStateException("Some directory found in flashcard directory");
-//            }
+            // todo take care of flashcards in nested directories
         };
 
         try {
-            Files.walkFileTree(deckDir, customFileVisitor);
+            Files.walkFileTree(decksDir, customFileVisitor);
         } catch (IOException e) {
             e.printStackTrace();
             customFileVisitor.parsedFlashcards.clear();
@@ -47,7 +43,7 @@ public class FlashcardParser {
 
 
     private static List<Flashcard> parseFlashcardFile(Path flashcardPath) throws IOException {
-        Iterator<String> iterator = Files.readAllLines(flashcardPath).iterator();
+        Iterator<String> iterator = Files.readAllLines(flashcardPath).iterator(); //todo throws
         Predicate<String> isQuestion = Pattern.compile("^[^\\s].*$").asMatchPredicate();
         Predicate<String> isCodeRef = Pattern.compile("^\\s+CodeRef: .*\\..*").asPredicate();
 

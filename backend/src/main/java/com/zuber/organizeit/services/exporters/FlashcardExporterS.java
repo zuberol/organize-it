@@ -9,12 +9,12 @@ import java.nio.file.Path;
 import java.util.Collection;
 
 @Service
-public class FlashcardExporterService {
+public class FlashcardExporterS {
 
     private EntityDAO entityDAO;
 
     @Autowired
-    public FlashcardExporterService(EntityDAO entityDAO) {
+    public FlashcardExporterS(EntityDAO entityDAO) {
         this.entityDAO = entityDAO;
     }
 
@@ -22,7 +22,6 @@ public class FlashcardExporterService {
 
         deckDirs.stream()
                 .map(deckPath -> {
-
                     Deck deck = new Deck();
                     deck.setTitle(deckPath.getFileName().toString());
                     deck.setFlashcards(FlashcardParser.parse(deckDirs.iterator().next()));

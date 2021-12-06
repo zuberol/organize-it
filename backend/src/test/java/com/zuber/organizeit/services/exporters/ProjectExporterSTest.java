@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @Disabled("Broken")
 //@RunWith(SpringRunner.class)
-class ProjectExporterServiceTest {
+class ProjectExporterSTest {
 
 
     @Autowired
@@ -33,7 +33,7 @@ class ProjectExporterServiceTest {
     EntityManager entityManager;
 
     @Autowired
-    ProjectExporterService projectExporterService;
+    ProjectExporterS projectExporterS;
 
 //
 //    @TestConfiguration
@@ -79,7 +79,7 @@ class ProjectExporterServiceTest {
         taskRepository.flush();
         assertThat(taskRepository.findAll().size()).isEqualTo(2);
 
-        projectExporterService.initDb(List.of(Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/testProject")));
+        projectExporterS.initDb(List.of(Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/testProject")));
         taskRepository.flush();
         assertThat(taskRepository.findTaskByName("testProject").get().getSubTasks().size()).isEqualTo(5);
 

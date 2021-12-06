@@ -13,12 +13,12 @@ import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 
 @Service
-public class ProjectExporterService {
+public class ProjectExporterS {
 
     private final EntityDAO entityDAO;
 
     @Autowired
-    public ProjectExporterService(EntityDAO entityDAO) {
+    public ProjectExporterS(EntityDAO entityDAO) {
         this.entityDAO = entityDAO;
     }
 

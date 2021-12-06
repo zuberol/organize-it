@@ -28,9 +28,12 @@ public class PseudoYAMLParser {
     public static Optional<Task> parse(String file)  {
         Optional<Task> parsedTask = Optional.empty();
         final Task rootTask = Task.builder().name(file.strip()).build();
-        final List<String> lines;
         try {
-            lines = Files.readAllLines(Paths.get(file)).stream().filter(s -> !s.isBlank()).toList();
+            final List<String> lines = Files.readAllLines(Paths.get(file))
+                    .stream()
+                    .filter(s -> !s.isBlank())
+                    .toList();
+
             Queue<Task> queue = lines.stream().map(Task::new)
                     .collect(toCollection(LinkedList::new));
             Task prev = rootTask;

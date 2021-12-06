@@ -15,6 +15,8 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String mainName; //todo should be one of aliases
+
     @ElementCollection
     List<String> aliases;
 
