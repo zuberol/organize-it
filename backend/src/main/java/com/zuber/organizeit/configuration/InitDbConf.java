@@ -24,16 +24,17 @@ public class InitDbConf implements CommandLineRunner {
         this.snippetExporterS = snippetExporterS;
     }
 
-    private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/wrapProject/testProject");
+    private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");
         private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
-        private static final Path testFlashcardDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporter/testFlashcardDir");
+        private static final Path testFlashcardDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/testFlashcardDir");
         private static final Path testSnippetDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/testSnippet");
+        private static final Path snippetsDir = Path.of("/home/jakub/Desktop/organize-it-db/snippets");
 
         @Override
         public void run(String...args) {
             projectExporterS.initDb(List.of(projectsDir));
             flashcardExporterS.initDb(List.of(testFlashcardDir));
-            snippetExporterS.initDb(List.of(testSnippetDir));
+            snippetExporterS.initDb(List.of(snippetsDir));
         }
 
 

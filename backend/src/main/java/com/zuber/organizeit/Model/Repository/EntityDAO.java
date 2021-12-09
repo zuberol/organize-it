@@ -1,6 +1,7 @@
 package com.zuber.organizeit.Model.Repository;
 
 import com.zuber.organizeit.Model.Flashcard.Deck;
+import com.zuber.organizeit.Model.Snippet;
 import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TaskDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,14 @@ public class EntityDAO {
     final TaskRepository taskRepository;
     final EntityManager em;
     final DecksRepository decksRepository;
+    final SnippetsRepository snippetsRepository;
 
     @Autowired
-    public EntityDAO(TaskRepository taskRepository, EntityManager em, DecksRepository decksRepository) {
+    public EntityDAO(TaskRepository taskRepository, EntityManager em, DecksRepository decksRepository, SnippetsRepository snippetsRepository) {
         this.taskRepository = taskRepository;
         this.em = em;
         this.decksRepository = decksRepository;
+        this.snippetsRepository = snippetsRepository;
     }
 
     public Optional<Task> findById(TaskDTO taskDTO) {
@@ -79,9 +82,16 @@ public class EntityDAO {
     public Deck save(Deck deck) {
         return decksRepository.save(deck);
     }
+    public Snippet save(Snippet snippet) {
+        return snippetsRepository.save(snippet);
+    }
 
     public List<Task> getInboxTasks() {
         return taskRepository.isNotSubtaskAndIsNotProject();
+    }
+
+    public List<Snippet> findByTag(String name) {
+        return snippetsRepository.findByTag(name);
     }
 
 }

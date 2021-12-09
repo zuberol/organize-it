@@ -9,10 +9,12 @@ import java.util.List;
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Builder
+@Table(name = "tags")
 public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "tag_id")
     private Long id;
 
     private String mainName; //todo should be one of aliases

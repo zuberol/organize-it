@@ -20,13 +20,14 @@ public class Snippet {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "snippet_id")
     private Long id;
 
     private String title;
+    @Column(length = 10000)
     private String content;
 
     @ManyToMany(cascade = ALL)
     List<Tag> tags;
-
 
 }

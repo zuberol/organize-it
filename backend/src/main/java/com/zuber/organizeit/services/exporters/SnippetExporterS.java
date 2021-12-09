@@ -20,13 +20,8 @@ public class SnippetExporterS {
     }
 
     public void initDb(Collection<Path> dirs) {
-        Path next = dirs.iterator().next();
-
-        List<Snippet> snippets = SnippetParser.parse(next);
-//todo
-
+        dirs.stream().map(SnippetParser::parse).flatMap(Collection::stream)
+                .forEach(next -> entityDAO.save(next));
     }
-
-
 
 }

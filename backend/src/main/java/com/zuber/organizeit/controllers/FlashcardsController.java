@@ -4,8 +4,10 @@ package com.zuber.organizeit.controllers;
 import com.zuber.organizeit.Model.Flashcard.Deck;
 import com.zuber.organizeit.Model.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Repository.DecksRepository;
+import com.zuber.organizeit.Model.Repository.EntityDAO;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
+import com.zuber.organizeit.Model.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +23,14 @@ public class FlashcardsController {
     FlashcardsRepository flashcardsRepository;
     DecksRepository decksRepository;
     ReferenceResourcesRepository referenceResourcesRepository;
-    final String UPLOADED_FOLDER_PATH = "/home/jakub/IdeaProjects/personal/organize-it-files";
-
+    final EntityDAO entityDAO;
 
     @Autowired
-    public FlashcardsController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository) {
+    public FlashcardsController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, EntityDAO entityDAO) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
         this.referenceResourcesRepository = referenceResourcesRepository;
+        this.entityDAO = entityDAO;
     }
 
     @GetMapping(value = "/deck", produces = APPLICATION_JSON_VALUE)
@@ -93,6 +95,13 @@ public class FlashcardsController {
     @GetMapping(value = "/flashcard")
     public Flashcard getFlashcard(@RequestParam Long id) {
         return flashcardsRepository.findById(id).orElseThrow();
+    }
+
+
+
+    @GetMapping("/snippets")
+    public List<Snippet> dlnjaskjdkj() {
+        return entityDAO.findByTag("scala/scala-2-snippets");
     }
 
 
