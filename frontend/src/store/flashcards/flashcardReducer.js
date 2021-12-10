@@ -1,7 +1,8 @@
 import * as actionTypes from './actions';
 
 const initialGlobalState = {
-  decks: []
+  decks: [],
+  snippets: []
 };
 
 const reducer = ( state = initialGlobalState, action ) => {
@@ -25,6 +26,12 @@ const reducer = ( state = initialGlobalState, action ) => {
     return {
       ...state,
       decks: action.decks
+    }
+  }
+  else if(action.type == actionTypes.INIT_SNIPPETS) {
+    return {
+      ...state,
+      snippets: action.snippets
     }
   }
   else {

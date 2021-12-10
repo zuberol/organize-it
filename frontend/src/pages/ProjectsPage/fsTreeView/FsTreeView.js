@@ -25,18 +25,15 @@ export default function FsTreeView(task, dispatch) {
     let jsx = <span />;
     if (task) {
       jsx = (
-        <>
+        !task.archived && <>
           <div className="file">
             <div className="leaf"></div>
             <div className="horizontal-linker"><span></span></div>
-            <p style={{ "marginLeft": "4px" }} >{task.note || ""}</p>
-            {/*<input defaultValue={task.note || ""} onBlur={updateTaskNote} style={{ "marginLeft": "4px" }} />*/}
-            <div>
-              <p>#{task.task_id}   {task.description}</p>
-              {/*<p>{task.name}</p>*/}
-              {/*<p>{task.description}</p>*/}
-            </div>
-            {/* <button className="transparent" type="button" onClick={newSubtask}><Icon icon={plus} /></button> */}
+              <div style={{backgroundColor:"salmon", borderRadius: '5px'}}>
+                <span># {task.task_id}</span>
+                <span>Name: {task.name}</span>
+                <span>About: {task.description}</span>
+              </div>
           </div>
           <div className="branch">
             <div className="vertical-linker"><span></span></div>

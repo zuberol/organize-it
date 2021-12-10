@@ -37,3 +37,25 @@ export default class Flashcard {
   //   .catch(e => console.log(e));
   // }
 }
+
+
+
+// returns <JSX> resourceDef
+export function resourceToJsx(resource, key) {
+  const simpleRefDef = (
+    resource && resource.reference_url &&
+    <div>
+      <a href={resource.reference_url || "#"}>{resource.caption || "no caption"}</a>
+      {resource.comment && <p>{resource.comment}</p>}
+    </div>
+  );
+  const codeJsx = resource && typeof resource['@class'] === "String" && resource['@class'].match(/CodeReference/gi) && <div>CodeReference</div>
+
+  return (
+    <div key={key}>
+      {simpleRefDef}
+      {codeJsx}
+    </div>
+  )
+}
+

@@ -17,3 +17,6 @@ export const MEAL_URL = new URL('/api/meal', BACKEND_BASE_URL)
 
 // DEV
 export const FILECHECK_URL = new URL('/api/dev/filecheck', BACKEND_BASE_URL);
+
+// SNIPPETS
+export const SNIPPETS_URL = new URL('/api/snippets', BACKEND_BASE_URL);
