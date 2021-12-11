@@ -13,13 +13,6 @@
 			widget z taskami wykonanymi dzisiaj
 				dodanie archiwizacji taskow
 
-
-	essential
-		widoczny progres
-			widget projektami z wyswietlonym progresem
-			widget z taskami wykonanymi dzisiaj
-				dodanie archiwizacji taskow
-
 		filtrowanie drzewa
 			backend bedzie wysylal indexy taskow w odpowiedzi na filtr+filtr+filtr get
       frontend bedzie pokazywal taski tylko te co dostanie indexy
@@ -35,11 +28,6 @@
         ogarnac hibernate?
 				viktora film najpierw
             https://eventory.cc/event/jdd-2021/space/stream/68537
-
-		code editor
-			react
-				https://github.com/securingsincity/react-ace
-			    dopisac parser zeby dzialal z kodem
 
     priority
         nowe taski na szczycie listy
