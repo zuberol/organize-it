@@ -21,7 +21,7 @@ export default function Header() {
         activeStyle={activeStyle}
         exact={true}
         style={navStyle}
-      >organize-it</NavLink>
+      >Dashboard</NavLink>
       {/* <a className="" href="/decks/modify">
         <h5 className="logo-title">modify Sets</h5>
       </a>
@@ -39,7 +39,7 @@ export default function Header() {
         activeStyle={activeStyle}
         exact={true}
         style={navStyle}
-      >Decks</NavLink>
+      >Flashcards</NavLink>
       <NavLink
         to="/projects"
         activeStyle={activeStyle}

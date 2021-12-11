@@ -12,7 +12,7 @@ import { faPlusCircle as plus } from '@fortawesome/free-solid-svg-icons';
  * @return {JSX} filled tree container
  */
 export default function FsTreeView(task, dispatch) {
-  if (typeof task === 'object' && Object.keys(task).length === 0) return <div></div>;
+  if (typeof task === 'object' && Object.keys(task).length === 0) return null;
   return (
     <div className="treeContainer">
         <div>

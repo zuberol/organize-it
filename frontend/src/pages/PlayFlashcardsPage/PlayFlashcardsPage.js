@@ -8,6 +8,7 @@ import '../../common/styles/commons.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faAngleRight, faAngleLeft, faEye, faComment, faStickyNote } from '@fortawesome/free-solid-svg-icons'
 import { resourceToJsx } from "../../Model/Flashcard";
+import { renderResources } from "../../Model/Project/ReferenceResource";
 
 const StyledParagraph = styled.section`
   ${({ active }) => !!active.reduce((prev, curr) => {
@@ -66,7 +67,7 @@ export default function PlayFlashcardsPage() {
           <StyledParagraph active={[showAnswer, currentFlashcard.reference_resources]} centered>
             <hr/>
             <p>Refs:</p>
-            {currentFlashcard.reference_resources.map((ref, index) => resourceToJsx(ref, index))}
+            {renderResources(currentFlashcard.reference_resources)}
           </StyledParagraph>
         </div>
         <div className="flashcard__buttons">

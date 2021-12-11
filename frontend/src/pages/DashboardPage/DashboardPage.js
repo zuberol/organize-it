@@ -19,7 +19,6 @@ export default function DashboardPage() {
        dispatch(fetchInbox());
     }, []);
 
-
     return (
         <main className="">
             <h3>Dashboard here</h3>
