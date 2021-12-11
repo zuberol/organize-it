@@ -11,10 +11,10 @@ import javax.persistence.Entity;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 @DiscriminatorValue("2")
 public class VideoReference extends ReferenceResource {
+
     private String referenceUrl;
+
 }

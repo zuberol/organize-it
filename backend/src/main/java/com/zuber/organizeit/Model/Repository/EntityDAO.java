@@ -1,9 +1,9 @@
 package com.zuber.organizeit.Model.Repository;
 
+import com.zuber.organizeit.Model.Flashcard.Deck;
+import com.zuber.organizeit.Model.Snippet;
 import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.Model.Task.TaskDto;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.zuber.organizeit.Model.Task.TaskDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,64 +19,79 @@ public class EntityDAO {
 
     final TaskRepository taskRepository;
     final EntityManager em;
+    final DecksRepository decksRepository;
+    final SnippetsRepository snippetsRepository;
 
     @Autowired
-    public EntityDAO(TaskRepository taskRepository, EntityManager em) {
+    public EntityDAO(TaskRepository taskRepository, EntityManager em, DecksRepository decksRepository, SnippetsRepository snippetsRepository) {
         this.taskRepository = taskRepository;
         this.em = em;
+        this.decksRepository = decksRepository;
+        this.snippetsRepository = snippetsRepository;
     }
 
-    public Optional<TaskDto> findById(TaskDto taskDto) {
-        return ofNullable(taskDto)
-                .map(TaskDto::getTaskId)
+    public Optional<Task> findById(TaskDTO taskDTO) {
+        return ofNullable(taskDTO)
+                .map(TaskDTO::getTaskId)
                 .flatMap(id -> ofNullable(em.find(Task.class, id)))
-                .filter(Task::isNotArchived)
-                .map(Task::toDTO);
+                .filter(Task::isNotArchived);
     }
 
-    public List<TaskDto> findAllNonArchivedProjects() {
+    public Optional<Task> findById(Long id) {
+        return taskRepository.findById(id);
+    }
+
+    public Optional<Task> findByLocallySavedURI(String uri) {
+        return taskRepository.findTaskByLocallySavedURI(uri);
+    }
+
+    public List<Task> findAllNonArchivedProjects() {
         return taskRepository.findAll()
                 .stream()
                 .filter(Task::isProject).filter(Task::isNotArchived)
-                .map(Task::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public Optional<TaskDto> modifyTask(TaskDto dto) {
+    public Optional<Task> modifyTask(TaskDTO dto) {
         return Optional.of(dto)
-                .flatMap(taskDto -> ofNullable(taskDto.getTaskId()))
+                .flatMap(taskDTO -> ofNullable(taskDTO.getTaskId()))
                 .flatMap(taskRepository::findById)
-                .map(task -> task.modify(dto))
-                .map(Task::toDTO);
+                .map(task -> task.modifyBasicData(dto))
+                .map(task -> task.setSubtasksFromTO(dto, taskRepository))
+                .map(taskRepository::save);
     }
 
-    public Optional<TaskDto> appendNewSubtask(TaskDto dto) {
-        return Optional.of(dto)
-                .map(TaskDto::getTaskId)
+    public Optional<Task> appendNewSubtask(TaskDTO dto) {
+         return Optional.of(dto)
+                .map(TaskDTO::getTaskId)
                 .flatMap(taskRepository::findById)
-                .map(Task::withNewSubtask)
-                .map(taskRepository::save)
-                .map(Task::toDTO);
+                .map(task -> Task.withNewSubtask(task, em));
     }
     
-    public Optional<TaskDto> createProject(TaskDto dto) {
+    public Optional<Task> createTask(TaskDTO dto) {
+
         return Optional.of(dto)
-                .map(Task::fromDto)
-                .map(task -> {
-                    task.setProject(true);
-                    return task;
-                })
-                .map(task -> {
-                    assert dto.getSubtaskIds() != null;
-                    task.setSubTasks(
-                            taskRepository.findAllById(dto.getSubtaskIds())
-                    );
-//                    em.persist(task);
-                    return task;
-                })
-//                .map(em::save)
-                .map(taskRepository::save)
-                .map(Task::toDTO);
+                .map(Task::newFromDto)
+                .map(task -> task.setSubtasksFromTO(dto, taskRepository))
+                .map(taskRepository::save);
+    }
+
+    public Task save(Task task) {
+        return taskRepository.save(task);
+    }
+    public Deck save(Deck deck) {
+        return decksRepository.save(deck);
+    }
+    public Snippet save(Snippet snippet) {
+        return snippetsRepository.save(snippet);
+    }
+
+    public List<Task> getInboxTasks() {
+        return taskRepository.isNotSubtaskAndIsNotProject();
+    }
+
+    public List<Snippet> findByTag(String name) {
+        return snippetsRepository.findByTag(name);
     }
 
 }

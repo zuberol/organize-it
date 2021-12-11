@@ -11,11 +11,12 @@ import javax.persistence.Entity;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 @DiscriminatorValue("3")
 public class ImageReference extends ReferenceResource {
+
     private String referenceUrl;
+
     private String imageUri;
+
 }

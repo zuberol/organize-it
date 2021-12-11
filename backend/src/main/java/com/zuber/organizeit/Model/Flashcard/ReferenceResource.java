@@ -14,7 +14,7 @@ import java.net.URI;
 @Getter @Setter
 @Table(name = "reference_resources")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="res_id")
-@Inheritance
+@Inheritance //todo Superbuilder
 public abstract class ReferenceResource implements Serializable {
 
     @Id
@@ -22,11 +22,13 @@ public abstract class ReferenceResource implements Serializable {
     @Column(name = "res_id")
     @JsonProperty("res_id")
     private Long id;
+
     private String caption;
+
     private String comment;
+
     private String referenceUrl;
-//    private Boolean isUrlTypeRef;
-//    private Boolean isBookTypeRef;
-//    private URI uri;
+
+    private String locallySavedURI;
 
 }

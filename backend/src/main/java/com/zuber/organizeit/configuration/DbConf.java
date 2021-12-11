@@ -31,6 +31,7 @@ public class DbConf {
                     .subTasks(
                             List.of(
                             Task.builder()
+                                    .name("xddasdasda")
                                     .description("n 1 child id 2 note")
                                     .subTasks(List.of())
                                     .tags(List.of())
@@ -42,6 +43,7 @@ public class DbConf {
                                     ).build()
                             ,
                             Task.builder()
+                                    .name("lorem ipsm")
                                     .description("n 1 child id 3 note")
                                     .subTasks(List.of(
                                             Task.builder()

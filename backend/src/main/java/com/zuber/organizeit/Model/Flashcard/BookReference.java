@@ -10,11 +10,14 @@ import javax.persistence.Entity;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter @Setter
-@NoArgsConstructor
+@Getter @Setter @NoArgsConstructor
 @DiscriminatorValue("4")
 public class BookReference extends ReferenceResource {
+
     private String title;
+
     private String author;
-    private String page;
+
+    private String pageNumber;
+
 }
