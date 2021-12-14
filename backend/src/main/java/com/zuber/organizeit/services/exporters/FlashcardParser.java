@@ -1,7 +1,7 @@
 package com.zuber.organizeit.services.exporters;
 
-import com.zuber.organizeit.Model.Flashcard.CodeReference;
-import com.zuber.organizeit.Model.Flashcard.Flashcard;
+import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
+import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 

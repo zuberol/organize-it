@@ -1,6 +1,6 @@
 package com.zuber.organizeit.services.exporters;
 
-import com.zuber.organizeit.Model.Flashcard.CodeReference;
+import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
 
 import java.io.IOException;
 import java.nio.file.Files;

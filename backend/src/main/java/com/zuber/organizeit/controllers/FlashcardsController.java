@@ -1,8 +1,8 @@
 package com.zuber.organizeit.controllers;
 
 
-import com.zuber.organizeit.Model.Flashcard.Deck;
-import com.zuber.organizeit.Model.Flashcard.Flashcard;
+import com.zuber.organizeit.Model.Note.Flashcard.Deck;
+import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Repository.DecksRepository;
 import com.zuber.organizeit.Model.Repository.EntityDAO;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;

@@ -1,7 +1,11 @@
 package com.zuber.organizeit.controllers;
 
-import com.zuber.organizeit.Model.Flashcard.*;
 import com.zuber.organizeit.Model.MultipartTest.RefFileMetadata;
+import com.zuber.organizeit.Model.Note.Flashcard.Deck;
+import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.Model.Note.ReferenceResource.BookReference;
+import com.zuber.organizeit.Model.Note.ReferenceResource.ReferenceResource;
+import com.zuber.organizeit.Model.Note.ReferenceResource.VideoReference;
 import com.zuber.organizeit.Model.Repository.*;
 import com.zuber.organizeit.Model.Task.Task;
 import org.springframework.beans.factory.annotation.Autowired;

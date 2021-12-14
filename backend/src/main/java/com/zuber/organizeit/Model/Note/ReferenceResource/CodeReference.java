@@ -1,9 +1,9 @@
-package com.zuber.organizeit.Model.Flashcard;
+package com.zuber.organizeit.Model.Note.ReferenceResource;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.zuber.organizeit.Model.Note.ReferenceResource.ReferenceResource;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;

@@ -1,7 +1,7 @@
-package com.zuber.organizeit.Model.Flashcard;
+package com.zuber.organizeit.Model.Note.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.zuber.organizeit.Model.User.User;
+import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

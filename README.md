@@ -53,7 +53,11 @@
 
 
 	nice to have
-        dodac logowanie bledow
+
+		architektura oparta o DDD
+			DomainEventy i EventHandlery w application layerze
+				wywalenie hibernate z Encji Task i innych
+    dodac logowanie bledow
 		dodac strip() w parserze jak ustawia nazwe taska
 		dodawanie pytan do quizow 
 			formularz

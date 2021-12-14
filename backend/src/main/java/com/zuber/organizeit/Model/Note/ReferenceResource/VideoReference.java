@@ -1,4 +1,4 @@
-package com.zuber.organizeit.Model.Flashcard;
+package com.zuber.organizeit.Model.Note.ReferenceResource;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -12,11 +12,9 @@ import javax.persistence.Entity;
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter @NoArgsConstructor
-@DiscriminatorValue("3")
-public class ImageReference extends ReferenceResource {
+@DiscriminatorValue("2")
+public class VideoReference extends ReferenceResource {
 
     private String referenceUrl;
-
-    private String imageUri;
 
 }

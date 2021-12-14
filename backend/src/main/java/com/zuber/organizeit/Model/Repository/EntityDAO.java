@@ -1,6 +1,6 @@
 package com.zuber.organizeit.Model.Repository;
 
-import com.zuber.organizeit.Model.Flashcard.Deck;
+import com.zuber.organizeit.Model.Note.Flashcard.Deck;
 import com.zuber.organizeit.Model.Snippet;
 import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TaskDTO;

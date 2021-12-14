@@ -1,4 +1,5 @@
-package com.zuber.organizeit.Model.Flashcard;
+package com.zuber.organizeit.Model.Note.ReferenceResource;
+
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
@@ -10,10 +11,12 @@ import javax.persistence.Entity;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@Getter
-@Setter
-@NoArgsConstructor
-@DiscriminatorValue("1")
-public class SimpleLinkResource extends ReferenceResource {
+@Getter @Setter @NoArgsConstructor
+@DiscriminatorValue("3")
+public class ImageReference extends ReferenceResource {
+
+    private String referenceUrl;
+
+    private String imageUri;
 
 }

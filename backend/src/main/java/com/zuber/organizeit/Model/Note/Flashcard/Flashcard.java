@@ -1,6 +1,7 @@
-package com.zuber.organizeit.Model.Flashcard;
+package com.zuber.organizeit.Model.Note.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.zuber.organizeit.Model.Note.ReferenceResource.ReferenceResource;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,12 +24,21 @@ public class Flashcard implements Serializable {
 
     private String question;
 
+    @ManyToMany(cascade = ALL) //todo chyba
+    private List<ReferenceResource> questionPart;
+
     private String shortAnswer;
 
     @Column(columnDefinition="text", length=10000)
     private String longAnswer;
 
-    @OneToMany(cascade = ALL)
+    @ManyToMany(cascade = ALL)
     private List<ReferenceResource> referenceResources;
+
+
+    private boolean isArchived;
+
+    @OneToOne // todo for now
+    private Statistic statistic;
 
 }

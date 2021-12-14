@@ -1,6 +1,6 @@
 package com.zuber.organizeit.controllers;
 
-import com.zuber.organizeit.Model.Flashcard.Flashcard;
+import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
