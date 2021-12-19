@@ -1,0 +1,22 @@
+  N: notatka o dokerze
+  Docker engine
+  Ref: https://docs.docker.com/engine/
+  Ref: https://docs.docker.com/get-started/overview/#docker-architecture
+
+  client server app with- dockerd- API's- docker command (CLI)
+  Docker jest zaimplementowany w GO i uzywa namespace'ow z GO, zeby stworzyc swoje container'y
+
+  F: Jaki jest najwazniejszy aktor w dockerze jako takim?
+    Ref: https://ghfdhgfddocs.ddasdasocker.pl/engine/ Lvl: hard
+    sadasdasdasdasdas
+  F: Jaki jest najwazniejszy aktor m?
+    lkbjdhftdfj
+    yuoyuhkhjkgy
+    nvbnmgfy
+  F: Jaszy aktor w dockerze jako takim?
+    dhjashdgashgdhas
+    dasdasdasd
+
+
+
+

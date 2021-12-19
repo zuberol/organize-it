@@ -16,4 +16,14 @@ import javax.persistence.Entity;
 @DiscriminatorValue("1")
 public class SimpleLinkResource extends ReferenceResource {
 
+    public SimpleLinkResource(String link) {
+        setReferenceUrl(link);
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleLinkResource{" +
+                "referenceUrl='" + referenceUrl + '\'' +
+                '}';
+    }
 }

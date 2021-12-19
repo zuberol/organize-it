@@ -12,6 +12,10 @@ import java.util.List;
 @Table(name = "tags")
 public class Tag {
 
+    public Tag(String mainName) {
+        this.mainName = mainName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tag_id")
@@ -21,5 +25,6 @@ public class Tag {
 
     @ElementCollection
     List<String> aliases;
+
 
 }

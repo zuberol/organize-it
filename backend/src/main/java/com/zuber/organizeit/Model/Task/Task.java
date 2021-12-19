@@ -71,6 +71,7 @@ public class Task {
     private List<Task> subTasks = new LinkedList<>();
 
     @OneToMany(cascade = {CascadeType.ALL})
+    @Builder.Default
     private List<Tag> tags = new LinkedList<>();
 
     @Embedded

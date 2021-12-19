@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporters;
+package com.zuber.organizeit.services.exporters.rm;
 
 import com.zuber.organizeit.Model.Snippet;
 import com.zuber.organizeit.Model.Tag;
@@ -91,20 +91,7 @@ public class SnippetParser {
         }
 
 
-//        Utils.notImplementedYet.run();
-        return snippets; //todo
+        return snippets;
     }
 
-    // todo snippet parser musi ladowac tagi parsujac stringi
-    // todo test ->  odpalanie docker-compose jako daemon
-    //test tags: comarch
-    // test tags:comarch
-
-    //test
-    //pytanie
-    //  odpowiedz
-    //pytanie powinno sie sparsowac raczej
-
 }
-
-    //todo parsowanie csv

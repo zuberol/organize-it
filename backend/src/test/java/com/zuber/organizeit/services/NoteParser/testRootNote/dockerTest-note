@@ -1,0 +1,21 @@
+  N: notatka o dokerze
+  Ref: https://docs.docker.com/engine/, https://docs.docker.com/get-started/overview/#docker-architecture
+  Docker engine
+  client server app with
+    - dockerd
+    - API's
+    - docker command (CLI)
+  Docker jest zaimplementowany w GO i uzywa namespace'ow z GO, zeby stworzyc swoje container'y
+
+  F: Jaki jest najwazniejszy aktor w dockerze jako takim?
+    Docker daemon, on wykonuje wszystkie operacje buildowania, odpalania kontenerow itd
+
+  F: Czym jest docker-compose?
+    To kolejny CLI, tak jak komenda "docker"
+
+  F: Czy "docker" i "dockerd" musza byc na jednej maszynie?
+    T: docker, uberhard,
+    Nie, dockerd moze byc remote
+
+
+

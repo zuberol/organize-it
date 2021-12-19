@@ -9,6 +9,11 @@
 
 	essential
 
+		dopisac paragraph do NoteCtx
+
+		rzucanie wyjatkow w streamie
+			czy runtime exception przerwie stream, pewnie ta
+
 		vim Notes
 			scrapowanie artykulow do krotkiej notatki
 			kod examples w oddzielnych plikach
@@ -128,6 +133,11 @@
             tail optimizationem
             porownac mozna bytecode
 
+
+# info inbox
+	nie mozna dodawac prywatnych i  protected  metod do interfaceow, zeby uzywac ich jak traitow
+		szkielet klasy zeby dzialala poprawnie ;__;
+		, co jest chujnia 
 
 
 

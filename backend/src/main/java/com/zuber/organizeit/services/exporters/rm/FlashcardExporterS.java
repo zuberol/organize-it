@@ -1,7 +1,8 @@
-package com.zuber.organizeit.services.exporters;
+package com.zuber.organizeit.services.exporters.rm;
 
 import com.zuber.organizeit.Model.Note.Flashcard.Deck;
 import com.zuber.organizeit.Model.Repository.EntityDAO;
+import com.zuber.organizeit.services.exporters.rm.FlashcardParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,7 @@
 package com.zuber.organizeit.configuration;
 
-import com.zuber.organizeit.services.exporters.FlashcardExporterS;
+import com.zuber.organizeit.services.exporters.parser.rm.NoteDirStructureParser;
+import com.zuber.organizeit.services.exporters.rm.FlashcardExporterS;
 import com.zuber.organizeit.services.exporters.ProjectExporterS;
 import com.zuber.organizeit.services.exporters.SnippetExporterS;
 import org.springframework.boot.CommandLineRunner;
@@ -17,11 +18,14 @@ public class InitDbConf implements CommandLineRunner {
     final ProjectExporterS projectExporterS;
     final FlashcardExporterS flashcardExporterS;
     final SnippetExporterS snippetExporterS;
+    final NoteDirStructureParser noteDirStructureParser;
 
-    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS) {
+    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, NoteDirStructureParser noteDirStructureParser) {
         this.projectExporterS = projectExporterS;
         this.flashcardExporterS = flashcardExporterS;
         this.snippetExporterS = snippetExporterS;
+        this.noteDirStructureParser = noteDirStructureParser;
+
     }
 
     private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");

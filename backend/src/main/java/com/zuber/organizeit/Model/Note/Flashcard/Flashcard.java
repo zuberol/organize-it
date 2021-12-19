@@ -35,10 +35,10 @@ public class Flashcard implements Serializable {
     @ManyToMany(cascade = ALL)
     private List<ReferenceResource> referenceResources;
 
-
     private boolean isArchived;
 
-    @OneToOne // todo for now
+//    @OneToOne // todo for now
+    @Embedded
     private Statistic statistic;
 
 }
