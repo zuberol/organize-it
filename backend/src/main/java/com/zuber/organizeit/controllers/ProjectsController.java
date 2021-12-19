@@ -2,11 +2,11 @@ package com.zuber.organizeit.controllers;
 
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.Model.Task.TaskDto;
+import com.zuber.organizeit.Model.Task.Task;
+import com.zuber.organizeit.Model.Task.TaskDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -23,35 +23,40 @@ public class ProjectsController {
         this.entityDao = entityDao;
     }
 
-    @GetMapping("/tasks")
-    public List<TaskDto> getProjects() {
+    @GetMapping("/projects")
+    public List<Task> getAllProjects() {
         return entityDao.findAllNonArchivedProjects();
     }
 
     @GetMapping(value = "/task")
-    public ResponseEntity<TaskDto> getTask(@RequestBody TaskDto taskDTO) {
+    public ResponseEntity<Task> getTaskById(@RequestBody TaskDTO taskDTO) {
         return ResponseEntity.of(
                 Optional.ofNullable(taskDTO).flatMap(entityDao::findById)
         );
     }
 
     @PostMapping(value = "/task", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<TaskDto> modifyTask(@RequestBody TaskDto taskDTO) { // todo validate
+    public ResponseEntity<Task> modifyTask(@RequestBody TaskDTO taskDTO) { // todo validate
         return ResponseEntity.of(
                 Optional.ofNullable(taskDTO).flatMap(entityDao::modifyTask)
         );
     }
 
-    @Transactional
-    @PostMapping(value = "/task/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<TaskDto> createProject(@RequestBody TaskDto taskDTO) { // todo validate
+    @PostMapping(value = "/task/new", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO) { // todo validate
         return ResponseEntity.of(
-                Optional.ofNullable(taskDTO).flatMap(entityDao::createProject)
+                Optional.ofNullable(taskDTO).flatMap(entityDao::createTask)
         );
     }
 
-    @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<TaskDto> appendNewSubtask(@RequestBody TaskDto taskDTO) { // todo validate
+
+    @GetMapping(value = "/task/inbox")
+    public List<Task> getInboxTasks() {
+        return entityDao.getInboxTasks();
+    }
+
+    @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE}) //todo zmienic nazwe endpointa
+    public ResponseEntity<Task> appendNewSubtask(@RequestBody TaskDTO taskDTO) { // todo validate
         return ResponseEntity.of(
                Optional.ofNullable(taskDTO).flatMap(entityDao::appendNewSubtask)
         );

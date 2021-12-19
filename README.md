@@ -3,30 +3,61 @@
 ## Maxims
 - it's better not to give up on code quality
 - but when learning it's better to make a bunch of shitty apps than one good
+- ? make the hardest one first
 
 ## Roadmap:
 
 	essential
+
+		vim Notes
+			scrapowanie artykulow do krotkiej notatki
+			kod examples w oddzielnych plikach
+			meta-tagi w pliku z notatka
+			directory to cala notatka?
+		
+			subnotatki?
+
+		tworzenie notatek z VIMa
+			link do calej notatki albo do node'a
+			wstrzykiwanie CodeRefa
+			Folder notatek i wszystko co w nim jest
+			rozroznienie plikow po nazwach "flashcards, notes, .java"
+
+
 		widoczny progres
 			widget projektami z wyswietlonym progresem
 			widget z taskami wykonanymi dzisiaj
 				dodanie archiwizacji taskow
+
 		filtrowanie drzewa
-
-        zaczac robic codziennie flashcardy przez pol godziny
-            mechanizm losowania flashcardow
-
-            
+			backend bedzie wysylal indexy taskow w odpowiedzi na filtr+filtr+filtr get
+      frontend bedzie pokazywal taski tylko te co dostanie indexy
+				nie takie fajne ale zadziala narazie
+		zaczac robic codziennie flashcardy przez pol godziny
+        jak tworzyc flashcardy łatwo
+					jakiegos DSLa musze robic?
+						w scali
+						bo np code resource jak wgrac?
+					musze sie zapisywac na dysk
+					musza sie ladowac do apki na startupie z dysku
+					
         ogarnac hibernate?
-            viktora film najpierw
+				viktora film najpierw
             https://eventory.cc/event/jdd-2021/space/stream/68537
 
-		code editor
-			react
-				https://github.com/securingsincity/react-ace
-			dopisac parser zeby dzialal z kodem
+    priority
+        nowe taski na szczycie listy
+        dodane priority pushuje do gory listy
+            dodanie przycisku + zeby podbic priority
+            dodac priority na backendzie
+
 
 	nice to have
+
+		architektura oparta o DDD
+			DomainEventy i EventHandlery w application layerze
+				wywalenie hibernate z Encji Task i innych
+    dodac logowanie bledow
 		dodac strip() w parserze jak ustawia nazwe taska
 		dodawanie pytan do quizow 
 			formularz
@@ -54,7 +85,7 @@
                 taski z roznych projektow powinny moc byc od siebie zalezne 
                     np. sprzedanie fotela i zarobienie hajsu moze odblokowac task kupienia nowego snowboardu	
             obliczanie czasu potrzebnego na zrobienie zadania,
-        sposob  za ktory task sie zabrac?
+        sposob za ktory task sie zabrac?
             zabierac sie za to co mam ochote?
              ktore taski trzeba zrobic zeby najwiecej zyskac?
                 ktory task jest wazniejszy?
@@ -66,6 +97,7 @@
                                     minor, medium, hard -> 1, 2, 5
 
     minor
+        api do zliczania treningow biegowych
         tool
             react
                 wyswietlanie description aktywnego taska
@@ -82,11 +114,30 @@
             react
                 widget z nastepnym taskiem do wykonania
 
+		
+		dopisac paragraph do NoteCtx
+
+		rzucanie wyjatkow w streamie
+			czy runtime exception przerwie stream, pewnie ta
 
 ## ideas
  	dyskryminator taskow  przycisk ktory jak klikniemy to spycha na koniec listy  do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny
 	przycisk w roocie expand all, tylko itemki z pod roota
+	nie powinno byc widoku w ktorym jest za duzo taskow, zeby nie bylo to przytlaczajace
 
+## inbox
+    co to jest spliterator i jak tego uzywac, do czego?
+    jak dzialac na streamach zeby dobry performance byl?
+        o co chodzi z 
+            short circut optimization?
+            tail optimizationem
+            porownac mozna bytecode
+
+
+# info inbox
+	nie mozna dodawac prywatnych i  protected  metod do interfaceow, zeby uzywac ich jak traitow
+		szkielet klasy zeby dzialala poprawnie ;__;
+		, co jest chujnia 
 
 
 

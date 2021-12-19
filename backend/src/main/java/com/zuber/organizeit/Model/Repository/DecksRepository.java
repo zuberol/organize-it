@@ -1,6 +1,6 @@
 package com.zuber.organizeit.Model.Repository;
 
-import com.zuber.organizeit.Model.Flashcard.Deck;
+import com.zuber.organizeit.Model.Note.Flashcard.Deck;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

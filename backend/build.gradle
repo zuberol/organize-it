@@ -37,8 +37,6 @@ dependencies {
 
     implementation 'org.jooq:jool:0.9.14'
 
-
-
     implementation 'com.h2database:h2:1.4.200'
 }
 

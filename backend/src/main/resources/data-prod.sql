@@ -73,5 +73,5 @@ as '
     end;
 ';
 
-call migrate('/var/lib/postgresql/sheets');
-call migrateToTables();
+-- call migrate('/var/lib/postgresql/sheets');
+-- call migrateToTables();

@@ -1,18 +1,24 @@
 version: "3.9"
 services:
   organize-it-db:
-    image: postgres
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
     restart: always
     ports:
-    - 8081:5432
+    - 8081:5432  # 5432:5432
     environment:
       POSTGRES_PASSWORD: organizeit
       POSTGRES_USER: organizeit
       POSTGRES_DB: organizeit
     volumes:
-    - /home/jakub/IdeaProjects/personal/organize-it/backend/spreadsheets:/var/lib/postgresql/sheets
-    ulimits:
-      core:
-        hard: 0
-        soft: 0
-    labels: ["prevent_deletion_when_prune=true"]
+      - "pg_data:/var/lib/postgresql/data"
+
+volumes:
+  pg_data:
+
+#    ulimits:
+#      core:
+#        hard: 0
+#        soft: 0
+#    labels: ["prevent_deletion_when_prune=true"]

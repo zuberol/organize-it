@@ -13,10 +13,11 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        schema_update:
-        unique_constraint_strategy: RECREATE_QUIETLY
+      ddl-auto: update
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+#        schema_update:
+#        unique_constraint_strategy: RECREATE_QUIETLY
     defer-datasource-initialization: true
 
