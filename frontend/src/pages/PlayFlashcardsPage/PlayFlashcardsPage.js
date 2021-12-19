@@ -6,8 +6,7 @@ import './Flashcards.scss';
 import '../../common/styles/commons.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faAngleRight, faAngleLeft, faEye, faComment, faStickyNote } from '@fortawesome/free-solid-svg-icons'
-import { resourceToJsx } from "../../Model/Flashcard";
+import { faAngleRight, faAngleLeft, faEye, faComment } from '@fortawesome/free-solid-svg-icons'
 import { renderResources } from "../../Model/Project/ReferenceResource";
 
 const StyledParagraph = styled.section`
