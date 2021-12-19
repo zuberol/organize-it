@@ -9,11 +9,6 @@
 
 	essential
 
-		dopisac paragraph do NoteCtx
-
-		rzucanie wyjatkow w streamie
-			czy runtime exception przerwie stream, pewnie ta
-
 		vim Notes
 			scrapowanie artykulow do krotkiej notatki
 			kod examples w oddzielnych plikach
@@ -119,6 +114,11 @@
             react
                 widget z nastepnym taskiem do wykonania
 
+		
+		dopisac paragraph do NoteCtx
+
+		rzucanie wyjatkow w streamie
+			czy runtime exception przerwie stream, pewnie ta
 
 ## ideas
  	dyskryminator taskow  przycisk ktory jak klikniemy to spycha na koniec listy  do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny

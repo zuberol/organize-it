@@ -36,9 +36,9 @@ public class InitDbConf implements CommandLineRunner {
 
         @Override
         public void run(String...args) {
-            projectExporterS.initDb(List.of(projectsDir));
-            flashcardExporterS.initDb(List.of(testFlashcardDir));
-            snippetExporterS.initDb(List.of(snippetsDir));
+//            projectExporterS.initDb(List.of(projectsDir));
+//            flashcardExporterS.initDb(List.of(testFlashcardDir));
+//            snippetExporterS.initDb(List.of(snippetsDir));
         }
 
 
