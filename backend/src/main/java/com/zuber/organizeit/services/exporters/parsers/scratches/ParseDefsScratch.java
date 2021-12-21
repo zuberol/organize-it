@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporters.parser;
+package com.zuber.organizeit.services.exporters.parsers.scratches;
 
 public class ParseDefsScratch {
 

@@ -8,19 +8,8 @@
 ## Roadmap:
 
 	essential
-
-		vim Notes
-			scrapowanie artykulow do krotkiej notatki
-			kod examples w oddzielnych plikach
-			meta-tagi w pliku z notatka
-			directory to cala notatka?
-		
-			subnotatki?
-
+	
 		tworzenie notatek z VIMa
-			link do calej notatki albo do node'a
-			wstrzykiwanie CodeRefa
-			Folder notatek i wszystko co w nim jest
 			rozroznienie plikow po nazwach "flashcards, notes, .java"
 
 

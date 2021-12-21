@@ -1,6 +1,8 @@
-package com.zuber.organizeit.services.exporters.parser;
+package com.zuber.organizeit.services.exporters.parsers;
 
+import com.zuber.organizeit.services.exporters.parsers.ctx.NoteParseCtx;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,22 +10,32 @@ import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.Optional;
 
-import static com.zuber.organizeit.services.exporters.parser.ParseContext.getLevel;
+import static com.zuber.organizeit.services.exporters.parsers.ParseContext.getLevel;
 import static java.util.Optional.*;
 
-public class TreeFormatFileParser {
+@Component
+public class NoteParser {
+
+    private static final String NOTE_SUFFIX = "note";
 
     // use only for NoteFiles
-    public Optional<NoteParseCtx> useWithSameLevelPolicy(Path noteFile) throws IOException {
+    public Optional<NoteParseCtx> useWithSameLevelPolicy(Path noteFile) throws IOException, ParseException {
         NoteParseCtx rootCtx = null;
-        Iterator<String> lines = Files.readAllLines(noteFile).stream()
-                .filter(l -> !l.isBlank())
-                .iterator();
-        if(lines.hasNext()) {
-            rootCtx = new NoteParseCtx(-1, noteFile);
-            ParseContext<?> mergedCtx = rootCtx;
-            while (lines.hasNext()) mergedCtx = findMergeCtxAndMerge(lines.next(), mergedCtx);
+
+        try {
+            if(!noteFile.toString().endsWith(NOTE_SUFFIX)) throw new ParseException(noteFile + " must end with " + NOTE_SUFFIX + "suffix");
+            Iterator<String> lines = Files.readAllLines(noteFile).stream()
+                    .filter(l -> !l.isBlank())
+                    .iterator();
+            if(lines.hasNext()) {
+                rootCtx = new NoteParseCtx(-1, noteFile);
+                ParseContext<?> mergedCtx = rootCtx;
+                while (lines.hasNext()) mergedCtx = findMergeCtxAndMerge(lines.next(), mergedCtx);
+            }
+        } catch (IOException | ParseException ex){
+            ex.printStackTrace();
         }
+
         return ofNullable(rootCtx);
     }
 

@@ -3,10 +3,9 @@ package com.zuber.organizeit.configuration.dev;
 import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TimeEstimates;
-import com.zuber.organizeit.services.exporters.parser.rm.NoteDirStructureParser;
-import com.zuber.organizeit.services.exporters.rm.FlashcardExporterS;
 import com.zuber.organizeit.services.exporters.ProjectExporterS;
 import com.zuber.organizeit.services.exporters.SnippetExporterS;
+import com.zuber.organizeit.services.exporters.rm.FlashcardExporterS;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -26,15 +25,13 @@ public class InitDbConf implements CommandLineRunner {
     final ProjectExporterS projectExporterS;
     final FlashcardExporterS flashcardExporterS;
     final SnippetExporterS snippetExporterS;
-    final NoteDirStructureParser noteDirStructureParser;
     final TaskRepository taskRepository;
 
 
-    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, NoteDirStructureParser noteDirStructureParser, TaskRepository taskRepository) {
+    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, TaskRepository taskRepository) {
         this.projectExporterS = projectExporterS;
         this.flashcardExporterS = flashcardExporterS;
         this.snippetExporterS = snippetExporterS;
-        this.noteDirStructureParser = noteDirStructureParser;
         this.taskRepository = taskRepository;
     }
 
