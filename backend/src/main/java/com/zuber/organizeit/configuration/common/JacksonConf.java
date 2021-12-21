@@ -1,4 +1,4 @@
-package com.zuber.organizeit.configuration;
+package com.zuber.organizeit.configuration.common;
 
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

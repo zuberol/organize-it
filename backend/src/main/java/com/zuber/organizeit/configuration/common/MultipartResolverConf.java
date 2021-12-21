@@ -1,4 +1,4 @@
-package com.zuber.organizeit.configuration;
+package com.zuber.organizeit.configuration.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
