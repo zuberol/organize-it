@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.zuber.organizeit.services.exporters.parser.ParseContext.getLevel;
+import static com.zuber.organizeit.services.exporters.parsers.ParseContext.getLevel;
 
 public class RegexTest {
 

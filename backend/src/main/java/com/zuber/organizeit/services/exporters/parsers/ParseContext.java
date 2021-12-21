@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporters.parser;
+package com.zuber.organizeit.services.exporters.parsers;
 
 import java.util.LinkedList;
 import java.util.List;

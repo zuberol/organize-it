@@ -1,10 +1,9 @@
-package com.zuber.organizeit.services.exporters.parser;
+package com.zuber.organizeit.services.exporters.parsers;
 
 import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Note.Flashcard.Statistic;
 import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
 import com.zuber.organizeit.Model.Note.ReferenceResource.SimpleLinkResource;
-import com.zuber.organizeit.services.exporters.SourceCodeParser;
 
 import java.nio.file.Path;
 import java.util.LinkedList;
