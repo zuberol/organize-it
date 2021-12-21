@@ -1,8 +1,7 @@
-package com.zuber.organizeit.services.exporters.rm;
+package com.zuber.organizeit.services.exporters.old;
 
 import com.zuber.organizeit.Model.Snippet;
 import com.zuber.organizeit.Model.Tag;
-import com.zuber.organizeit.utils.Utils;
 import org.apache.logging.log4j.util.Strings;
 
 import java.io.IOException;

@@ -1,8 +1,8 @@
-package com.zuber.organizeit.services.exporters.rm;
+package com.zuber.organizeit.services.exporters;
 
 import com.zuber.organizeit.Model.Note.Flashcard.Deck;
 import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.services.exporters.rm.FlashcardParser;
+import com.zuber.organizeit.services.exporters.old.FlashcardParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Collection;
 @Service
 public class FlashcardExporterS {
 
-    private EntityDAO entityDAO;
+    private final EntityDAO entityDAO;
 
     @Autowired
     public FlashcardExporterS(EntityDAO entityDAO) {

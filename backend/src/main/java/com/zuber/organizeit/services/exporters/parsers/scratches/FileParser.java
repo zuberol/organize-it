@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporters;
+package com.zuber.organizeit.services.exporters.parsers.scratches;
 
 
 public interface FileParser <R> {

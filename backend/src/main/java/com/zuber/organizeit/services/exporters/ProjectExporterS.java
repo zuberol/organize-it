@@ -2,7 +2,7 @@ package com.zuber.organizeit.services.exporters;
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
 import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.services.exporters.rm.PseudoYAMLParser;
+import com.zuber.organizeit.services.exporters.old.ProjectParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class ProjectExporterS {
 
     public void initDb(Collection<Path> dirs) {
         dirs.stream()
-                .map(PseudoYAMLParser::parseDir)
+                .map(ProjectParser::parseDir)
                 .flatMap(Collection::stream).toList()
                 .stream().filter(linkage -> !linkage.subtask().getName().equals("description"))
                 .forEach(linkage -> {

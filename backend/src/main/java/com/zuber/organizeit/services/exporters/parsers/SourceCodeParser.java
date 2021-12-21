@@ -1,8 +1,7 @@
 package com.zuber.organizeit.services.exporters.parsers;
 
 import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
-import com.zuber.organizeit.services.exporters.FileParser;
-import com.zuber.organizeit.services.exporters.parsers.ParseException;
+import com.zuber.organizeit.services.exporters.parsers.scratches.FileParser;
 
 import java.io.IOException;
 import java.nio.file.Files;

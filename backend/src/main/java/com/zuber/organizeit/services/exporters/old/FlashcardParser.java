@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporters.rm;
+package com.zuber.organizeit.services.exporters.old;
 
 import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
 import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;

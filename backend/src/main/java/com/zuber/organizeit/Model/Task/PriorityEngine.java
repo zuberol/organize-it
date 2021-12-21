@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services;
+package com.zuber.organizeit.Model.Task;
 
 
 public interface PriorityEngine {

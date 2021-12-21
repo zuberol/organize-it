@@ -5,7 +5,7 @@ import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TimeEstimates;
 import com.zuber.organizeit.services.exporters.ProjectExporterS;
 import com.zuber.organizeit.services.exporters.SnippetExporterS;
-import com.zuber.organizeit.services.exporters.rm.FlashcardExporterS;
+import com.zuber.organizeit.services.exporters.FlashcardExporterS;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +27,12 @@ public class InitDbConf implements CommandLineRunner {
     final SnippetExporterS snippetExporterS;
     final TaskRepository taskRepository;
 
+    private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");
+    private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
+    private static final Path testFlashcardDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/testFlashcardDir");
+    private static final Path testSnippetDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/testSnippet");
+    private static final Path snippetsDir = Path.of("/home/jakub/Desktop/organize-it-db/snippets");
+
 
     public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, TaskRepository taskRepository) {
         this.projectExporterS = projectExporterS;
@@ -35,18 +41,12 @@ public class InitDbConf implements CommandLineRunner {
         this.taskRepository = taskRepository;
     }
 
-    private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");
-        private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
-        private static final Path testFlashcardDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/testFlashcardDir");
-        private static final Path testSnippetDir = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/testSnippet");
-        private static final Path snippetsDir = Path.of("/home/jakub/Desktop/organize-it-db/snippets");
-
-        @Override
-        public void run(String...args) {
-            projectExporterS.initDb(List.of(projectsDir));
-            flashcardExporterS.initDb(List.of(testFlashcardDir));
-            snippetExporterS.initDb(List.of(snippetsDir));
-        }
+    @Override
+    public void run(String... args) {
+        projectExporterS.initDb(List.of(projectsDir));
+        flashcardExporterS.initDb(List.of(testFlashcardDir));
+        snippetExporterS.initDb(List.of(snippetsDir));
+    }
 
     @Bean
     public InitializingBean initDB() {

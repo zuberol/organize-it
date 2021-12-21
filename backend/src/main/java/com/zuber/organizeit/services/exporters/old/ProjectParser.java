@@ -1,4 +1,4 @@
-package com.zuber.organizeit.services.exporters.rm;
+package com.zuber.organizeit.services.exporters.old;
 
 
 import com.zuber.organizeit.Model.Task.Task;
@@ -12,13 +12,13 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static com.zuber.organizeit.Model.Task.Task.ParsableProperty.*;
-import static java.lang.Boolean.*;
-import static java.lang.Long.*;
+import static java.lang.Boolean.parseBoolean;
+import static java.lang.Long.parseLong;
 import static java.util.Optional.of;
 import static java.util.stream.Collectors.*;
 
 @Component
-public class PseudoYAMLParser {
+public class ProjectParser {
 
     // file parse
     private static final Function<String, Long> toLeadingTabs = line -> line.chars().takeWhile(ch -> ch == '\t').count();
