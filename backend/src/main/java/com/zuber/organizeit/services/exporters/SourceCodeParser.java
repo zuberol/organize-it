@@ -18,6 +18,7 @@ public class SourceCodeParser implements FileParser<CodeReference> {
     private static Optional<CodeReference> parseThrows(Path sourceCodePath) {
         Optional<CodeReference> sourceCodeRef = Optional.empty();
         try {
+            if(!sourceCodePath.toString().endsWith(".java")) throw new ParseException(sourceCodePath+" "+"must have a \".java\" suffix");
             sourceCodeRef = Files.readAllLines(sourceCodePath)
                     .stream()
                     .reduce((one, two) -> one + "\\n" + two)
@@ -29,8 +30,8 @@ public class SourceCodeParser implements FileParser<CodeReference> {
                         return codeReference;
                     });
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
         }
         return sourceCodeRef;
     }

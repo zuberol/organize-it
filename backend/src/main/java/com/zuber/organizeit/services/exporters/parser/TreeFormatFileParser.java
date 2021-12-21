@@ -1,25 +1,26 @@
 package com.zuber.organizeit.services.exporters.parser;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import static com.zuber.organizeit.services.exporters.parser.ParseContext.getLevel;
 import static java.util.Optional.*;
 
-public class TreeFormatParser {
+public class TreeFormatFileParser {
 
     // use only for NoteFiles
-    public Optional<NoteParseCtx> useWithSameLevelPolicy(@NotNull Iterable<String> linesIterable) {
+    public Optional<NoteParseCtx> useWithSameLevelPolicy(Path noteFile) throws IOException {
         NoteParseCtx rootCtx = null;
-        Iterator<String> lines = StreamSupport.stream(linesIterable.spliterator(), false)
+        Iterator<String> lines = Files.readAllLines(noteFile).stream()
                 .filter(l -> !l.isBlank())
                 .iterator();
         if(lines.hasNext()) {
-            rootCtx = new NoteParseCtx(0);
+            rootCtx = new NoteParseCtx(-1, noteFile);
             ParseContext<?> mergedCtx = rootCtx;
             while (lines.hasNext()) mergedCtx = findMergeCtxAndMerge(lines.next(), mergedCtx);
         }

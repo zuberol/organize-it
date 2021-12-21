@@ -2,7 +2,6 @@ package com.zuber.organizeit.services.exporters.parser;
 
 import com.zuber.organizeit.Model.Note.Note;
 import com.zuber.organizeit.Model.Note.ReferenceResource.SimpleLinkResource;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,15 +12,14 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class TreeFormatParserTest {
+class TreeFormatFileParserTest {
 
     private final Path ograniczonaFunkcjonalnosc = Paths.get("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/NoteParser/testRootNote/ograniczona-funkcjonalnosc-note");
 
     @Test
     void useWithSameLevelPolicy() throws IOException {
-
-        TreeFormatParser treeFormatParser = new TreeFormatParser();
-        Optional<NoteParseCtx> noteParseCtx = treeFormatParser.useWithSameLevelPolicy(Files.readAllLines(ograniczonaFunkcjonalnosc));
+        TreeFormatFileParser treeFormatFileParser = new TreeFormatFileParser();
+        Optional<NoteParseCtx> noteParseCtx = treeFormatFileParser.useWithSameLevelPolicy(ograniczonaFunkcjonalnosc);
 
 
         Note note = noteParseCtx.get().ctxObject();

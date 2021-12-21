@@ -2,12 +2,18 @@ package com.zuber.organizeit.services.exporters.parser;
 
 import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Note.Note;
+import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
 import com.zuber.organizeit.Model.Note.ReferenceResource.SimpleLinkResource;
 import com.zuber.organizeit.Model.Tag;
+import com.zuber.organizeit.services.exporters.SourceCodeParser;
 
+import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Stack;
+
+import static java.nio.file.Path.of;
 
 public class NoteParseCtx implements ParseContext<Note> {
 
@@ -15,8 +21,10 @@ public class NoteParseCtx implements ParseContext<Note> {
     private final int nestedLevel;
     private final ParseContext<?> parent;
     private final Stack<ParseContext<?>> children;
+    private final Path noteFile;
 
-    public NoteParseCtx(int nestedLevel) {
+    public NoteParseCtx(int nestedLevel, Path noteFile) {
+        this.noteFile = noteFile;
         this.ctxObject = new Note();
         this.nestedLevel = nestedLevel;
         this.parent = this;
@@ -32,7 +40,7 @@ public class NoteParseCtx implements ParseContext<Note> {
                 metaTagPairs.forEach(mp -> {
                     switch (mp.metaTag()) {
                         case "F" -> {
-                            ParseContext<Flashcard> merged = new FlashcardParseCtx(nestedLevel + 1, this).merge(line);
+                            ParseContext<Flashcard> merged = new FlashcardParseCtx(nestedLevel + 1, this, noteFile.getParent()).merge(line);
                             this.children.push(merged);
                         }
                         case "T" -> {
@@ -47,7 +55,10 @@ public class NoteParseCtx implements ParseContext<Note> {
                                 ctxObject.setReferenceResources(new LinkedList<>());
                             ctxObject.getReferenceResources().add(new SimpleLinkResource(mp.value()));
                         }
-//                        case "CodeRef" -> ctxObject.getReferenceResources().add(new CodeReference()); // todo
+                        case "CodeRef" -> {
+                            Optional<CodeReference> codeReference = SourceCodeParser.parse(of(noteFile.getParent().toString(), mp.value()));
+                            codeReference.ifPresent(ref -> ctxObject.getReferenceResources().add(ref));
+                        }
                     }
                 });
             }

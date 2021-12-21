@@ -2,14 +2,18 @@ package com.zuber.organizeit.services.exporters.parser;
 
 import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
 import com.zuber.organizeit.Model.Note.Flashcard.Statistic;
+import com.zuber.organizeit.Model.Note.ReferenceResource.CodeReference;
 import com.zuber.organizeit.Model.Note.ReferenceResource.SimpleLinkResource;
-import com.zuber.organizeit.utils.Utils;
+import com.zuber.organizeit.services.exporters.SourceCodeParser;
 
+import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Stack;
 
 import static com.zuber.organizeit.Model.Note.Flashcard.Statistic.toDifficulty;
+import static java.nio.file.Path.of;
 
 public class FlashcardParseCtx implements ParseContext<Flashcard> {
 
@@ -17,9 +21,11 @@ public class FlashcardParseCtx implements ParseContext<Flashcard> {
     private final int nestedLevel;
     private final ParseContext<?> parent;
     private final Stack<ParseContext<?>> children;
+    private final Path lookupCodeRefHere;
 
-    public FlashcardParseCtx(int nestedLevel, ParseContext<?> parent) {
+    public FlashcardParseCtx(int nestedLevel, ParseContext<?> parent, Path lookupCodeRefHere) {
         this.nestedLevel = nestedLevel;
+        this.lookupCodeRefHere = lookupCodeRefHere;
         this.ctxObject = new Flashcard();
         this.parent = parent;
         this.children = new Stack<>();
@@ -45,6 +51,10 @@ public class FlashcardParseCtx implements ParseContext<Flashcard> {
                         case "Ref" -> {
                             if(ctxObject.getReferenceResources() == null) ctxObject.setReferenceResources(new LinkedList<>());
                             ctxObject.getReferenceResources().add(new SimpleLinkResource(mp.value()));
+                        }
+                        case "CodeRef" -> {
+                            Optional<CodeReference> codeReference = SourceCodeParser.parse(of(lookupCodeRefHere.toString(), mp.value()));
+                            codeReference.ifPresent(ref -> ctxObject.getReferenceResources().add(ref));
                         }
                     }
                 });
@@ -79,7 +89,7 @@ public class FlashcardParseCtx implements ParseContext<Flashcard> {
 
     @Override
     public String parsableTags() {
-        return "Imp|Lvl|Ref|F";
+        return "Imp|Lvl|CodeRef|Ref|F";
     }
 
 }

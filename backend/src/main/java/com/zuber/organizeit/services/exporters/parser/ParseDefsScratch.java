@@ -1,6 +1,6 @@
 package com.zuber.organizeit.services.exporters.parser;
 
-public class ParseDefs {
+public class ParseDefsScratch {
 
     void mergeFlashcard() {
 

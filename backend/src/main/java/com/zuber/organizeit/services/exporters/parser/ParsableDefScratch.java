@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 
 
 // do action on ParsableDef
-public interface ParsableDef<E> extends Consumer<E> {
+public interface ParsableDefScratch<E> extends Consumer<E> {
 
 }
 
