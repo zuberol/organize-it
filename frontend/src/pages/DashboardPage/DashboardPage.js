@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { GenericList } from "../../common/presenters/ListView";
-import { fetchInbox } from "../../store/tasks/actions";
+// import { fetchInbox } from "../../store/tasks/actions";
 import '../../common/styles/commons.scss';
 import * as R from 'ramda';
 import { ListItem } from "../../common/presenters/ListItem";
 import { fetchSnippets } from "../../store/flashcards/actions";
 import { DataGrid } from '@mui/x-data-grid';
 
+import MovingIcon from '@mui/icons-material/Moving';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
@@ -15,36 +16,50 @@ import { Box, Grid, Paper } from "@mui/material";
 import { Container } from "@material-ui/core";
 import { padding } from "@mui/system";
 
+import { fetchProjects, updateTask } from "../../store/tasks/actions";
 
-const columns = [
-    {
-        field: "name",
-        headerName: 'Name',
-        flex: 0.3,
-        minWidth: 50
-    },
-    {
-        field: 'actions',
-        headerName: 'Actions',
-        type: 'actions',
-        getActions: (row) => [
-            <CheckCircleOutlinedIcon key={"Done"} onClick={() => console.log(row.id)} label="Done" />,
-            <HighlightOffIcon key={"Delete"} label="Delete"/>
-        ]
-    }
-]
 
 
 // todo styles
 export default function DashboardPage() {
     const [snippetId, setSnippet] = useState(0);
     const snippet = useSelector(state => state.flashcardReducer.snippets.find(s => s.id == snippetId), (left, right) => R.equals(left, right));
-    useEffect(() => { dispatch(fetchSnippets()) })
-    const inboxTasks = useSelector(state => state.tasksReducer.inboxTasks, (left, right) => R.equals(left, right));
+    useEffect(() => { dispatch(fetchSnippets(), []) })
+    const inboxTasks = useSelector(state => {
+        const inbx = state.tasksReducer.projects.find(project => project.name === 'inbox') || {sub_tasks: []};
+        return inbx.sub_tasks;
+    });
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchInbox());
+        dispatch(fetchProjects());
     }, []);
+    const columns = [
+        {
+            field: "name",
+            headerName: 'Name',
+            flex: 0.3,
+            minWidth: 50
+        },
+        {
+            field: 'actions',
+            headerName: 'Actions',
+            type: 'actions',
+            getActions: (row) => [
+                <CheckCircleOutlinedIcon key="Done" onClick={() => console.log(row.id)} label="Done" />,
+                <HighlightOffIcon key="Delete" label="Delete" onClick={() => dispatch(updateTask({task_id: row.id, is_archived: true}))}/>,
+                <MovingIcon key="PriorityUp" onClick={() => {
+                    dispatch(updateTask({task_id: row.id, priority: Number(row.row.priority_point)+10}))
+                }}/>
+            ]
+        },
+        {
+            field: 'priority_point',
+            headerName: 'Priority',
+            flex: 0.1,
+            minWidth: 10,
+            type: 'number'
+        }
+    ]
 
     return (
         <main className="">

@@ -9,7 +9,9 @@ import { faPlusCircle as plus } from '@fortawesome/free-solid-svg-icons';
 import { IconButton, Paper } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
+import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
 import { StyledModal } from '../../../common/presenters/StyledModal';
+import { useDispatch } from 'react-redux';
 
 /**
  *
@@ -17,7 +19,8 @@ import { StyledModal } from '../../../common/presenters/StyledModal';
  * @return {JSX} filled tree container
  */
 export default function FsTreeView(props) {
-  const { task, dispatch } = props;
+  const dispatch = useDispatch();
+  const { task } = props;
   if (task === undefined || typeof task === 'object' && R.isEmpty(task)) return null;
   return (
     <Paper sx={{ padding: "10px", margin: '10px' }}>
@@ -52,6 +55,7 @@ export default function FsTreeView(props) {
             {nodeHover && <div>
               <StyledModal btn={{icon: <EditIcon/>}} form={{taskDefaults: task}} />
               <StyledModal btn={{icon: <SubdirectoryArrowRightIcon/>}} form={{newTask: true}} />
+              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({task_id: task.task_id, is_archived: true}))}/>
             </div>}
 
           </div>

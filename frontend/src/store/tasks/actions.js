@@ -45,16 +45,16 @@ export function fetchProjects() {
   }
 }
 
-export function fetchInbox() {
-  return (dispatch) => {
-    fetch(TASK_INBOX_URL)
-    .then(res => res.json())
-    .then((inboxTasks) => {
-      dispatch({type: INIT_INBOX, inboxTasks});
-    })
-    .catch(err => {
-      console.error(err, "Backend doesn't respond");
-      dispatch({type: INIT_INBOX, inboxTasks: []});
-    })
-  }
-}
+// export function fetchInbox() {
+//   return (dispatch) => {
+//     fetch(TASK_INBOX_URL)
+//     .then(res => res.json())
+//     .then((inboxTasks) => {
+//       dispatch({type: INIT_INBOX, inboxTasks});
+//     })
+//     .catch(err => {
+//       console.error(err, "Backend doesn't respond");
+//       dispatch({type: INIT_INBOX, inboxTasks: []});
+//     })
+//   }
+// }

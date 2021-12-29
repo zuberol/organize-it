@@ -31,7 +31,8 @@ export function TaskForm({
     sub_tasks: [],
     priority: '',
     archived: false,
-    project: false 
+    project: false ,
+    tags: []
   }, 
   newTask = false
 }) {
@@ -62,6 +63,7 @@ export function TaskForm({
       <input
         name="tags"
         type="text"
+        defaultChecked={taskDefaults.tags.toString()}
         onChange={handleChange}
       />
       <label htmlFor="priority">Priority</label>
