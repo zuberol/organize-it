@@ -11,11 +11,13 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor @Setter // todo remove it later
-public class TaskDto {
+public class TaskDTO {
     @Nullable Long taskId;
     @Nullable String name;
     @Nullable String description;
     @Nullable List<Long> subtaskIds;
     @Nullable Boolean isDone;
     @Nullable Boolean isArchived;
+    @Nullable Boolean isProject;
+    @Nullable Long priority;
 }

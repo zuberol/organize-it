@@ -28,12 +28,12 @@ export default function Header() {
       <a className="" href="/meal/add">
         <h5 className="logo-title">add meal</h5>
       </a> */}
-      {/* <NavLink
+      <NavLink
         to="/dev"
         activeStyle={activeStyle}
         exact={true}
         style={navStyle}
-      >dev</NavLink> */}
+      >dev</NavLink>
       <NavLink
         to="/decks"
         activeStyle={activeStyle}

@@ -8,7 +8,7 @@
 ## Roadmap:
 
 	essential
-
+ 
 		vim Notes
 			scrapowanie artykulow do krotkiej notatki
 			kod examples w oddzielnych plikach

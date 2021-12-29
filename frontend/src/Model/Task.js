@@ -24,16 +24,27 @@ export default class Task {
 
 }
 
-export function TaskForm({task_id, newTask}) {
+export function TaskForm({
+  taskDefaults = {
+    task_id: '',
+    description: '',
+    sub_tasks: [],
+    priority: '',
+    archived: false,
+    project: false 
+  }, 
+  newTask = false
+}) {
   const [taskTO, setTaskTO] =  useState({});
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="task_id">Task ID</label>
       <input
+        hidden={newTask}
         name="task_id"
         type="number"
         onChange={handleChange}
-        defaultValue={task_id}
+        defaultValue={taskDefaults.task_id}
       />
       <label htmlFor="name">Name</label>
       <input
@@ -63,18 +74,21 @@ export function TaskForm({task_id, newTask}) {
       <input
         name="is_project"
         type="checkbox"
+        defaultChecked={taskDefaults.project}
         onChange={handleChangeCheckbox}
       />
       <label htmlFor="is_archived">Is archived?</label>
       <input
         name="is_archived"
         type="checkbox"
+        defaultChecked={taskDefaults.archived}
         onChange={handleChangeCheckbox}
       />
       <label htmlFor="subtaskIds">Subtasks ids</label>
       <input
         name="subtask_ids"
         type="text"
+        defaultValue={taskDefaults.sub_tasks.map(_ => _.task_id).toString()}
         onChange={handleChangeArray}
       />
       <button type="submit">Submit</button>

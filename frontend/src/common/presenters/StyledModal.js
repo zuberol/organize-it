@@ -1,31 +1,39 @@
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Button from '@mui/material/Button';
+import { useState } from 'react';
+import { TaskForm } from "../../Model/Task";
+import { Paper } from '@mui/material';
 
 
-export function StyledModal({icon, title, isModalOpen, setIsModalOpen, children}) {
+export function StyledModal(props) {
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
-            <Button type="button" className="flashcard__button" onClick={() => setIsModalOpen(true)}>
-                <FontAwesomeIcon icon={icon} />
-                <span>{title}</span>
-            </Button>
+            <StyledButton {...props.btn} onClick={() => setModalOpen(true)}/>
             <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 300
-                }}>
-                <Fade in={isModalOpen}>
-                    <>{children}</>
-                </Fade>
+                BackdropProps={{ timeout: 300 }}>
+                    <Fade in={modalOpen} >
+                            <Paper elevation={3} sx={{ padding: '10px' }}>
+                                <TaskForm {...props.form} />
+                            </Paper>
+                    </Fade>
             </Modal>
         </>
+    )
+}
+
+function StyledButton(props) {
+    return (
+        <Button
+            onClick={props.onClick}>
+                {props.icon}
+        </Button>
     )
 }

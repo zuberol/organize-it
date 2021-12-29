@@ -13,6 +13,7 @@ import { faAddressCard, faBackward } from '@fortawesome/free-solid-svg-icons'
 import { TaskForm } from "../../Model/Task";
 import { DetailedProjectView } from "../../Model/Project/DetailedProjectView";
 import { NamedIcon } from '../../common/presenters/NamedIcon';
+import { Container } from '@mui/material';
 
 export default function ProjectsPage() {
   const dispatch = useDispatch();
@@ -29,9 +30,10 @@ export default function ProjectsPage() {
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-nav">
-        <Button onClick={() => setIsDrawerOpen(true)}>
+        {!R.isEmpty(activeProject) && <Button
+          onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT })}>
           <NamedIcon iconDef={faBackward} caption="return" />
-        </Button>
+        </Button>}
         <Drawer anchor='left' open={isDrawerOpen} onClose={() => setIsDrawerOpen(!isDrawerOpen)}>
           {<ul>
             {projectList.map((project) =>
@@ -47,15 +49,19 @@ export default function ProjectsPage() {
           </ul>}
         </Drawer>
       </div>
-      {FsTreeView(activeProject, dispatch) || projectList.map(
-        project => FsTreeView(project, dispatch))}
+      <Container>
+        <FsTreeView {...{task: activeProject, dispatch}}/>
+        {R.isEmpty(activeProject) && projectList.map(
+          project => <FsTreeView key={project.task_id} {...{task: project, dispatch}} />)}
+      </Container>
+      
       <div className="dashboard-buttons">
-        <StyledModal icon={faAddressCard} title="Edit task" isModalOpen={isModalOpen} 
-        setIsModalOpen={setIsModalOpen}>
+        <StyledModal icon={faAddressCard} title="Edit task" isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}>
           <TaskForm />
         </StyledModal>
-        <StyledModal icon={faAddressCard} title="New task" isModalOpen={isModalOpen} 
-        setIsModalOpen={setIsModalOpen}>
+        <StyledModal icon={faAddressCard} title="New task" isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}>
           <TaskForm newTask={true} />
         </StyledModal>
         <Button onClick={() => setIsDrawerOpen(true)}>Projects</Button>
