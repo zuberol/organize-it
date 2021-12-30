@@ -32,7 +32,7 @@ public class JacksonConf {
 //                .allowIfBaseType(Pattern.compile("java\\.net\\..*"))
                 .build();
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+//        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT, JsonTypeInfo.As.PROPERTY);
 //        objectMapper.registerSubtypes(VideoReference.class, BookReference.class, ReferenceResource.class, ArrayList.class, URL.class); //todo chyba nie potrzebne
         return objectMapper;

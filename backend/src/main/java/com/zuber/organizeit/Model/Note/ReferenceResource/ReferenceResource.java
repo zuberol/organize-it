@@ -12,15 +12,14 @@ import java.util.Objects;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @Getter @Setter
 @Table(name = "reference_resources")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="res_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="resId")
 @Inheritance //todo Superbuilder
 public abstract class ReferenceResource implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "res_id")
-    @JsonProperty("res_id")
-    private Long id;
+    private Long resId;
 
     private String caption;
 
@@ -35,11 +34,11 @@ public abstract class ReferenceResource implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReferenceResource that = (ReferenceResource) o;
-        return Objects.equals(id, that.id) && Objects.equals(caption, that.caption) && Objects.equals(comment, that.comment) && Objects.equals(referenceUrl, that.referenceUrl) && Objects.equals(locallySavedURI, that.locallySavedURI);
+        return Objects.equals(resId, that.resId) && Objects.equals(caption, that.caption) && Objects.equals(comment, that.comment) && Objects.equals(referenceUrl, that.referenceUrl) && Objects.equals(locallySavedURI, that.locallySavedURI);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, caption, comment, referenceUrl, locallySavedURI);
+        return Objects.hash(resId, caption, comment, referenceUrl, locallySavedURI);
     }
 }

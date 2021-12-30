@@ -2,6 +2,7 @@ package com.zuber.organizeit.Model.Note.Flashcard;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.zuber.organizeit.Model.Note.ReferenceResource.ReferenceResource;
+import com.zuber.organizeit.Model.Tag;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,5 +41,9 @@ public class Flashcard implements Serializable {
 //    @OneToOne // todo for now
     @Embedded
     private Statistic statistic;
+
+    @ManyToMany(cascade = ALL)
+//    @JoinColumn(name = "fc_id")
+    private List<Tag> tags;
 
 }

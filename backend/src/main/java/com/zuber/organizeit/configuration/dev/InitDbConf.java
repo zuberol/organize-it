@@ -1,6 +1,9 @@
 package com.zuber.organizeit.configuration.dev;
 
+import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
 import com.zuber.organizeit.Model.Repository.TaskRepository;
+import com.zuber.organizeit.Model.Tag;
 import com.zuber.organizeit.Model.Task.Task;
 import com.zuber.organizeit.Model.Task.TimeEstimates;
 import com.zuber.organizeit.services.exporters.ProjectExporterS;
@@ -26,6 +29,7 @@ public class InitDbConf implements CommandLineRunner {
     final FlashcardExporterS flashcardExporterS;
     final SnippetExporterS snippetExporterS;
     final TaskRepository taskRepository;
+    final FlashcardsRepository flashcardsRepository;
 
     private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");
     private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
@@ -34,11 +38,12 @@ public class InitDbConf implements CommandLineRunner {
     private static final Path snippetsDir = Path.of("/home/jakub/Desktop/organize-it-db/snippets");
 
 
-    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, TaskRepository taskRepository) {
+    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, TaskRepository taskRepository, FlashcardsRepository flashcardsRepository) {
         this.projectExporterS = projectExporterS;
         this.flashcardExporterS = flashcardExporterS;
         this.snippetExporterS = snippetExporterS;
         this.taskRepository = taskRepository;
+        this.flashcardsRepository = flashcardsRepository;
     }
 
     @Override
@@ -116,6 +121,24 @@ public class InitDbConf implements CommandLineRunner {
 
             taskRepository.save(parent);
             taskRepository.save(doneTask);
+        };
+    }
+
+    @Bean
+    public InitializingBean initFlashcards() {
+        return () -> {
+            Flashcard flashcard1 = new Flashcard();
+            flashcard1.setTags(List.of(new Tag("docker")));
+            flashcardsRepository.save(flashcard1);
+
+            Flashcard flashcard2 = new Flashcard();
+            flashcard2.setTags(List.of(new Tag("docker"), new Tag("hehe")));
+            flashcardsRepository.save(flashcard2);
+
+            Flashcard flashcard3 = new Flashcard();
+            flashcard3.setTags(List.of(new Tag("hehe")));
+            flashcardsRepository.save(flashcard3);
+
         };
     }
 
