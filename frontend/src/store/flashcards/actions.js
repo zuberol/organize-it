@@ -10,7 +10,6 @@ export const fetchdecks = () => {
   return (dispatch) => {
     fetch(DECKS_URL, {
       method: 'GET',
-      mode: 'cors'
     })
     .then(res => res.json())
     .then((decks) => {

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function ListItem(props) {
   return (
     <article>
-      <Link to={`/play-flashcards/${props.deck.deck_id}`}>
+      <Link to={`/play-flashcards/${props.deck.deckId}`}>
         <h4>{props.deck.title}</h4>
       </Link>
       <p>{`#Flashcards: ${props.deck.flashcards.length}`}</p>

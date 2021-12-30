@@ -2,13 +2,13 @@ import { useState } from "react";
 import { TASK_NEW_URL, TASK_URL } from "../config/backendRoutes";
 
 export default class Task {
-  constructor({ task_id = null, name: name = "", description: description = "", sub_tasks = [], isDone: isDone, isArchived: isArchived }) {
-    this.task_id = task_id;
+  constructor({ taskId = null, name: name = "", description: description = "", subTasks = [], isDone: isDone, archived: archived }) {
+    this.taskId = taskId;
     this.description = description;
     this.name = name; // todo remove
-    this.sub_tasks = sub_tasks.map(st => new Task(st));
+    this.subTasks = subTasks.map(st => new Task(st));
     this.isDone = isDone;
-    this.isArchived = isArchived;
+    this.archived = archived;
   }
 
   static empty() {
@@ -26,32 +26,34 @@ export default class Task {
 
 export function TaskForm({
   taskDefaults = {
-    task_id: '',
+    taskId: '',
+    name: '',
     description: '',
-    sub_tasks: [],
+    subTasks: [],
     priority: '',
     archived: false,
     project: false ,
     tags: []
   }, 
-  parent_task_id =  '',
+  parentTaskId =  '',
   newTask = false
 }) {
-  const [taskTO, setTaskTO] =  useState({});
+  const [taskTO, setTaskTO] =  useState({...taskDefaults});
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="task_id">Task ID</label>
+      <label htmlFor="taskId">Task ID</label>
       <input
         hidden={newTask}
-        name="task_id"
+        name="taskId"
         type="number"
         onChange={handleChange}
-        defaultValue={taskDefaults.task_id}
+        defaultValue={taskDefaults.taskId}
       />
       <label htmlFor="name">Name</label>
       <input
         name="name"
         type="text"
+        defaultValue={taskDefaults.name}
         onChange={handleChange}
       />
       <label htmlFor="description">Description</label>
@@ -73,25 +75,25 @@ export function TaskForm({
         type="number"
         onChange={handleChange}
       />
-      <label htmlFor="is_project">isProject</label>
+      <label htmlFor="isProject">isProject</label>
       <input
-        name="is_project"
+        name="isProject"
         type="checkbox"
         defaultChecked={taskDefaults.project}
         onChange={handleChangeCheckbox}
       />
-      <label htmlFor="is_archived">Is archived?</label>
+      <label htmlFor="archived">Is archived?</label>
       <input
-        name="is_archived"
+        name="archived"
         type="checkbox"
         defaultChecked={taskDefaults.archived}
         onChange={handleChangeCheckbox}
       />
       <label htmlFor="subtaskIds">Subtasks ids</label>
       <input
-        name="subtask_ids"
+        name="subtaskIds"
         type="text"
-        defaultValue={taskDefaults.sub_tasks.map(_ => _.task_id).toString()}
+        defaultValue={taskDefaults.subTasks.map(_ => _.taskId).toString()}
         onChange={handleChangeArray}
       />
       <button type="submit">Submit</button>
@@ -100,12 +102,12 @@ export function TaskForm({
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch(((newTask && TASK_NEW_URL) || TASK_URL) + `?parentTaskId=${parent_task_id}`, {
+    fetch(((newTask && TASK_NEW_URL) || TASK_URL) + `?parentTaskId=${parentTaskId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(taskTO)
+      body: JSON.stringify(stripToDto(taskTO))
     })
     .catch(e => console.log(e))
   }
@@ -133,3 +135,16 @@ export function TaskForm({
 
 }
 
+export function stripToDto(task) {
+  if(!task) return {};
+  else return {  
+    taskId: task.taskId,
+    name: task.name,
+    description: task.description,
+    subtaskIds: task.subtaskIds,
+    done: task.done,
+    archived: task.archived,
+    project: task.project,
+    priority: task.priority
+  };
+}

@@ -36,8 +36,8 @@ export const tasksReducer = ( state = initialProjectsState, action ) => {
       if(!array) return null;
       let found = null;
       for(const element of array) {
-        if(element.task_id == id) return found = element;
-        else found = recursiveFind(element.sub_tasks, id);
+        if(element.taskId == id) return found = element;
+        else found = recursiveFind(element.subTasks, id);
         if(found) break;
       }
       return found;

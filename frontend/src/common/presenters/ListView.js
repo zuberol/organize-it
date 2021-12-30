@@ -11,20 +11,20 @@ import { faAward } from '@fortawesome/free-solid-svg-icons'
  * @param {Array} flashcardDecks
  * @return {Array<ListItem>} flashcard decks mapped to ListItems
  */
- export function useListView(flashcardDecks) {
+ export function useListView(flashcardDecks = []) {
     const dispatch = useDispatch();
     return flashcardDecks.map((deck) =>
     <ListItem
-      key={deck.deck_id}
+      key={deck.deckId}
       deck={deck}
-      deleteItem={() => dispatch({type: DELETE_ITEM, itemToDeleteID: deck.deck_id})}
+      deleteItem={() => dispatch({type: DELETE_ITEM, itemToDeleteID: deck.deckId})}
     />)
 }
 
 function ListItem(props) {
     return (
         <article className="simple">
-            <Link to={`/play-flashcards/${props.deck.deck_id}`}>
+            <Link to={`/play-flashcards/${props.deck.deckId}`}>
                 <h4>{props.deck.title}</h4>
             </Link>
             <div className='deck__infos'>
@@ -50,8 +50,8 @@ export function GenericList(props) {
                 <button type="button" className="flashcard__button" onClick={() => {
                   dispatch(
                     updateTask({
-                      task_id: di.task_id,
-                      is_archived: 'true'
+                      taskId: di.taskId,
+                      archived: 'true'
                   }));
                 }}>
                     <FontAwesomeIcon icon={faAward} />

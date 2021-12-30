@@ -20,7 +20,7 @@ export default function Routes() {
     <Switch>
     <Route exact path="/" component={DashboardPage} />
     <Route exact path="/decks" component={DecksPage} />
-    <Route exact path="/play-flashcards/:deck_id" component={PlayFlashcardsPage}></Route>
+    <Route exact path="/play-flashcards/:deckId" component={PlayFlashcardsPage}></Route>
     <Route exact path="/dev" component={DevPage} />
     <Route exact path="/devs" component={DevStyles} />
     <Route exact path="/dev3" component={DevPage3} />

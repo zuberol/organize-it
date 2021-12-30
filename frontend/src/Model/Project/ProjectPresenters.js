@@ -42,7 +42,7 @@ export function ProjectCard(props) {
             <ThemeProvider theme={myTheme}>
                 <CardHeader
                     title={project.name}
-                    subheader={`#${project.task_id}`}
+                    subheader={`#${project.taskId}`}
                 />
             </ThemeProvider>
             <CardActions>
@@ -73,8 +73,8 @@ export function ProjectCard(props) {
                 </Collapse>
                 <Collapse in={expandedMeta} unmountOnExit>
                     <p>Meta:</p>
-                    <p>{project.locally_saved_uri && `Locally saved: ${project.locally_saved_uri}`}</p>
-                    <p>{`Priority: ${project.priority_point}`}</p>
+                    <p>{project.locallySavedURI && `Locally saved: ${project.locallySavedURI}`}</p>
+                    <p>{`Priority: ${project.priority}`}</p>
                     <p>{`Project: ${project.project}`}</p>
                 </Collapse>
             </CardContent>

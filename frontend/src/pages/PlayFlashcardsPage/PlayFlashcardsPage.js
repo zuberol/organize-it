@@ -34,9 +34,9 @@ export default function PlayFlashcardsPage() {
     document.addEventListener('keydown', handleKeyDownEvents);
     return () => document.removeEventListener('keydown', handleKeyDownEvents);
   });
-  const { deck_id: deckIdParam } = useParams();
+  const { deckId: deckIdParam } = useParams();
   const deck = useSelector(state => state.flashcardReducer.decks.find(deck => {
-    return (deck.deck_id == deckIdParam);
+    return (deck.deckId == deckIdParam);
   }) || []);
   const currentFlashcard = deck.flashcards[currentFlashcardId];
   return (
@@ -48,25 +48,25 @@ export default function PlayFlashcardsPage() {
             <p>Question:</p>
             <p>{currentFlashcard.question}</p>
           </StyledParagraph>
-          <StyledParagraph active={[showAnswer, currentFlashcard.short_answer]}>
+          <StyledParagraph active={[showAnswer, currentFlashcard.shortAswer]}>
             <hr/>
             <p>Shortly:</p>
-            <p>{currentFlashcard.short_answer}</p>
+            <p>{currentFlashcard.shortAswer}</p>
           </StyledParagraph>
-          <StyledParagraph active={[showAnswer, currentFlashcard.long_answer]}>
+          <StyledParagraph active={[showAnswer, currentFlashcard.longAnswer]}>
             <hr/>
             <p>Longer:</p>
-            <p>{currentFlashcard.long_answer}</p>
+            <p>{currentFlashcard.longAnswer}</p>
           </StyledParagraph >
           <StyledParagraph active={[showHint, currentFlashcard.hint]}>
             <hr/>
             <p>Hint:</p>
             <p>{currentFlashcard.hint}</p>
           </StyledParagraph>
-          <StyledParagraph active={[showAnswer, currentFlashcard.reference_resources]} centered>
+          <StyledParagraph active={[showAnswer, currentFlashcard.referenceResources]} centered>
             <hr/>
             <p>Refs:</p>
-            {renderResources(currentFlashcard.reference_resources)}
+            {renderResources(currentFlashcard.referenceResources)}
           </StyledParagraph>
         </div>
         <div className="flashcard__buttons">

@@ -73,7 +73,6 @@ export default function FileCheck() {
 
     fetch(FILECHECK_URL, {
       method: 'POST',
-      mode: 'cors',
       body: form
     })
     .catch((e) => console.error("Błąd przy zapisywaniu flashcarda:", e));

@@ -17,7 +17,6 @@ class NewMealForm extends Component {
 
     return fetch(MEAL_URL,{
       method: 'POST',
-      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },

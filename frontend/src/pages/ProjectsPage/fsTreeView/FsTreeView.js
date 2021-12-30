@@ -53,12 +53,12 @@ export default function FsTreeView(props) {
               padding: '3px'
             }}>
             <span
-              onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: task.task_id })}
+              onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: task.taskId })}
             >{task.name || "_"}</span>
             {nodeHover && <div>
               <StyledModal btn={{ icon: <EditIcon /> }} form={{ taskDefaults: task }} />
-              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parent_task_id: task.task_id }} />
-              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ task_id: task.task_id, is_archived: true }))} />
+              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parentTaskId: task.taskId }} />
+              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ taskId: task.taskId, archived: true }))} />
             </div>}
 
           </div>
@@ -66,7 +66,7 @@ export default function FsTreeView(props) {
         <div className="branch">
           <div className="vertical-linker"><span></span></div>
           <div className="trunk">
-            {(task.sub_tasks || []).map((subTask, index) => <span key={index}><TreeNode task={subTask} /></span>)}
+            {(task.subTasks || []).map((subTask, index) => <span key={index}><TreeNode task={subTask} /></span>)}
           </div>
         </div>
       </>
@@ -76,7 +76,7 @@ export default function FsTreeView(props) {
     function newSubtask() {
       dispatch(updateTask({
         ...task,
-        sub_tasks: [...task.sub_tasks, Task.empty()]
+        subTasks: [...task.subTasks, Task.empty()]
       }));
     }
   }

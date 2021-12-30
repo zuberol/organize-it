@@ -26,7 +26,7 @@ export default function ProjectsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-  // const treeData = d3.hierarchy(activeRootTask, task => task.sub_tasks); // todo moze to?
+  // const treeData = d3.hierarchy(activeRootTask, task => task.subTasks); // todo moze to?
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-nav">
@@ -39,10 +39,10 @@ export default function ProjectsPage() {
             {projectList.map((project) =>
               <li
                 onClick={() => {
-                  dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: project.task_id });
+                  dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: project.taskId });
                   setIsDrawerOpen(false);
                 }}
-                key={project.task_id}>
+                key={project.taskId}>
                 {project.name}
               </li>
             )}
@@ -52,7 +52,7 @@ export default function ProjectsPage() {
       <Container>
         <FsTreeView {...{task: activeProject, dispatch}}/>
         {R.isEmpty(activeProject) && projectList.map(
-          project => <FsTreeView key={project.task_id} {...{task: project, dispatch}} />)}
+          project => <FsTreeView key={project.taskId} {...{task: project, dispatch}} />)}
       </Container>
       
       <div className="dashboard-buttons">

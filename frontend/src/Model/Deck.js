@@ -1,6 +1,6 @@
 export default class Deck {
-  constructor(deck_id, title, flashcards) {
-    this.deck_id = deck_id;
+  constructor(deckId, title, flashcards) {
+    this.deckId = deckId;
     this.title = title;
     this.flashcards = flashcards;
   }

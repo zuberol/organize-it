@@ -65,10 +65,10 @@ export default function AddFlashcardModal() {
     const [flashcard, setFlashcard] = useState({
       question: '',
       shortAnswer: '',
-      long_answer: '',
+      longAnswer: '',
       file: '',
       deckName: decksNames.length > 0 ? decksNames[0] : '',
-      reference_resources: [
+      referenceResources: [
 
       ]
     });
@@ -88,15 +88,15 @@ export default function AddFlashcardModal() {
           name="shortAnswer"
           type="text"
           onChange={handleChange}
-          value={flashcard.short_answer}
+          value={flashcard.shortAnswer}
         />
 
-        <label htmlFor="long_answer">Long answer</label>
+        <label htmlFor="longAnswer">Long answer</label>
         <input
-          name="long_answer"
+          name="longAnswer"
           type="text"
           onChange={handleChange}
-          value={flashcard.long_answer}
+          value={flashcard.longAnswer}
         />
         <label htmlFor="file">File</label>
         <input
@@ -121,7 +121,6 @@ export default function AddFlashcardModal() {
       event.preventDefault();
       fetch(new URL('/api/flashcard', BACKEND_BASE_URL), {
         method: 'POST',
-        mode: 'cors',
         body: new FormData(event.target)
       })
       .catch((e) => console.error("Błąd przy zapisywaniu flashcarda:", e));

@@ -24,12 +24,12 @@ import { fetchProjects, updateTask } from "../../store/tasks/actions";
 export default function DashboardPage() {
     const [snippetId, setSnippet] = useState(0);
     const snippet = useSelector(state => state.flashcardReducer.snippets.find(s => s.id == snippetId), (left, right) => R.equals(left, right));
-    useEffect(() => { dispatch(fetchSnippets(), []) })
-    const inboxTasks = useSelector(state => {
-        const inbx = state.tasksReducer.projects.find(project => project.name === 'inbox') || {sub_tasks: []};
-        return inbx.sub_tasks;
-    });
     const dispatch = useDispatch();
+    useEffect(() =>  dispatch(fetchSnippets()), [])
+    const inboxTasks = useSelector(state => {
+        const inbx = state.tasksReducer.projects.find(project => project.name === 'inbox') || {subTasks: []};
+        return inbx.subTasks;
+    });
     useEffect(() => {
         dispatch(fetchProjects());
     }, []);
@@ -41,7 +41,7 @@ export default function DashboardPage() {
             minWidth: 50
         },
         {
-            field: 'priority_point',
+            field: 'priority',
             headerName: 'Priority',
             flex: 0.1,
             type: 'number'
@@ -61,10 +61,10 @@ export default function DashboardPage() {
             flex: 0.05,
 
             getActions: (row) => [
-                <CheckCircleOutlinedIcon key="Done" onClick={() => dispatch(updateTask({task_id: row.id, is_done: true}))} label="Done" />,
-                <HighlightOffIcon key="Delete" label="Delete" onClick={() => dispatch(updateTask({task_id: row.id, is_archived: true}))}/>,
+                <CheckCircleOutlinedIcon key="Done" onClick={() => dispatch(updateTask({taskId: row.id, isDone: true}))} label="Done" />,
+                <HighlightOffIcon key="Delete" label="Delete" onClick={() => dispatch(updateTask({taskId: row.id, archived: true}))}/>,
                 <MovingIcon key="PriorityUp" onClick={() => {
-                    dispatch(updateTask({task_id: row.id, priority: Number(row.row.priority_point)+10}))
+                    dispatch(updateTask({taskId: row.id, priority: Number(row.row.priority)+10}))
                 }}/>
             ]
         },
@@ -85,7 +85,7 @@ export default function DashboardPage() {
                         <Paper elevation={3} sx={{ padding: '10px' }}>
                             <h2>Inbox tasks</h2>
                             <DataGrid
-                                getRowId={row => row.task_id}
+                                getRowId={row => row.taskId}
                                 columns={columns}
                                 rows={inboxTasks}
                                 autoHeight

@@ -66,7 +66,7 @@ export default function FlashcardCreator(props) {
   });
   const [ref_files, setRefFiles] = useState([])
   const [files, setFiles] = useState('');
-  const [picked_deck_id, setPickedDeckId] = useState(decks.length > 0 ? decks[0].deck_id : '')
+  const [picked_deckId, setPickedDeckId] = useState(decks.length > 0 ? decks[0].deckId : '')
   const fileRef = useRef([]);
   const dispatch = useDispatch();
 
@@ -115,14 +115,14 @@ export default function FlashcardCreator(props) {
             onChange={handleChangeBasic}
             value={flashcard.long_answer}
           />
-          <StyledLabel active={!props.picked_deck_id} htmlFor="deckName">Deck name</StyledLabel>
+          <StyledLabel active={!props.picked_deckId} htmlFor="deckName">Deck name</StyledLabel>
           <StyledSelect
             id="deck_name"
             name="deck_name"
             onChange={(e) => setPickedDeckId(e.target.value)}
-            active={!props.picked_deck_id}
+            active={!props.picked_deckId}
           >
-            {decks.map((deck) => <option key={deck.deck_id} value={deck.deck_id}>{deck.title}</option>)}
+            {decks.map((deck) => <option key={deck.deckId} value={deck.deckId}>{deck.title}</option>)}
           </StyledSelect>
         </fieldset>
         <fieldset className="reference_resources">
@@ -177,11 +177,10 @@ export default function FlashcardCreator(props) {
     formData.append('flashcard', new Blob([JSON.stringify(flashcard)], {
       type: "application/json"
     }));
-    formData.append('deckId', props.picked_deck_id || picked_deck_id);
+    formData.append('deckId', props.picked_deckId || picked_deckId);
 
     fetch(FLASHCARD_URL, {
       method: 'POST',
-      mode: 'cors',
       body: formData
     })
     .then(() => dispatch(fetchdecks()))
