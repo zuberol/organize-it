@@ -6,12 +6,13 @@ import * as R from 'ramda';
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle as plus } from '@fortawesome/free-solid-svg-icons';
-import { IconButton, Paper } from '@mui/material';
+import { Button, IconButton, Paper } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
 import { StyledModal } from '../../../common/presenters/StyledModal';
 import { useDispatch } from 'react-redux';
+import { NEW_ACTIVE_PROJECT } from "../../../store/tasks/actions";
 
 /**
  *
@@ -51,11 +52,13 @@ export default function FsTreeView(props) {
               borderRadius: '5px',
               padding: '3px'
             }}>
-            <span>{task.name || "_"}</span>
+            <span
+              onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: task.task_id })}
+            >{task.name || "_"}</span>
             {nodeHover && <div>
-              <StyledModal btn={{icon: <EditIcon/>}} form={{taskDefaults: task}} />
-              <StyledModal btn={{icon: <SubdirectoryArrowRightIcon/>}} form={{newTask: true}} />
-              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({task_id: task.task_id, is_archived: true}))}/>
+              <StyledModal btn={{ icon: <EditIcon /> }} form={{ taskDefaults: task }} />
+              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parent_task_id: task.task_id }} />
+              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ task_id: task.task_id, is_archived: true }))} />
             </div>}
 
           </div>

@@ -34,6 +34,7 @@ export function TaskForm({
     project: false ,
     tags: []
   }, 
+  parent_task_id =  '',
   newTask = false
 }) {
   const [taskTO, setTaskTO] =  useState({});
@@ -99,7 +100,7 @@ export function TaskForm({
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch((newTask && TASK_NEW_URL) || TASK_URL, {
+    fetch(((newTask && TASK_NEW_URL) || TASK_URL) + `?parentTaskId=${parent_task_id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
