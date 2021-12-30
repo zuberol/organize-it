@@ -31,9 +31,20 @@ export const tasksReducer = ( state = initialProjectsState, action ) => {
       }
     }
     case NEW_ACTIVE_PROJECT: 
+
+    const recursiveFind = (array, id) => { // todo okropne, uzyc Ramda.js
+      if(!array) return null;
+      let found = null;
+      for(const element of array) {
+        if(element.task_id == id) return found = element;
+        else found = recursiveFind(element.sub_tasks, id);
+        if(found) break;
+      }
+      return found;
+    }
       return {
         ...state,
-        activeProject: state.projects.find(project => project.task_id == action.activeProjectId) || {}
+        activeProject: recursiveFind(state.projects, action.activeProjectId) || {}
       }
     default:
       return state;

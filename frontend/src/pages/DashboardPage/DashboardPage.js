@@ -41,24 +41,33 @@ export default function DashboardPage() {
             minWidth: 50
         },
         {
+            field: 'priority_point',
+            headerName: 'Priority',
+            flex: 0.1,
+            type: 'number'
+        },
+        {
+            field: 'done',
+            headerName: 'is done',
+            flex: 0.1,
+            minWidth: 10,
+            type: 'boolean',
+            hide: true
+        },
+        {
             field: 'actions',
             headerName: 'Actions',
             type: 'actions',
+            flex: 0.05,
+
             getActions: (row) => [
-                <CheckCircleOutlinedIcon key="Done" onClick={() => console.log(row.id)} label="Done" />,
+                <CheckCircleOutlinedIcon key="Done" onClick={() => dispatch(updateTask({task_id: row.id, is_done: true}))} label="Done" />,
                 <HighlightOffIcon key="Delete" label="Delete" onClick={() => dispatch(updateTask({task_id: row.id, is_archived: true}))}/>,
                 <MovingIcon key="PriorityUp" onClick={() => {
                     dispatch(updateTask({task_id: row.id, priority: Number(row.row.priority_point)+10}))
                 }}/>
             ]
         },
-        {
-            field: 'priority_point',
-            headerName: 'Priority',
-            flex: 0.1,
-            minWidth: 10,
-            type: 'number'
-        }
     ]
 
     return (
@@ -80,6 +89,13 @@ export default function DashboardPage() {
                                 columns={columns}
                                 rows={inboxTasks}
                                 autoHeight
+                                filterModel={{items: [
+                                    {
+                                        columnField: 'done',
+                                        operatorValue: 'is',
+                                        value: 'false'
+                                    }
+                                ]}}
                             />
                         </Paper>
                     </Grid>
