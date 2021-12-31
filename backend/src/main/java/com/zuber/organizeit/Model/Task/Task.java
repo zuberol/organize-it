@@ -43,6 +43,7 @@ public class Task {
     private String name = "";
 
     @Builder.Default
+    @Column(length = 10000)
     private String description = "";
 
     @Builder.Default

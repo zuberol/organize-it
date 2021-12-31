@@ -12,12 +12,10 @@ class NewMealForm extends Component {
   onChangeHandler(event) {
     this.props.changeMealName(event.target.value);
   }
-
   sendMealToBackend = () => {
 
     return fetch(MEAL_URL,{
       method: 'POST',
-      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -31,7 +29,7 @@ class NewMealForm extends Component {
       <form id="mealCreator">
         <label htmlFor="mealName">Meal name</label>
           <h3>{this.props.createdMeal.name}</h3>
-          <input name="mealName" value={this.props.createdMeal.name} placeholder="Type meal name" onChange={this.onChangeHandler.bind(this)}></input>
+          <input name="mealName" value={this.props.createdMeal.name} placeholder="Type meal name" onChange={this.onChangeHandler.bind(this)}/>
         {ingredientList}
         <button type="button" onClick={this.createIngredientInput()}>+</button>
         <button type="button" onClick={this.sendMealToBackend}>Submit</button>

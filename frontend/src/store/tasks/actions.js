@@ -1,5 +1,6 @@
 import { dispatch } from 'd3-dispatch';
 import { TASK_URL, PROJECTS_URL, TASK_INBOX_URL } from '../../config/backendRoutes';
+import { stripToDto } from "../../Model/Task";
 
 export const INIT_PROJECTS = "INIT_PROJECTS";
 export const INIT_INBOX = "INIT_INBOX";
@@ -14,13 +15,10 @@ export function updateTask(task) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(task)
+      body: JSON.stringify(stripToDto(task))
     })
     .catch(err => {
       console.error(err);
-    })
-    .then(() => {
-      dispatch({type: TOGGLE_MODAL});
     })
     .then(() => {
       dispatch(fetchProjects());
@@ -41,20 +39,6 @@ export function fetchProjects() {
     .catch(err => {
       console.error(err, "Backend doesn't respond");
       dispatch({type: INIT_PROJECTS, projects: []});
-    })
-  }
-}
-
-export function fetchInbox() {
-  return (dispatch) => {
-    fetch(TASK_INBOX_URL)
-    .then(res => res.json())
-    .then((inboxTasks) => {
-      dispatch({type: INIT_INBOX, inboxTasks});
-    })
-    .catch(err => {
-      console.error(err, "Backend doesn't respond");
-      dispatch({type: INIT_INBOX, inboxTasks: []});
     })
   }
 }

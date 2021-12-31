@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import flashcardReducer from './store/flashcards/flashcardReducer';
 import mealReducer from './store/meal/reducer';
@@ -16,7 +17,9 @@ export default class App extends Component {
       flashcardReducer,
       tasksReducer
     });
-    const store = createStore(rootReducer, applyMiddleware(thunk));
+    const store = createStore(
+      rootReducer, 
+      composeWithDevTools(applyMiddleware(thunk)));
     return (
       <Provider store={store}>
         <Routes/>

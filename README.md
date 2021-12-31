@@ -9,11 +9,30 @@
 
 	essential
 
+		vim Notes
+			scrapowanie artykulow do krotkiej notatki
+			kod examples w oddzielnych plikach
+			meta-tagi w pliku z notatka
+			directory to cala notatka?
+		
+			subnotatki?
+
+		tworzenie notatek z VIMa
+			link do calej notatki albo do node'a
+			wstrzykiwanie CodeRefa
+			Folder notatek i wszystko co w nim jest
+			rozroznienie plikow po nazwach "flashcards, notes, .java"
+
+
 		widoczny progres
 			widget projektami z wyswietlonym progresem
 			widget z taskami wykonanymi dzisiaj
 				dodanie archiwizacji taskow
 
+		filtrowanie drzewa
+			backend bedzie wysylal indexy taskow w odpowiedzi na filtr+filtr+filtr get
+      frontend bedzie pokazywal taski tylko te co dostanie indexy
+				nie takie fajne ale zadziala narazie
 		zaczac robic codziennie flashcardy przez pol godziny
         jak tworzyc flashcardy łatwo
 					jakiegos DSLa musze robic?
@@ -25,6 +44,12 @@
         ogarnac hibernate?
 				viktora film najpierw
             https://eventory.cc/event/jdd-2021/space/stream/68537
+
+    priority
+        nowe taski na szczycie listy
+        dodane priority pushuje do gory listy
+            dodanie przycisku + zeby podbic priority
+            dodac priority na backendzie
 
 
 	nice to have
