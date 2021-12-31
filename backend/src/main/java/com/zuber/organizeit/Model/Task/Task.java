@@ -1,17 +1,17 @@
 package com.zuber.organizeit.Model.Task;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.zuber.organizeit.Model.Repository.TaskRepository;
 import com.zuber.organizeit.Model.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -37,7 +37,6 @@ public class Task {
     @Id
     @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("task_id")
     private Long taskId;
 
     @Builder.Default

@@ -1,7 +1,7 @@
 package com.zuber.organizeit.services.exporters;
 
 import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.services.exporters.rm.SnippetParser;
+import com.zuber.organizeit.services.exporters.old.SnippetParser;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;

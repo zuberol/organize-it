@@ -97,6 +97,10 @@ public class FlashcardsController {
         return flashcardsRepository.findById(id).orElseThrow();
     }
 
+    @GetMapping(value = "/flashcard/random")
+    public List<Flashcard> getRandomFlashcards(@RequestParam String [] tags) {
+        return entityDAO.getRandomFlashcards(tags);
+    }
 
 
     @GetMapping("/snippets")

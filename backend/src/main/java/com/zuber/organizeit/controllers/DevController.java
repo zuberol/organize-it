@@ -53,15 +53,15 @@ public class DevController {
     public void saveRefResource() {
         BookReference bookReference = new BookReference();
         bookReference.setAuthor("Hemingway");
-        bookReference.setId(30L);
+        bookReference.setResId(30L);
 
         VideoReference videoReference = new VideoReference();
         videoReference.setReferenceUrl("https://www.youtube.com/watch?v=av0y5TAItyk&ab_channel=JWPCREW");
-        videoReference.setId(31L);
+        videoReference.setResId(31L);
 
         VideoReference videoReference2 = new VideoReference();
         videoReference2.setReferenceUrl("https://www.youtube.com/watch?v=kpUWMl0gLEQ&ab_channel=kkrawczykOnVEVO");
-        videoReference2.setId(32L);
+        videoReference2.setResId(32L);
 
         //to nie zadziala bo nie mozna zapisac, chyba ze sie zrobi castowanie to zadziala moze
         //to nastepne jest skastowane i zadziala
@@ -75,7 +75,7 @@ public class DevController {
         // moze to
         VideoReference videoReference3 = new VideoReference();
         videoReference3.setReferenceUrl("https://www.baeldung.com/hibernate-inheritance");
-        videoReference3.setId(33L);
+        videoReference3.setResId(33L);
         Object ob = videoReference3;
         var someVar = (ReferenceResource) ob;
 
