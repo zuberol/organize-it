@@ -42,3 +42,19 @@ export function fetchProjects() {
     })
   }
 }
+
+export function fetchPlanStatus() {
+  return (dispatch) => {
+    fetch(PROJECTS_URL)
+    .then(res => res.json())
+    .then((projects) => {
+      dispatch({type: INIT_PROJECTS, projects});
+    })
+    .catch(err => {
+      console.error(err, "Backend doesn't respond");
+      dispatch({type: INIT_PROJECTS, projects: []});
+    })
+  }
+}
+
+

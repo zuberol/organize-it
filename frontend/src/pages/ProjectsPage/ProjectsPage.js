@@ -39,10 +39,10 @@ export default function ProjectsPage() {
             {projectList.map((project) =>
               <li
                 onClick={() => {
-                  dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: project.taskId });
+                  dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: project.id });
                   setIsDrawerOpen(false);
                 }}
-                key={project.taskId}>
+                key={project.id}>
                 {project.name}
               </li>
             )}
@@ -52,7 +52,7 @@ export default function ProjectsPage() {
       <Container>
         <FsTreeView {...{task: activeProject, dispatch}}/>
         {R.isEmpty(activeProject) && projectList.map(
-          project => <FsTreeView key={project.taskId} {...{task: project, dispatch}} />)}
+          project => <FsTreeView key={project.id} {...{task: project, dispatch}} />)}
       </Container>
       
       <div className="dashboard-buttons">

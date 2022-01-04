@@ -3,23 +3,31 @@ import { StyledModal } from '../../common/presenters/StyledModal'
 import { faBook, faAddressCard, faAnchor } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import { TaskForm } from "../../Model/Task";
-import { project } from "../../mock/MockProject";
-import { ProjectCard } from '../../Model/Project/ProjectPresenters'
+import { plan } from "../../mock/MockProject";
+import { PlanCard } from '../../Model/Project/PlanPresenters'
 
 
 
 export default function AddTaskModal() {
-  const [mockProject, setProject] = useState(project)
+  const [ mockPlan, setProject ] = useState(plan)
   return (
 
-    <main style={{ display: "flex", "justifyContent": "center", backgroundColor: '#F1E0C5', 'minHeight': '85vh' }}>
-
-    <div style={{maxWidth: "500px"}}>
-      <ProjectCard
-          project={mockProject}
-        />
-    </div>
+    <main style={{ display: "flex", "justifyContent": "center", backgroundColor: '#F1E0C5', 'minHeight': '100vh' }}>
+      <div style={{width: "900px"}}>
+        <PlanCard
+            plan={mockPlan}
+          />
+      </div>
     </main>
   );
 
 }
+
+// function PlanStatusWidget(props) {
+//   return (
+//     <div>
+
+//     </div>
+//   )
+// }
+

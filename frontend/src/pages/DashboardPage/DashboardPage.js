@@ -85,7 +85,7 @@ export default function DashboardPage() {
                         <Paper elevation={3} sx={{ padding: '10px' }}>
                             <h2>Inbox tasks</h2>
                             <DataGrid
-                                getRowId={row => row.taskId}
+                                getRowId={row => row.id}
                                 columns={columns}
                                 rows={inboxTasks}
                                 autoHeight

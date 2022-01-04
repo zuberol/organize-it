@@ -53,12 +53,12 @@ export default function FsTreeView(props) {
               padding: '3px'
             }}>
             <span
-              onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: task.taskId })}
+              onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: taskid })}
             >{task.name || "_"}</span>
             {nodeHover && <div>
               <StyledModal btn={{ icon: <EditIcon /> }} form={{ taskDefaults: task }} />
-              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parentTaskId: task.taskId }} />
-              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ taskId: task.taskId, archived: true }))} />
+              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parentTaskId: taskid }} />
+              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ taskId: taskid, archived: true }))} />
             </div>}
 
           </div>

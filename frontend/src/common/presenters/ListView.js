@@ -50,7 +50,7 @@ export function GenericList(props) {
                 <button type="button" className="flashcard__button" onClick={() => {
                   dispatch(
                     updateTask({
-                      taskId: di.taskId,
+                      taskId: diid,
                       archived: 'true'
                   }));
                 }}>

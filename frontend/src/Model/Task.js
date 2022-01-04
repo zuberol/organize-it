@@ -3,7 +3,7 @@ import { TASK_NEW_URL, TASK_URL } from "../config/backendRoutes";
 
 export default class Task {
   constructor({ taskId = null, name: name = "", description: description = "", subTasks = [], isDone: isDone, archived: archived }) {
-    this.taskId = taskId;
+    thisid = taskId;
     this.description = description;
     this.name = name; // todo remove
     this.subTasks = subTasks.map(st => new Task(st));
@@ -47,7 +47,7 @@ export function TaskForm({
         name="taskId"
         type="number"
         onChange={handleChange}
-        defaultValue={taskDefaults.taskId}
+        defaultValue={taskDefaultsid}
       />
       <label htmlFor="name">Name</label>
       <input
@@ -93,7 +93,7 @@ export function TaskForm({
       <input
         name="subtaskIds"
         type="text"
-        defaultValue={taskDefaults.subTasks.map(_ => _.taskId).toString()}
+        defaultValue={taskDefaults.subTasks.map(_ => _id).toString()}
         onChange={handleChangeArray}
       />
       <button type="submit">Submit</button>
@@ -138,7 +138,7 @@ export function TaskForm({
 export function stripToDto(task) {
   if(!task) return {};
   else return {  
-    taskId: task.taskId,
+    taskId: taskid,
     name: task.name,
     description: task.description,
     subtaskIds: task.subtaskIds,

@@ -12,6 +12,9 @@ export const TASK_NEW_URL = new URL("/api/task/new", BACKEND_BASE_URL)
 export const TASK_INBOX_URL = new URL("/api/projects?projectName=inbox", BACKEND_BASE_URL)
 export const TASK_SUBTASK_PUT_URL = new URL("/api/task/subtask/put", BACKEND_BASE_URL)
 
+// PLANS
+export const PLAN_STATUS = new URL("/api/dev/plan/status", BACKEND_BASE_URL)
+
 // MEAL
 export const MEAL_URL = new URL('/api/meal', BACKEND_BASE_URL)
 

@@ -6,7 +6,8 @@ const initialProjectsState = {
     
   ],
   activeProject: {},
-  inboxTasks: []
+  inboxTasks: [],
+  plans: []
 };
 
 export const tasksReducer = ( state = initialProjectsState, action ) => {
@@ -36,7 +37,7 @@ export const tasksReducer = ( state = initialProjectsState, action ) => {
       if(!array) return null;
       let found = null;
       for(const element of array) {
-        if(element.taskId == id) return found = element;
+        if(elementid == id) return found = element;
         else found = recursiveFind(element.subTasks, id);
         if(found) break;
       }
