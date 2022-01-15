@@ -2,8 +2,8 @@ import { useState } from "react";
 import { TASK_NEW_URL, TASK_URL } from "../config/backendRoutes";
 
 export default class Task {
-  constructor({ taskId = null, name: name = "", description: description = "", subTasks = [], isDone: isDone, archived: archived }) {
-    thisid = taskId;
+  constructor({ id = null, name: name = "", description: description = "", subTasks = [], isDone: isDone, archived: archived }) {
+    this.id = id;
     this.description = description;
     this.name = name; // todo remove
     this.subTasks = subTasks.map(st => new Task(st));
@@ -26,13 +26,12 @@ export default class Task {
 
 export function TaskForm({
   taskDefaults = {
-    taskId: '',
+    id: '',
     name: '',
     description: '',
     subTasks: [],
     priority: '',
     archived: false,
-    project: false ,
     tags: []
   }, 
   parentTaskId =  '',
@@ -41,13 +40,13 @@ export function TaskForm({
   const [taskTO, setTaskTO] =  useState({...taskDefaults});
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="taskId">Task ID</label>
+      <label htmlFor="id">Task ID</label>
       <input
         hidden={newTask}
-        name="taskId"
+        name="id"
         type="number"
         onChange={handleChange}
-        defaultValue={taskDefaultsid}
+        defaultValue={taskDefaults.id}
       />
       <label htmlFor="name">Name</label>
       <input
@@ -60,6 +59,7 @@ export function TaskForm({
       <input
         name="description"
         type="text"
+        defaultValue={taskDefaults.description}
         onChange={handleChange}
       />
       <label htmlFor="tags">Tags (comma separated)</label>
@@ -75,13 +75,6 @@ export function TaskForm({
         type="number"
         onChange={handleChange}
       />
-      <label htmlFor="isProject">isProject</label>
-      <input
-        name="isProject"
-        type="checkbox"
-        defaultChecked={taskDefaults.project}
-        onChange={handleChangeCheckbox}
-      />
       <label htmlFor="archived">Is archived?</label>
       <input
         name="archived"
@@ -93,7 +86,7 @@ export function TaskForm({
       <input
         name="subtaskIds"
         type="text"
-        defaultValue={taskDefaults.subTasks.map(_ => _id).toString()}
+        defaultValue={taskDefaults.subTasks.map(_ => _.id).toString()}
         onChange={handleChangeArray}
       />
       <button type="submit">Submit</button>
@@ -138,13 +131,13 @@ export function TaskForm({
 export function stripToDto(task) {
   if(!task) return {};
   else return {  
-    taskId: taskid,
+    id: task.id,
     name: task.name,
     description: task.description,
     subtaskIds: task.subtaskIds,
     done: task.done,
     archived: task.archived,
-    project: task.project,
+    plan: task.plan,
     priority: task.priority
   };
 }

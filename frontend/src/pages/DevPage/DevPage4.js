@@ -1,4 +1,4 @@
-import FsTreeView from './../ProjectsPage/fsTreeView/FsTreeView';
+import FsTreeView from '../PlansPage/fsTreeView/FsTreeView';
 
 export default function dev4() {
   return (

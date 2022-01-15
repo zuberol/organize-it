@@ -1,16 +1,16 @@
-import { TOGGLE_MODAL, INIT_PROJECTS, INIT_INBOX, NEW_ACTIVE_PROJECT } from './actions';
+import { TOGGLE_MODAL, INIT_PLANS, INIT_INBOX, NEW_ACTIVE_PLAN } from './actions';
 
-const initialProjectsState = {
+const initialPlansState = {
   isModalOpen: false,
-  projects: [
+  plans: [
     
   ],
-  activeProject: {},
+  activePlan: {},
   inboxTasks: [],
   plans: []
 };
 
-export const tasksReducer = ( state = initialProjectsState, action ) => {
+export const tasksReducer = ( state = initialPlansState, action ) => {
   switch (action.type) {
     case TOGGLE_MODAL: {
 
@@ -19,10 +19,16 @@ export const tasksReducer = ( state = initialProjectsState, action ) => {
         isModalOpen: !state.isModalOpen
       }
     }
-    case INIT_PROJECTS: {
+    case INIT_PLANS: {
       return {
         ...state,
-        projects: action.projects
+        plans: action.plans
+      }
+    }
+    case INIT_PLANS: {
+      return {
+        ...state,
+        plans: action.plans
       }
     }
     case INIT_INBOX: {
@@ -31,13 +37,13 @@ export const tasksReducer = ( state = initialProjectsState, action ) => {
         inboxTasks: action.inboxTasks
       }
     }
-    case NEW_ACTIVE_PROJECT: 
+    case NEW_ACTIVE_PLAN: 
 
     const recursiveFind = (array, id) => { // todo okropne, uzyc Ramda.js
       if(!array) return null;
       let found = null;
       for(const element of array) {
-        if(elementid == id) return found = element;
+        if(element.id == id) return found = element;
         else found = recursiveFind(element.subTasks, id);
         if(found) break;
       }
@@ -45,7 +51,7 @@ export const tasksReducer = ( state = initialProjectsState, action ) => {
     }
       return {
         ...state,
-        activeProject: recursiveFind(state.projects, action.activeProjectId) || {}
+        activePlan: recursiveFind(state.plans, action.activePlanId) || {}
       }
     default:
       return state;

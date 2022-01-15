@@ -7,7 +7,7 @@ import '../../common/styles/commons.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faAngleLeft, faEye, faComment } from '@fortawesome/free-solid-svg-icons'
-import { renderResources } from "../../Model/Project/ReferenceResource";
+import { renderResources } from "../../Model/Plan/ReferenceResource";
 
 const StyledParagraph = styled.section`
   ${({ active }) => !!active.reduce((prev, curr) => {

@@ -12,7 +12,7 @@ import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRig
 import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
 import { StyledModal } from '../../../common/presenters/StyledModal';
 import { useDispatch } from 'react-redux';
-import { NEW_ACTIVE_PROJECT } from "../../../store/tasks/actions";
+import { NEW_ACTIVE_PLAN } from "../../../store/tasks/actions";
 
 /**
  *
@@ -53,12 +53,12 @@ export default function FsTreeView(props) {
               padding: '3px'
             }}>
             <span
-              onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: taskid })}
+              onClick={() => dispatch({ type: NEW_ACTIVE_PLAN, activePlanId: task.id })}
             >{task.name || "_"}</span>
             {nodeHover && <div>
               <StyledModal btn={{ icon: <EditIcon /> }} form={{ taskDefaults: task }} />
-              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parentTaskId: taskid }} />
-              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ taskId: taskid, archived: true }))} />
+              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parentTaskId: task.id }} />
+              <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ id: task.id, archived: true }))} />
             </div>}
 
           </div>

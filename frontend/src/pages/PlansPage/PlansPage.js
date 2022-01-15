@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NEW_ACTIVE_PROJECT } from "../../store/tasks/actions";
-import { fetchProjects } from '../../store/tasks/actions';
+import { NEW_ACTIVE_PLAN } from "../../store/tasks/actions";
+import { fetchPlans } from '../../store/tasks/actions';
 import FsTreeView from './fsTreeView/FsTreeView';
-import './Projects.scss'
+import './Plans.scss'
 import * as R from 'ramda';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -11,16 +11,16 @@ import Button from '@mui/material/Button';
 import { StyledModal } from '../../common/presenters/StyledModal'
 import { faAddressCard, faBackward } from '@fortawesome/free-solid-svg-icons'
 import { TaskForm } from "../../Model/Task";
-import { DetailedProjectView } from "../../Model/Project/DetailedProjectView";
+import { DetailedPlanView } from "../../Model/Plan/DetailedPlanView";
 import { NamedIcon } from '../../common/presenters/NamedIcon';
 import { Container } from '@mui/material';
 
-export default function ProjectsPage() {
+export default function PlansPage() {
   const dispatch = useDispatch();
-  const projectList = useSelector(state => state.tasksReducer.projects, (left, right) => R.equals(left, right));
-  const activeProject = useSelector(state => state.tasksReducer.activeProject, (left, right) => R.equals(left, right))
+  const planList = useSelector(state => state.tasksReducer.plans, (left, right) => R.equals(left, right));
+  const activePlan = useSelector(state => state.tasksReducer.activePlan, (left, right) => R.equals(left, right))
   useEffect(() => {
-    dispatch(fetchProjects());
+    dispatch(fetchPlans());
   }, []);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,29 +30,29 @@ export default function ProjectsPage() {
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-nav">
-        {!R.isEmpty(activeProject) && <Button
-          onClick={() => dispatch({ type: NEW_ACTIVE_PROJECT })}>
+        {!R.isEmpty(activePlan) && <Button
+          onClick={() => dispatch({ type: NEW_ACTIVE_PLAN })}>
           <NamedIcon iconDef={faBackward} caption="return" />
         </Button>}
         <Drawer anchor='left' open={isDrawerOpen} onClose={() => setIsDrawerOpen(!isDrawerOpen)}>
           {<ul>
-            {projectList.map((project) =>
+            {planList.map((plan) =>
               <li
                 onClick={() => {
-                  dispatch({ type: NEW_ACTIVE_PROJECT, activeProjectId: project.id });
+                  dispatch({ type: NEW_ACTIVE_PLAN, activePlanId: plan.id });
                   setIsDrawerOpen(false);
                 }}
-                key={project.id}>
-                {project.name}
+                key={plan.id}>
+                {plan.name}
               </li>
             )}
           </ul>}
         </Drawer>
       </div>
       <Container>
-        <FsTreeView {...{task: activeProject, dispatch}}/>
-        {R.isEmpty(activeProject) && projectList.map(
-          project => <FsTreeView key={project.id} {...{task: project, dispatch}} />)}
+        <FsTreeView {...{task: activePlan, dispatch}}/>
+        {R.isEmpty(activePlan) && planList.map(
+          plan => <FsTreeView key={plan.id} {...{task: plan, dispatch}} />)}
       </Container>
       
       <div className="dashboard-buttons">
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
           setIsModalOpen={setIsModalOpen}>
           <TaskForm newTask={true} />
         </StyledModal>
-        <Button onClick={() => setIsDrawerOpen(true)}>Projects</Button>
+        <Button onClick={() => setIsDrawerOpen(true)}>Plans</Button>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import Collapse from '@mui/material/Collapse';
 import { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LinearProgress from '@mui/material/LinearProgress';
-import { PLAN_STATUS } from '../../config/backendRoutes';
+import { PLAN_STATUS_URL } from '../../config/backendRoutes';
 
 import ShareIcon from '@mui/icons-material/Share';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
@@ -42,7 +42,7 @@ export function PlanCard(props) {
     const [ expandedMeta, setExpandedMeta ] = useState(false);
     useEffect(() => {
         if(plan && plan.id) {
-            fetch(PLAN_STATUS + `?id=${plan.id}`)
+            fetch(PLAN_STATUS_URL + `?id=${plan.id}`)
             .then(res => res.json())
             .then(planStatus => setStatus(planStatus))
             .catch(err => console.log(err));
@@ -50,7 +50,7 @@ export function PlanCard(props) {
     }, []);
 
     return (
-        <Card style={{maxWidth: '300px'}}>
+        <Card style={{minWidth: '300px'}}>
             <ThemeProvider theme={myTheme}>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <CardHeader
@@ -91,7 +91,7 @@ export function PlanCard(props) {
                     <p>Meta:</p>
                     <p>{plan.locallySavedURI && `Locally saved: ${plan.locallySavedURI}`}</p>
                     <p>{`Priority: ${plan.priority}`}</p>
-                    <p>{`Project: ${plan.project}`}</p>
+                    <p>{`Plan: ${plan.plan}`}</p>
                 </Collapse>
             </CardContent>
         </Card>

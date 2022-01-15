@@ -1,10 +1,10 @@
 import { dispatch } from 'd3-dispatch';
-import { TASK_URL, PROJECTS_URL, TASK_INBOX_URL } from '../../config/backendRoutes';
+import { TASK_URL, PLANS_URL, TASK_INBOX_URL, PLAN_STATUS_URL } from '../../config/backendRoutes';
 import { stripToDto } from "../../Model/Task";
 
-export const INIT_PROJECTS = "INIT_PROJECTS";
+export const INIT_PLANS = "INIT_PLANS";
 export const INIT_INBOX = "INIT_INBOX";
-export const NEW_ACTIVE_PROJECT = "NEW_ACTIVE_PROJECT";
+export const NEW_ACTIVE_PLAN = "NEW_ACTIVE_PLAN";
 export const TOGGLE_MODAL = "TOGGLE_MODAL";
 
 export function updateTask(task) {
@@ -21,40 +21,25 @@ export function updateTask(task) {
       console.error(err);
     })
     .then(() => {
-      dispatch(fetchProjects());
+      dispatch(fetchPlans());
     })
     .catch(err => {
-      console.error("fetching projects failed: ", err);
+      console.error("fetching plans failed: ", err);
     })
   }
 }
 
-export function fetchProjects() {
+export function fetchPlans() {
   return (dispatch) => {
-    fetch(PROJECTS_URL)
+    fetch(PLANS_URL)
     .then(res => res.json())
-    .then((projects) => {
-      dispatch({type: INIT_PROJECTS, projects});
+    .then((plans) => {
+      dispatch({type: INIT_PLANS, plans});
     })
     .catch(err => {
       console.error(err, "Backend doesn't respond");
-      dispatch({type: INIT_PROJECTS, projects: []});
+      dispatch({type: INIT_PLANS, plans: []});
     })
   }
 }
-
-export function fetchPlanStatus() {
-  return (dispatch) => {
-    fetch(PROJECTS_URL)
-    .then(res => res.json())
-    .then((projects) => {
-      dispatch({type: INIT_PROJECTS, projects});
-    })
-    .catch(err => {
-      console.error(err, "Backend doesn't respond");
-      dispatch({type: INIT_PROJECTS, projects: []});
-    })
-  }
-}
-
 

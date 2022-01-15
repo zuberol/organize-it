@@ -25,7 +25,7 @@ export default function EditTaskForm(props) {
     event.preventDefault();
     dispatch(
       updateTask({
-        taskId: null,
+        id: null,
         parentId: parentId,
         note: note
       })

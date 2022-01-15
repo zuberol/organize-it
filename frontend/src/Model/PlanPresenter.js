@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStickyNote } from '@fortawesome/free-solid-svg-icons'
 
 
-// todo poprawic z uwzglednieniem class Project
-function projectPresenterFactory(project) { //todo na later
-    // if(project['@class'] === "com.zuber.organizeit.Model.Project") {
-        const { name, description } = project;
+// todo poprawic z uwzglednieniem class Plan
+function planPresenterFactory(plan) { //todo na later
+    // if(plan['@class'] === "com.zuber.organizeit.Model.Plan") {
+        const { name, description } = plan;
         return {
-            ...project,
+            ...plan,
             presenter: function () {
                 return (
                     <div style={{display: 'flex', 'flexDirection': 'row', 'alignItems': 'center', margin: '20px'}}>
@@ -19,5 +19,5 @@ function projectPresenterFactory(project) { //todo na later
             }
         };
     // } // todo
-    // else return project;
+    // else return plan;
 }

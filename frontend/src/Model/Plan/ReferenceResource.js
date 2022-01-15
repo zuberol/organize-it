@@ -8,7 +8,7 @@ export function renderResources(referenceResources) {
     if (!referenceResources) return null;
     return (
         <ul>
-            {referenceResources.map(res => <li key={res.resId}> {getRefResourceComponent(res)} </li>)}
+            {referenceResources.map(res => <li key={res.id}> {getRefResourceComponent(res)} </li>)}
         </ul>
     )
 }

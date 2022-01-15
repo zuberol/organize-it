@@ -44,7 +44,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -85,7 +85,7 @@ export const plans = [
                   "priorityPoint": 1000,
                   "done": false,
                   "notArchived": true,
-                  "project": false,
+                  "plan": false,
                   "archived": false,
                   "notDone": true,
                   "new": false
@@ -116,7 +116,7 @@ export const plans = [
                   "priorityPoint": 1000,
                   "done": false,
                   "notArchived": true,
-                  "project": false,
+                  "plan": false,
                   "archived": false,
                   "notDone": true,
                   "new": false
@@ -136,7 +136,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -156,7 +156,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": true,
+          "plan": true,
           "archived": false,
           "notDone": true,
           "new": false
@@ -187,7 +187,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": true,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": false,
           "new": false
@@ -219,7 +219,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -259,7 +259,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -290,7 +290,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -310,7 +310,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -340,7 +340,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -370,7 +370,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -424,7 +424,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -465,7 +465,7 @@ export const plans = [
                   "priorityPoint": 1000,
                   "done": false,
                   "notArchived": true,
-                  "project": false,
+                  "plan": false,
                   "archived": false,
                   "notDone": true,
                   "new": false
@@ -496,7 +496,7 @@ export const plans = [
                   "priorityPoint": 1000,
                   "done": false,
                   "notArchived": true,
-                  "project": false,
+                  "plan": false,
                   "archived": false,
                   "notDone": true,
                   "new": false
@@ -516,7 +516,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -536,7 +536,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": true,
+          "plan": true,
           "archived": false,
           "notDone": true,
           "new": false
@@ -567,7 +567,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": true,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": false,
           "new": false
@@ -599,7 +599,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -639,7 +639,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -670,7 +670,7 @@ export const plans = [
               "priorityPoint": 1000,
               "done": false,
               "notArchived": true,
-              "project": false,
+              "plan": false,
               "archived": false,
               "notDone": true,
               "new": false
@@ -690,7 +690,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -720,7 +720,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -750,7 +750,7 @@ export const plans = [
           "priorityPoint": 1000,
           "done": false,
           "notArchived": true,
-          "project": false,
+          "plan": false,
           "archived": false,
           "notDone": true,
           "new": false
@@ -806,7 +806,7 @@ export const plan = {
             "priorityPoint": 1000,
             "done": false,
             "notArchived": true,
-            "project": false,
+            "plan": false,
             "archived": false,
             "notDone": true,
             "new": false
@@ -847,7 +847,7 @@ export const plan = {
                 "priorityPoint": 1000,
                 "done": false,
                 "notArchived": true,
-                "project": false,
+                "plan": false,
                 "archived": false,
                 "notDone": true,
                 "new": false
@@ -878,7 +878,7 @@ export const plan = {
                 "priorityPoint": 1000,
                 "done": false,
                 "notArchived": true,
-                "project": false,
+                "plan": false,
                 "archived": false,
                 "notDone": true,
                 "new": false
@@ -898,7 +898,7 @@ export const plan = {
             "priorityPoint": 1000,
             "done": false,
             "notArchived": true,
-            "project": false,
+            "plan": false,
             "archived": false,
             "notDone": true,
             "new": false
@@ -918,7 +918,7 @@ export const plan = {
         "priorityPoint": 1000,
         "done": false,
         "notArchived": true,
-        "project": true,
+        "plan": true,
         "archived": false,
         "notDone": true,
         "new": false
@@ -949,7 +949,7 @@ export const plan = {
         "priorityPoint": 1000,
         "done": true,
         "notArchived": true,
-        "project": false,
+        "plan": false,
         "archived": false,
         "notDone": false,
         "new": false
@@ -981,7 +981,7 @@ export const plan = {
         "priorityPoint": 1000,
         "done": false,
         "notArchived": true,
-        "project": false,
+        "plan": false,
         "archived": false,
         "notDone": true,
         "new": false
@@ -1021,7 +1021,7 @@ export const plan = {
             "priorityPoint": 1000,
             "done": false,
             "notArchived": true,
-            "project": false,
+            "plan": false,
             "archived": false,
             "notDone": true,
             "new": false
@@ -1052,7 +1052,7 @@ export const plan = {
             "priorityPoint": 1000,
             "done": false,
             "notArchived": true,
-            "project": false,
+            "plan": false,
             "archived": false,
             "notDone": true,
             "new": false
@@ -1072,7 +1072,7 @@ export const plan = {
         "priorityPoint": 1000,
         "done": false,
         "notArchived": true,
-        "project": false,
+        "plan": false,
         "archived": false,
         "notDone": true,
         "new": false
@@ -1102,7 +1102,7 @@ export const plan = {
         "priorityPoint": 1000,
         "done": false,
         "notArchived": true,
-        "project": false,
+        "plan": false,
         "archived": false,
         "notDone": true,
         "new": false
@@ -1132,7 +1132,7 @@ export const plan = {
         "priorityPoint": 1000,
         "done": false,
         "notArchived": true,
-        "project": false,
+        "plan": false,
         "archived": false,
         "notDone": true,
         "new": false
