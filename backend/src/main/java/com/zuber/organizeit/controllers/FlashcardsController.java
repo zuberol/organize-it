@@ -1,13 +1,13 @@
 package com.zuber.organizeit.controllers;
 
 
-import com.zuber.organizeit.Model.Note.Flashcard.Deck;
-import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
-import com.zuber.organizeit.Model.Repository.DecksRepository;
-import com.zuber.organizeit.Model.Repository.EntityDAO;
-import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
-import com.zuber.organizeit.Model.Repository.ReferenceResourcesRepository;
-import com.zuber.organizeit.Model.Snippet;
+import com.zuber.organizeit.domain.Note.Flashcard.Deck;
+import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.domain.Repository.DecksRepository;
+import com.zuber.organizeit.domain.Repository.EntityDAO;
+import com.zuber.organizeit.domain.Repository.FlashcardsRepository;
+import com.zuber.organizeit.domain.Repository.RefResourcesRepository;
+import com.zuber.organizeit.domain.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,14 +22,14 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class FlashcardsController {
     FlashcardsRepository flashcardsRepository;
     DecksRepository decksRepository;
-    ReferenceResourcesRepository referenceResourcesRepository;
+    RefResourcesRepository refResourcesRepository;
     final EntityDAO entityDAO;
 
     @Autowired
-    public FlashcardsController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, EntityDAO entityDAO) {
+    public FlashcardsController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, RefResourcesRepository refResourcesRepository, EntityDAO entityDAO) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
-        this.referenceResourcesRepository = referenceResourcesRepository;
+        this.refResourcesRepository = refResourcesRepository;
         this.entityDAO = entityDAO;
     }
 

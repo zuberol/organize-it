@@ -5,9 +5,176 @@
 - but when learning it's better to make a bunch of shitty apps than one good
 - ? make the hardest one first
 
+
+## vision
+		zmiana taska w pojekcie, to zmiana Task#AggregateRoot, zapisanie przez taskRepo i refresh Project#AggregateRoot
+		nie mozna tworzyc repo dla encji nieRootowych!!
+		nie mozna tworzyc encji do modyfikacji
+			trzeba ustawic za pomoca Task#AggregateRoot.mergeChanges(dto : TaskDownstreamObject <- some Json, anticorruption layer object)
+
+## ideas
+ 	dyskryminator taskow  przycisk ktory jak klikniemy to spycha na koniec listy  do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny
+	przycisk w roocie expand all, tylko itemki z pod roota
+	nie powinno byc widoku w ktorym jest za duzo taskow, zeby nie bylo to przytlaczajace
+
+	jak sie wchodzi na mount everest to sie nie widzi szczytu
+		mozna powiedziec tylko, czy sie idzie w dobrym kierunku
+			dobry kierynek to w gore
+				mozna wybrac droge dluzsza latwiejsza (mniej wysilkowa) albo szybsza ale trudniejsza (wiecej wysilkowa)
+					ale jedno i drugie cie doprowadzi do celu
+						wolimy latwiejsze rzeczy, bo nie lubimy sie wysilac
+							chociaz czasami nie ma sie wyboru i trzeba wybrac sie trudniejsza trasa
+							koniec koncow trzeba wybrac droge ktora doprowadzi cie do celu
+								nawet jak wiecej satysfakcji ci sprawia trudniejsza droga to nie o to chodzi
+									pytanie nie bylo co ci sprawia wieksza przyjemnosc? tylko jak dojsc do celu?
+									chociaz frajda z drogi koniec koncow jest tez wazna, trzeba o tym pamietac
+									ale jak wybierasz trudniejsza droge i nie dojdziesz do celu to to nie bedzie spojne
+									bo ty chcesz sie dostac do tego miejsca do ktorego idziesz
+										chyba, ze ci nie zalezy? chcesz tylko isc i zeby ci bylo przyjemnie podczas wedrowki
+
+		wieksze taski mozna przyporzadkowac do idei
+		np.
+				napisalem testy w JUnit dla mojej prostej aplikacji
+					trzeba byc szczerym i umiec powiedziec, ze ta aplikaja jest prosta, a nie trudna
+				|
+				|-> 
+				nauczyc sie programowac, ale po co?
+					zeby napisac aplikacje webowa
+						- napisac prosta aplikacje
+						- napisac prosta aplikacje ktora bedzie produkcyjna
+						- napisac lepsza aplikacje zeby byla produkcyjna
+
+		mozna mierzyc jak czesto sie dekomponowalo zadania
+		taski
+
+
+
+		przeniesc Task do oddzielnej paczki i uniezaleznic od TaskDTO
+			Task nie moze wiedziec o istnieniu TaskDTO
+				dopisac task service, ktory bedzie wysylal wysylal DTO
+				task musi byc niezalezny od wszystkiego, natomiast reszta moze byc zalezna od taska
+
+
+
+
+
+
+
+
+
+
+
+
+## inbox
+    co to jest spliterator i jak tego uzywac, do czego?
+    jak dzialac na streamach zeby dobry performance byl?
+        o co chodzi z 
+            short circut optimization?
+            tail optimizationem
+            porownac mozna bytecode
+
+		sa zadania upierdliwe+łatwe
+			nie powinno byc za nie duzo punktow
+
+# info inbox
+
+	research day
+		StringTokenizer do wydobycia tagow
+		Spliterators jak dzialaja
+		Jave Event model poczytac
+		Java concurency
+		Java 17
+			jak robic currying w Javie 17?
+			uzyc recordow
+				jak tworzyc factory methody, zeby tylko zmienic jedna rzecz w nich
+			sealed class
+				sealed ma Permits cluse
+					jak w tym samym pliku to mozna pominac
+					klasy implementujace sealed musza byc z tej samej paczki
+						jak sealed jest w Java Module to musi byc w tym samym module
+			switchy z sealed classami
+		java 9
+			named module co to i po co
+
+		lambda vs static method ref
+			lambda 
+				bedzie miala generica co klasa ja opakowujaca
+				mozna laczyc lambdy z pomoca compose()/andThen(), static method nie da sie tak stackowac
+			vs
+			static method reference
+				ma swojego generica
+
+			to
+				private static <E extends BaseEntity<Long>> YmlTreeParser <E>
+			vs to
+				 private Function<YmlTreeParser<E>, YmlTreeParser<E>> parse
+
+
+
+
+
+
+
 ## Roadmap:
 
+	parser
+		dla http:wp.pl ma przeparsowac na link
+			najpierw parsuj tagi, jak nie ma tagow to zrob cos z linia
+				ale co?
+		narazie wspolna pula tag <->encja z factory
+
+
+		nie pozwalam na razie na kod wrzucony w pliku
+
+
+		jak rozwiazac problem list w parseCtx<?>?
+			tak:
+         Li<Task>: build toole
+          - gradle
+          - maven
+          - ant
+          Deck: build toole
+           - gradle
+           - maven
+           - ant
+
+	taski do zrobienia
+		progres taskow
+		podpinanie root taskow pod project
+
+	project -> plans
+		frontend ogarnac
+
+
+
+
+	TOP tylko to najwazniejsze w chuj
+		OLAC kompletnie DDD, zrobic to w chuj nieoptymalnie, ma dzialac dobrze i tyle, bo sie da
+			to blokuje nauke, z nauka bedzie o 1000 razy szybciej, to jest crucial
+
 	essential
+		modyfikacja taska i planu
+			problem nadpisania nullem
+				nie wystapi, bo uzywam DownstreamObjectow do modyfikacji encji sledzonych przez entity ctx
+		aggregate root plan
+			widget wyswietlanie Statow
+				Staty
+					wyliczanie statow
+			AR task
+				event listenery do komunikacji miedzy nimi
+				powiadamianie od taska do planu, zeby sie zrefreshowal
+
+
+
+		// throws stack overflow
+	    @GetMapping("/cycle") 
+	    Task getCycleTaskTest() {
+	        Task one = new Task("one");
+	        Task two = new Task("two");
+	        one.setSubTasks(List.of(two));
+	        two.setSubTasks(List.of(one));
+	        return one;
+	    }
 
 		vim Notes
 			scrapowanie artykulow do krotkiej notatki
@@ -124,27 +291,6 @@
 
 		rzucanie wyjatkow w streamie
 			czy runtime exception przerwie stream, pewnie ta
-
-## ideas
- 	dyskryminator taskow  przycisk ktory jak klikniemy to spycha na koniec listy  do uzywania jak task jest nie az tak wazny, potem mozna go usunac jak po czasie nie bedzie nadal wazny
-	przycisk w roocie expand all, tylko itemki z pod roota
-	nie powinno byc widoku w ktorym jest za duzo taskow, zeby nie bylo to przytlaczajace
-
-## inbox
-    co to jest spliterator i jak tego uzywac, do czego?
-    jak dzialac na streamach zeby dobry performance byl?
-        o co chodzi z 
-            short circut optimization?
-            tail optimizationem
-            porownac mozna bytecode
-
-
-# info inbox
-	nie mozna dodawac prywatnych i  protected  metod do interfaceow, zeby uzywac ich jak traitow
-		szkielet klasy zeby dzialala poprawnie ;__;
-		, co jest chujnia 
-
-
 
 
 ## <3 Ref links <3

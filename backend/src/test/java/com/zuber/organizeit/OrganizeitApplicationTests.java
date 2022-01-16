@@ -1,6 +1,6 @@
 package com.zuber.organizeit;
 
-import com.zuber.organizeit.Model.Repository.EntityDAO;
+import com.zuber.organizeit.domain.Repository.EntityDAO;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.zuber.organizeit.controllers;
 
-import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
-import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
+import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.domain.Repository.FlashcardsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,7 +38,7 @@ class FlashcardsControllerTest {
     @Test
     void getDecks() {
         FlashcardsRepository flashcardsRepository = mock(FlashcardsRepository.class);
-        Flashcard flashcard = flashcardsRepository.getOne(1L);
+        Flashcard flashcard = flashcardsRepository.getById(1L);
         assertNotNull(flashcard.toString());
         assertDoesNotThrow(() -> new EntityNotFoundException("the flashcard with id 1 was not found"));
 

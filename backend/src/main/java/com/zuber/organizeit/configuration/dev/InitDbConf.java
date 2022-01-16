@@ -1,14 +1,13 @@
 package com.zuber.organizeit.configuration.dev;
 
-import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
-import com.zuber.organizeit.Model.Repository.FlashcardsRepository;
-import com.zuber.organizeit.Model.Repository.TaskRepository;
-import com.zuber.organizeit.Model.Tag;
-import com.zuber.organizeit.Model.Task.Task;
-import com.zuber.organizeit.Model.Task.TimeEstimates;
-import com.zuber.organizeit.services.exporters.ProjectExporterS;
-import com.zuber.organizeit.services.exporters.SnippetExporterS;
-import com.zuber.organizeit.services.exporters.FlashcardExporterS;
+import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.domain.Plan.ShortTermPlan;
+import com.zuber.organizeit.domain.Plan.ShortTermPlanRepository;
+import com.zuber.organizeit.domain.Repository.FlashcardsRepository;
+import com.zuber.organizeit.domain.Repository.TaskRepository;
+import com.zuber.organizeit.domain.Tag;
+import com.zuber.organizeit.domain.Task.Task;
+import com.zuber.organizeit.services.exporters.entityImporter.EntityImporterS;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,20 +15,17 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
-import java.sql.Timestamp;
-import java.time.Duration;
-import java.time.Instant;
+import java.util.LinkedList;
 import java.util.List;
 
 @Component
 @Profile("dev")
 public class InitDbConf implements CommandLineRunner {
 
-    final ProjectExporterS projectExporterS;
-    final FlashcardExporterS flashcardExporterS;
-    final SnippetExporterS snippetExporterS;
     final TaskRepository taskRepository;
     final FlashcardsRepository flashcardsRepository;
+    final ShortTermPlanRepository shortTermPlanRepository;
+    final EntityImporterS entityImporterS;
 
     private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");
     private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
@@ -38,28 +34,23 @@ public class InitDbConf implements CommandLineRunner {
     private static final Path snippetsDir = Path.of("/home/jakub/Desktop/organize-it-db/snippets");
 
 
-    public InitDbConf(ProjectExporterS projectExporterS, FlashcardExporterS flashcardExporterS, SnippetExporterS snippetExporterS, TaskRepository taskRepository, FlashcardsRepository flashcardsRepository) {
-        this.projectExporterS = projectExporterS;
-        this.flashcardExporterS = flashcardExporterS;
-        this.snippetExporterS = snippetExporterS;
+    public InitDbConf( TaskRepository taskRepository, FlashcardsRepository flashcardsRepository, ShortTermPlanRepository shortTermPlanRepository, EntityImporterS entityImporterS) {
         this.taskRepository = taskRepository;
         this.flashcardsRepository = flashcardsRepository;
+        this.shortTermPlanRepository = shortTermPlanRepository;
+        this.entityImporterS = entityImporterS;
     }
 
     @Override
-    public void run(String... args) {
-        projectExporterS.initDb(List.of(projectsDir));
-        flashcardExporterS.initDb(List.of(testFlashcardDir));
-        snippetExporterS.initDb(List.of(snippetsDir));
-    }
+    public void run(String... args) {}
 
     @Bean
     public InitializingBean initDB() {
         return () -> {
+
             Task parent = Task.builder()
                     .name("hehe")
                     .description("n 0 old parent  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
-                    .isProject(true)
                     .subTasks(
                             List.of(
                                     Task.builder()
@@ -67,12 +58,13 @@ public class InitDbConf implements CommandLineRunner {
                                             .description("n 1 child id 2 note")
                                             .subTasks(List.of())
                                             .tags(List.of())
-                                            .timeEstimates(
-                                                    TimeEstimates.builder()
-                                                            .timeEstimated(new Timestamp(Duration.ofDays(2).toMillis()))
-                                                            .whenCreated(Timestamp.from(Instant.now()))
-                                                            .build()
-                                            ).build()
+//                                            .timeEstimates(
+//                                                    TimeEstimates.builder()
+//                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
+//                                                            .created(Timestamp.from(Instant.now()))
+//                                                            .build()
+//                                            )
+                                            .build()
                                     ,
                                     Task.builder()
                                             .name("lorem ipsm")
@@ -82,45 +74,76 @@ public class InitDbConf implements CommandLineRunner {
                                                             .description("n 2 child id 4 note")
                                                             .subTasks(List.of())
                                                             .tags(List.of())
-                                                            .timeEstimates(
-                                                                    TimeEstimates.builder()
-                                                                            .timeEstimated(new Timestamp(Duration.ofDays(2).toMillis()))
-                                                                            .timeSpent(new Timestamp(Duration.ofDays(4).toMillis()))
-                                                                            .whenCreated(Timestamp.from(Instant.now()))
-                                                                            .build()
-                                                            ).build(),
+//                                                            .timeEstimates(
+//                                                                    TimeEstimates.builder()
+//                                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
+//                                                                            .spent(new Timestamp(Duration.ofDays(4).toMillis()))
+//                                                                            .created(Timestamp.from(Instant.now()))
+//                                                                            .build()
+//                                                            )
+                                                            .build(),
                                                     Task.builder()
-                                                            .taskId(null)
-                                                            .isProject(false)
                                                             .description("n 2 child id 4 note")
                                                             .subTasks(List.of())
                                                             .tags(List.of())
-                                                            .timeEstimates(
-                                                                    TimeEstimates.builder()
-                                                                            .timeEstimated(new Timestamp(Duration.ofDays(2).toMillis()))
-                                                                            .timeSpent(new Timestamp(Duration.ofDays(4).toMillis()))
-                                                                            .whenCreated(Timestamp.from(Instant.now()))
-                                                                            .build()
-                                                            ).build()
+//                                                            .timeEstimates(
+//                                                                    TimeEstimates.builder()
+//                                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
+//                                                                            .spent(new Timestamp(Duration.ofDays(4).toMillis()))
+//                                                                            .created(Timestamp.from(Instant.now()))
+//                                                                            .build()
+//                                                            )
+                                                            .build()
                                             ))
                                             .tags(List.of())
-                                            .timeEstimates(
-                                                    TimeEstimates.builder()
-                                                            .timeEstimated(new Timestamp(Duration.ofDays(2).toMillis()))
-                                                            .timeSpent(new Timestamp(Duration.ofDays(4).toMillis()))
-                                                            .whenCreated(Timestamp.from(Instant.now()))
-                                                            .build()
-                                            ).build()
+//                                            .timeEstimates(
+//                                                    TimeEstimates.builder()
+//                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
+//                                                            .spent(new Timestamp(Duration.ofDays(4).toMillis()))
+//                                                            .created(Timestamp.from(Instant.now()))
+//                                                            .build()
+//                                            )
+                                            .build()
                             )
                     ).build();
 
             Task doneTask = Task.builder().name("undoneTaskkk")
-                    .isDone(true)
+//                    .isDone(true)
                     .build();
 
 
-            taskRepository.save(parent);
-            taskRepository.save(doneTask);
+            List<Task> persistedTasks = taskRepository.saveAll(new LinkedList<>(List.of(parent, doneTask)));
+            ShortTermPlan shortTermPlan = ShortTermPlan.builder()
+                    .name("No smoking")
+                    .rootTasks(persistedTasks)
+                    .description("kidshkagdaisghdkash")
+                    .build();
+            ShortTermPlan shortTermPlan2 = ShortTermPlan.builder()
+                    .name("Running")
+                    .rootTasks(persistedTasks)
+                    .description("jty7rf78utmnjty")
+                    .build();
+//
+//            plan = planRepository.save(plan);
+//            plan2 = planRepository.save(plan2);
+//
+////            plan2.getRootTasks().clear();
+            shortTermPlanRepository.save(shortTermPlan2);
+
+            shortTermPlan = shortTermPlanRepository.save(shortTermPlan);
+            shortTermPlan.getRootTasks().get(0).setName("jak to zobacze to ok");
+            shortTermPlan.setName("detached name, nie powinienem tego zobaczyc po refreshu");
+//            planRepository.
+
+//            System.out.println("before refresh: " + plan.getName());
+//            em.refresh(plan);
+//            System.out.println("after refresh: " + plan.getName());
+//            System.out.println(plan.getRootTasks().get(0).getName());
+//
+
+
+
+
         };
     }
 
@@ -141,6 +164,17 @@ public class InitDbConf implements CommandLineRunner {
 
         };
     }
+
+    @Bean
+    public InitializingBean importerTest() {
+        return () -> {
+            final String file = "/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/GenericParser/backet-structure-note";
+//            Note note = entityImporterS.importEntity(Note.class, Path.of(file));
+            System.out.println("hehe");
+        };
+    }
+
+
 
 
 }

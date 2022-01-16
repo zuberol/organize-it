@@ -1,13 +1,16 @@
 package com.zuber.organizeit.controllers;
 
-import com.zuber.organizeit.Model.MultipartTest.RefFileMetadata;
-import com.zuber.organizeit.Model.Note.Flashcard.Deck;
-import com.zuber.organizeit.Model.Note.Flashcard.Flashcard;
-import com.zuber.organizeit.Model.Note.ReferenceResource.BookReference;
-import com.zuber.organizeit.Model.Note.ReferenceResource.ReferenceResource;
-import com.zuber.organizeit.Model.Note.ReferenceResource.VideoReference;
-import com.zuber.organizeit.Model.Repository.*;
-import com.zuber.organizeit.Model.Task.Task;
+import com.zuber.organizeit.domain.MultipartTest.RefFileMetadata;
+import com.zuber.organizeit.domain.Note.Flashcard.Deck;
+import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.domain.Plan.ShortTermPlan;
+import com.zuber.organizeit.domain.Plan.ShortTermPlanRepository;
+import com.zuber.organizeit.domain.ReferenceResource.BookReference;
+import com.zuber.organizeit.domain.ReferenceResource.ReferenceResource;
+import com.zuber.organizeit.domain.ReferenceResource.VideoReference;
+import com.zuber.organizeit.domain.Repository.*;
+import com.zuber.organizeit.domain.Task.Task;
+import com.zuber.organizeit.services.planner.ComputeStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -22,15 +25,22 @@ public class DevController {
 
     FlashcardsRepository flashcardsRepository;
     DecksRepository decksRepository;
-    ReferenceResourcesRepository referenceResourcesRepository;
+    RefResourcesRepository refResourcesRepository;
     TaskRepository taskRepository;
+    final ShortTermPlanRepository shortTermPlanRepository;
+    final EntityDAO entityDAO;
+    final private ComputeStatusService computePlanStatusService;
+
 
     @Autowired
-    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, ReferenceResourcesRepository referenceResourcesRepository, TaskRepository taskRepository) {
+    public DevController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, RefResourcesRepository refResourcesRepository, TaskRepository taskRepository, ShortTermPlanRepository shortTermPlanRepository, EntityDAO entityDAO, ComputeStatusService computePlanStatusService) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
-        this.referenceResourcesRepository = referenceResourcesRepository;
+        this.refResourcesRepository = refResourcesRepository;
         this.taskRepository = taskRepository;
+        this.shortTermPlanRepository = shortTermPlanRepository;
+        this.entityDAO = entityDAO;
+        this.computePlanStatusService = computePlanStatusService;
     }
 
     @GetMapping("/root")
@@ -53,15 +63,15 @@ public class DevController {
     public void saveRefResource() {
         BookReference bookReference = new BookReference();
         bookReference.setAuthor("Hemingway");
-        bookReference.setResId(30L);
+//        bookReference.setResId(30L);
 
         VideoReference videoReference = new VideoReference();
         videoReference.setReferenceUrl("https://www.youtube.com/watch?v=av0y5TAItyk&ab_channel=JWPCREW");
-        videoReference.setResId(31L);
+//        videoReference.setResId(31L);
 
         VideoReference videoReference2 = new VideoReference();
         videoReference2.setReferenceUrl("https://www.youtube.com/watch?v=kpUWMl0gLEQ&ab_channel=kkrawczykOnVEVO");
-        videoReference2.setResId(32L);
+//        videoReference2.setResId(32L);
 
         //to nie zadziala bo nie mozna zapisac, chyba ze sie zrobi castowanie to zadziala moze
         //to nastepne jest skastowane i zadziala
@@ -75,7 +85,7 @@ public class DevController {
         // moze to
         VideoReference videoReference3 = new VideoReference();
         videoReference3.setReferenceUrl("https://www.baeldung.com/hibernate-inheritance");
-        videoReference3.setResId(33L);
+//        videoReference3.set(33L);
         Object ob = videoReference3;
         var someVar = (ReferenceResource) ob;
 
@@ -84,11 +94,11 @@ public class DevController {
         var hehehehe = videoReference2;
 
 
-        referenceResourcesRepository.save(bookReference);
-        referenceResourcesRepository.save(videoReference);
-        referenceResourcesRepository.save(hehehehe);
-        referenceResourcesRepository.save(someVar);
-        referenceResourcesRepository.save((ReferenceResource) castowaneiObject);
+        refResourcesRepository.save(bookReference);
+        refResourcesRepository.save(videoReference);
+        refResourcesRepository.save(hehehehe);
+        refResourcesRepository.save(someVar);
+        refResourcesRepository.save((ReferenceResource) castowaneiObject);
 
     }
 
@@ -146,6 +156,31 @@ public class DevController {
 //                        .rootTask(DevDTO.getRootTask())
 //                .build()
 //        );
+//    }
+
+    @GetMapping("/plans")
+    List<ShortTermPlan> getAllPlans() {
+        return shortTermPlanRepository.findAll();
+    }
+
+
+
+
+//    @PostMapping("/persistable")
+//    Plan testPersistableInterface(@RequestBody PlanDTO planDTO) {
+//        // will it merge properly when not new?
+//        // dto to entity
+//        Plan detached = Plan.builder()
+//                .planName(planDTO.getName()).description(planDTO.getDescription())
+//                .build();
+//        detached.setId(planDTO.getId());
+//
+////        new Plan()
+//
+//        System.out.println("dsada");
+//
+//        // try merge
+//        return planRepository.save(detached);
 //    }
 
 }

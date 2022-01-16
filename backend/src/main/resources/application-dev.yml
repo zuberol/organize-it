@@ -10,11 +10,17 @@ spring:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.H2Dialect
     properties:
-      show-sql: true
-#      hibernate:
-#        format_sql: true
+      hibernate:
+        format_sql: true
+    show-sql: true
   h2:
     console:
       enabled: true
       settings:
         web-admin-password: password
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: debug

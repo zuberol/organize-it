@@ -7,10 +7,24 @@ plugins {
 
 group = 'com.zuber'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '16'
 
 repositories {
     mavenCentral()
+}
+
+sourceCompatibility = 17
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '--enable-preview'
+}
+
+tasks.withType(JavaExec) {
+
+    jvmArgs += '--enable-preview'
+}
+
+tasks.withType(Test) {
+    jvmArgs += "--enable-preview"
 }
 
 test {
@@ -27,22 +41,17 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.22'
     implementation 'org.jetbrains:annotations:22.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.2'
+    implementation 'junit:junit:4.13.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.boot:spring-boot-test:2.6.2'
     testImplementation 'org.springframework.security:spring-security-test'
     runtimeOnly 'org.postgresql:postgresql'
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
-    testImplementation('org.assertj:assertj-core:3.21.0')
+    testImplementation('org.assertj:assertj-core:3.22.0')
     annotationProcessor 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
 
     implementation 'org.jooq:jool:0.9.14'
 
-    implementation 'com.h2database:h2:1.4.200' // null not allowed jak sie update zrobi
-}
-
-
-
-test {
-    useJUnitPlatform()
+    implementation 'com.h2database:h2:2.0.206' // null not allowed jak sie update zrobi
 }

@@ -1,0 +1,33 @@
+Note: Docker engine {
+  Paragraph: What about docker engine note? {
+
+  }
+
+  Flashcard: Czy "docker" i "dockerd" musza byc na jednej maszynie? {
+
+  }
+
+  Snippet: blad "No EntityManager with actual transaction available for current thread" {
+
+  }
+
+}
+
+
+
+if("Paragraph: What about docker engine note? {".equals()) newCtx
+
+parseLine -> Action()
+    Action:
+      startNewCtx
+      endCtx
+
+    Action:: ParseCtx -> ParseCtx
+
+
+
+parse(Lines)
+
+
+
+

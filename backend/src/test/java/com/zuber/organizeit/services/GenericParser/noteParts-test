@@ -1,0 +1,131 @@
+
+
+
+
+Note: Docker engine {
+  Ref: https://docs.docker.com/engine/, https://docs.docker.com/get-started/overview/#docker-architecture
+
+
+  // duzo boilerplate metadanych
+  hfghfghf
+    Ref: http://dsadas.com
+    pytania do kamieniarzyka
+      Deck: fgdg
+        - co jeszcze musze wiedziec o mikroserwisach?
+          Ref: wp.pl
+          jakas odpowiedz kozacka
+
+        - czy mikroserwisy trzeyma sie oddzielnie?
+          dasdasdas
+          SubTask: czy przyjemnie sie pisze kodzik?
+
+
+
+
+
+
+
+
+  // duzo boilerplate metadanych
+  NotePart<Paragrah>: {
+    Ref: http://dsadas.com
+    NotePart: pytania do kamieniarzyka {
+      Li Task: {
+        - Task: co jeszcze musze wiedziec o mikroserwisach? {
+
+        }
+        - Task: czy mikroserwisy trzeyma sie oddzielnie? {
+          Task: czy przyjemnie sie pisze kodzik? {
+
+          }
+        }
+        - three
+      }
+    }
+  }
+
+  Note:
+    Ref: http://dsadas.com
+    NotePart: pytania do kamieniarzyka {
+      Li Task: {
+        - Task: co jeszcze musze wiedziec o mikroserwisach? {
+
+        }
+        - Task: czy mikroserwisy trzeyma sie oddzielnie? {
+          Task: czy przyjemnie sie pisze kodzik? {
+
+          }
+        }
+        - three
+      }
+    }
+
+kazdy ctx ma swoj default
+
+Deck -> Flashcard
+
+Flashcard -> Answer
+
+Note -> NotePart
+
+NotePart -> line
+
+czy kiedys poza codeRef struktura ma znaczenie?
+
+
+Refs:
+  code: Example.com
+  http://hehehe.wp.pl
+
+
+
+
+  // duzo boilerplate metadanych rowniez
+  NotePart<Li>: czytanie dokumentacji {
+    - NotePart<P>: 4. Getting started {
+      Jest cos takiego jak Spring Boot CLI // default action -> NotePart
+        pozwala szybko prototypowac apki springowe bez uzywania IDE
+      Creating an Executable Jar
+        Task: Czy Java pozwala tworzyc nested jary? {
+          nein
+        }
+    - NotePart<P>: 6. Developing with Spring Boot {
+      Task: Co to jest 'build systems' ? {
+         Li<Task>: build toole {
+           - gradle
+           - maven
+           - ant
+         }
+      }
+    }
+
+    - NP<P>: 6. Developing with Spring Boot minimal
+      Task: Co to jest 'build systems' ?
+         Li<Task>: build toole
+          - gradle
+          - maven
+          - ant
+          Deck: build toole
+           - gradle
+           - maven
+           - ant
+
+
+
+  }
+
+
+  Flashcard: Czy "docker" i "dockerd" musza byc na jednej maszynie? {
+    Ref: http://docker.com
+    CodeRef: DockerExample.java
+    T: docker, uberhard,
+    Nie, dockerd moze byc remote
+  }
+
+  Flashcard: Czy "oro w chui? {
+    Ref: http://docjpi9jip9ker.com
+    CodeRef: Dockehpuihu89rExample.java
+    T: dodas, sdrtfhrdstsrd
+    Nie, dockerd moze byc remote
+  }
+}

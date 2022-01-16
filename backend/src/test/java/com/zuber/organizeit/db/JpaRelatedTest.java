@@ -1,7 +1,7 @@
 package com.zuber.organizeit.db;
 
-import com.zuber.organizeit.Model.Repository.TaskRepository;
-import com.zuber.organizeit.Model.Task.Task;
+import com.zuber.organizeit.domain.Repository.TaskRepository;
+import com.zuber.organizeit.domain.Task.Task;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.InitializingBean;
@@ -34,7 +34,6 @@ public class JpaRelatedTest {
         InitializingBean sendDatabase() {
             return () -> {
                 Task parent = Task.builder()
-                        .isProject(true)
                         .description("old parent note")
                         .tags(List.of())
                         .subTasks(

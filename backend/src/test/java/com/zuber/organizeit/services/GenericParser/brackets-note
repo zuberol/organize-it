@@ -1,0 +1,42 @@
+Note: Docker engine {
+  Ref: https://docs.docker.com/engine/, https://docs.docker.com/get-started/overview/#docker-architecture
+  Paragraph: What about docker engine note? {
+    LI: client server app with {
+      - dockerd
+      - API's
+      - docker command (CLI)
+    }
+  }
+
+  Default: Docker jest zaimplementowany w GO i uzywa namespace'ow z GO, zeby stworzyc swoje container'y
+
+  Flashcard: Jaki jest najwazniejszy aktor w dockerze jako takim? {
+   Docker daemon, on wykonuje wszystkie operacje buildowania, odpalania kontenerow itd
+  }
+
+
+  Flashcard: Czy "docker" i "dockerd" musza byc na jednej maszynie? {
+    Ref: http://docker.com
+    CodeRef: DockerExample.java
+    T: docker, uberhard,
+    Nie, dockerd moze byc remote
+  }
+
+  Snippet: blad "No EntityManager with actual transaction available for current thread" {
+    Ref: https://stackoverflow.com/questions/32269192/spring-no-entitymanager-with-actual-transaction-available-for-current-thread
+    Default: Comment: If a method without the @Transactional annotion calls a method with the @Transactional annotation in the same classfile, you also will be struck by this error (that's what I was facing).
+    Default: Publishing Domain Events When Changing an Entity
+
+    Flashcard: W jaki sposob spring odpala event handlery? {
+            SYNCHRONICZNIE
+    }
+
+    Flashcard: Jak sie zorientowac czy dzialamy w  "transactional context" czy "non transactional context"? {
+      Default: iew of Spring’s event handling features and point out a few pitfalls when working in a transactional
+      Ref: https://stackoverflow.com
+    }
+
+  }
+
+
+}

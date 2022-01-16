@@ -1,0 +1,25 @@
+Note: Docker engine {
+  Ref: https://docs.docker.com/engine/, https://docs.docker.com/get-started/overview/#docker-architecture
+  Default: Docker jest zaimplementowany w GO i uzywa namespace'ow z GO, zeby stworzyc swoje container'y
+  Paragraph: What about docker engine note? {
+
+  }
+
+  Flashcard: Czy "docker" i "dockerd" musza byc na jednej maszynie? {
+
+  }
+
+  Snippet: blad "No EntityManager with actual transaction available for current thread" {
+
+    Flashcard: W jaki sposob spring odpala event handlery? {
+
+    }
+
+    Flashcard: Jak sie zorientowac czy dzialamy w  "transactional context" czy "non transactional context"? {
+
+    }
+
+  }
+
+
+}
