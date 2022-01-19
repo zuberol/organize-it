@@ -15,17 +15,17 @@ import { faAward } from '@fortawesome/free-solid-svg-icons'
     const dispatch = useDispatch();
     return flashcardDecks.map((deck) =>
     <ListItem
-      key={deck.deckId}
+      key={deck.id}
       deck={deck}
-      deleteItem={() => dispatch({type: DELETE_ITEM, itemToDeleteID: deck.deckId})}
+    //   deleteItem={() => dispatch({type: DELETE_ITEM, itemToDeleteID: deck.id})}
     />)
 }
 
 function ListItem(props) {
     return (
         <article className="simple">
-            <Link to={`/play-flashcards/${props.deck.deckId}`}>
-                <h4>{props.deck.title}</h4>
+            <Link to={`/play-flashcards/${props.deck.id}`}>
+                <h4>{props.deck.name}</h4>
             </Link>
             <div className='deck__infos'>
                 <p>{`#Flashcards: ${props.deck.flashcards.length}`}</p>

@@ -25,7 +25,7 @@ const StyledParagraph = styled.section`
 
 
 
-export default function PlayFlashcardsPage() {
+export default function FlashcardsViewer() {
   const [currentFlashcardId, setCurrentFlashcardId] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showHint, setShowHint] = useState(false);
@@ -34,10 +34,9 @@ export default function PlayFlashcardsPage() {
     document.addEventListener('keydown', handleKeyDownEvents);
     return () => document.removeEventListener('keydown', handleKeyDownEvents);
   });
-  const { deckId: deckIdParam } = useParams();
-  const deck = useSelector(state => state.flashcardReducer.decks.find(deck => {
-    return (deck.deckId == deckIdParam);
-  }) || []);
+  
+  const decks = useSelector(state => state.flashcardReducer.decks || []);
+
   const currentFlashcard = deck.flashcards[currentFlashcardId];
   return (
     <main className="centered-content">

@@ -22,20 +22,23 @@ import FlightIcon from '@mui/icons-material/Flight';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import Forward10Icon from '@mui/icons-material/Forward10';
-import HikingIcon from '@mui/icons-material/Hiking';
 import KeyboardOptionKeyIcon from '@mui/icons-material/KeyboardOptionKey';
 import LanguageIcon from '@mui/icons-material/Language';
 import LaptopIcon from '@mui/icons-material/Laptop';
 import LayersIcon from '@mui/icons-material/Layers';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
+import AirIcon from '@mui/icons-material/Air';
+import HikingIcon from '@mui/icons-material/Hiking';
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import CommuteIcon from '@mui/icons-material/Commute';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import CardTravelIcon from '@mui/icons-material/CardTravel';
+import CodeIcon from '@mui/icons-material/Code';
 
 
 
-
-
-
-export default function Dev (){
+export default function Dev() {
   return (
     <div style={{
       display: 'flex',
@@ -45,12 +48,42 @@ export default function Dev (){
       justifyItems: 'center',
       width: '100%'
     }}>
-      <AccountTreeIcon/>
-      <AirlineSeatIndividualSuiteIcon/>
-      <BoyIcon/>
-      <BugReportIcon/>
-      <CallIcon/>
-      <CoffeeIcon/>
+      <AccountTreeIcon />
+      <AirlineSeatIndividualSuiteIcon />
+      <BoyIcon />
+      <BugReportIcon />
+      <CallIcon />
+      <CoffeeIcon />
+      <AirIcon />
+      <AirportShuttleIcon />
+      <CommuteIcon />
+      <HikingIcon />
+      <AutoStoriesIcon />
+      <CardTravelIcon />
+      <LogoDevIcon />
+      <DataObjectIcon />
+      <DownhillSkiingIcon />
+      <EmojiObjectsIcon />
+      <EuroIcon />
+      <EventBusyIcon />
+      <EventRepeatIcon />
+      <EventNoteIcon />
+      <FavoriteIcon />
+      <FavoriteBorderIcon />
+      <FileCopyIcon />
+      <FitnessCenterIcon />
+      <FlashOffIcon />
+      <FlightIcon />
+      <FlightTakeoffIcon />
+      <FlightLandIcon />
+      <Forward10Icon />
+      <KeyboardOptionKeyIcon />
+      <LanguageIcon />
+      <LaptopIcon />
+      <LayersIcon />
+      <LibraryBooksIcon />
+      <LibraryAddCheckIcon />
+      <CodeIcon/>
     </div>
-)
+  )
 }

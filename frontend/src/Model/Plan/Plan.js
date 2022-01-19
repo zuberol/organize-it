@@ -1,6 +1,7 @@
-import { PLANS_URL } from "../../config/backendRoutes";
-
-
+import { PLANS_URL, PLANS_URL_NEW } from "../../config/backendRoutes";
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { fetchPlans } from "../../store/tasks/actions";
 
 export function PlanForm({
     planDefaults = {
@@ -12,9 +13,10 @@ export function PlanForm({
     newPlan = false
   }) {
     const [planTO, setPlanTO] =  useState({...planDefaults});
+    const dispatch = useDispatch();
     return (
       <form onSubmit={handleSubmit}>
-        <label htmlFor="id">Plan ID</label>
+        <label htmlFor="id" hidden={newPlan}>Plan ID</label>
         <input
           hidden={newPlan}
           name="id"
@@ -40,7 +42,7 @@ export function PlanForm({
         <input
           name="rootTaskIds"
           type="text"
-          defaultValue={taskDefaults.rootTaskIds.map(_ => _.id).toString()}
+          defaultValue={planDefaults.rootTaskIds.map(_ => _.id).toString()}
           onChange={handleChangeArray}
         />
         <button type="submit">Submit</button>
@@ -49,52 +51,31 @@ export function PlanForm({
   
     function handleSubmit(event) {
       event.preventDefault();
-      fetch(((newPlan && PLANS_URL_NEW) || TASK_URL) + `?parentTaskId=${parentTaskId}`, {
+      fetch(((newPlan && PLANS_URL_NEW) || PLANS_URL), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(stripToDto(taskTO))
+        body: JSON.stringify(planTO)
       })
+      .then(() => dispatch(fetchPlans()))
       .catch(e => console.log(e))
     }
   
-    function handleChangeCheckbox(e) {
-      setTaskTO({
-        ...taskTO, 
-        [e.target.name]: e.target.checked
-      });
-    }
-  
     function handleChange(e) {
-      setTaskTO({
-        ...taskTO, 
+      setPlanTO({
+        ...planTO, 
         [e.target.name]: e.target.value
       });
     }
   
     function handleChangeArray(e) {
-      setTaskTO({
-        ...taskTO, 
+      setPlanTO({
+        ...planTO, 
         [e.target.name]: e.target.value.split(',')
       });
     }
   
   }
   
-  export function stripToDto(task) {
-    if(!task) return {};
-    else return {  
-      id: task.id,
-      name: task.name,
-      description: task.description,
-      subtaskIds: task.subtaskIds,
-      done: task.done,
-      archived: task.archived,
-      plan: task.plan,
-      priority: task.priority
-    };
-  }
-
-
 

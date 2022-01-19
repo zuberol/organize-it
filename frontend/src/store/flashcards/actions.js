@@ -6,7 +6,7 @@ export const FLASHCARD_DELETED_FROM_DB = 'FLASHCARD_DELETED_FROM_DB';
 export const DELETING_FLASHCARD_FAILED = 'DELETING_FLASHCARD_FAILED';
 export const INIT_SNIPPETS = 'INIT_SNIPPETS';
 
-export const fetchdecks = () => {
+export const fetchDecks = () => {
   return (dispatch) => {
     fetch(DECKS_URL, {
       method: 'GET',

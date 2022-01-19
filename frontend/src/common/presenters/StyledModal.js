@@ -3,7 +3,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { TaskForm } from "../../Model/Task";
 import { Paper } from '@mui/material';
 
 
@@ -11,7 +10,8 @@ export function StyledModal(props) {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
-            <StyledButton {...props.btn} onClick={() => setModalOpen(true)}/>
+            <StyledButton {...props.btn} onClick={() => setModalOpen(true)}>
+            </StyledButton>
             <Modal
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}
@@ -21,7 +21,7 @@ export function StyledModal(props) {
                 BackdropProps={{ timeout: 300 }}>
                     <Fade in={modalOpen} >
                             <Paper elevation={3} sx={{ padding: '10px' }}>
-                                <TaskForm {...props.form} />
+                                {props.children}
                             </Paper>
                     </Fade>
             </Modal>
@@ -33,7 +33,12 @@ function StyledButton(props) {
     return (
         <Button
             onClick={props.onClick}>
-                {props.icon}
+                <div
+                    style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+                >
+                    {props.icon}
+                    {props.title}
+                </div>
         </Button>
     )
 }

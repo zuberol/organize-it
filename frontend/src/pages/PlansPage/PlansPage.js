@@ -14,6 +14,13 @@ import { TaskForm } from "../../Model/Task";
 import { DetailedPlanView } from "../../Model/Plan/DetailedPlanView";
 import { NamedIcon } from '../../common/presenters/NamedIcon';
 import { Container } from '@mui/material';
+import FiberNewIcon from '@mui/icons-material/FiberNew';
+import { PlanForm } from '../../Model/Plan/Plan';
+import AgricultureIcon from '@mui/icons-material/Agriculture';
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import { PlanCard } from '../../Model/Plan/PlanPresenters'
+
 
 export default function PlansPage() {
   const dispatch = useDispatch();
@@ -23,18 +30,51 @@ export default function PlansPage() {
     dispatch(fetchPlans());
   }, []);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [onOffModals, setOnOffModals] = useState({
+    newTask: false,
+    modifyTask: false,
+    newPlan: false,
+    modifyPlan: false
+  });
 
 
   // const treeData = d3.hierarchy(activeRootTask, task => task.subTasks); // todo moze to?
   return (
-    <div className="dashboard-wrapper">
+    <main>
       <div className="dashboard-nav">
         {!R.isEmpty(activePlan) && <Button
           onClick={() => dispatch({ type: NEW_ACTIVE_PLAN })}>
           <NamedIcon iconDef={faBackward} caption="return" />
         </Button>}
-        <Drawer anchor='left' open={isDrawerOpen} onClose={() => setIsDrawerOpen(!isDrawerOpen)}>
+      </div>
+
+      <div style={{display: 'flex', gap: '30px', flexDirection: 'column', padding: '30px'}}>
+        <FsTreeView {...{ task: activePlan, dispatch }} />
+        {R.isEmpty(activePlan) && planList.map(
+          plan => <PlanCard  onTitleClick={() => dispatch({type: NEW_ACTIVE_PLAN, activePlanId: plan.id})} canExpand key={plan.id} plan={plan}/>)}
+      </div>
+
+      <div className="dashboard-buttons">
+        <StyledModal
+          btn={{ icon: <DirectionsRunIcon fontSize="large" />, title: "new" }}
+        >
+        </StyledModal>
+        <StyledModal
+
+          isModalOpen={onOffModals.modifyPlan}
+          setIsModalOpen={() => setOnOffModals({ ...onOffModals, modifyPlan: !onOffModals.modifyPlan })}
+          btn={{ icon: <AgricultureIcon fontSize="large" />, title: "new" }}
+        >
+          <PlanForm newPlan />
+        </StyledModal>
+        <StyledModal
+          btn={{ icon: <AirplanemodeActiveIcon fontSize="large" />, title: "new" }}
+        >
+        </StyledModal>
+        <Button onClick={() => setIsDrawerOpen(true)}>Plans</Button>
+      </div>
+
+      <Drawer anchor='left' open={isDrawerOpen} onClose={() => setIsDrawerOpen(!isDrawerOpen)}>
           {<ul>
             {planList.map((plan) =>
               <li
@@ -48,25 +88,7 @@ export default function PlansPage() {
             )}
           </ul>}
         </Drawer>
-      </div>
-      <Container>
-        <FsTreeView {...{task: activePlan, dispatch}}/>
-        {R.isEmpty(activePlan) && planList.map(
-          plan => <FsTreeView key={plan.id} {...{task: plan, dispatch}} />)}
-      </Container>
-      
-      <div className="dashboard-buttons">
-        <StyledModal icon={faAddressCard} title="Edit task" isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}>
-          <TaskForm />
-        </StyledModal>
-        <StyledModal icon={faAddressCard} title="New task" isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}>
-          <TaskForm newTask={true} />
-        </StyledModal>
-        <Button onClick={() => setIsDrawerOpen(true)}>Plans</Button>
-      </div>
-    </div>
+    </main>
   )
 
 }

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchdecks } from '../../store/flashcards/actions';
+import { fetchDecks } from '../../store/flashcards/actions';
 import '../../common/Form/form.scss';
 import '../../common/styles/commons.scss';
 
@@ -66,7 +66,7 @@ export default function FlashcardCreator(props) {
   });
   const [ref_files, setRefFiles] = useState([])
   const [files, setFiles] = useState('');
-  const [picked_deckId, setPickedDeckId] = useState(decks.length > 0 ? decks[0].deckId : '')
+  const [picked_id, setPickedDeckId] = useState(decks.length > 0 ? decks[0].id : '')
   const fileRef = useRef([]);
   const dispatch = useDispatch();
 
@@ -115,14 +115,14 @@ export default function FlashcardCreator(props) {
             onChange={handleChangeBasic}
             value={flashcard.long_answer}
           />
-          <StyledLabel active={!props.picked_deckId} htmlFor="deckName">Deck name</StyledLabel>
+          <StyledLabel active={!props.picked_id} htmlFor="deckName">Deck name</StyledLabel>
           <StyledSelect
             id="deck_name"
             name="deck_name"
             onChange={(e) => setPickedDeckId(e.target.value)}
-            active={!props.picked_deckId}
+            active={!props.picked_id}
           >
-            {decks.map((deck) => <option key={deck.deckId} value={deck.deckId}>{deck.title}</option>)}
+            {decks.map((deck) => <option key={deck.id} value={deck.id}>{deck.title}</option>)}
           </StyledSelect>
         </fieldset>
         <fieldset className="reference_resources">
@@ -177,13 +177,13 @@ export default function FlashcardCreator(props) {
     formData.append('flashcard', new Blob([JSON.stringify(flashcard)], {
       type: "application/json"
     }));
-    formData.append('deckId', props.picked_deckId || picked_deckId);
+    formData.append('id', props.picked_id || picked_id);
 
     fetch(FLASHCARD_URL, {
       method: 'POST',
       body: formData
     })
-    .then(() => dispatch(fetchdecks()))
+    .then(() => dispatch(fetchDecks()))
     .catch((e) => console.log("Błąd przy zapisywaniu flashcarda:", e));
   }
 

@@ -7,6 +7,9 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import BoltIcon from '@mui/icons-material/Bolt';
+import AccountTree from '@mui/icons-material/AccountTree';
 
 
 export default function Header() {
@@ -38,7 +41,7 @@ export default function Header() {
         exact={true}
         style={navStyle}
       >
-        <FlashOnIcon fontSize="large" />
+        <BoltIcon fontSize="large" />
       </NavLink>
       <NavLink
         to="/plans"
@@ -46,21 +49,24 @@ export default function Header() {
         exact={true}
         style={navStyle}
       >
-        <EventAvailableIcon fontSize="large" />
+        <AccountTree fontSize="large" />
       </NavLink>
       <NavLink
         to="/dev"
         activeStyle={activeStyle}
         exact={true}
         style={navStyle}
-      >dev</NavLink>
+      >
+        <LogoDevIcon fontSize="large" />
+      </NavLink>
+      <NoteAltIcon fontSize="large" />
       <NavLink
         to="/dev2"
         activeStyle={activeStyle}
         exact={true}
         style={navStyle}
       >
-        <LogoDevIcon fontSize="large" />
+       i
       </NavLink>
       <ScheduleIcon fontSize="large" />
       <CalendarTodayIcon fontSize="large" />

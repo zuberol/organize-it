@@ -24,13 +24,13 @@ export default function FsTreeView(props) {
   const { task } = props;
   if (task === undefined || typeof task === 'object' && R.isEmpty(task)) return null;
   return (
-    <Paper sx={{ padding: "10px", margin: '10px' }}>
+    // <Paper sx={{ padding: "10px", margin: '10px' }}>
       <div className="treeContainer">
         <div>
           <TreeNode task={task} />
         </div>
       </div>
-    </Paper>
+    
   );
 
   function TreeNode(props) {
@@ -56,8 +56,10 @@ export default function FsTreeView(props) {
               onClick={() => dispatch({ type: NEW_ACTIVE_PLAN, activePlanId: task.id })}
             >{task.name || "_"}</span>
             {nodeHover && <div>
-              <StyledModal btn={{ icon: <EditIcon /> }} form={{ taskDefaults: task }} />
-              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon /> }} form={{ newTask: true, parentTaskId: task.id }} />
+              <StyledModal btn={{ icon: <EditIcon />}} >
+                 <TaskForm task={task} />
+              </StyledModal>
+              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon onClick={() => newSubtask()}/>, onClick: () => newSubtask() }} form={{ newTask: true, parentTaskId: task.id }} />
               <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ id: task.id, archived: true }))} />
             </div>}
 
@@ -76,7 +78,7 @@ export default function FsTreeView(props) {
     function newSubtask() {
       dispatch(updateTask({
         ...task,
-        subTasks: [...task.subTasks, Task.empty()]
+        subTasks: [...(task.subTasks || []), Task.empty()]
       }));
     }
   }

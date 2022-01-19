@@ -1,4 +1,4 @@
-import FlashcardCreator from '../PlayFlashcardsPage/FlashcardCreator';
+
 import { StyledModal } from '../../common/presenters/StyledModal'
 import { faBook, faAddressCard, faAnchor } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';

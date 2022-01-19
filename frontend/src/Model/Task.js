@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { TASK_NEW_URL, TASK_URL } from "../config/backendRoutes";
+import { useDispatch } from "react-redux";
+import { fetchInbox, fetchPlans } from "../store/tasks/actions";
 
 export default class Task {
   constructor({ id = null, name: name = "", description: description = "", subTasks = [], isDone: isDone, archived: archived }) {
@@ -24,8 +26,10 @@ export default class Task {
 
 }
 
-export function TaskForm({
-  taskDefaults = {
+export function TaskForm(props) {
+
+
+  const taskDefaults = {
     id: '',
     name: '',
     description: '',
@@ -33,40 +37,43 @@ export function TaskForm({
     priority: '',
     archived: false,
     tags: []
-  }, 
-  parentTaskId =  '',
-  newTask = false
-}) {
-  const [taskTO, setTaskTO] =  useState({...taskDefaults});
+  };
+  const parentTaskId = props.parentTaskId || '';
+  const newTask = props.newTask || false;
+
+
+
+  const [taskTO, setTaskTO] = useState({ ...taskDefaults, ...props.task });
+  const dispatch = useDispatch();
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="id">Task ID</label>
+      <label htmlFor="id" hidden={newTask}>Task ID</label>
       <input
         hidden={newTask}
         name="id"
         type="number"
         onChange={handleChange}
-        defaultValue={taskDefaults.id}
+        defaultValue={taskTO.id}
       />
       <label htmlFor="name">Name</label>
       <input
         name="name"
         type="text"
-        defaultValue={taskDefaults.name}
+        defaultValue={taskTO.name}
         onChange={handleChange}
       />
       <label htmlFor="description">Description</label>
       <input
         name="description"
         type="text"
-        defaultValue={taskDefaults.description}
+        defaultValue={taskTO.description}
         onChange={handleChange}
       />
       <label htmlFor="tags">Tags (comma separated)</label>
       <input
         name="tags"
         type="text"
-        defaultChecked={taskDefaults.tags.toString()}
+        defaultChecked={taskTO.tags.toString()}
         onChange={handleChange}
       />
       <label htmlFor="priority">Priority</label>
@@ -75,18 +82,19 @@ export function TaskForm({
         type="number"
         onChange={handleChange}
       />
-      <label htmlFor="archived">Is archived?</label>
+      <label htmlFor="archived" hidden={newTask}>Is archived?</label>
       <input
         name="archived"
         type="checkbox"
-        defaultChecked={taskDefaults.archived}
+        hidden={newTask}
+        defaultChecked={taskTO.archived}
         onChange={handleChangeCheckbox}
       />
       <label htmlFor="subtaskIds">Subtasks ids</label>
       <input
         name="subtaskIds"
         type="text"
-        defaultValue={taskDefaults.subTasks.map(_ => _.id).toString()}
+        defaultValue={taskTO.subTasks.map(_ => _.id).toString()}
         onChange={handleChangeArray}
       />
       <button type="submit">Submit</button>
@@ -102,26 +110,30 @@ export function TaskForm({
       },
       body: JSON.stringify(stripToDto(taskTO))
     })
-    .catch(e => console.log(e))
+      .then(() => {
+        dispatch(fetchInbox());
+        dispatch(fetchPlans())
+      })
+      .catch(e => console.log(e))
   }
 
   function handleChangeCheckbox(e) {
     setTaskTO({
-      ...taskTO, 
+      ...taskTO,
       [e.target.name]: e.target.checked
     });
   }
 
   function handleChange(e) {
     setTaskTO({
-      ...taskTO, 
+      ...taskTO,
       [e.target.name]: e.target.value
     });
   }
 
   function handleChangeArray(e) {
     setTaskTO({
-      ...taskTO, 
+      ...taskTO,
       [e.target.name]: e.target.value.split(',')
     });
   }
@@ -129,8 +141,8 @@ export function TaskForm({
 }
 
 export function stripToDto(task) {
-  if(!task) return {};
-  else return {  
+  if (!task) return {};
+  else return {
     id: task.id,
     name: task.name,
     description: task.description,
