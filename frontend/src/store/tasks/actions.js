@@ -1,6 +1,5 @@
 import { dispatch } from 'd3-dispatch';
 import { TASK_URL, PLANS_URL, TASK_INBOX_URL, PLAN_URL } from '../../config/backendRoutes';
-import { stripToDto } from "../../Model/Task";
 
 export const INIT_PLANS = "INIT_PLANS";
 export const INIT_INBOX = "INIT_INBOX";
@@ -15,7 +14,7 @@ export function updateTask(task) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(stripToDto(task))
+      body: JSON.stringify(task)
     })
     .catch(err => {
       console.error(err);

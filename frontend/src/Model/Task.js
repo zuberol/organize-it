@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { TASK_NEW_URL, TASK_URL } from "../config/backendRoutes";
+import { TASK_URL } from "../config/backendRoutes";
 import { useDispatch } from "react-redux";
 import { fetchInbox, fetchPlans } from "../store/tasks/actions";
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
 export default class Task {
   constructor({ id = null, name: name = "", description: description = "", subTasks = [], isDone: isDone, archived: archived }) {
@@ -29,7 +30,7 @@ export default class Task {
 export function TaskForm(props) {
 
 
-  const taskDefaults = {
+  const taskTODefaults = {
     id: '',
     name: '',
     description: '',
@@ -38,77 +39,79 @@ export function TaskForm(props) {
     archived: false,
     tags: []
   };
-  const parentTaskId = props.parentTaskId || '';
-  const newTask = props.newTask || false;
+  const parentTaskId = props.parentTaskId;
+  const planId = props.planId;
+  const newTask = props.newTask;
 
-
-
-  const [taskTO, setTaskTO] = useState({ ...taskDefaults, ...props.task });
+  const [taskTO, setTaskTO] = useState({ ...taskTODefaults, ...props.task, planId, parentTaskId });
   const dispatch = useDispatch();
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="id" hidden={newTask}>Task ID</label>
-      <input
-        hidden={newTask}
-        name="id"
-        type="number"
-        onChange={handleChange}
-        defaultValue={taskTO.id}
-      />
-      <label htmlFor="name">Name</label>
-      <input
-        name="name"
-        type="text"
-        defaultValue={taskTO.name}
-        onChange={handleChange}
-      />
-      <label htmlFor="description">Description</label>
-      <input
-        name="description"
-        type="text"
-        defaultValue={taskTO.description}
-        onChange={handleChange}
-      />
-      <label htmlFor="tags">Tags (comma separated)</label>
-      <input
-        name="tags"
-        type="text"
-        defaultChecked={taskTO.tags.toString()}
-        onChange={handleChange}
-      />
-      <label htmlFor="priority">Priority</label>
-      <input
-        name="priority"
-        type="number"
-        onChange={handleChange}
-      />
-      <label htmlFor="archived" hidden={newTask}>Is archived?</label>
-      <input
-        name="archived"
-        type="checkbox"
-        hidden={newTask}
-        defaultChecked={taskTO.archived}
-        onChange={handleChangeCheckbox}
-      />
-      <label htmlFor="subtaskIds">Subtasks ids</label>
-      <input
-        name="subtaskIds"
-        type="text"
-        defaultValue={taskTO.subTasks.map(_ => _.id).toString()}
-        onChange={handleChangeArray}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <h2>Task</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="id" hidden={newTask}>Task ID</label>
+        <input
+          hidden={newTask}
+          name="id"
+          type="number"
+          onChange={handleChange}
+          defaultValue={taskTO.id}
+        />
+        <label htmlFor="name">Name</label>
+        <input
+          name="name"
+          type="text"
+          defaultValue={taskTO.name}
+          onChange={handleChange}
+        />
+        <label htmlFor="description">Description</label>
+        <input
+          name="description"
+          type="text"
+          defaultValue={taskTO.description}
+          onChange={handleChange}
+        />
+        <label htmlFor="tags">Tags (comma separated)</label>
+        <input
+          name="tags"
+          type="text"
+          defaultChecked={taskTO.tags.toString()}
+          onChange={handleChange}
+        />
+        <label htmlFor="priority">Priority</label>
+        <input
+          name="priority"
+          type="number"
+          onChange={handleChange}
+        />
+        <label htmlFor="archived" hidden={newTask}>Is archived?</label>
+        <input
+          name="archived"
+          type="checkbox"
+          hidden={newTask}
+          defaultChecked={taskTO.archived}
+          onChange={handleChangeCheckbox}
+        />
+        <label htmlFor="subtaskIds">Subtasks ids</label>
+        <input
+          name="subtaskIds"
+          type="text"
+          defaultValue={taskTO.subTasks.map(_ => _.id).toString()}
+          onChange={handleChangeArray}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </>
   )
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch(((newTask && TASK_NEW_URL) || TASK_URL) + `?parentTaskId=${parentTaskId}`, {
+    fetch(TASK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(stripToDto(taskTO))
+      body: JSON.stringify(taskTO)
     })
       .then(() => {
         dispatch(fetchInbox());
@@ -140,16 +143,7 @@ export function TaskForm(props) {
 
 }
 
-export function stripToDto(task) {
-  if (!task) return {};
-  else return {
-    id: task.id,
-    name: task.name,
-    description: task.description,
-    subtaskIds: task.subtaskIds,
-    done: task.done,
-    archived: task.archived,
-    plan: task.plan,
-    priority: task.priority
-  };
+export function TaskIcon(props) {
+  return <DirectionsRunIcon {...props} />;
 }
+

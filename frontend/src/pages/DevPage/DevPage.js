@@ -1,5 +1,5 @@
 
-import { StyledModal } from '../../common/presenters/StyledModal'
+import { ModalBtn } from '../../common/presenters/ModalBtn'
 import { faBook, faAddressCard, faAnchor } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import { TaskForm } from "../../Model/Task";

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Paper } from '@mui/material';
 
 
-export function StyledModal(props) {
+export function ModalBtn(props) {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
@@ -37,7 +37,7 @@ function StyledButton(props) {
                     style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
                 >
                     {props.icon}
-                    {props.title}
+                    <span style={{fontSize: props.titleSize}}>{props.title}</span>
                 </div>
         </Button>
     )

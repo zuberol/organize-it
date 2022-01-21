@@ -8,7 +8,6 @@ export const FLASHCARD_URL = new URL("/api/flashcard", BACKEND_BASE_URL)
 
 // TASKS
 export const TASK_URL = new URL("/api/task", BACKEND_BASE_URL)
-export const TASK_NEW_URL = new URL("/api/task/new", BACKEND_BASE_URL)
 export const TASK_INBOX_URL = new URL("/api/tasks/inbox", BACKEND_BASE_URL)
 export const TASK_SUBTASK_PUT_URL = new URL("/api/task/subtask/put", BACKEND_BASE_URL)
 

@@ -10,7 +10,7 @@ import { Button, IconButton, Paper } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
-import { StyledModal } from '../../../common/presenters/StyledModal';
+import { ModalBtn } from '../../../common/presenters/ModalBtn';
 import { useDispatch } from 'react-redux';
 import { NEW_ACTIVE_PLAN } from "../../../store/tasks/actions";
 
@@ -56,13 +56,12 @@ export default function FsTreeView(props) {
               onClick={() => dispatch({ type: NEW_ACTIVE_PLAN, activePlanId: task.id })}
             >{task.name || "_"}</span>
             {nodeHover && <div>
-              <StyledModal btn={{ icon: <EditIcon />}} >
+              <ModalBtn btn={{ icon: <EditIcon />}} >
                  <TaskForm task={task} />
-              </StyledModal>
-              <StyledModal btn={{ icon: <SubdirectoryArrowRightIcon onClick={() => newSubtask()}/>, onClick: () => newSubtask() }} form={{ newTask: true, parentTaskId: task.id }} />
+              </ModalBtn>
+              <ModalBtn btn={{ icon: <SubdirectoryArrowRightIcon onClick={() => newSubtask()}/>, onClick: () => newSubtask() }} form={{ newTask: true, parentTaskId: task.id }} />
               <BookmarkRemoveIcon onClick={() => dispatch(updateTask({ id: task.id, archived: true }))} />
             </div>}
-
           </div>
         </div>
         <div className="branch">

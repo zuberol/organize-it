@@ -13,7 +13,7 @@ import '../../common/styles/commons.scss';
 import { PlanCard } from "../../Model/Plan/PlanPresenters";
 import { fetchSnippets } from "../../store/flashcards/actions";
 import { fetchInbox, fetchPlans, updateTask } from "../../store/tasks/actions";
-import { StyledModal } from '../../common/presenters/StyledModal';
+import { ModalBtn } from '../../common/presenters/ModalBtn';
 import { TaskForm } from '../../Model/Task';
 import { width } from '@mui/system';
 
@@ -122,11 +122,11 @@ export default function DashboardPage() {
                 </Paper>
             </Box>
             <div className="dashboard-buttons">
-                <StyledModal
+                <ModalBtn
                     btn={{ icon: <SettingsSuggestIcon fontSize="large" />, title: "new task" }}
                 >
                     <TaskForm newTask />
-                </StyledModal>
+                </ModalBtn>
 
             </div>
         </main>
