@@ -7,24 +7,20 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)@Getter @Setter @NoArgsConstructor @AllArgsConstructor
-@Builder
+@Builder @Getter @Setter @AllArgsConstructor
 @Table(name = "tags")
-public class Tag {
+public class Tag extends BaseEntity<Long>{
+
+    protected Tag() {}
 
     public Tag(String mainName) {
         this.mainName = mainName;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "tag_id")
-    private Long id;
-
+    @Column(unique = true)
     private String mainName; //todo should be one of aliases
 
     @ElementCollection
     List<String> aliases;
-
 
 }

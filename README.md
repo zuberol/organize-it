@@ -6,6 +6,11 @@
 - ? make the hardest one first
 
 
+## todo
+	sprawdzic, czy da sie zapisywac taski
+		same
+		z podpieciem do stp
+
 ## vision
 		zmiana taska w pojekcie, to zmiana Task#AggregateRoot, zapisanie przez taskRepo i refresh Project#AggregateRoot
 		nie mozna tworzyc repo dla encji nieRootowych!!

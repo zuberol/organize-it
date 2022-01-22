@@ -1,20 +1,23 @@
 package com.zuber.organizeit.domain.Repository;
 
 import com.zuber.organizeit.domain.Note.Flashcard.Deck;
+import com.zuber.organizeit.domain.Note.Flashcard.DeckTO;
 import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.domain.Plan.PlanStatus;
 import com.zuber.organizeit.domain.Plan.ShortTermPlan;
-import com.zuber.organizeit.domain.Plan.PlanDTO;
+import com.zuber.organizeit.domain.Plan.ShortTermPlanDTO;
 import com.zuber.organizeit.domain.Plan.ShortTermPlanRepository;
-import com.zuber.organizeit.domain.Snippet;
+import com.zuber.organizeit.domain.Note.Snippet;
 import com.zuber.organizeit.domain.Tag;
 import com.zuber.organizeit.domain.Task.Task;
 import com.zuber.organizeit.domain.Task.TaskDTO;
-import com.zuber.organizeit.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -51,6 +54,10 @@ public class EntityDAO {
 
     public Optional<Task> findById(Long id) {
         return taskRepository.findById(id);
+    }
+
+    public Optional<ShortTermPlan> findPlanById(Long id) {
+        return shortTermPlanRepository.findById(id);
     }
 
 //    public Optional<Task> findByLocallySavedURI(String uri) {
@@ -115,8 +122,11 @@ public class EntityDAO {
     }
 
     public List<Task> getInboxTasks() {
-        Utils.notImplementedYet.run();
-        return List.of(); //taskRepository.isNotSubtaskAndIsNotProject();
+        return taskRepository.isNotSubtaskAndIsNotProject();
+    }
+
+    public List<Task> findTasks(List<Long> taskIds) {
+        return taskRepository.findAllById(taskIds);
     }
 
     public List<Snippet> findByTag(String name) {
@@ -143,23 +153,56 @@ public class EntityDAO {
         return shortTermPlanRepository.findPlanByName(name);
     }
 
-    public Optional<ShortTermPlan> modifyPlan(final PlanDTO dto) {
+    public Optional<ShortTermPlan> modifyPlan(ShortTermPlanDTO dto) {
 
         final var rootTasks = of(dto)
-                        .map(PlanDTO::getRootTaskIds)
+                        .map(ShortTermPlanDTO::getRootTaskIds)
                         .map(taskRepository::findAllById)
-                        .orElse(List.of());
+                        .orElse(null);
 
-         return of(dto).map(PlanDTO::getId)
+         return of(dto)
+                 .map(ShortTermPlanDTO::getId)
                  .flatMap(shortTermPlanRepository::findById)
                  .map(plan -> plan.modifyBasicData(dto))
                  .map(plan -> {
-                     plan.setRootTasks(rootTasks);
+                     ofNullable(rootTasks).ifPresent(plan::setRootTasks);
                     return plan;
                  })
                  .map(shortTermPlanRepository::save);
     }
 
+    public ShortTermPlan createPlan(ShortTermPlanDTO dto) {
+        Objects.requireNonNull(dto);
+        var rootTasks = ofNullable(dto.getRootTaskIds())
+                .map(taskRepository::findAllById)
+                .orElseGet(LinkedList::new);
+        return shortTermPlanRepository.save(
+                ShortTermPlan.builder()
+                        .name(dto.getName())
+                        .description(dto.getDescription())
+                        .rootTasks(rootTasks)
+                        .status(PlanStatus.builder().build())
+                        .build()
+        );
+    }
 
 
+    public Deck createDeck(DeckTO deckTO) {
+        Objects.requireNonNull(deckTO.getName());
+
+        List<Flashcard> flashcards = ofNullable(deckTO.getFlashcardsIds())
+                .map(flashcardsRepository::findAllById)
+                .orElseGet(LinkedList::new);
+
+
+        return decksRepository.save(
+                Deck.builder()
+                        .name(deckTO.getName())
+                        .flashcards(flashcards).build()
+        );
+    }
+
+    public ShortTermPlan save(ShortTermPlan plan) {
+        return shortTermPlanRepository.save(plan);
+    }
 }

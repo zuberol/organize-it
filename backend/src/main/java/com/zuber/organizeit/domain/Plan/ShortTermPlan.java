@@ -1,14 +1,17 @@
 package com.zuber.organizeit.domain.Plan;
 
 import com.zuber.organizeit.domain.BaseAggregateRoot;
+import com.zuber.organizeit.domain.Tag;
 import com.zuber.organizeit.domain.Task.Task;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static java.util.Optional.ofNullable;
+import static javax.persistence.CascadeType.*;
 
 @Entity @Builder
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter // setter nie potrzebny raczej
@@ -18,7 +21,8 @@ public class ShortTermPlan extends BaseAggregateRoot<Long> {
 
     private String description;
 
-    @ManyToMany//(cascade = {DETACH, MERGE, PERSIST, REFRESH})
+    @ManyToMany(cascade = { MERGE, PERSIST, DETACH, REFRESH })
+//    @ManyToMany(cascade = { ALL })
     @Builder.Default
     private List<Task> rootTasks = new LinkedList<>();
 
@@ -33,6 +37,10 @@ public class ShortTermPlan extends BaseAggregateRoot<Long> {
         return allPlanTasks;
     }
 
+    @ManyToMany
+    @Builder.Default
+    private List<Tag> tags = new LinkedList<>();
+
     private static List<Task> flattenRootTasks(Collection<Task> rootTasks) {
         return rootTasks.stream()
                 .map(rootTask -> flattenRootTasks(rootTask, new LinkedList<>()))
@@ -46,14 +54,24 @@ public class ShortTermPlan extends BaseAggregateRoot<Long> {
         return Collections.unmodifiableList(memo);
     }
 
-    public ShortTermPlan modifyBasicData(PlanDTO dto) {
+    public ShortTermPlan modifyBasicData(ShortTermPlanDTO dto) {
         ofNullable(dto.getName()).ifPresent(this::setName);
         ofNullable(dto.getDescription()).ifPresent(this::setDescription);
+
+        if(getStatus() == null) setStatus(PlanStatus.builder().build());
+        if(dto.isArchived()) {
+            getStatus().setWhenArchived(LocalDateTime.now());
+        } else getStatus().setWhenArchived(null);
+        if(dto.isDone()) {
+            getStatus().setWhenDone(LocalDateTime.now());
+        } else getStatus().setWhenDone(null);
+
         return this;
     }
 
     @Embedded
-    private PlanStatus status;
+    @Builder.Default
+    private PlanStatus status = PlanStatus.builder().build();
 
     static PlanStatus resolveStatus() {
         return null;

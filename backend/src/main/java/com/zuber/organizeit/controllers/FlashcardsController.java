@@ -7,7 +7,7 @@ import com.zuber.organizeit.domain.Repository.DecksRepository;
 import com.zuber.organizeit.domain.Repository.EntityDAO;
 import com.zuber.organizeit.domain.Repository.FlashcardsRepository;
 import com.zuber.organizeit.domain.Repository.RefResourcesRepository;
-import com.zuber.organizeit.domain.Snippet;
+import com.zuber.organizeit.domain.Note.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

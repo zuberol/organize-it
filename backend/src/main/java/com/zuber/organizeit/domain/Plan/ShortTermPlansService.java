@@ -25,4 +25,5 @@ public class ShortTermPlansService implements DomainService {
         return taskService.resolveStreak(rootTask.getSubTasks());
     }
 
+
 }

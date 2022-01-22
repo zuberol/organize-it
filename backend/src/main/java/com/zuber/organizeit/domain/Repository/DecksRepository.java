@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface DecksRepository extends JpaRepository<Deck, Long> {
 
-    Optional<Deck> findByTitle(String title);
+//    Optional<Deck> findByTitle(String title);
 
 }

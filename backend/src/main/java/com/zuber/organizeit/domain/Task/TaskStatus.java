@@ -25,15 +25,18 @@ public class TaskStatus {
 
 
 
-    private Done done;
+    @Builder.Default
+    private Done done = Done.builder().build();
 
-    private Archived archived;
+
+    @Builder.Default
+    private Archived archived = Archived.builder().build();
 
 
 
 
     @Embedded
-//    @Builder.Default
+    @Builder.Default
     private TimeEstimates timeEstimates = TimeEstimates.builder().build();
 
 

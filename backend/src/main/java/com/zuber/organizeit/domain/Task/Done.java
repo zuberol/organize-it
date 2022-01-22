@@ -3,6 +3,7 @@ package com.zuber.organizeit.domain.Task;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -18,7 +19,12 @@ import static com.zuber.organizeit.utils.Utils.not;
 public class Done {
 
     @Column(name = "whenDone")
-    LocalDateTime when;
+    private LocalDateTime when;
+
+    @Column(name = "isDone", nullable = false)
+    @ColumnDefault(value = "false")
+    @Builder.Default
+    private boolean isDone = false;
 
     protected Done() {
 

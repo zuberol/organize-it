@@ -18,7 +18,14 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     Optional<Task> findTaskByName(String name);
 
-//    @Query(nativeQuery = true, value = "select * from tasks t where t.task_id not in (select ts.task_task_id from tasks_sub_tasks ts) and t.is_archived = false and is_project = false and is_done = false")
-//    List<Task> isNotSubtaskAndIsNotProject();
+    @Query(nativeQuery = true, value =
+            """
+            select * from tasks t
+             where t.id not in (select ts.sub_tasks_id from tasks_sub_tasks ts)
+              and t.id not in (select s.root_tasks_id from short_term_plan_root_tasks s)
+              and t.is_archived = false  and is_done = false
+            """
+            )
+    List<Task> isNotSubtaskAndIsNotProject();
 
 }

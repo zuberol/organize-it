@@ -1,9 +1,13 @@
 package com.zuber.organizeit.controllers;
 
 
+import com.zuber.organizeit.domain.AppOrchestratorService;
+import com.zuber.organizeit.domain.Note.Flashcard.Deck;
 import com.zuber.organizeit.domain.Plan.ShortTermPlan;
-import com.zuber.organizeit.domain.Plan.PlanDTO;
+import com.zuber.organizeit.domain.Plan.ShortTermPlanDTO;
 import com.zuber.organizeit.domain.Repository.EntityDAO;
+import com.zuber.organizeit.domain.Note.Flashcard.DeckTO;
+import com.zuber.organizeit.domain.Status;
 import com.zuber.organizeit.domain.Task.Task;
 import com.zuber.organizeit.domain.Task.TaskDTO;
 import com.zuber.organizeit.domain.Plan.ShortTermPlansService;
@@ -22,29 +26,26 @@ import static java.util.Optional.ofNullable;
 @RequestMapping("/api")
 public class PlansController {
 
-    EntityDAO entityDao;
-    ShortTermPlansService shortTermPlansService;
+    private final EntityDAO entityDao;
+    private final AppOrchestratorService orchestratorS;
 
     @Autowired
-    public PlansController(EntityDAO entityDao) {
+    public PlansController(EntityDAO entityDao, AppOrchestratorService orchestratorS) {
         this.entityDao = entityDao;
+        this.orchestratorS = orchestratorS;
     }
 
 
     @PostMapping("/plan")
-    public ResponseEntity<ShortTermPlan> modifyPlan(@RequestBody PlanDTO planDTO) {
+    public ResponseEntity<ShortTermPlan> modifyPlan(@RequestBody ShortTermPlanDTO shortTermPlanDTO) {
         return ResponseEntity.of(
-                ofNullable(planDTO).flatMap(entityDao::modifyPlan)
+                ofNullable(shortTermPlanDTO).flatMap(entityDao::modifyPlan)
         );
-    }
-
-    public int getPlanStreakStatus(String rootTaskName, String planName) {
-        return shortTermPlansService.resolvePlanStatus(rootTaskName, planName);
     }
 
     @GetMapping("/plans")
     public List<ShortTermPlan> getPlanByName(@RequestParam(required = false) String planName) {
-        if(planName != null){
+        if (planName != null) {
             Utils.notImplementedYet.run();
             return null;
 //            return entityDao.findAllNonArchivedTasks().stream().filter(project -> project.getName().equals(planName)).toList();
@@ -53,11 +54,17 @@ public class PlansController {
         }
     }
 
-    @GetMapping("/plan/new")
-    public ShortTermPlan createPlan(@RequestBody PlanDTO planDTO) {
+    @GetMapping("/plan/status")
+    public Optional<Status> planStatus(@RequestParam(required = false, name = "id") Long planId) {
         Utils.notImplementedYet.run();
-        return null;
+        return Optional.empty();
     }
+
+    @PostMapping(value = "/plan/new", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ShortTermPlan createPlan(@RequestBody ShortTermPlanDTO shortTermPlanDTO) {
+        return entityDao.createPlan(shortTermPlanDTO);
+    }
+
 
 
     @GetMapping(value = "/task")
@@ -68,31 +75,32 @@ public class PlansController {
     }
 
     @PostMapping(value = "/task", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Task> modifyTask(@RequestBody TaskDTO taskDTO) { // todo validate
+    public ResponseEntity<Task> createModifyTask(@RequestBody TaskDTO taskDTO) {
         return ResponseEntity.of(
-                ofNullable(taskDTO).flatMap(entityDao::modifyTask)
+                ofNullable(taskDTO).map(orchestratorS::newTaskInShortTermPlan)
         );
     }
 
-    @PostMapping(value = "/task/new", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO, @RequestParam(required = false) Long parentTaskId) { // todo validate
-        if(parentTaskId != null) return ResponseEntity.of(ofNullable(taskDTO).flatMap(dto -> entityDao.appendSubtask(dto, parentTaskId)));
-        else return ResponseEntity.of(
-                ofNullable(taskDTO).flatMap(entityDao::createTask)
-        );
-    }
-
-
-    @GetMapping(value = "/task/inbox")
+    @GetMapping(value = "/tasks/inbox")
     public List<Task> getInboxTasks() {
         return entityDao.getInboxTasks();
     }
 
-    @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE}) //todo zmienic nazwe endpointa
+    @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    //todo zmienic nazwe endpointa
     public ResponseEntity<Task> appendNewSubtask(@RequestBody TaskDTO taskDTO) { // todo validate
         return ResponseEntity.of(
-               ofNullable(taskDTO).flatMap(entityDao::appendNewSubtask)
+                ofNullable(taskDTO).flatMap(entityDao::appendNewSubtask)
         );
     }
+
+    @PostMapping(value = "/deck/new", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Deck> createDeck(@RequestBody DeckTO deckDTO) {
+        return ResponseEntity.of(
+                ofNullable(deckDTO).map(entityDao::createDeck)
+        );
+
+    }
+
 
 }

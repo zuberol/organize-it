@@ -9,9 +9,11 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.PERSIST;
 
 @Entity
 @Table(name = "notes")
@@ -22,8 +24,8 @@ public class Note extends BaseAggregateRoot<Long> {
     private String name;
     private String content;
 
-    @ManyToMany
-    private List<Tag> tags;
+//    @ManyToMany
+//    private List<String> tags;
 
     @OneToMany(cascade = ALL)
     @Builder.Default
@@ -37,5 +39,9 @@ public class Note extends BaseAggregateRoot<Long> {
     @Builder.Default
     private List<NotePart> noteParts = new ArrayList<>();
 
+
+    @ManyToMany(cascade = {PERSIST})
+    @Builder.Default
+    private List<Tag> tags = new LinkedList<>();
 
 }

@@ -2,6 +2,7 @@ package com.zuber.organizeit.domain.Task;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.zuber.organizeit.domain.Tag;
 import lombok.*;
 import org.springframework.lang.Nullable;
 
@@ -17,11 +18,17 @@ public class TaskDTO {
     @Nullable Long id;
     @Nullable String name;
     @Nullable String description;
-    @JsonAlias({"subtaskIds", "subtask_ids", "subtasks" })
+    @JsonAlias({"subtaskIds", "subtask_ids", "subTasks" })
     @Nullable List<Long> subtaskIds;
     @JsonAlias({"isDone", "done", "is_done" })
     @Nullable Boolean isDone;
     @JsonAlias({"isArchived", "archived", "is_archived" })
     @Nullable Boolean isArchived;
     @Nullable Long priority;
+    private List<String> tags;
+    @JsonAlias({"plan", "plan_id"})
+    private Long planId;
+    @JsonAlias({"parent_task", "parentTask"})
+    private Long parentTaskId;
+
 }

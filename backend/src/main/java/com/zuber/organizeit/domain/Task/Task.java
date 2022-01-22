@@ -44,17 +44,14 @@ public class Task extends BaseAggregateRoot<Long> implements Serializable {
     @Column(length = 10000)
     private String description = "";
 
-    public enum ParsableProperty {
-        NAME, DESCRIPTION, IS_PROJECT, PRIORITY, IS_ARCHIVED
-    }
-
     @ManyToMany(cascade = {ALL, REMOVE}) // todo tu to nie wiem?
     @Builder.Default
 //    @OrderBy("priority DESC")
     private List<Task> subTasks = new LinkedList<>();
 
-    @OneToMany(cascade = {PERSIST})
+    @ManyToMany(cascade = {PERSIST})
     @Builder.Default
+    @JoinTable(joinColumns = @JoinColumn(name = "task_id"), inverseJoinColumns = @JoinColumn(name = "tag_id") )
     private List<Tag> tags = new LinkedList<>();
 
     public static Task newFromDto(TaskDTO taskDTO) {
@@ -128,7 +125,8 @@ public class Task extends BaseAggregateRoot<Long> implements Serializable {
 
 
     @Embedded
-    TaskStatus status;
+    @Builder.Default
+    TaskStatus status = TaskStatus.builder().build();
 
     @Embedded
     Difficulty difficulty;

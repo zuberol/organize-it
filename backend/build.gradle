@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot' version '2.5.6'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-//    id "io.freefair.lombok" version "5.2.0"
 }
 
 group = 'com.zuber'
@@ -53,5 +52,5 @@ dependencies {
 
     implementation 'org.jooq:jool:0.9.14'
 
-    implementation 'com.h2database:h2:2.0.206' // null not allowed jak sie update zrobi
+    implementation 'com.h2database:h2:2.0.206'
 }

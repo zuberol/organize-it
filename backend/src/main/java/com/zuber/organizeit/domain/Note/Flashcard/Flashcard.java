@@ -7,9 +7,11 @@ import com.zuber.organizeit.domain.Tag;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.PERSIST;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
@@ -36,8 +38,9 @@ public class Flashcard extends BaseEntity<Long> {
     @Embedded
     private Statistic statistic;
 
-    @ManyToMany(cascade = ALL)
-//    @JoinColumn(name = "fc_id")
-    private List<Tag> tags;
+    @ManyToMany(cascade = {PERSIST})
+    @Builder.Default
+    @JoinTable(joinColumns = @JoinColumn(name = "fid"), inverseJoinColumns = @JoinColumn(name = "tid") )
+    private List<Tag> tags = new LinkedList<>();
 
 }

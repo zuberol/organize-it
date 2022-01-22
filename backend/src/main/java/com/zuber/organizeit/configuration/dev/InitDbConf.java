@@ -4,10 +4,12 @@ import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
 import com.zuber.organizeit.domain.Plan.ShortTermPlan;
 import com.zuber.organizeit.domain.Plan.ShortTermPlanRepository;
 import com.zuber.organizeit.domain.Repository.FlashcardsRepository;
+import com.zuber.organizeit.domain.Repository.TagsRepository;
 import com.zuber.organizeit.domain.Repository.TaskRepository;
 import com.zuber.organizeit.domain.Tag;
 import com.zuber.organizeit.domain.Task.Task;
 import com.zuber.organizeit.services.exporters.entityImporter.EntityImporterS;
+import io.micrometer.core.instrument.Tags;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +17,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
-import java.util.LinkedList;
 import java.util.List;
 
 @Component
@@ -26,6 +27,7 @@ public class InitDbConf implements CommandLineRunner {
     final FlashcardsRepository flashcardsRepository;
     final ShortTermPlanRepository shortTermPlanRepository;
     final EntityImporterS entityImporterS;
+    final TagsRepository tagsRepository;
 
     private static final Path testProject = Path.of("/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/exporters/wrapProject/testProject");
     private static final Path projectsDir = Path.of("/home/jakub/Desktop/organize-it-db/projects");
@@ -34,11 +36,12 @@ public class InitDbConf implements CommandLineRunner {
     private static final Path snippetsDir = Path.of("/home/jakub/Desktop/organize-it-db/snippets");
 
 
-    public InitDbConf( TaskRepository taskRepository, FlashcardsRepository flashcardsRepository, ShortTermPlanRepository shortTermPlanRepository, EntityImporterS entityImporterS) {
+    public InitDbConf(TaskRepository taskRepository, FlashcardsRepository flashcardsRepository, ShortTermPlanRepository shortTermPlanRepository, EntityImporterS entityImporterS, TagsRepository tagsRepository) {
         this.taskRepository = taskRepository;
         this.flashcardsRepository = flashcardsRepository;
         this.shortTermPlanRepository = shortTermPlanRepository;
         this.entityImporterS = entityImporterS;
+        this.tagsRepository = tagsRepository;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class InitDbConf implements CommandLineRunner {
                                             .name("xddasdasda")
                                             .description("n 1 child id 2 note")
                                             .subTasks(List.of())
-                                            .tags(List.of())
+//                                            .tags(List.of())
 //                                            .timeEstimates(
 //                                                    TimeEstimates.builder()
 //                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
@@ -73,7 +76,7 @@ public class InitDbConf implements CommandLineRunner {
                                                     Task.builder()
                                                             .description("n 2 child id 4 note")
                                                             .subTasks(List.of())
-                                                            .tags(List.of())
+//                                                            .tags(List.of())
 //                                                            .timeEstimates(
 //                                                                    TimeEstimates.builder()
 //                                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
@@ -85,7 +88,7 @@ public class InitDbConf implements CommandLineRunner {
                                                     Task.builder()
                                                             .description("n 2 child id 4 note")
                                                             .subTasks(List.of())
-                                                            .tags(List.of())
+//                                                            .tags(List.of())
 //                                                            .timeEstimates(
 //                                                                    TimeEstimates.builder()
 //                                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
@@ -95,7 +98,7 @@ public class InitDbConf implements CommandLineRunner {
 //                                                            )
                                                             .build()
                                             ))
-                                            .tags(List.of())
+//                                            .tags(List.of())
 //                                            .timeEstimates(
 //                                                    TimeEstimates.builder()
 //                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
@@ -112,10 +115,11 @@ public class InitDbConf implements CommandLineRunner {
                     .build();
 
 
-            List<Task> persistedTasks = taskRepository.saveAll(new LinkedList<>(List.of(parent, doneTask)));
+//            List<Task> persistedTasks = taskRepository.saveAll(List.of(parent, doneTask));
+            List<Task> persistedTasks = List.of( doneTask);
             ShortTermPlan shortTermPlan = ShortTermPlan.builder()
                     .name("No smoking")
-                    .rootTasks(persistedTasks)
+//                    .rootTasks(persistedTasks)
                     .description("kidshkagdaisghdkash")
                     .build();
             ShortTermPlan shortTermPlan2 = ShortTermPlan.builder()
@@ -128,11 +132,24 @@ public class InitDbConf implements CommandLineRunner {
 //            plan2 = planRepository.save(plan2);
 //
 ////            plan2.getRootTasks().clear();
-            shortTermPlanRepository.save(shortTermPlan2);
 
             shortTermPlan = shortTermPlanRepository.save(shortTermPlan);
-            shortTermPlan.getRootTasks().get(0).setName("jak to zobacze to ok");
-            shortTermPlan.setName("detached name, nie powinienem tego zobaczyc po refreshu");
+
+//            taskRepository.save(doneTask);
+            shortTermPlan.getRootTasks().add(doneTask);
+            shortTermPlanRepository.save(shortTermPlan);
+
+//            shortTermPlanRepository.save(shortTermPlan2);
+
+            shortTermPlanRepository.save(
+                    ShortTermPlan.builder()
+                            .name("inbox")
+                            .rootTasks(List.of())
+                            .build()
+            );
+
+//            shortTermPlan.getRootTasks().get(0).setName("jak to zobacze to ok");
+//            shortTermPlan.setName("detached name, nie powinienem tego zobaczyc po refreshu");
 //            planRepository.
 
 //            System.out.println("before refresh: " + plan.getName());
@@ -155,11 +172,11 @@ public class InitDbConf implements CommandLineRunner {
             flashcardsRepository.save(flashcard1);
 
             Flashcard flashcard2 = new Flashcard();
-            flashcard2.setTags(List.of(new Tag("docker"), new Tag("hehe")));
+            flashcard2.setTags(List.of(new Tag("dockerd"), new Tag("hehe")));
             flashcardsRepository.save(flashcard2);
 
             Flashcard flashcard3 = new Flashcard();
-            flashcard3.setTags(List.of(new Tag("hehe")));
+            flashcard3.setTags(List.of(new Tag("hehed")));
             flashcardsRepository.save(flashcard3);
 
         };
@@ -170,9 +187,19 @@ public class InitDbConf implements CommandLineRunner {
         return () -> {
             final String file = "/home/jakub/IdeaProjects/personal/organize-it/backend/src/test/java/com/zuber/organizeit/services/GenericParser/backet-structure-note";
 //            Note note = entityImporterS.importEntity(Note.class, Path.of(file));
-            System.out.println("hehe");
         };
     }
+
+    @Bean
+    public InitializingBean uniqueTagsTest() {
+        return () -> {
+
+//            tagsRepository.saveAll(List.of(Tag.builder().mainName("hehe").build(),Tag.builder().mainName("hehe").build()));
+
+
+        };
+    }
+
 
 
 
