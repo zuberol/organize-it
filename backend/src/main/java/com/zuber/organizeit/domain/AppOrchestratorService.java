@@ -3,11 +3,9 @@ package com.zuber.organizeit.domain;
 import com.zuber.organizeit.domain.Repository.EntityDAO;
 import com.zuber.organizeit.domain.Task.Task;
 import com.zuber.organizeit.domain.Task.TaskDTO;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import static java.util.Optional.ofNullable;
 
@@ -21,27 +19,42 @@ public class AppOrchestratorService implements DomainService {
     }
 
     public Task newTaskInShortTermPlan(TaskDTO dto) {
-        var task = Task.newFromDto(dto);
-        ofNullable(task.getSubTasks()).orElseGet(LinkedList::new)
-                .addAll(entityDAO.findTasks(
+        var task = saveBasicData(dto);
+        saveSubtask(dto, task);
+        saveInPlan(dto, task);
+        return task;
+    }
+
+    private Task saveBasicData(TaskDTO dto) {
+        var task = ofNullable(dto.getId())
+                        .flatMap(entityDAO::findTaskById)
+                        .orElse(Task.newFromDto(dto))
+                        .modifyBasicData(dto);
+        if(task.getSubTasks() == null) task.setSubTasks(new LinkedList<>());
+        task.getSubTasks().addAll(entityDAO.findTasks(
                         ofNullable(dto.getSubtaskIds()).orElseGet(LinkedList::new)
                                 .stream().distinct().toList()));
-//        var tags = ofNullable(dto.getTags())
-//                .orElseGet(LinkedList::new)
-//                .stream().map(String::toLowerCase).map(String::trim)
-//                .map(str -> Tag.builder().mainName())
-//                .toList();
-//        task.setTags();
+        task = entityDAO.save(task);
+        return task;
+    }
 
+    private void saveInPlan(TaskDTO dto, Task task) {
         ofNullable(dto.getPlanId()).flatMap(entityDAO::findPlanById)
                         .map(pln -> {
                             if(pln.getRootTasks() == null) pln.setRootTasks(new LinkedList<>());
                             pln.getRootTasks().add(task);
                             return pln;
                         }).ifPresent(entityDAO::save);
-        return entityDAO.save(task);
     }
 
+    private void saveSubtask(TaskDTO dto, Task task) {
+        ofNullable(dto.getParentTaskId())
+                .flatMap(entityDAO::findTaskById)
+                        .ifPresent(parent -> {
+                            parent.getSubTasks().add(task);
+                            entityDAO.save(parent);
+                        });
+    }
 
 
 }

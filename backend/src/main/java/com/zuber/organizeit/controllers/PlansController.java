@@ -10,7 +10,6 @@ import com.zuber.organizeit.domain.Note.Flashcard.DeckTO;
 import com.zuber.organizeit.domain.Status;
 import com.zuber.organizeit.domain.Task.Task;
 import com.zuber.organizeit.domain.Task.TaskDTO;
-import com.zuber.organizeit.domain.Plan.ShortTermPlansService;
 import com.zuber.organizeit.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -70,7 +69,7 @@ public class PlansController {
     @GetMapping(value = "/task")
     public ResponseEntity<Task> getTaskById(@RequestBody TaskDTO taskDTO) {
         return ResponseEntity.of(
-                ofNullable(taskDTO).flatMap(entityDao::findById)
+                ofNullable(taskDTO).flatMap(entityDao::findTaskById)
         );
     }
 

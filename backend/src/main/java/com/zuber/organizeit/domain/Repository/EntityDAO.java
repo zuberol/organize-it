@@ -45,14 +45,14 @@ public class EntityDAO {
         this.shortTermPlanRepository = shortTermPlanRepository;
     }
 
-    public Optional<Task> findById(TaskDTO taskDTO) {
+    public Optional<Task> findTaskById(TaskDTO taskDTO) {
         return ofNullable(taskDTO)
                 .map(TaskDTO::getId)
                 .flatMap(id -> ofNullable(em.find(Task.class, id)));
 //                .filter(Task::isNotArchived);
     }
 
-    public Optional<Task> findById(Long id) {
+    public Optional<Task> findTaskById(Long id) {
         return taskRepository.findById(id);
     }
 
@@ -133,6 +133,14 @@ public class EntityDAO {
         return snippetsRepository.findByTag(name);
     }
 
+    public List<Snippet> findByTags(String [] tags) {
+        return stream(tags)
+                .map(this::findByTag)
+                .flatMap(List::stream)
+                .toList();
+    }
+
+
     public List<Flashcard> getRandomFlashcards(String[] tags) {
         Flashcard probe = new Flashcard();
         probe.setTags(stream(tags).map(Tag::new).toList());
@@ -204,5 +212,9 @@ public class EntityDAO {
 
     public ShortTermPlan save(ShortTermPlan plan) {
         return shortTermPlanRepository.save(plan);
+    }
+
+    public List<Snippet> findAllSnippets() {
+        return snippetsRepository.findAll();
     }
 }

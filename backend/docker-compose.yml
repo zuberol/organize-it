@@ -16,6 +16,7 @@ services:
 
 volumes:
   pg_data:
+#    name: prod_data
 
 #    ulimits:
 #      core:

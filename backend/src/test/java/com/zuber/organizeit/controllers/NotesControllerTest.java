@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = {FlashcardsController.class})
-class FlashcardsControllerTest {
+@SpringBootTest(classes = {NotesController.class})
+class NotesControllerTest {
 
 
 //    @MockBean FlashcardsRepository flashcardsRepository;

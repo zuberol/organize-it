@@ -24,21 +24,21 @@ public class Note extends BaseAggregateRoot<Long> {
     private String name;
     private String content;
 
-//    @ManyToMany
-//    private List<String> tags;
+    @OneToMany
+    @Builder.Default
+    private List<NotePart> noteParts = new LinkedList<>();
 
     @OneToMany(cascade = ALL)
     @Builder.Default
-    private List<ReferenceResource> referenceResources = new ArrayList<>();
+    private List<Snippet> snippets = new LinkedList<>();
 
-    @ManyToMany
+    @OneToMany(cascade = ALL)
     @Builder.Default
-    private List<Flashcard> flashcards = new ArrayList<>();
+    private List<ReferenceResource> referenceResources = new LinkedList<>();
 
     @OneToMany
     @Builder.Default
-    private List<NotePart> noteParts = new ArrayList<>();
-
+    private List<Flashcard> flashcards = new LinkedList<>();
 
     @ManyToMany(cascade = {PERSIST})
     @Builder.Default

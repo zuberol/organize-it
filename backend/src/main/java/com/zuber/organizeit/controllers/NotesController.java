@@ -3,12 +3,15 @@ package com.zuber.organizeit.controllers;
 
 import com.zuber.organizeit.domain.Note.Flashcard.Deck;
 import com.zuber.organizeit.domain.Note.Flashcard.Flashcard;
+import com.zuber.organizeit.domain.Note.NotesService;
+import com.zuber.organizeit.domain.Note.SnippetTO;
 import com.zuber.organizeit.domain.Repository.DecksRepository;
 import com.zuber.organizeit.domain.Repository.EntityDAO;
 import com.zuber.organizeit.domain.Repository.FlashcardsRepository;
 import com.zuber.organizeit.domain.Repository.RefResourcesRepository;
 import com.zuber.organizeit.domain.Note.Snippet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -19,18 +22,20 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "http://85.222.6.237:3000"})
 @RequestMapping("/api")
-public class FlashcardsController {
-    FlashcardsRepository flashcardsRepository;
-    DecksRepository decksRepository;
-    RefResourcesRepository refResourcesRepository;
-    final EntityDAO entityDAO;
+public class NotesController {
+    private final FlashcardsRepository flashcardsRepository;
+    private final DecksRepository decksRepository;
+    private final RefResourcesRepository refResourcesRepository;
+    private final EntityDAO entityDAO;
+    private final NotesService notesService;
 
     @Autowired
-    public FlashcardsController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, RefResourcesRepository refResourcesRepository, EntityDAO entityDAO) {
+    public NotesController(FlashcardsRepository flashcardsRepository, DecksRepository decksRepository, RefResourcesRepository refResourcesRepository, EntityDAO entityDAO, NotesService notesService) {
         this.flashcardsRepository = flashcardsRepository;
         this.decksRepository = decksRepository;
         this.refResourcesRepository = refResourcesRepository;
         this.entityDAO = entityDAO;
+        this.notesService = notesService;
     }
 
     @GetMapping(value = "/deck", produces = APPLICATION_JSON_VALUE)
@@ -102,10 +107,14 @@ public class FlashcardsController {
         return entityDAO.getRandomFlashcards(tags);
     }
 
-
     @GetMapping("/snippets")
-    public List<Snippet> dlnjaskjdkj() {
-        return entityDAO.findByTag("scala/scala-2-snippets");
+    public List<Snippet> findSnippetByTag(@RequestParam(required = false) String [] tags) {
+        return tags != null ? entityDAO.findByTags(tags) : entityDAO.findAllSnippets();
+    }
+
+    @PostMapping("/snippet")
+    public ResponseEntity<Snippet> modifySnippet(@RequestBody SnippetTO snippetTO) {
+        return ResponseEntity.of(notesService.newScratchSnippet(snippetTO));
     }
 
 
