@@ -64,7 +64,7 @@ public class InitDbConf implements CommandLineRunner {
 //                                            .timeEstimates(
 //                                                    TimeEstimates.builder()
 //                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
-//                                                            .created(Timestamp.from(Instant.now()))
+//                                                            .created(Timestamp.removeFrom(Instant.now()))
 //                                                            .build()
 //                                            )
                                             .build()
@@ -81,7 +81,7 @@ public class InitDbConf implements CommandLineRunner {
 //                                                                    TimeEstimates.builder()
 //                                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
 //                                                                            .spent(new Timestamp(Duration.ofDays(4).toMillis()))
-//                                                                            .created(Timestamp.from(Instant.now()))
+//                                                                            .created(Timestamp.removeFrom(Instant.now()))
 //                                                                            .build()
 //                                                            )
                                                             .build(),
@@ -93,7 +93,7 @@ public class InitDbConf implements CommandLineRunner {
 //                                                                    TimeEstimates.builder()
 //                                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
 //                                                                            .spent(new Timestamp(Duration.ofDays(4).toMillis()))
-//                                                                            .created(Timestamp.from(Instant.now()))
+//                                                                            .created(Timestamp.removeFrom(Instant.now()))
 //                                                                            .build()
 //                                                            )
                                                             .build()
@@ -103,7 +103,7 @@ public class InitDbConf implements CommandLineRunner {
 //                                                    TimeEstimates.builder()
 //                                                            .estimatedEnd(new Timestamp(Duration.ofDays(2).toMillis()))
 //                                                            .spent(new Timestamp(Duration.ofDays(4).toMillis()))
-//                                                            .created(Timestamp.from(Instant.now()))
+//                                                            .created(Timestamp.removeFrom(Instant.now()))
 //                                                            .build()
 //                                            )
                                             .build()
@@ -148,7 +148,7 @@ public class InitDbConf implements CommandLineRunner {
                             .build()
             );
 
-//            shortTermPlan.getRootTasks().get(0).setName("jak to zobacze to ok");
+//            shortTermPlan.getRootTasks().get(0).setName("jak appendTo zobacze appendTo ok");
 //            shortTermPlan.setName("detached name, nie powinienem tego zobaczyc po refreshu");
 //            planRepository.
 

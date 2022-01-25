@@ -2,7 +2,7 @@ package com.zuber.organizeit.domain;
 
 import com.zuber.organizeit.domain.Repository.EntityDAO;
 import com.zuber.organizeit.domain.Task.Task;
-import com.zuber.organizeit.domain.Task.TaskDTO;
+import com.zuber.organizeit.domain.Task.TaskTO;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -18,14 +18,14 @@ public class AppOrchestratorService implements DomainService {
         this.entityDAO = entityDAO;
     }
 
-    public Task newTaskInShortTermPlan(TaskDTO dto) {
+    public Task newTaskInShortTermPlan(TaskTO dto) {
         var task = saveBasicData(dto);
         saveSubtask(dto, task);
         saveInPlan(dto, task);
         return task;
     }
 
-    private Task saveBasicData(TaskDTO dto) {
+    private Task saveBasicData(TaskTO dto) {
         var task = ofNullable(dto.getId())
                         .flatMap(entityDAO::findTaskById)
                         .orElse(Task.newFromDto(dto))
@@ -38,7 +38,7 @@ public class AppOrchestratorService implements DomainService {
         return task;
     }
 
-    private void saveInPlan(TaskDTO dto, Task task) {
+    private void saveInPlan(TaskTO dto, Task task) {
         ofNullable(dto.getPlanId()).flatMap(entityDAO::findPlanById)
                         .map(pln -> {
                             if(pln.getRootTasks() == null) pln.setRootTasks(new LinkedList<>());
@@ -47,7 +47,7 @@ public class AppOrchestratorService implements DomainService {
                         }).ifPresent(entityDAO::save);
     }
 
-    private void saveSubtask(TaskDTO dto, Task task) {
+    private void saveSubtask(TaskTO dto, Task task) {
         ofNullable(dto.getParentTaskId())
                 .flatMap(entityDAO::findTaskById)
                         .ifPresent(parent -> {

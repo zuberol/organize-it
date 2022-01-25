@@ -1,17 +1,19 @@
 package com.zuber.organizeit.domain.Task;
 
-import com.zuber.organizeit.domain.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 
-
+@Embeddable
 @Builder
 @Getter
 @AllArgsConstructor
+@Setter
 public class TaskStatus {
 
     protected TaskStatus() {}
@@ -42,3 +44,4 @@ public class TaskStatus {
 
 
 }
+

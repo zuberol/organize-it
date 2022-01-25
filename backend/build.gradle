@@ -53,4 +53,5 @@ dependencies {
     implementation 'org.jooq:jool:0.9.14'
 
     implementation 'com.h2database:h2:2.0.206'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1'
 }

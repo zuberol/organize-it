@@ -2,7 +2,6 @@ package com.zuber.organizeit.domain.Task;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.zuber.organizeit.domain.Tag;
 import lombok.*;
 import org.springframework.lang.Nullable;
 
@@ -12,8 +11,8 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor @Setter // todo remove it later
-public class TaskDTO {
+@NoArgsConstructor @Setter
+public class TaskTO {
     @JsonAlias({"id", "taskId", "task_id" })
     @Nullable Long id;
     @Nullable String name;

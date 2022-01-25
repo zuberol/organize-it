@@ -132,16 +132,7 @@
 		nie pozwalam na razie na kod wrzucony w pliku
 
 
-		jak rozwiazac problem list w parseCtx<?>?
-			tak:
-         Li<Task>: build toole
-          - gradle
-          - maven
-          - ant
-          Deck: build toole
-           - gradle
-           - maven
-           - ant
+
 
 	taski do zrobienia
 		progres taskow

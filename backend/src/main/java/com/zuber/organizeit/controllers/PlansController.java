@@ -9,7 +9,8 @@ import com.zuber.organizeit.domain.Repository.EntityDAO;
 import com.zuber.organizeit.domain.Note.Flashcard.DeckTO;
 import com.zuber.organizeit.domain.Status;
 import com.zuber.organizeit.domain.Task.Task;
-import com.zuber.organizeit.domain.Task.TaskDTO;
+import com.zuber.organizeit.domain.Task.TaskService;
+import com.zuber.organizeit.domain.Task.TaskTO;
 import com.zuber.organizeit.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,19 +28,19 @@ public class PlansController {
 
     private final EntityDAO entityDao;
     private final AppOrchestratorService orchestratorS;
+    private final TaskService taskService;
 
     @Autowired
-    public PlansController(EntityDAO entityDao, AppOrchestratorService orchestratorS) {
+    public PlansController(EntityDAO entityDao, AppOrchestratorService orchestratorS, TaskService taskService) {
         this.entityDao = entityDao;
         this.orchestratorS = orchestratorS;
+        this.taskService = taskService;
     }
 
 
     @PostMapping("/plan")
     public ResponseEntity<ShortTermPlan> modifyPlan(@RequestBody ShortTermPlanDTO shortTermPlanDTO) {
-        return ResponseEntity.of(
-                ofNullable(shortTermPlanDTO).flatMap(entityDao::modifyPlan)
-        );
+        return ResponseEntity.of(ofNullable(shortTermPlanDTO).flatMap(entityDao::modifyPlan));
     }
 
     @GetMapping("/plans")
@@ -64,20 +65,19 @@ public class PlansController {
         return entityDao.createPlan(shortTermPlanDTO);
     }
 
-
-
     @GetMapping(value = "/task")
-    public ResponseEntity<Task> getTaskById(@RequestBody TaskDTO taskDTO) {
-        return ResponseEntity.of(
-                ofNullable(taskDTO).flatMap(entityDao::findTaskById)
-        );
+    public ResponseEntity<Task> getTaskById(@RequestBody TaskTO taskTO) {
+        return ResponseEntity.of(ofNullable(taskTO).flatMap(entityDao::findTaskById));
     }
 
     @PostMapping(value = "/task", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Task> createModifyTask(@RequestBody TaskDTO taskDTO) {
-        return ResponseEntity.of(
-                ofNullable(taskDTO).map(orchestratorS::newTaskInShortTermPlan)
-        );
+    public ResponseEntity<Task> createModifyTask(@RequestBody TaskTO taskTO) {
+        return ResponseEntity.of(ofNullable(taskTO).map(orchestratorS::newTaskInShortTermPlan));
+    }
+
+    @PostMapping(value = "/task/transfer", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Task> createModifyTask(@RequestBody TaskService.TransferTaskCmd cmd) {
+        return ResponseEntity.of(ofNullable(cmd).map(taskService::transferTask));
     }
 
     @GetMapping(value = "/tasks/inbox")
@@ -87,19 +87,14 @@ public class PlansController {
 
     @PostMapping(value = "/task/subtask/put", consumes = {MediaType.APPLICATION_JSON_VALUE})
     //todo zmienic nazwe endpointa
-    public ResponseEntity<Task> appendNewSubtask(@RequestBody TaskDTO taskDTO) { // todo validate
-        return ResponseEntity.of(
-                ofNullable(taskDTO).flatMap(entityDao::appendNewSubtask)
-        );
+    public ResponseEntity<Task> appendNewSubtask(@RequestBody TaskTO taskTO) { // todo validate
+        return ResponseEntity.of(ofNullable(taskTO).flatMap(entityDao::appendNewSubtask));
     }
 
     @PostMapping(value = "/deck/new", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Deck> createDeck(@RequestBody DeckTO deckDTO) {
-        return ResponseEntity.of(
-                ofNullable(deckDTO).map(entityDao::createDeck)
-        );
+        return ResponseEntity.of(ofNullable(deckDTO).map(entityDao::createDeck));
 
     }
-
 
 }

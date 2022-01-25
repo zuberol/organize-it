@@ -10,7 +10,7 @@ import com.zuber.organizeit.domain.Plan.ShortTermPlanRepository;
 import com.zuber.organizeit.domain.Note.Snippet;
 import com.zuber.organizeit.domain.Tag;
 import com.zuber.organizeit.domain.Task.Task;
-import com.zuber.organizeit.domain.Task.TaskDTO;
+import com.zuber.organizeit.domain.Task.TaskTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,9 +45,9 @@ public class EntityDAO {
         this.shortTermPlanRepository = shortTermPlanRepository;
     }
 
-    public Optional<Task> findTaskById(TaskDTO taskDTO) {
-        return ofNullable(taskDTO)
-                .map(TaskDTO::getId)
+    public Optional<Task> findTaskById(TaskTO taskTO) {
+        return ofNullable(taskTO)
+                .map(TaskTO::getId)
                 .flatMap(id -> ofNullable(em.find(Task.class, id)));
 //                .filter(Task::isNotArchived);
     }
@@ -71,23 +71,23 @@ public class EntityDAO {
                 .collect(Collectors.toList());
     }
 
-    public Optional<Task> modifyTask(TaskDTO dto) {
+    public Optional<Task> modifyTask(TaskTO dto) {
         return of(dto)
-                .flatMap(taskDTO -> ofNullable(taskDTO.getId()))
+                .flatMap(taskTO -> ofNullable(taskTO.getId()))
                 .flatMap(taskRepository::findById)
                 .map(task -> task.modifyBasicData(dto))
                 .map(task -> task.setSubtasksFromTO(dto, taskRepository))
                 .map(taskRepository::save);
     }
 
-    public Optional<Task> appendNewSubtask(TaskDTO dto) {
+    public Optional<Task> appendNewSubtask(TaskTO dto) {
         return of(dto)
-                .map(TaskDTO::getId)
+                .map(TaskTO::getId)
                 .flatMap(taskRepository::findById)
                 .map(task -> Task.withNewSubtask(task, em));
     }
 
-    public Optional<Task> createTask(TaskDTO dto) {
+    public Optional<Task> createTask(TaskTO dto) {
 
         return of(dto)
                 .map(Task::newFromDto)
@@ -95,7 +95,7 @@ public class EntityDAO {
                 .map(taskRepository::save);
     }
 
-    public Optional<Task> appendSubtask(TaskDTO dto, Long parentTaskId) {
+    public Optional<Task> appendSubtask(TaskTO dto, Long parentTaskId) {
         Optional<Task> subTaskOpt = createTask(dto);
         Optional<Task> parentOpt = taskRepository.findById(parentTaskId);
         Task toReturn = null;
