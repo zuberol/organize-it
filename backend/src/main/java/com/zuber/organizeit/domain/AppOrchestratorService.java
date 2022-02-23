@@ -30,10 +30,9 @@ public class AppOrchestratorService implements DomainService {
                         .flatMap(entityDAO::findTaskById)
                         .orElse(Task.newFromDto(dto))
                         .modifyBasicData(dto);
-        if(task.getSubTasks() == null) task.setSubTasks(new LinkedList<>());
-        task.getSubTasks().addAll(entityDAO.findTasks(
-                        ofNullable(dto.getSubtaskIds()).orElseGet(LinkedList::new)
-                                .stream().distinct().toList()));
+        task.setSubTasks(entityDAO.findTasks(
+                ofNullable(dto.getSubTasksIds()).orElseGet(LinkedList::new)
+                        .stream().distinct().toList()));
         task = entityDAO.save(task);
         return task;
     }

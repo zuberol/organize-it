@@ -84,7 +84,7 @@ public class Task extends BaseAggregateRoot<Long> implements Serializable {
 
     public Task setSubtasksFromTO(TaskTO taskTO, TaskRepository repo) {
         ofNullable(taskTO)
-                .map(TaskTO::getSubtaskIds)
+                .map(TaskTO::getSubTasksIds)
                 .map(repo::findAllById)
                 .ifPresent(this::setSubTasks);
         return this;
@@ -95,7 +95,7 @@ public class Task extends BaseAggregateRoot<Long> implements Serializable {
                 .name(getName())
                 .id(getId())
                 .description(getDescription())
-                .subtaskIds(getSubTasks().stream().map(Task::getId).collect(Collectors.toList()))
+                .subTasksIds(getSubTasks().stream().map(Task::getId).collect(Collectors.toList()))
 //                .priority(getPriority())
 //                .isDone(isDone())
                 .build();
@@ -140,7 +140,7 @@ public class Task extends BaseAggregateRoot<Long> implements Serializable {
         setSubTasks(
                 getSubTasks().stream()
                         .filter(subTask -> !Objects.equals(subTask.getId(), task.getId()))
-                        .toList());
+                        .collect(Collectors.toList()));
         return this;
     }
 

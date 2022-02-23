@@ -293,6 +293,9 @@
 https://stackoverflow.com/questions/49845355/spring-boot-controller-upload-multipart-and-json-to-dto
 https://material-ui.com/components/tree-view/
 
+## frontend challenges
+https://css-tricks.com/front-end-challenges/
+
 ## Dependencies
 sdkman
 nvm

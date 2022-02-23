@@ -35,7 +35,8 @@ public class TaskService implements DomainService {
                 .ifPresent(taskRepository::save);
         ofNullable(cmd.removeFrom)
                 .flatMap(taskRepository::findById)
-                .map(parent -> parent.removeSubtask(whatTask));
+                .map(parent -> parent.removeSubtask(whatTask))
+                .ifPresent(taskRepository::save);
         return whatTask;
     }
 

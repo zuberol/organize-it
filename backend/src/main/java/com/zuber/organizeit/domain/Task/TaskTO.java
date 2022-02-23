@@ -18,7 +18,7 @@ public class TaskTO {
     @Nullable String name;
     @Nullable String description;
     @JsonAlias({"subtaskIds", "subtask_ids", "subTasks" })
-    @Nullable List<Long> subtaskIds;
+    @Nullable List<Long> subTasksIds;
     @JsonAlias({"isDone", "done", "is_done" })
     @Nullable Boolean isDone;
     @JsonAlias({"isArchived", "archived", "is_archived" })
