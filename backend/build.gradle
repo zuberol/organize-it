@@ -12,6 +12,7 @@ repositories {
 }
 
 sourceCompatibility = 17
+targetCompatibility = 17
 
 tasks.withType(JavaCompile) {
     options.compilerArgs += '--enable-preview'
@@ -24,10 +25,6 @@ tasks.withType(JavaExec) {
 
 tasks.withType(Test) {
     jvmArgs += "--enable-preview"
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -54,4 +51,9 @@ dependencies {
 
     implementation 'com.h2database:h2:2.0.206'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1'
+}
+
+
+test {
+    useJUnitPlatform()
 }
